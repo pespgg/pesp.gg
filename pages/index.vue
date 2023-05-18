@@ -1,6 +1,10 @@
 <script setup>
-const { data: servicios } = await useFetch("/api/servicios");
-const { data: posts } = await useFetch("/api/posts");
+const { data: servicios } = await useFetch("/api/servicios", {
+  pick: ["image", "servicio_es", "servicio_en"]
+});
+const { data: posts } = await useFetch("/api/posts", {
+  pick: ["image", "titulo_es", "titulo_en", "p_es", "p_en", "fecha", "permalink"]
+});
 const { data: juegos } = await useFetch("/api/categorias");
 </script>
 
@@ -35,7 +39,7 @@ const { data: juegos } = await useFetch("/api/categorias");
                     <NuxtLink :to="'/' + posts[i].permalink">{{ posts[i].titulo_es }}</NuxtLink>
                   </strong>
                 </h4>
-                <p class="card-text">{{ truncate(stripTags(posts[i].p_es), 200) }}</p>
+                <p class="card-text">{{ posts[i].p_es }}</p>
               </div>
               <div class="card-footer bg-dark p-0">
                 <div class="d-flex align-items-center">
