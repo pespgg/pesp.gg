@@ -1,5 +1,10 @@
 <script setup>
-const { data: posts } = await useFetch("/api/posts");
+const { data: posts } = await useFetch("/api/posts", {
+  query: {
+    props: ["image", "titulo_es", "titulo_en", "fecha", "permalink"].join(","),
+    limit: 2
+  }
+});
 </script>
 
 <template>

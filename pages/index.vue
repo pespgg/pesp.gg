@@ -1,9 +1,12 @@
 <script setup>
 const { data: servicios } = await useFetch("/api/servicios", {
-  pick: ["image", "servicio_es", "servicio_en"]
+  query: { props: ["image", "servicio_es", "servicio_en"].join(",") }
 });
 const { data: posts } = await useFetch("/api/posts", {
-  pick: ["image", "titulo_es", "titulo_en", "p_es", "p_en", "fecha", "permalink"]
+  query: {
+    props: ["image", "titulo_es", "titulo_en", "p_es", "p_en", "fecha", "permalink"].join(","),
+    limit: 3
+  }
 });
 const { data: juegos } = await useFetch("/api/categorias");
 </script>
@@ -80,7 +83,7 @@ const { data: juegos } = await useFetch("/api/categorias");
           <TransitionGroup name="tab" mode="out-in">
             <template v-for="(n, i) of 12" :key="i">
               <div v-if="n <= 6 || moreCategorias" class="col-6 col-md-4 p-2 p-md-3">
-                <img class="img-fluid rounded shadow" :src="'https://pesp.gg/images/juegos/' + juegos[i].image">
+                <img class="img-fluid rounded shadow" :src="'https://pesp.gg/images/juegos/' + juegos[i].image" :title="juegos[i].juego">
               </div>
             </template>
           </TransitionGroup>

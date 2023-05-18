@@ -9,3 +9,13 @@ export const stripTags = (str = "") => {
   const nbsp = /&nbsp;/gi;
   return str.replace(comments, "").replace(tags, "").replace(nbsp, " ");
 };
+
+export const filterByProps = (arr = [], props = []) => {
+  return arr.map((a) => {
+    const filtered = {};
+    props.forEach((prop) => {
+      filtered[prop] = a[prop];
+    });
+    return filtered;
+  });
+};
