@@ -18,3 +18,7 @@ export const formatDate = (date = "", lang = "es") => {
     day: "2-digit"
   });
 };
+
+export const currentYear = () => {
+  return new Date().getFullYear();
+};

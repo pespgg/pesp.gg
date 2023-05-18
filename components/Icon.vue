@@ -44,4 +44,9 @@ export default {
   width: 3rem;
   height: 3rem;
 }
+
+.nuxt-icon[size="full"] svg {
+  width: 100%;
+  height: 100%;
+}
 </style>
