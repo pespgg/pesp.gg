@@ -1,6 +1,5 @@
 <script setup>
-import { posts } from "~/data/posts.json";
-const actualidad = posts.filter(post => post.visible === "public");
+const { data: posts } = await useFetch("/api/posts");
 </script>
 
 <template>
@@ -39,13 +38,13 @@ const actualidad = posts.filter(post => post.visible === "public");
           </div>
           <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
             <h5 class="text-uppercase fw-bold">{{ t("ultimo") }}</h5>
-            <NuxtLink v-for="(n, i) of 2" :key="n" class="d-flex align-items-center mb-2 text-white" :to="actualidad[i].permalink">
+            <NuxtLink v-for="(n, i) of 2" :key="n" class="d-flex align-items-center mb-2 text-white" :to="posts[i].permalink">
               <div class="lo-ultimo">
-                <img class="rounded" :src="'https://pesp.gg/images/posts/' + actualidad[i].image">
+                <img class="rounded" :src="'https://pesp.gg/images/posts/' + posts[i].image">
               </div>
               <div class="ms-2 small text-start">
-                <p class="m-0">{{ actualidad[i].titulo_es }}</p>
-                <p class="text-body m-0"><Icon name="utils/calendar" /> {{ formatDate(actualidad[i].fecha) }}</p>
+                <p class="m-0">{{ posts[i].titulo_es }}</p>
+                <p class="text-body m-0"><Icon name="utils/calendar" /> {{ formatDate(posts[i].fecha) }}</p>
               </div>
             </NuxtLink>
           </div>
