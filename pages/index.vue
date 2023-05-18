@@ -1,8 +1,7 @@
 <script setup>
-import { posts } from "~/data/posts.json";
-import { juegos } from "~/data/categorias.json";
-import { servicios } from "~/data/servicios.json";
-const actualidad = posts.filter(post => post.visible === "public");
+const { data: servicios } = await useFetch("/api/servicios");
+const { data: posts } = await useFetch("/api/posts");
+const { data: juegos } = await useFetch("/api/categorias");
 </script>
 
 <template>
@@ -29,22 +28,22 @@ const actualidad = posts.filter(post => post.visible === "public");
         <div class="carousel-inner">
           <div v-for="(n, i) of 3" :key="n" class="carousel-item" :class="{ active: !(i) }">
             <div class="card mx-auto border-0 shadow home">
-              <img :src="'https://pesp.gg/images/posts/' + actualidad[i].image" class="card-img-top home">
+              <img :src="'https://pesp.gg/images/posts/' + posts[i].image" class="card-img-top home">
               <div class="card-body bg-dark home">
                 <h4 class="card-title">
                   <strong>
-                    <NuxtLink :to="'/' + actualidad[i].permalink">{{ actualidad[i].titulo_es }}</NuxtLink>
+                    <NuxtLink :to="'/' + posts[i].permalink">{{ posts[i].titulo_es }}</NuxtLink>
                   </strong>
                 </h4>
-                <p class="card-text">{{ truncate(stripTags(actualidad[i].p_es), 200) }}</p>
+                <p class="card-text">{{ truncate(stripTags(posts[i].p_es), 200) }}</p>
               </div>
               <div class="card-footer bg-dark p-0">
                 <div class="d-flex align-items-center">
-                  <small class="text-body-secondary ps-3" :title="actualidad[i].fecha">
+                  <small class="text-body-secondary ps-3" :title="posts[i].fecha">
                     <Icon class="text-white" name="utils/calendar" />
-                    {{ formatDate(actualidad[i].fecha) }}
+                    {{ formatDate(posts[i].fecha) }}
                   </small>
-                  <NuxtLink class="hover ms-auto bg-primary text-white py-1 px-3 rounded rounded-top-0 rounded-start-0" :to="'/' + actualidad[i].permalink">
+                  <NuxtLink class="hover ms-auto bg-primary text-white py-1 px-3 rounded rounded-top-0 rounded-start-0" :to="'/' + posts[i].permalink">
                     <small>{{ t("leer_mas") }} <Icon name="utils/right" /></small>
                   </NuxtLink>
                 </div>
