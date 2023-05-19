@@ -6,7 +6,7 @@
       <template v-for="(servicio, i) of SITE.servicios" :key="i">
         <div class="row" :class="{ 'mb-4': i < SITE.servicios.length - 1 }">
           <div class="col-md-6 p-4 bg-dark shadow" :class="i % 2 ? 'order-1 order-md-2' : 'order-1 order-md-1'">
-            <h3 class="text-uppercse mb-4 mt-4"><b>¡SOMOS PESP!</b></h3>
+            <h3 class="text-uppercse mb-4 mt-4"><b>{{ t(servicio.title) }}</b></h3>
             <!-- eslint-disable-next-line vue/no-v-html -->
             <p v-for="(p, j) of servicio.content" :key="j" v-html="t(p)" />
           </div>
