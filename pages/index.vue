@@ -2,7 +2,8 @@
 const { data: posts } = await useFetch("/api/posts", {
   query: {
     props: ["image", "titulo_es", "titulo_en", "p_es", "p_en", "fecha", "permalink"].join(","),
-    limit: 3
+    limit: 3,
+    truncate: 200
   }
 });
 </script>
@@ -24,7 +25,7 @@ const { data: posts } = await useFetch("/api/posts", {
               <div class="card-body bg-dark home">
                 <h4 class="card-title">
                   <strong>
-                    <NuxtLink :to="'/' + posts[i].permalink">{{ posts[i].titulo_es }}</NuxtLink>
+                    <NuxtLink :to="'/p/' + posts[i].permalink">{{ posts[i].titulo_es }}</NuxtLink>
                   </strong>
                 </h4>
                 <p class="card-text">{{ posts[i].p_es }}</p>

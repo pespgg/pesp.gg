@@ -1,4 +1,4 @@
-export const truncate = (str = "", n = 0) => {
+export const truncateString = (str = "", n = 0) => {
   const res = str.length > n ? str.substring(0, n - 1) + "..." : str;
   return res.trim();
 };
