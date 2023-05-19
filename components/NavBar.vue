@@ -1,6 +1,6 @@
 <template>
   <nav class="navbar navbar-dark navbar-expand-lg bg-dark sticky-top shadow">
-    <div class="container-fluid">
+    <div class="container">
       <NuxtLink class="navbar-brand d-flex" to="/">
         <Icon name="brand/icon" size="md" />
       </NuxtLink>
@@ -15,8 +15,8 @@
         </div>
         <div class="offcanvas-body text-center">
           <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-            <li v-for="(item, i) in NAVBAR.items" :key="i" class="nav-item text-uppercase">
-              <NuxtLink class="nav-link" aria-current="page" :to="item.to">{{ t(item.id) }}</NuxtLink>
+            <li v-for="(item, i) in NAVBAR.items" :key="i" class="nav-item text-uppercase" data-bs-dismiss="offcanvas">
+              <NuxtLink class="nav-link text-decoration-none" aria-current="page" :to="item.to">{{ t(item.id) }}</NuxtLink>
             </li>
           </ul>
         </div>

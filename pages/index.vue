@@ -1,7 +1,4 @@
 <script setup>
-const { data: servicios } = await useFetch("/api/servicios", {
-  query: { props: ["image", "servicio_es", "servicio_en"].join(",") }
-});
 const { data: posts } = await useFetch("/api/posts", {
   query: {
     props: ["image", "titulo_es", "titulo_en", "p_es", "p_en", "fecha", "permalink"].join(","),
@@ -13,18 +10,7 @@ const { data: juegos } = await useFetch("/api/categorias");
 
 <template>
   <!-- Banner -->
-  <section>
-    <div id="banner" class="carousel slide carousel-fade" data-bs-ride="carousel">
-      <div class="carousel-indicators">
-        <button v-for="(image, i) of carousel" :key="i" type="button" data-bs-target="#banner" :data-bs-slide-to="i" :class="{ active: !i }" aria-current="true" aria-label="Slide" />
-      </div>
-      <div class="carousel-inner">
-        <div v-for="(image, i) of carousel" :key="i" class="carousel-item" :class="{ active: !i }" data-bs-interval="10000">
-          <img :src="image" class="d-block w-100" alt="...">
-        </div>
-      </div>
-    </div>
-  </section>
+  <BannerCarousel :banners="banners" />
   <!-- Actualidad Preview -->
   <section>
     <div class="container-fluid py-5">
@@ -111,9 +97,9 @@ const { data: juegos } = await useFetch("/api/categorias");
           <template v-for="(servicio, i) of servicios" :key="i">
             <div class="col-md-6 p-2 p-md-3">
               <div class="position-relative">
-                <img class="img-fluid rounded shadow" :src="'https://pesp.gg/images/servicios/' + servicio.image">
+                <img class="img-fluid rounded shadow" :src="`${SITE.dirs.servicios}/${servicio.images[0]}`">
                 <NuxtLink class="position-absolute bottom-0 bg-dark w-100 bg-opacity-75 px-3 py-2 text-white d-flex justify-content-between align-items-center rounded-bottom" to="/servicios/">
-                  <h5 class="m-0">{{ servicio.servicio_es }}</h5>
+                  <h5 class="m-0">{{ t(servicio.title) }}</h5>
                   <Icon name="utils/bottom-up" size="sm" />
                 </NuxtLink>
               </div>
@@ -129,11 +115,13 @@ const { data: juegos } = await useFetch("/api/categorias");
 export default {
   data () {
     return {
+      posts: [],
+      servicios: SITE.servicios,
       moreCategorias: false,
-      carousel: [
-        "https://pesp.gg/images/banners/Principal_f.jpg",
-        "https://pesp.gg/images/banners/Secundario_f.jpg",
-        "https://pesp.gg/images/banners/Tercero.jpg"
+      banners: [
+        "home-1.jpg",
+        "home-2.jpg",
+        "home-3.jpg"
       ]
     };
   }

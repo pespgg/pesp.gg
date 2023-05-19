@@ -85,3 +85,7 @@ footer .lo-ultimo img {
 .bg-primary.hover:hover {
   background-color: var(--bs-link-color)!important;
 }
+
+strong {
+  color: var(--bs-heading-color);
+}

@@ -20,9 +20,9 @@ export default {
         { name: "theme-color", content: "#071018" }
       ],
       link: [
-        { href: "/fonts/Gilroy-Bold.woff", rel: "preload", as: "font", crossorigin: true, type: "font/woff" },
-        { href: "/fonts/Gilroy-Regular.woff", rel: "preload", as: "font", crossorigin: true, type: "font/woff" },
-        { href: "/fonts/Gilroy-SemiBold.woff", rel: "preload", as: "font", crossorigin: true, type: "font/woff" }
+        { rel: "preload", href: "/fonts/Gilroy-Bold.woff", as: "font", type: "font/woff" },
+        { rel: "preload", href: "/fonts/Gilroy-Regular.woff", as: "font", type: "font/woff" },
+        { rel: "preload", href: "/fonts/Gilroy-SemiBold.woff", as: "font", type: "font/woff" }
       ]
     }
   },
