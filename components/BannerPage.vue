@@ -20,9 +20,6 @@ export default {
       type: String,
       default: ""
     }
-  },
-  beforeCreate () {
-    preloadImage(`${SITE.dirs.banners}/${this.banner}`);
   }
 };
 </script>

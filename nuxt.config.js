@@ -1,4 +1,10 @@
+import { readdirSync } from "fs";
 import { SITE } from "./utils/site.js";
+
+const banners = readdirSync("./public/images/banners");
+const preload_banners = banners.map((image) => {
+  return { rel: "preload", href: `${SITE.dirs.banners}/${image}`, as: "image", fetchpriority: "high" };
+});
 
 export default {
   app: {
@@ -22,7 +28,8 @@ export default {
       link: [
         { rel: "preload", href: "/fonts/Gilroy-Bold.woff", as: "font", type: "font/woff" },
         { rel: "preload", href: "/fonts/Gilroy-Regular.woff", as: "font", type: "font/woff" },
-        { rel: "preload", href: "/fonts/Gilroy-SemiBold.woff", as: "font", type: "font/woff" }
+        { rel: "preload", href: "/fonts/Gilroy-SemiBold.woff", as: "font", type: "font/woff" },
+        ...preload_banners
       ]
     }
   },

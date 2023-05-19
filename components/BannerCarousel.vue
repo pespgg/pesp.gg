@@ -20,10 +20,6 @@ export default {
       type: Array,
       required: true
     }
-  },
-  beforeCreate () {
-    const images = this.banners.map(banner => `${SITE.dirs.banners}/${banner}`);
-    preloadImage(images);
   }
 };
 </script>
