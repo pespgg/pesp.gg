@@ -23,7 +23,7 @@ export default {
   },
   beforeCreate () {
     const images = this.banners.map(banner => `${SITE.dirs.banners}/${banner}`);
-    preloadResource(images, "image");
+    preloadImage(images);
   }
 };
 </script>

@@ -22,7 +22,7 @@ export default {
     }
   },
   beforeCreate () {
-    preloadResource(`${SITE.dirs.banners}/${this.banner}`, "image");
+    preloadImage(`${SITE.dirs.banners}/${this.banner}`);
   }
 };
 </script>
