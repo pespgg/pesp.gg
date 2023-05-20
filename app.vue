@@ -1,3 +1,7 @@
+<script setup>
+setScrollBehavior();
+</script>
+
 <template>
   <NuxtLayout>
     <Transition name="page" mode="out-in">
