@@ -123,7 +123,7 @@ export default {
     };
   },
   mounted () {
-    const actualidad = this.$nuxt.$Glide("#actualidad.glide", {
+    this.$nuxt.$glide("#actualidad.glide", {
       type: "carousel",
       autoplay: 5000,
       animationDuration: 500,
@@ -135,8 +135,6 @@ export default {
         after: 0
       }
     });
-
-    actualidad.mount();
   }
 };
 </script>
