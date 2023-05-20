@@ -43,7 +43,7 @@ const { data: posts } = await useFetch("/api/posts", {
           </div>
           <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
             <h5 class="text-uppercase fw-bold">{{ t("ultimo") }}</h5>
-            <NuxtLink v-for="(n, i) of 2" :key="n" class="d-flex align-items-center mb-2 text-white" :to="posts[i].permalink">
+            <NuxtLink v-for="(n, i) of 2" :key="n" class="d-flex align-items-center mb-2 text-white" :to="'/p/' + posts[i].permalink">
               <div class="lo-ultimo">
                 <img class="rounded" :src="'https://pesp.gg/images/posts/' + posts[i].image">
               </div>

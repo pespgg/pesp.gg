@@ -38,7 +38,7 @@ const { data: posts } = await useFetch("/api/posts", {
                         <Icon class="text-white" name="utils/calendar" />
                         {{ formatDate(posts[i].fecha) }}
                       </small>
-                      <NuxtLink class="hover ms-auto bg-primary text-white py-1 px-3 rounded rounded-top-0 rounded-start-0" :to="'/' + posts[i].permalink">
+                      <NuxtLink class="hover ms-auto bg-primary text-white py-1 px-3 rounded rounded-top-0 rounded-start-0" :to="'/p/' + posts[i].permalink">
                         <small>{{ t("leer_mas") }} <Icon name="utils/right" /></small>
                       </NuxtLink>
                     </div>
