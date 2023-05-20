@@ -6,6 +6,7 @@ const { data: post } = await useFetch("/api/posts", {
   }
 });
 </script>
+
 <template>
   <section>
     <div id="banner" class="position-relative bg-black">
@@ -18,6 +19,7 @@ const { data: post } = await useFetch("/api/posts", {
         <strong>{{ post.titulo_es }}</strong>
       </h1>
       <hr>
+      <!-- eslint-disable-next-line vue/no-v-html -->
       <div v-html="post.p_es" />
     </div>
   </section>
