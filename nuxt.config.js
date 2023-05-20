@@ -43,7 +43,8 @@ export default {
     "@glidejs/glide/dist/css/glide.core.min.css",
     "~/assets/css/main.css",
     "~/assets/css/dark.css",
-    "~/assets/css/transitions.css"
+    "~/assets/css/transitions.css",
+    "~/assets/css/glidejs.css"
   ],
   modules: [
     "nuxt-icons",

@@ -17,34 +17,36 @@ const { data: posts } = await useFetch("/api/posts", {
       <h2 class="text-center text-uppercase mb-4">
         <strong>{{ t("actualidad") }}</strong>
       </h2>
-      <div class="glide my-5">
-        <div class="glide__track" data-glide-el="track">
-          <ul class="glide__slides">
-            <li v-for="(n, i) of 3" :key="i" class="glide__slide">
-              <div class="card mx-auto border-0 shadow">
-                <img :src="'https://pesp.gg/images/posts/' + posts[i].image" class="card-img-top">
-                <div class="card-body bg-dark">
-                  <h4 class="card-title">
-                    <strong>
-                      <NuxtLink :to="'/p/' + posts[i].permalink">{{ posts[i].titulo_es }}</NuxtLink>
-                    </strong>
-                  </h4>
-                  <p class="card-text">{{ posts[i].p_es }}</p>
-                </div>
-                <div class="card-footer bg-dark p-0">
-                  <div class="d-flex align-items-center">
-                    <small class="text-body-secondary ps-3" :title="posts[i].fecha">
-                      <Icon class="text-white" name="utils/calendar" />
-                      {{ formatDate(posts[i].fecha) }}
-                    </small>
-                    <NuxtLink class="hover ms-auto bg-primary text-white py-1 px-3 rounded rounded-top-0 rounded-start-0" :to="'/' + posts[i].permalink">
-                      <small>{{ t("leer_mas") }} <Icon name="utils/right" /></small>
-                    </NuxtLink>
+      <div class="glide-wrapper">
+        <div id="actualidad" class="container px-0 glide my-5">
+          <div class="glide__track" data-glide-el="track">
+            <ul class="glide__slides">
+              <li v-for="(n, i) of 3" :key="i" class="glide__slide p-0 px-sm-3" :class="{'glide__slide--active': !i}">
+                <div class="card mx-auto border-0 shadow">
+                  <img :src="'https://pesp.gg/images/posts/' + posts[i].image" class="card-img-top">
+                  <div class="card-body bg-dark">
+                    <h4 class="card-title">
+                      <strong>
+                        <NuxtLink :to="'/p/' + posts[i].permalink">{{ posts[i].titulo_es }}</NuxtLink>
+                      </strong>
+                    </h4>
+                    <p class="card-text">{{ posts[i].p_es }}</p>
+                  </div>
+                  <div class="card-footer bg-dark p-0">
+                    <div class="d-flex align-items-center">
+                      <small class="text-body-secondary ps-3" :title="posts[i].fecha">
+                        <Icon class="text-white" name="utils/calendar" />
+                        {{ formatDate(posts[i].fecha) }}
+                      </small>
+                      <NuxtLink class="hover ms-auto bg-primary text-white py-1 px-3 rounded rounded-top-0 rounded-start-0" :to="'/' + posts[i].permalink">
+                        <small>{{ t("leer_mas") }} <Icon name="utils/right" /></small>
+                      </NuxtLink>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </li>
-          </ul>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
       <div class="text-center my-3">
@@ -110,6 +112,7 @@ export default {
   data () {
     return {
       posts: [],
+      rendered: false,
       servicios: SITE.servicios,
       moreCategorias: false,
       banners: [
@@ -120,59 +123,20 @@ export default {
     };
   },
   mounted () {
-    this.$nuxt.$glide(".glide", {
+    const actualidad = this.$nuxt.$Glide("#actualidad.glide", {
       type: "carousel",
       autoplay: 5000,
       animationDuration: 500,
-      perView: 2,
+      gap: 0,
       focusAt: "center",
-      breakpoints: {
-        800: {
-          perView: 2
-        },
-        480: {
-          perView: 1
-        }
+      perView: 1,
+      peek: {
+        before: 0,
+        after: 0
       }
     });
+
+    actualidad.mount();
   }
 };
 </script>
-
-<style scoped>
-  .glide__slide--active {
-    opacity: 100%!important;
-    filter: blur(0)!important;
-  }
-  .glide__slide {
-    opacity: 30%;
-    filter: blur(3px);
-  }
-  @media screen and (max-width: 500px) {
-    .glide__arrows {
-      display: none;
-    }
-  }
-  .glide__arrow {
-    background: var(--theme-background);
-    border-radius: 8px;
-  }
-  .glide__arrow:hover {
-    background: var(--theme-button);
-  }
-  .glide__arrow--right {
-    right: 15%;
-  }
-  .glide__arrow--left {
-    left: 15%;
-  }
-  .glide__bullets {
-    bottom: 1em;
-  }
-  #arrow-icon {
-    z-index: 1;
-    left: 50%;
-    transform: translateX(-50%);
-    top: 35px;
-  }
-</style>
