@@ -49,6 +49,7 @@ export default {
   ],
   modules: [
     "nuxt-icons",
+    "nuxt-twemoji",
     "@pinia/nuxt"
   ],
   pinia: {
