@@ -1,10 +1,4 @@
-import { readdirSync } from "fs";
 import { SITE } from "./utils/site.js";
-
-const banners = readdirSync("./public/images/banners");
-const preload_banners = banners.map((image) => {
-  return { rel: "preload", href: `${SITE.dirs.banners}/${image}`, as: "image", type: "image/jpeg" };
-});
 
 export default {
   app: {
@@ -34,8 +28,7 @@ export default {
         { rel: "icon", type: "image/png", sizes: "32x32", href: "/favicon-32x32.png" },
         { rel: "icon", type: "image/png", sizes: "16x16", href: "/favicon-16x16.png" },
         { rel: "manifest", href: "/site.webmanifest" },
-        { rel: "mask-icon", href: "/safari-pinned-tab.svg", color: "#f80357" },
-        ...preload_banners
+        { rel: "mask-icon", href: "/safari-pinned-tab.svg", color: "#f80357" }
       ]
     }
   },
