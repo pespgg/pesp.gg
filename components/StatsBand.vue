@@ -1,5 +1,5 @@
 <template>
-  <section id="datos" ref="datos" @scroll.self="test()">
+  <section id="stats" ref="stats" @scroll.self="test()">
     <div class="band container-fluid bg-dark py-5">
       <div class="row row-gap-4 justify-content-center">
         <div v-for="(stat, i) of stats" :key="i" class="col-12 col-sm-6 col-md-4 text-center">
@@ -9,7 +9,7 @@
             </h1>
           </div>
           <div v-if="stat.carousel">
-            <div :id="`carousel-${i}`" class="carousel slide carousel-fade" data-bs-ride="carousel">
+            <div :id="`carousel-${i}`" class="carousel slide carousel-fade">
               <div class="carousel-inner">
                 <div v-for="(item, j) of stat.carousel" :key="j" class="carousel-item" :class="{ active: !j }">
                   <h1>
@@ -46,6 +46,12 @@ export default {
   },
   mounted () {
     window.addEventListener("scroll", this.onView);
+
+    this.stats.forEach((stat, i) => {
+      if (stat.carousel) {
+        this.$nuxt.$bootstrap.startCarousel(`#stats #carousel-${i}`);
+      }
+    });
   },
   unmounted () {
     window.removeEventListener("scroll", this.onView);
@@ -62,7 +68,7 @@ export default {
       });
     },
     onView () {
-      const { top, bottom } = this.$refs.datos.getBoundingClientRect();
+      const { top, bottom } = this.$refs.stats.getBoundingClientRect();
       if (top < window.innerHeight && bottom > 0) {
         if (!this.tweened) {
           this.tweenCounters();
