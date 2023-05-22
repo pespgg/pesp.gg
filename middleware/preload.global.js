@@ -10,5 +10,4 @@ export default defineNuxtRouteMiddleware(() => {
     const img = new Image();
     img.src = `/images/banners/${banner}`;
   });
-  console.log("preload");
 });
