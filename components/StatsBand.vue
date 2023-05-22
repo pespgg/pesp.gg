@@ -45,13 +45,13 @@ export default {
     };
   },
   mounted () {
-    window.addEventListener("scroll", this.tweenCounters);
+    window.addEventListener("scroll", this.onView);
   },
   unmounted () {
-    window.removeEventListener("scroll", this.tweenCounters);
+    window.removeEventListener("scroll", this.onView);
   },
   methods: {
-    countUp () {
+    tweenCounters () {
       const counters = this.$refs.counters;
       counters.forEach(async (counter) => {
         const target = Number(counter.innerText);
@@ -61,11 +61,11 @@ export default {
         });
       });
     },
-    tweenCounters () {
+    onView () {
       const { top, bottom } = this.$refs.datos.getBoundingClientRect();
       if (top < window.innerHeight && bottom > 0) {
         if (!this.tweened) {
-          this.countUp();
+          this.tweenCounters();
         }
       }
       else {

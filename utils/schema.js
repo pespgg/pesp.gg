@@ -1,15 +1,15 @@
 import categorias from "./schema/categorias";
 import servicios from "./schema/servicios";
-import navbar from "./schema/navbar";
 import stats from "./schema/stats";
+import pages from "./schema/pages";
 
 class Schema {
   constructor () {
     this.config = {
       categorias,
       servicios,
-      navbar,
-      stats
+      stats,
+      pages
     };
   }
 
@@ -21,8 +21,8 @@ class Schema {
     return this.config.servicios;
   }
 
-  get navbar () {
-    return this.config.navbar;
+  get pages () {
+    return this.config.pages;
   }
 
   get stats () {

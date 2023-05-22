@@ -15,8 +15,8 @@
         </div>
         <div class="offcanvas-body text-center">
           <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-            <li v-for="(item, i) in SCHEMA.navbar.items" :key="i" class="nav-item text-uppercase" data-bs-dismiss="offcanvas">
-              <NuxtLink class="nav-link text-decoration-none" aria-current="page" :to="item.to">{{ t(item.id) }}</NuxtLink>
+            <li v-for="(page, key) in SCHEMA.pages" :key="key" class="nav-item text-uppercase" data-bs-dismiss="offcanvas">
+              <NuxtLink class="nav-link text-decoration-none" aria-current="page" :to="page.to">{{ t(key) }}</NuxtLink>
             </li>
           </ul>
         </div>

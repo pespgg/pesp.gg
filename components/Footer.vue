@@ -73,15 +73,15 @@ export default {
         sobre_nosotros: [
           {
             name: t("nosotros"),
-            link: "/quienes-somos/"
+            link: SCHEMA.pages.nosotros.to
           },
           {
             name: t("servicios"),
-            link: "/servicios/"
+            link: SCHEMA.pages.servicios.to
           },
           {
             name: t("contacto"),
-            link: "/contacto/"
+            link: SCHEMA.pages.contacto.to
           }
         ],
         ayuda: [

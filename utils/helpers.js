@@ -11,7 +11,11 @@ export const currentYear = () => {
   return new Date().getFullYear();
 };
 
-export const tweenNumber = async ({ target, duration }, callback = () => {}) => {
+export function sleep (ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+export const tweenNumber = async ({ target, duration }, callback = (n = 0) => {}) => {
   let count = 0;
   while (count < target) {
     const add = target / (60 * duration);
@@ -21,7 +25,7 @@ export const tweenNumber = async ({ target, duration }, callback = () => {}) => 
     else {
       count += add;
     }
-    await new Promise(resolve => setTimeout(resolve, duration * 1000 / 60));
+    await sleep(duration * 1000 / 60);
     callback(count);
   }
 };
