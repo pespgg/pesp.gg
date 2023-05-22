@@ -1,10 +1,10 @@
 <template>
   <!-- Banner -->
   <BannerPage banner="servicios.jpg" :text="t('servicios')" />
-  <section>
+  <section id="servicios">
     <div class="container py-5">
       <template v-for="(servicio, i) of SCHEMA.servicios" :key="i">
-        <div class="row px-2 px-sm-0 bg-dark rounded overflow-hidden" :class="{ 'mb-4': i < SCHEMA.servicios.length - 1 }">
+        <div :id="servicio.title" class="row px-2 px-sm-0 bg-dark rounded overflow-hidden" :class="{ 'mb-4': i < SCHEMA.servicios.length - 1 }">
           <!-- Info col -->
           <div class="col-md-8 col-lg-6 p-sm-4 shadow" :class="i % 2 ? 'order-1 order-md-2' : 'order-1 order-md-1'">
             <h3 class="text-uppercse mb-4 mt-4"><b>{{ t(servicio.title) }}</b></h3>
@@ -18,5 +18,7 @@
         </div>
       </template>
     </div>
+  </section>
+  <section id="datos">
   </section>
 </template>

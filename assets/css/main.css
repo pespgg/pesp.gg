@@ -11,6 +11,7 @@
 
 :root {
   --bs-body-font-family: Gilroy;
+  scroll-behavior: unset;
 }
 
 *::-webkit-scrollbar {

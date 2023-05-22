@@ -94,7 +94,7 @@ const { data: posts } = await useFetch("/api/posts", {
             <div class="col-md-6 p-2 p-md-3">
               <div class="position-relative rounded overflow-hidden">
                 <img class="img-fluid shadow" :src="`${SITE.dirs.servicios}/${servicio.images[0]}`">
-                <NuxtLink class="position-absolute bottom-0 bg-dark w-100 bg-opacity-75 px-3 py-2 text-white d-flex justify-content-between align-items-center" to="/servicios/">
+                <NuxtLink class="position-absolute bottom-0 bg-dark w-100 bg-opacity-75 px-3 py-2 text-white d-flex justify-content-between align-items-center" :to="`/servicios/#${servicio.title}`">
                   <h5 class="m-0">{{ t(servicio.title) }}</h5>
                   <Icon name="utils/bottom-up" size="sm" />
                 </NuxtLink>
