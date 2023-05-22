@@ -10,3 +10,18 @@ export const formatDate = (date = "", lang = "es") => {
 export const currentYear = () => {
   return new Date().getFullYear();
 };
+
+export const tweenNumber = async ({ target, duration }, callback = () => {}) => {
+  let count = 0;
+  while (count < target) {
+    const add = target / (60 * duration);
+    if (count + add > target) {
+      count = target;
+    }
+    else {
+      count += add;
+    }
+    await new Promise(resolve => setTimeout(resolve, duration * 1000 / 60));
+    callback(count);
+  }
+};

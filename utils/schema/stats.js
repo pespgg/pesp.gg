@@ -21,7 +21,7 @@ export default {
         },
         {
           title: "mobile",
-          icon: "utils/mobile"
+          icon: "utils/phone"
         }
       ]
     }

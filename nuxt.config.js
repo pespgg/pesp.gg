@@ -3,7 +3,7 @@ import { SITE } from "./utils/site.js";
 
 const banners = readdirSync("./public/images/banners");
 const preload_banners = banners.map((image) => {
-  return { rel: "preload", href: `${SITE.dirs.banners}/${image}`, as: "image", type: "image/jpeg" };
+  return { rel: "prefetch", href: `${SITE.dirs.banners}/${image}`, as: "image", type: "image/jpeg" };
 });
 
 export default {

@@ -79,3 +79,16 @@ iframe {
   border-radius: var(--bs-border-radius);
   border-width: 0;
 }
+
+.band {
+  background-image: url("/images/backgrounds/info.jpg");
+  background-repeat: no-repeat;
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  filter: grayscale(1);
+}
+
+.band .carousel-item {
+  transition: opacity .4s ease-in-out!important;
+}

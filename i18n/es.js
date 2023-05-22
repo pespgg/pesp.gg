@@ -41,5 +41,11 @@ export default {
   /* Servicio: Casters */
   casters_p1: "<i><strong>MOTIVACIÓN Y CONOCIMIENTO TÉCNICO</strong></i>. Sentimos pasión por los Esports.",
   casters_p2: "Llevamos la acción, el entretenimiento y el conocimiento técnico gracias a nuestro equipo de comentaristas y presentadores especializados y entrenados en las distintas categorías de juegos, para ofrecerles un Show de altura.",
-  casters_p3: "Conecta con el público joven y vive la emoción de los Esports, minuto a minuto de la mano de los expertos."
+  casters_p3: "Conecta con el público joven y vive la emoción de los Esports, minuto a minuto de la mano de los expertos.",
+  /* Estadísticas */
+  experiencia: "Años de experiencia",
+  actividades: "Actividades realizadas",
+  pc: "Competencias en PC",
+  console: "Competencias en Consola",
+  mobile: "Competencias en Móvil"
 };
