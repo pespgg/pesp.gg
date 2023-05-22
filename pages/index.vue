@@ -12,13 +12,13 @@ const { data: posts } = await useFetch("/api/posts", {
   <!-- Banner -->
   <BannerCarousel :banners="banners" />
   <!-- Actualidad Preview -->
-  <section>
+  <section id="actualidad">
     <div class="container-fluid py-5">
       <h2 class="text-center text-uppercase mb-4">
         <strong>{{ t("actualidad") }}</strong>
       </h2>
       <div class="glide-wrapper">
-        <div id="actualidad" class="container px-0 glide my-5">
+        <div class="container px-0 glide my-5">
           <div class="glide__track" data-glide-el="track">
             <ul class="glide__slides">
               <li v-for="(n, i) of 3" :key="i" class="glide__slide p-0 px-sm-3" :class="{'glide__slide--active': !i}">
@@ -32,13 +32,13 @@ const { data: posts } = await useFetch("/api/posts", {
                     </h4>
                     <p class="card-text">{{ posts[i].p_es }}</p>
                   </div>
-                  <div class="card-footer bg-dark p-0">
+                  <div class="card-footer bg-dark p-0 overflow-hidden">
                     <div class="d-flex align-items-center">
                       <small class="text-body-secondary ps-3" :title="posts[i].fecha">
                         <Icon class="text-white" name="utils/calendar" />
                         {{ formatDate(posts[i].fecha) }}
                       </small>
-                      <NuxtLink class="hover ms-auto bg-primary text-white py-1 px-3 rounded rounded-top-0 rounded-start-0" :to="'/p/' + posts[i].permalink">
+                      <NuxtLink class="hover ms-auto bg-primary text-white py-1 px-3" :to="'/p/' + posts[i].permalink">
                         <small>{{ t("leer_mas") }} <Icon name="utils/right" /></small>
                       </NuxtLink>
                     </div>
@@ -55,7 +55,7 @@ const { data: posts } = await useFetch("/api/posts", {
     </div>
   </section>
   <!-- Categorías -->
-  <section>
+  <section id="categorias">
     <div class="categorias bg-dark py-5">
       <div class="container">
         <h2 class="text-center text-uppercase mb-4">
@@ -65,7 +65,7 @@ const { data: posts } = await useFetch("/api/posts", {
           <TransitionGroup name="tab" mode="out-in">
             <template v-for="(n, i) of 12" :key="i">
               <div v-if="n <= 6 || moreCategorias" class="col-6 col-md-4 p-2 p-md-3">
-                <img class="img-fluid rounded shadow" :src="`${SITE.dirs.categorias}/${SITE.categorias[i].image}`" :title="SITE.categorias[i].name">
+                <img class="img-fluid rounded shadow" :src="`${SITE.dirs.categorias}/${SCHEMA.categorias[i].image}`" :title="SCHEMA.categorias[i].name">
               </div>
             </template>
           </TransitionGroup>
@@ -83,18 +83,18 @@ const { data: posts } = await useFetch("/api/posts", {
     </div>
   </section>
   <!-- Servicios -->
-  <section>
+  <section id="servicios">
     <div class="py-5">
       <div class="container">
         <h2 class="text-center text-uppercase mb-4">
           <strong>{{ t("servicios") }}</strong>
         </h2>
         <div class="row">
-          <template v-for="(servicio, i) of servicios" :key="i">
+          <template v-for="(servicio, i) of SCHEMA.servicios" :key="i">
             <div class="col-md-6 p-2 p-md-3">
-              <div class="position-relative">
-                <img class="img-fluid rounded shadow" :src="`${SITE.dirs.servicios}/${servicio.images[0]}`">
-                <NuxtLink class="position-absolute bottom-0 bg-dark w-100 bg-opacity-75 px-3 py-2 text-white d-flex justify-content-between align-items-center rounded-bottom" to="/servicios/">
+              <div class="position-relative rounded overflow-hidden">
+                <img class="img-fluid shadow" :src="`${SITE.dirs.servicios}/${servicio.images[0]}`">
+                <NuxtLink class="position-absolute bottom-0 bg-dark w-100 bg-opacity-75 px-3 py-2 text-white d-flex justify-content-between align-items-center" to="/servicios/">
                   <h5 class="m-0">{{ t(servicio.title) }}</h5>
                   <Icon name="utils/bottom-up" size="sm" />
                 </NuxtLink>
@@ -113,7 +113,6 @@ export default {
     return {
       posts: [],
       rendered: false,
-      servicios: SITE.servicios,
       moreCategorias: false,
       banners: [
         "home-1.jpg",
@@ -123,7 +122,7 @@ export default {
     };
   },
   mounted () {
-    this.$nuxt.$glide("#actualidad.glide", {
+    this.$nuxt.$glide("#actualidad .glide", {
       type: "carousel",
       autoplay: 5000,
       animationDuration: 500,
