@@ -1,5 +1,6 @@
 export const setScrollBehavior = (behavior = "smooth") => {
-  useRouter().scrollBehavior = (to) => {
+  const { options } = useRouter();
+  options.scrollBehavior = (to) => {
     if (to.hash === "") {
       return { left: 0, top: 0 };
     }
