@@ -1,10 +1,16 @@
 import categorias from "./schema/categorias";
 import servicios from "./schema/servicios";
 import navbar from "./schema/navbar";
+import stats from "./schema/stats";
 
 class Schema {
-  constructor ({ categorias, servicios, navbar }) {
-    this.config = { categorias, servicios, navbar };
+  constructor () {
+    this.config = {
+      categorias,
+      servicios,
+      navbar,
+      stats
+    };
   }
 
   get categorias () {
@@ -18,6 +24,10 @@ class Schema {
   get navbar () {
     return this.config.navbar;
   }
+
+  get stats () {
+    return this.config.stats;
+  }
 }
 
-export const SCHEMA = new Schema({ categorias, servicios, navbar });
+export const SCHEMA = new Schema();

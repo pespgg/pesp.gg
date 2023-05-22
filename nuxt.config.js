@@ -3,7 +3,7 @@ import { SITE } from "./utils/site.js";
 
 const banners = readdirSync("./public/images/banners");
 const preload_banners = banners.map((image) => {
-  return { rel: "preload", href: `${SITE.dirs.banners}/${image}`, as: "image", fetchpriority: "high" };
+  return { rel: "preload", href: `${SITE.dirs.banners}/${image}`, as: "image", type: "image/jpeg" };
 });
 
 export default {
@@ -27,8 +27,8 @@ export default {
         { name: "apple-mobile-web-app-capable", content: SITE.name.web }
       ],
       link: [
-        { rel: "preload", href: "/fonts/Gilroy-Bold.woff", as: "font", type: "font/woff" },
-        { rel: "preload", href: "/fonts/Gilroy-Regular.woff", as: "font", type: "font/woff" },
+        { rel: "preload", href: "/fonts/Gilroy-Bold.woff", as: "font", type: "font/woff", crossorigin: "anonymous" },
+        { rel: "preload", href: "/fonts/Gilroy-Regular.woff", as: "font", type: "font/woff", crossorigin: "anonymous" },
         { rel: "apple-touch-icon", sizes: "180x180", href: "/apple-touch-icon.png" },
         { rel: "icon", type: "image/png", sizes: "192x192", href: "/android-chrome-192x192.png" },
         { rel: "icon", type: "image/png", sizes: "32x32", href: "/favicon-32x32.png" },

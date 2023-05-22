@@ -19,6 +19,5 @@
       </template>
     </div>
   </section>
-  <section id="datos">
-  </section>
+  <StatsBand :stats="SCHEMA.stats.experience" />
 </template>
