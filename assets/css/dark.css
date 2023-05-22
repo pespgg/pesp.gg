@@ -11,6 +11,10 @@
   --bs-link-hover-color-rgb: 226, 68, 110;
 }
 
+[data-bs-theme=dark] .text-dark strong, [data-bs-theme=dark] .text-dark {
+  color: #232323!important;
+}
+
 [data-bs-theme=dark] .carousel .carousel-indicators [data-bs-target] {
   background-color: #fff;
 }
