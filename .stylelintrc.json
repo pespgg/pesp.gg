@@ -1,5 +1,4 @@
 {
-  "plugins": ["stylelint-order"],
   "rules": {
     "declaration-block-trailing-semicolon": "always",
     "declaration-bang-space-after": "never",
