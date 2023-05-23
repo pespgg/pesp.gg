@@ -8,7 +8,8 @@ export const SITE = {
   dirs: {
     banners: "/images/banners",
     categorias: "/images/categorias",
-    servicios: "/images/servicios"
+    servicios: "/images/servicios",
+    casos_exito: "/images/casos_exito"
   },
   socials: [
     {

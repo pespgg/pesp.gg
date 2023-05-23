@@ -35,6 +35,7 @@ export default {
   css: [
     "bootstrap/dist/css/bootstrap.min.css",
     "@glidejs/glide/dist/css/glide.core.min.css",
+    "@glidejs/glide/dist/css/glide.theme.min.css",
     "~/assets/css/main.css",
     "~/assets/css/dark.css",
     "~/assets/css/transitions.css",

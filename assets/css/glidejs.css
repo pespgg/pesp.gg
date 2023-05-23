@@ -1,22 +1,41 @@
-#actualidad .glide-wrapper {
+.glide-wrapper {
   max-width: 100vw;
   overflow: hidden;
 }
 
-#actualidad .glide {
-  max-width: 50vw;
+.glide {
   margin: auto;
 }
 
-#actualidad .glide__slide--active {
+#actualidad .glide {
+  max-width: 50vw;
+}
+
+#casos-exito .glide {
+  max-width: 75vw;
+}
+
+@media screen and (max-width: 992px) {
+  #actualidad .glide, #casos-exito .glide {
+    max-width: 100%;
+  }
+}
+
+#actualidad .glide__slide--active, #casos-exito .glide__slide--active {
   opacity: 100%!important;
   filter: blur(0)!important;
 }
 
-#actualidad .glide__slide {
+#actualidad .glide__slide, #casos-exito .glide__slide {
   opacity: 30%;
   filter: blur(3px);
 }
+
+.glide__track {
+  overflow: visible!important;
+}
+
+/* Arrows */
 
 @media screen and (max-width: 500px) {
   .glide__arrows {
@@ -34,24 +53,13 @@
 }
 
 .glide__arrow--right {
-  right: 15%;
+  right: -10%;
 }
 
 .glide__arrow--left {
-  left: 15%;
+  left: -10%;
 }
 
 .glide__bullets {
-  bottom: 1em;
-}
-
-#arrow-icon {
-  z-index: 1;
-  left: 50%;
-  transform: translateX(-50%);
-  top: 35px;
-}
-
-#actualidad .glide__track {
-  overflow: visible!important;
+  bottom: 0;
 }
