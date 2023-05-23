@@ -18,7 +18,7 @@ const { data: posts } = await useFetch("/api/posts", {
         <strong>{{ t("actualidad") }}</strong>
       </h2>
       <div class="glide-wrapper">
-        <div class="glide my-5 mw-50">
+        <div class="glide my-5">
           <div class="glide__track" data-glide-el="track">
             <ul class="glide__slides">
               <li v-for="(n, i) of 3" :key="i" class="glide__slide p-0 px-sm-3" :class="{'glide__slide--active': !i}">

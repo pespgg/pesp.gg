@@ -26,7 +26,7 @@
         <strong>{{ t("casos_exito") }}</strong>
       </h2>
       <div class="glide-wrapper">
-        <div class="glide mw-75">
+        <div class="glide">
           <div class="glide__track" data-glide-el="track">
             <ul class="glide__slides">
               <li v-for="(caso, i) of SCHEMA.casos_exito" :key="i" class="glide__slide p-0 px-sm-3" :class="{'glide__slide--active': !i}">
