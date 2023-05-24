@@ -1,4 +1,5 @@
 <script setup>
+import { twFlagPanama } from "nuxt-twemoji/emojis";
 const { data: posts } = await useFetch("/api/posts", {
   query: {
     props: ["image", "titulo_es", "titulo_en", "fecha", "permalink"].join(","),
@@ -58,7 +59,7 @@ const { data: posts } = await useFetch("/api/posts", {
     </section>
     <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
       <small>
-        {{ t("copyright") }}. © PESP.GG {{ currentYear() }}. <Twemoji emoji="🇵🇦" size="1rem" />
+        {{ t("copyright") }}. © PESP.GG {{ currentYear() }}. <Twemoji :emoji="twFlagPanama" size="1rem" />
       </small>
     </div>
   </footer>
