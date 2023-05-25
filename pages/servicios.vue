@@ -79,7 +79,7 @@
             <div class="glide__track" data-glide-el="track">
               <ul class="glide__slides">
                 <li v-for="(marca, i) of SCHEMA.marcas" :key="i" class="glide__slide" :class="{'glide__slide--active': !i}">
-                  <img :src="`${SITE.dirs.marcas}/${marca.image}`" class="img-fluid" width="150" height="150" :alt="marca.name">
+                  <img :src="`${SITE.dirs.marcas}/${marca.image}`" class="img-fluid" width="150" height="150" :alt="marca.name" :title="marca.name">
                 </li>
               </ul>
             </div>
