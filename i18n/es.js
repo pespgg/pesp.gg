@@ -1,4 +1,5 @@
 export default {
+  lang: "es",
   /* Navbar */
   inicio: "Inicio",
   nosotros: "¿Quiénes somos?",
