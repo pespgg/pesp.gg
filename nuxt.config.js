@@ -42,7 +42,7 @@ export default {
     "~/assets/css/glidejs.css"
   ],
   modules: [
-    "nuxt-icons",
+    "nuxt-icon",
     "nuxt-twemoji",
     "@pinia/nuxt"
   ],

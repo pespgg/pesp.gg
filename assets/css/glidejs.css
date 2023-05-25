@@ -44,12 +44,15 @@
 }
 
 .glide__arrow {
-  background: var(--theme-background);
-  border-radius: 8px;
+  background: var(--bs-body-bg);
+  border-radius: 50%;
+  transition: all 0.2s ease-in-out;
 }
 
 .glide__arrow:hover {
-  background: var(--theme-button);
+  background: var(--bs-dark);
+  transform: scale(1.2);
+  top: 41%;
 }
 
 .glide__arrow--right {

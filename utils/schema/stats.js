@@ -13,15 +13,15 @@ export default {
       carousel: [
         {
           title: "pc",
-          icon: "utils/pc"
+          icon: "solar:monitor-linear"
         },
         {
           title: "consola",
-          icon: "utils/game"
+          icon: "solar:gamepad-linear"
         },
         {
           title: "mobile",
-          icon: "utils/phone"
+          icon: "solar:iphone-linear"
         }
       ]
     }

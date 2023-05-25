@@ -9,37 +9,38 @@ export const SITE = {
     banners: "/images/banners",
     categorias: "/images/categorias",
     servicios: "/images/servicios",
-    casos_exito: "/images/casos_exito"
+    casos_exito: "/images/casos_exito",
+    marcas: "/images/marcas"
   },
   socials: [
     {
       name: "Facebook",
-      icon: "socials/facebook",
+      icon: "bi:facebook",
       link: "https://facebook.com/pesp.gg"
     },
     {
       name: "Twitter",
-      icon: "socials/twitter",
+      icon: "bi:twitter",
       link: "https://twitter.com/pesp_gg"
     },
     {
       name: "Youtube",
-      icon: "socials/youtube",
+      icon: "bi:youtube",
       link: "https://youtube.com/channel/UCR1DrxgUzQHynABliRLN21g"
     },
     {
       name: "Instagram",
-      icon: "socials/instagram",
+      icon: "bi:instagram",
       link: "https://instagram.com/pesp.gg"
     },
     {
       name: "Twitch",
-      icon: "socials/twitch",
+      icon: "bi:twitch",
       link: "https://twitch.tv/pesp_gg"
     },
     {
       name: "LinkedIn",
-      icon: "socials/linkedin",
+      icon: "bi:linkedin",
       link: "https://linkedin.com/company/pesp"
     }
   ]

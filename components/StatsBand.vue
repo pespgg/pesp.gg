@@ -13,7 +13,7 @@
               <div class="carousel-inner">
                 <div v-for="(item, j) of stat.carousel" :key="j" class="carousel-item" :class="{ active: !j }">
                   <h1>
-                    <Icon :name="item.icon" size="full" />
+                    <Icon :name="item.icon" />
                   </h1>
                   <h4 class="m-0 text-uppercase">
                     <strong>{{ t(item.title) }}</strong>

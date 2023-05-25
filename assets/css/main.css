@@ -92,3 +92,21 @@ iframe {
 .band .carousel-item {
   transition: opacity .4s ease-in-out!important;
 }
+
+.scale-hover {
+  transition: transform 0.4s ease-in-out;
+}
+
+.scale-hover:hover {
+  transform: scale(1.1);
+}
+
+
+.scale-position-hover .scale-position {
+  transition: transform 0.4s ease-in-out;
+}
+
+
+.scale-position-hover:hover .scale-position {
+  transform: scale(1.1);
+}

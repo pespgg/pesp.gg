@@ -17,7 +17,7 @@ const { data: posts } = await useFetch("/api/posts", {
       </div>
       <div>
         <a v-for="(social, i) of SITE.socials" :key="i" class="text-white me-4" :href="social.link" target="_blank" :title="social.name">
-          <Icon :name="social.icon" />
+          <Icon :name="social.icon" size="1.2rem" />
         </a>
       </div>
     </section>
@@ -25,7 +25,7 @@ const { data: posts } = await useFetch("/api/posts", {
       <div class="container-fluid text-center text-md-start mt-5">
         <div class="row mt-3">
           <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
-            <Icon class="mb-3" name="brand/full" size="full" />
+            <Icon class="mb-3 w-100 p-2 p-sm-0" name="LogoFull" width="100%" height="100" />
             <p>{{ SITE.description }}</p>
           </div>
           <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
@@ -50,7 +50,10 @@ const { data: posts } = await useFetch("/api/posts", {
               </div>
               <div class="ms-2 small text-start">
                 <p class="m-0">{{ posts[i].titulo_es }}</p>
-                <p class="text-body m-0"><Icon name="utils/calendar" /> {{ formatDate(posts[i].fecha) }}</p>
+                <div class="d-flex align-items-center">
+                  <Icon name="solar:calendar-linear" />
+                  <p class="text-body ms-1 m-0"> {{ formatDate(posts[i].fecha) }}</p>
+                </div>
               </div>
             </NuxtLink>
           </div>

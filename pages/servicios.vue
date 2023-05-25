@@ -2,7 +2,7 @@
   <!-- Banner -->
   <BannerPage banner="servicios.jpg" :text="t('servicios')" />
   <section id="servicios">
-    <div class="container my-5">
+    <div class="container mt-0 mt-sm-5 mb-5">
       <template v-for="(servicio, i) of SCHEMA.servicios" :key="i">
         <div :id="servicio.title" class="row px-2 px-sm-0 bg-dark rounded overflow-hidden" :class="{ 'mb-4': i < SCHEMA.servicios.length - 1 }">
           <!-- Info col -->
@@ -12,8 +12,10 @@
             <p v-for="(p, j) of servicio.content" :key="j" v-html="t(p)" />
           </div>
           <!-- Image col -->
-          <div class="col-md-4 col-lg-6 p-0 text-center shadow" :class="i % 2 ? 'order-2 order-md-1' : 'order-2 order-md-2'">
-            <img class="img-fluid h-100 object-fit-cover" :src="`${SITE.dirs.servicios}/${servicio.images[1]}`" :alt="t(servicio.title)">
+          <div class="col-md-4 col-lg-6 p-0 text-center shadow overflow-hidden" :class="i % 2 ? 'order-2 order-md-1' : 'order-2 order-md-2'">
+            <div class="scale-hover h-100">
+              <img class="img-fluid h-100 object-fit-cover" :src="`${SITE.dirs.servicios}/${servicio.images[1]}`" :alt="t(servicio.title)">
+            </div>
           </div>
         </div>
       </template>
@@ -30,7 +32,7 @@
           <div class="glide__track" data-glide-el="track">
             <ul class="glide__slides">
               <li v-for="(caso, i) of SCHEMA.casos_exito" :key="i" class="glide__slide p-0 px-sm-3" :class="{'glide__slide--active': !i}">
-                <div class="rounded overflow-hidden shadow bg-dark vw-75">
+                <div class="rounded overflow-hidden shadow bg-dark">
                   <div class="row mx-0">
                     <div class="order-2 order-md-1 col-md-7 p-4">
                       <h3 class="text-uppercase text-white"><strong>{{ t(caso.title) }}</strong></h3>
@@ -46,14 +48,10 @@
           </div>
           <div class="glide__arrows" data-glide-el="controls">
             <span class="glide__arrow glide__arrow--left shadow" data-glide-dir="<">
-              <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-chevron-left" viewBox="0 0 16 16">
-                <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z" />
-              </svg>
+              <Icon name="solar:alt-arrow-left-bold" size="30" />
             </span>
             <span class="glide__arrow glide__arrow--right shadow" data-glide-dir=">">
-              <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
-                <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
-              </svg>
+              <Icon name="solar:alt-arrow-right-bold" size="30" />
             </span>
           </div>
           <div class="glide__bullets" data-glide-el="controls[nav]">
@@ -66,12 +64,27 @@
     </div>
   </section>
   <section id="marcas">
-    <div class="container-fluid bg-white my-5 py-5 text-dark">
-      <div class="text-center text-dark">
-        <h1>
-          <strong>Ellos confían en nosotros</strong>
-        </h1>
-        Marcas patrocinadoras de nuestros eventos
+    <div class="container-fluid bg-light mt-5 py-4 text-dark">
+      <div class="row align-items-center">
+        <div class="col-lg-5">
+          <div class="text-center text-dark">
+            <h1>
+              <strong>Ellos confían en nosotros</strong>
+            </h1>
+            Marcas patrocinadoras de nuestros eventos
+          </div>
+        </div>
+        <div class="col-lg-7">
+          <div class="glide overflow-hidden rounded-pill">
+            <div class="glide__track" data-glide-el="track">
+              <ul class="glide__slides">
+                <li v-for="(marca, i) of SCHEMA.marcas" :key="i" class="glide__slide" :class="{'glide__slide--active': !i}">
+                  <img :src="`${SITE.dirs.marcas}/${marca.image}`" class="img-fluid" width="150" height="150" :alt="marca.name">
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -91,6 +104,13 @@ export default {
         before: 0,
         after: 0
       }
+    });
+
+    this.$nuxt.$glide("#marcas .glide", {
+      type: "carousel",
+      autoplay: 500,
+      animationDuration: 1500,
+      perView: 4
     });
   }
 };

@@ -33,13 +33,13 @@ const { data: posts } = await useFetch("/api/posts", {
                     <p class="card-text">{{ posts[i].p_es }}</p>
                   </div>
                   <div class="card-footer bg-dark p-0 overflow-hidden">
-                    <div class="d-flex align-items-center">
-                      <small class="text-body-secondary ps-3" :title="posts[i].fecha">
-                        <Icon class="text-white" name="utils/calendar" />
+                    <div class="d-flex align-items-center ps-3">
+                      <Icon class="text-white" name="solar:calendar-linear" size="1.1rem" />
+                      <small class="text-body-secondary ms-1" :title="posts[i].fecha">
                         {{ formatDate(posts[i].fecha) }}
                       </small>
                       <NuxtLink class="hover ms-auto bg-primary text-white py-1 px-3" :to="'/p/' + posts[i].permalink">
-                        <small>{{ t("leer_mas") }} <Icon name="utils/right" /></small>
+                        <small>{{ t("leer_mas") }} <Icon name="solar:arrow-right-bold" size="1.5rem" /></small>
                       </NuxtLink>
                     </div>
                   </div>
@@ -74,8 +74,8 @@ const { data: posts } = await useFetch("/api/posts", {
           <button class="btn btn-outline-light rounded-pill position-relative px-4" @click="moreCategorias = !moreCategorias">
             {{ moreCategorias ? t("ver_menos") : t("ver_mas") }}
             <Transition name="fade" mode="out-in">
-              <Icon v-if="moreCategorias" class="position-absolute bottom-100 start-50 translate-middle-x text-white" name="utils/up" size="md" />
-              <Icon v-else class="position-absolute top-100 start-50 translate-middle-x text-white" name="utils/down" size="md" />
+              <Icon v-if="moreCategorias" class="position-absolute bottom-100 start-50 translate-middle-x text-white" name="solar:alt-arrow-up-bold" size="2rem" />
+              <Icon v-else class="position-absolute top-100 start-50 translate-middle-x text-white" name="solar:alt-arrow-down-bold" size="2rem" />
             </Transition>
           </button>
         </div>
@@ -92,11 +92,13 @@ const { data: posts } = await useFetch("/api/posts", {
         <div class="row">
           <template v-for="(servicio, i) of SCHEMA.servicios" :key="i">
             <div class="col-md-6 p-2 p-md-3">
-              <div class="position-relative rounded overflow-hidden">
-                <img class="img-fluid shadow" :src="`${SITE.dirs.servicios}/${servicio.images[0]}`">
+              <div class="position-relative rounded overflow-hidden scale-position-hover">
+                <div class="scale-position">
+                  <img class="img-fluid shadow" :src="`${SITE.dirs.servicios}/${servicio.images[0]}`">
+                </div>
                 <NuxtLink class="position-absolute bottom-0 bg-dark w-100 bg-opacity-75 px-3 py-2 text-white d-flex justify-content-between align-items-center" :to="`/servicios/#${servicio.title}`">
                   <h5 class="m-0">{{ t(servicio.title) }}</h5>
-                  <Icon name="utils/bottom-up" size="sm" />
+                  <Icon name="solar:square-bottom-up-linear" size="1.5rem" />
                 </NuxtLink>
               </div>
             </div>
