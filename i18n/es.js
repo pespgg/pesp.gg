@@ -47,10 +47,13 @@ export default {
   ce_gravitycup: "Evento estrella Esports de LG ULTRAGEAR, desarrollado de manera virtual, por PESP en el 2021, con torneos clasificatorios en 2 categorías de juegos, en pc y consola, con su eslogan “los mejores jugadores, juegan con los mejores monitores, LG ULTRAGEAR, logra posicionarse entre un público selectivo, exigente y competitivo como los monitores gaming favoritos, que todo gamer debe tener y una de las marcas favoritas en Panamá que siempre apoya el gaming.",
   ce_yoytecgamerfest: "Festival gamer y tecnológico de YOYTEC, empresa de ventas de tecnología en Panamá, organizado por PESP, en La Universidad Tecnológica de Panamá, con más de 2.000 asistentes, más de 9.000 dólares en premios y más de 15 marcas gaming patrocinadoras, como AOC, PRIMUS, DELL, MSI, LOGITECH, COOLER MASTER, CORSAIR, DXRACER, RAZER, HYPERX, HP, entre muchas otras, YOYTEC apuesta por los Esports, logrando posicionarse como el favorito entre el público joven.",
   ce_mesgamer: "En celebración al día del gamer, “Mes Gamer”, es un Producto creado por PESP, en el 2019 especialmente para todos los gamers, desarrollado durante todo el mes de agosto, ya cuenta con 2 ediciones exitosas. Imagina todo un mes lleno de activaciones, torneos, giveaway, premios y muchas sorpresas, con cierre en un gran evento virtual con transmisión online, especialmente para los Gamers, patrocinado por distintas marcas como Yoytec, Logitech, entre muchas otras, ¿por qué solo celebrar un día si puedes celebrar todo un mes?",
-  /* Estadísticas */
+  /* Servicios: Estadísticas */
   experiencia: "Años de experiencia",
   actividades: "Actividades realizadas",
   pc: "Competencias en PC",
   consola: "Competencias en consola",
-  mobile: "Competencias en móvil"
+  mobile: "Competencias en móvil",
+  /* Servicios: Marcas */
+  confian: "Ellos confían en nosotros",
+  patrocina: "Marcas patrocinadoras de nuestros eventos"
 };

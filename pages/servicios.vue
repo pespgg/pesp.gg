@@ -69,9 +69,9 @@
         <div class="col-lg-5">
           <div class="text-center text-dark">
             <h1>
-              <strong>Ellos confían en nosotros</strong>
+              <strong>{{ t("confian") }}</strong>
             </h1>
-            Marcas patrocinadoras de nuestros eventos
+            <p class="m-0">{{ t("patrocina") }}</p>
           </div>
         </div>
         <div class="col-lg-7">

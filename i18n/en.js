@@ -44,10 +44,13 @@ export default {
   casters_p3: "Connect with the younger audience and immerse yourself in the excitement of Esports, guided every step of the way by our team of experts.",
   /* Services: Success stories */
   casos_exito: "Success stories",
-  /* Statistics */
+  /* Services: Statistics */
   experiencia: "Years of experience",
   actividades: "Activities done",
   pc: "PC Competitions",
   consola: "Console Competitions",
-  mobile: "Mobile Competitions"
+  mobile: "Mobile Competitions",
+  /* Services: Brands */
+  confian: "They trust us",
+  patrocina: "Brands that sponsor our events"
 };
