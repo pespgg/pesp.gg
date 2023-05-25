@@ -12,7 +12,7 @@
 }
 
 #casos-exito .glide {
-  max-width: 75vw;
+  max-width: 70vw;
 }
 
 @media screen and (max-width: 992px) {
@@ -33,6 +33,10 @@
 
 .glide__track {
   overflow: visible!important;
+}
+
+.glide__slides {
+  align-items: center;
 }
 
 /* Arrows */

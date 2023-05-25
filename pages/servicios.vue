@@ -14,7 +14,7 @@
           <!-- Image col -->
           <div class="col-md-4 col-lg-6 p-0 text-center shadow overflow-hidden" :class="i % 2 ? 'order-2 order-md-1' : 'order-2 order-md-2'">
             <div class="scale-hover h-100">
-              <img class="img-fluid h-100 object-fit-cover" :src="`${SITE.dirs.servicios}/${servicio.images[1]}`" :alt="t(servicio.title)">
+              <img class="img-fluid w-100 h-100 object-fit-cover" :src="`${SITE.dirs.servicios}/${servicio.images[1]}`" :alt="t(servicio.title)">
             </div>
           </div>
         </div>
@@ -27,7 +27,7 @@
       <h2 class="text-center text-uppercase mb-4">
         <strong>{{ t("casos_exito") }}</strong>
       </h2>
-      <div class="glide-wrapper">
+      <div class="glide-wrapper overflow-hidden rounded">
         <div class="glide">
           <div class="glide__track" data-glide-el="track">
             <ul class="glide__slides">
