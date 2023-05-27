@@ -2,9 +2,9 @@
   <!-- Banner -->
   <BannerPage banner="servicios.jpg" :text="t('servicios')" />
   <section id="servicios">
-    <div class="container mt-0 mt-sm-5 mb-5">
+    <div class="container py-5">
       <template v-for="(servicio, i) of SCHEMA.servicios" :key="i">
-        <div :id="servicio.title" class="row px-2 px-sm-0 bg-dark rounded overflow-hidden" :class="{ 'mb-4': i < SCHEMA.servicios.length - 1 }">
+        <div :id="servicio.title" class="row m-0 p-0 bg-dark rounded overflow-hidden" :class="{ 'mb-4': i < SCHEMA.servicios.length - 1 }">
           <!-- Info col -->
           <div class="col-md-8 col-lg-6 p-sm-4 shadow" :class="i % 2 ? 'order-1 order-md-2' : 'order-1 order-md-1'">
             <h3 class="text-uppercse mb-4 mt-4"><strong>{{ t(servicio.title) }}</strong></h3>
@@ -23,7 +23,7 @@
   </section>
   <StatsBand :stats="SCHEMA.stats.experience" />
   <section id="casos-exito">
-    <div class="container-fluid my-5">
+    <div class="container-fluid py-5">
       <h2 class="text-center text-uppercase mb-4">
         <strong>{{ t("casos_exito") }}</strong>
       </h2>
@@ -64,7 +64,7 @@
     </div>
   </section>
   <section id="marcas">
-    <div class="container-fluid bg-light mt-5 py-4 text-dark">
+    <div class="container-fluid bg-light py-4 text-dark">
       <div class="row align-items-center">
         <div class="col-lg-5">
           <div class="text-center text-dark">
