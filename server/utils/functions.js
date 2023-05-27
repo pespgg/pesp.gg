@@ -4,10 +4,11 @@ export const truncateString = (str = "", n = 0) => {
 };
 
 export const stripTags = (str = "") => {
-  const tags = /<\/?([a-z][a-z0-9]*)\b[^>]*>/gi;
-  const comments = /<!--[\s\S]*?-->/gi;
-  const nbsp = /&nbsp;/gi;
-  return str.replace(comments, "").replace(tags, "").replace(nbsp, " ");
+  const tags = [/<\/?([a-z][a-z0-9]*)\b[^>]*>/gi, ""];
+  const comments = [/<!--[\s\S]*?-->/gi, ""];
+  const nbsp = [/&nbsp;/gi, " "];
+  const breaklines = [/(\r\n|\n|\r)/gm, ""];
+  return str.replace(...comments).replace(...tags).replace(...nbsp).replace(...breaklines);
 };
 
 export const filterByProps = (arr = [], props = []) => {

@@ -15,6 +15,5 @@ export default defineEventHandler(async (event) => {
     });
   }
   const posts = props ? filterByProps(actualidad, props?.split(",")) : actualidad;
-
   return posts.slice(0, limit || actualidad.length);
 });

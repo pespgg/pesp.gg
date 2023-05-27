@@ -62,13 +62,13 @@ const { data: posts } = await useFetch("/api/posts", {
           <strong>{{ t("categorias") }}</strong>
         </h2>
         <div class="row">
-          <TransitionGroup name="tab" mode="out-in">
-            <template v-for="(n, i) of 12" :key="i">
+          <template v-for="(n, i) of 12" :key="i">
+            <Transition name="tab">
               <div v-if="n <= 6 || moreCategorias" class="col-6 col-md-4 p-2 p-md-3">
                 <img class="img-fluid rounded shadow" :src="`${SITE.dirs.categorias}/${SCHEMA.categorias[i].image}`" :title="SCHEMA.categorias[i].name">
               </div>
-            </template>
-          </TransitionGroup>
+            </Transition>
+          </template>
         </div>
         <div class="text-center mt-4">
           <button class="btn btn-outline-light rounded-pill position-relative px-4" @click="moreCategorias = !moreCategorias">
