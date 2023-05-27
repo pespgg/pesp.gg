@@ -1,4 +1,6 @@
 <template>
-  <!-- Banner -->
-  <BannerPage banner="actualidad.jpg" :text="t('actualidad')" />
+  <main>
+    <!-- Banner -->
+    <BannerPage banner="actualidad.jpg" :text="t('actualidad')" />
+  </main>
 </template>
