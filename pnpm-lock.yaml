@@ -37,8 +37,8 @@ devDependencies:
     specifier: ^0.4.1
     version: 0.4.1(vue@3.3.4)
   nuxt-twemoji:
-    specifier: ^3.2.3
-    version: 3.2.3
+    specifier: ^3.2.5
+    version: 3.2.5
   stylelint:
     specifier: ^15.6.2
     version: 15.6.2
@@ -5713,8 +5713,8 @@ packages:
       - vue
     dev: true
 
-  /nuxt-twemoji@3.2.3:
-    resolution: {integrity: sha512-Kkz0YDw90e16WAkId5QxspF0kCQ0MGtvrhO09T04Lr5qFNeJZInSfhCGnFeIfu/A/nIulTy1VhDxta9DXO4XaA==}
+  /nuxt-twemoji@3.2.5:
+    resolution: {integrity: sha512-5fJuCTaUdMCmypnwlnpL0fgQFoTmuVHLoUXPamtHD5alQVL6m2FIB5zhKd8BlCo/cGmsl3NagmIHTfSB2tSQoA==}
     dependencies:
       '@nuxt/kit': 3.5.1
     transitivePeerDependencies:
