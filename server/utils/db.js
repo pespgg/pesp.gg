@@ -8,7 +8,7 @@ export { tables };
 let _db = drizzle();
 export const useDb = () => {
   if (!_db.session.schema) {
-    if (process.env.DATABASE) {
+    if (process.env.DB) {
       // d1 in production
       _db = drizzleD1(process.env.DB);
     }
