@@ -1,19 +1,32 @@
-export default defineEventHandler(async (event) => {
+import { eq } from "drizzle-orm";
+
+export default defineEventHandler((event) => {
   const query = getQuery(event);
-  const { posts: allPosts } = await $fetch("https://pesp.gg/data/actualidad.json");
-  const { props, limit, truncate, permalink } = query;
+  let select = useDb().select();
+  const { props, limit, permalink } = query;
+
+  if (props) {
+    const propsArray = props.split(",");
+    const columns = {};
+    propsArray.forEach((prop) => {
+      if (tables.actualidad[prop]) {
+        columns[prop] = tables.actualidad[prop];
+      }
+    });
+    select = useDb().select(columns);
+  }
+
+  const from = select.from(tables.actualidad);
 
   if (permalink) {
-    return allPosts.find(post => post.permalink === permalink);
+    return from.where(eq(tables.actualidad.permalink, permalink)).limit(1).get();
   }
 
-  const actualidad = allPosts.filter(post => post.visible === "public");
-  if (truncate) {
-    actualidad.forEach((post) => {
-      post.p_es = truncateString(stripTags(post.p_es), 200);
-      post.p_en = truncateString(stripTags(post.p_en), 200);
-    });
+  const where = from.where(eq(tables.actualidad.visible, Number(true)));
+
+  if (limit) {
+    return where.limit(limit).all();
   }
-  const posts = props ? filterByProps(actualidad, props?.split(",")) : actualidad;
-  return posts.slice(0, limit || actualidad.length);
+
+  return where.all();
 });

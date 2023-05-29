@@ -5,3 +5,4 @@ data
 .output
 dist
 package-lock.json
+db.sqlite

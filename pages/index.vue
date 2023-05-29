@@ -1,11 +1,14 @@
 <script setup>
-const { data: posts } = await useFetch("/api/posts", {
-  query: {
-    props: ["image", "titulo_es", "titulo_en", "p_es", "p_en", "fecha", "permalink"].join(","),
-    limit: 3,
-    truncate: 200
-  }
-});
+const posts = useState("posts", () => []);
+if (!posts.value.length) {
+  const { data } = await useFetch("/api/posts", {
+    query: {
+      props: ["image", "titulo", "fecha", "permalink"].join(","),
+      limit: 3
+    }
+  });
+  posts.value = data;
+}
 </script>
 
 <template>
@@ -22,24 +25,24 @@ const { data: posts } = await useFetch("/api/posts", {
           <div class="glide">
             <div class="glide__track" data-glide-el="track">
               <ul class="glide__slides">
-                <li v-for="(n, i) of 3" :key="i" class="glide__slide p-0 px-sm-3" :class="{'glide__slide--active': !i}">
+                <li v-for="(post, i) of posts" :key="i" class="glide__slide p-0 px-sm-3" :class="{'glide__slide--active': !i}">
                   <div class="card mx-auto border-0 shadow">
-                    <img :src="'https://pesp.gg/images/posts/' + posts[i].image" class="card-img-top">
+                    <img :src="post.image" class="card-img-top">
                     <div class="card-body bg-dark">
                       <h4 class="card-title">
                         <strong>
-                          <NuxtLink :to="'/p/' + posts[i].permalink">{{ posts[i].titulo_es }}</NuxtLink>
+                          <NuxtLink :to="'/p/' + post.permalink">{{ post.titulo }}</NuxtLink>
                         </strong>
                       </h4>
-                      <p class="card-text">{{ posts[i].p_es }}</p>
+                      <LoadPost :permalink="post.permalink" :truncate="200" />
                     </div>
                     <div class="card-footer bg-dark p-0 overflow-hidden">
                       <div class="d-flex align-items-center ps-3">
                         <Icon class="text-white" name="solar:calendar-linear" size="1.1rem" />
-                        <small class="text-body-secondary ms-1" :title="posts[i].fecha">
-                          {{ formatDate(posts[i].fecha) }}
+                        <small class="text-body-secondary ms-1" :title="post.fecha">
+                          {{ formatDate(post.fecha) }}
                         </small>
-                        <NuxtLink class="hover ms-auto bg-primary text-white py-1 px-3" :to="'/p/' + posts[i].permalink">
+                        <NuxtLink class="hover ms-auto bg-primary text-white py-1 px-3" :to="'/p/' + post.permalink">
                           <small>{{ t("leer_mas") }} <Icon name="solar:arrow-right-bold" size="1.5rem" /></small>
                         </NuxtLink>
                       </div>

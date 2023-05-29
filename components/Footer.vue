@@ -2,7 +2,7 @@
 import { twFlagPanama } from "nuxt-twemoji/emojis";
 const { data: posts } = await useFetch("/api/posts", {
   query: {
-    props: ["image", "titulo_es", "titulo_en", "fecha", "permalink"].join(","),
+    props: ["image", "titulo", "fecha", "permalink"].join(","),
     limit: 2
   }
 });
@@ -44,15 +44,15 @@ const { data: posts } = await useFetch("/api/posts", {
           </div>
           <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
             <h5 class="text-uppercase fw-bold">{{ t("ultimo") }}</h5>
-            <NuxtLink v-for="(n, i) of 2" :key="n" class="d-flex align-items-center mb-2 text-white" :to="'/p/' + posts[i].permalink">
+            <NuxtLink v-for="(post, i) of posts" :key="i" class="d-flex align-items-center mb-2 text-white" :to="'/p/' + post.permalink">
               <div class="lo-ultimo">
-                <img class="rounded" :src="'https://pesp.gg/images/posts/' + posts[i].image">
+                <img class="rounded" :src="post.image">
               </div>
               <div class="ms-2 small text-start">
-                <p class="m-0">{{ posts[i].titulo_es }}</p>
+                <p class="m-0">{{ post.titulo }}</p>
                 <div class="d-flex align-items-center">
                   <Icon name="solar:calendar-linear" />
-                  <p class="text-body ms-1 m-0"> {{ formatDate(posts[i].fecha) }}</p>
+                  <p class="text-body ms-1 m-0"> {{ formatDate(post.fecha) }}</p>
                 </div>
               </div>
             </NuxtLink>
