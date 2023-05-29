@@ -6,11 +6,11 @@ import * as tables from "~/server/db/schema.js";
 export { tables };
 
 let _db = drizzle();
-export const useDb = () => {
+export const useDb = (cloudflare) => {
   if (!_db.session.schema) {
-    if (process.env.DB) {
+    if (cloudflare && cloudflare.env.DB) {
       // d1 in production
-      _db = drizzleD1(process.env.DB);
+      _db = drizzleD1(cloudflare.env.DB);
     }
     else if (process.dev) {
       // local sqlite in development
