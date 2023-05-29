@@ -1,11 +1,9 @@
 import { eq } from "drizzle-orm";
 
 export default defineEventHandler((event) => {
-  const cloudflare = getCloudflare(event);
   const query = getQuery(event);
+  let select = useDb().select();
   const { props, limit, permalink } = query;
-
-  let select = useDb(cloudflare).select();
 
   if (props) {
     const propsArray = props.split(",");
@@ -15,7 +13,7 @@ export default defineEventHandler((event) => {
         columns[prop] = tables.actualidad[prop];
       }
     });
-    select = useDb(cloudflare).select(columns);
+    select = useDb().select(columns);
   }
 
   const from = select.from(tables.actualidad);
