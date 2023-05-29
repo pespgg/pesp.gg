@@ -1,4 +1,5 @@
 <script setup>
+const { params } = useRoute();
 const { data: post } = await useFetch("/api/posts", {
   query: {
     permalink: params.permalink
