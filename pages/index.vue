@@ -1,14 +1,10 @@
 <script setup>
-const posts = useState("posts", () => []);
-if (!posts.value.length) {
-  const { data } = await useFetch("/api/posts", {
-    query: {
-      props: ["image", "titulo", "fecha", "permalink"].join(","),
-      limit: 3
-    }
-  });
-  posts.value = data;
-}
+const { data: posts } = await useFetch("/api/posts", {
+  query: {
+    props: ["image", "titulo", "fecha", "permalink"].join(","),
+    limit: 3
+  }
+});
 </script>
 
 <template>

@@ -1,17 +1,9 @@
 <script setup>
-const { params } = useRoute();
-const post = useState(params.permalink, () => {
-  return {};
+const { data: post } = await useFetch("/api/posts", {
+  query: {
+    permalink: params.permalink
+  }
 });
-
-if (!Object.keys(post.value).length) {
-  const { data } = await useFetch("/api/posts", {
-    query: {
-      permalink: params.permalink
-    }
-  });
-  post.value = data;
-}
 </script>
 
 <template>
