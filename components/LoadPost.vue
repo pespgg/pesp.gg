@@ -12,11 +12,9 @@ const props = defineProps({
 
 const content = useState(`content:${props.permalink}${props.truncate ? "_truncated" : ""}`, () => "");
 if (!content.value) {
-  if (process.dev) {
-    const url = "http://localhost:5173/posts";
-    const html = await $fetch(`${url}/${props.permalink}.html`);
-    content.value = props.truncate ? truncateString(stripTags(html), props.truncate) : html;
-  }
+  const url = process.dev ? "http://localhost:5173/posts" : "https://cdn.pesp.gg";
+  const html = await $fetch(`${url}/${props.permalink}.html`);
+  content.value = props.truncate ? truncateString(stripTags(html), props.truncate) : html;
 }
 </script>
 
