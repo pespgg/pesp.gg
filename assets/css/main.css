@@ -111,3 +111,8 @@ iframe {
 .scale-position-hover:hover .scale-position {
   transform: scale(1.1);
 }
+
+.nuxt-loading-indicator {
+  background: repeating-linear-gradient(to right, var(--bs-link-color) 0%, var(--bs-link-hover-color) 50%,var(--bs-link-color) 100%)!important;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}

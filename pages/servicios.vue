@@ -8,7 +8,7 @@
           <div :id="servicio.title" class="row m-0 p-0 bg-dark rounded overflow-hidden" :class="{ 'mb-4': i < SCHEMA.servicios.length - 1 }">
             <!-- Info col -->
             <div class="col-md-8 col-lg-6 p-sm-4 shadow" :class="i % 2 ? 'order-1 order-md-2' : 'order-1 order-md-1'">
-              <h3 class="text-uppercse mb-4 mt-4"><strong>{{ t(servicio.title) }}</strong></h3>
+              <h3 class="text-uppercase mb-4 mt-4"><strong>{{ t(servicio.title) }}</strong></h3>
               <!-- eslint-disable-next-line vue/no-v-html -->
               <p v-for="(p, j) of servicio.content" :key="j" v-html="t(p)" />
             </div>

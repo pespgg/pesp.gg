@@ -10,7 +10,8 @@ export const SITE = {
     categorias: "/images/categorias",
     servicios: "/images/servicios",
     casos_exito: "/images/casos_exito",
-    marcas: "/images/marcas"
+    marcas: "/images/marcas",
+    nosotros: "/images/nosotros"
   },
   socials: [
     {

@@ -32,28 +32,28 @@ export default {
       counter: 3200,
       seguidores: true,
       link: SITE.socials.twitch,
-      icon: "utils/twitch"
+      icon: "bi:twitch"
     },
     {
       title: "instagram",
       counter: 12000,
       seguidores: true,
       link: SITE.socials.instagram,
-      icon: "utils/instagram"
+      icon: "bi:instagram"
     },
     {
       title: "facebook",
       counter: 6000,
       seguidores: true,
       link: SITE.socials.facebook,
-      icon: "utils/facebook"
+      icon: "bi:facebook"
     },
     {
       title: "twitter",
       counter: 850,
       seguidores: true,
       link: SITE.socials.twitter,
-      icon: "utils/twitter"
+      icon: "bi:twitter"
     }
   ]
 };

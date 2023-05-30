@@ -56,5 +56,20 @@ export default {
   mobile: "Competencias en móvil",
   /* Servicios: Marcas */
   confian: "Ellos confían en nosotros",
-  patrocina: "Marcas patrocinadoras de nuestros eventos"
+  patrocina: "Marcas patrocinadoras de nuestros eventos",
+  /* Quienes somos */
+  somos: "¡Somos PESP!",
+  calidad: "Experiencia, Innovación Y Calidad",
+  apoyando: "Apoyando el talento gamer",
+  /* Quienes somos: Nosotros */
+  nosotros_p1: "<i><strong>Panamá Esports Productions (PESP)</strong></i>, una empresa Esports, con más de 5 años de experiencia.",
+  nosotros_p2: "Nos dedicamos a la organización de eventos, torneos, ligas y producción de streaming gaming en modalidad virtual o presencial, con experiencia en todas las categorías de juegos, abarcando todas las plataformas: PC, consola y móvil.",
+  nosotros_p3: "Comprometidos con el éxito, contamos con un equipo de trabajo especializado en Esports, brindándole a nuestros clientes la mejor calidad y satisfacción en todas sus proyecciones y a nuestros usuarios las mejores experiencias gaming competitivas.",
+  /* Quienes somos: Calidad */
+  calidad_p1: "Nuestra misión se basa en tres pilares fundamentales: <i><strong>Experiencia, Innovación y Calidad</strong></i>.",
+  calidad_p2: "Cada acción está basada en la creación de eventos y experiencias innovadoras y personalizadas, desarrolladas por nuestro equipo de especialistas Esports, cumpliendo con los más altos estándares de calidad y producción, satisfaciendo y superando las expectativas de nuestros clientes, gamers y espectadores.",
+  calidad_p3: "Todo esto desarrollado en un ambiente profesional, pero con la suficiente emoción y pasión que nos caracteriza.",
+  /* Quienes somos: Apoyando */
+  apoyando_p1: "Uno de nuestros objetivos es <i><strong>Apoyar el Talento Gamer</strong></i>, impulsando los deportes electrónicos (Esports), en Panamá y en Latinoamérica, desarrollando y creando un espacio profesional y atractivo que influya de manera positiva en la juventud.",
+  apoyando_p2: "A través de nuestra gestión y promoción cultural Esports, hacemos énfasis en la educación integral y el avance tecnológico, utilizados como herramientas principales, sentando las bases que permitan obtener un crecimiento reflejado en el conocimiento, economía, tecnología y oportunidad laboral."
 };

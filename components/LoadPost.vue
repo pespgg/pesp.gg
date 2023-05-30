@@ -20,5 +20,5 @@ if (!content.value) {
 
 <template>
   <!-- eslint-disable-next-line vue/no-v-html -->
-  <article v-html="content" />
+  <div v-html="content" />
 </template>

@@ -42,3 +42,18 @@ export const truncateString = (str = "", n = 0) => {
   const res = str.length > n ? str.substring(0, n - 1) + "..." : str;
   return res.trim();
 };
+
+export const thousandToK = (n = 0) => {
+  if (n < 1000) {
+    return n;
+  }
+  const k = n / 1000;
+  return `${k.toFixed(1)}k`;
+};
+
+export const KtoNumber = (str = "") => {
+  if (!str.includes("k")) {
+    return Number(str);
+  }
+  return Number(str.replace("k", "")) * 1000;
+};

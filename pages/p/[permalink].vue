@@ -14,7 +14,7 @@ const { data: post } = await useFetch("/api/posts", {
         <img :src="post.image" class="d-block w-100" :alt="post.titulo">
       </div>
     </section>
-    <section>
+    <article>
       <div class="container py-4">
         <h1>
           <strong>{{ post.titulo }}</strong>
@@ -23,6 +23,6 @@ const { data: post } = await useFetch("/api/posts", {
         <!-- eslint-disable-next-line vue/no-v-html -->
         <LoadPost :permalink="post.permalink" />
       </div>
-    </section>
+    </article>
   </main>
 </template>

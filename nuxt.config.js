@@ -32,6 +32,7 @@ export default {
       ]
     }
   },
+
   css: [
     "bootstrap/dist/css/bootstrap.min.css",
     "@glidejs/glide/dist/css/glide.core.min.css",
@@ -41,26 +42,34 @@ export default {
     "~/assets/css/transitions.css",
     "~/assets/css/glidejs.css"
   ],
+
   modules: [
     "nuxt-icon",
     "nuxt-twemoji",
     "@pinia/nuxt"
   ],
+
   pinia: {
     autoImports: [
       "defineStore",
       ["defineStore", "definePiniaStore"]
     ]
   },
+
   imports: {
     dirs: ["stores"]
   },
+
   experimental: {
     payloadExtraction: true
   },
+
   nitro: {
     prerender: {
       crawlLinks: true
     }
+  },
+  devtools: {
+    enabled: true
   }
 };

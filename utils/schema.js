@@ -4,6 +4,7 @@ import stats from "./schema/stats";
 import pages from "./schema/pages";
 import casos_exito from "./schema/casos_exito";
 import marcas from "./schema/marcas";
+import nosotros from "./schema/nosotros";
 
 export const SCHEMA = {
   categorias,
@@ -11,5 +12,6 @@ export const SCHEMA = {
   stats,
   pages,
   casos_exito,
-  marcas
+  marcas,
+  nosotros
 };

@@ -22,7 +22,7 @@ const { data: posts } = await useFetch("/api/posts", {
             <div class="glide__track" data-glide-el="track">
               <ul class="glide__slides">
                 <li v-for="(post, i) of posts" :key="i" class="glide__slide p-0 px-sm-3" :class="{'glide__slide--active': !i}">
-                  <div class="card mx-auto border-0 shadow">
+                  <article class="card mx-auto border-0 shadow">
                     <img :src="post.image" class="card-img-top">
                     <div class="card-body bg-dark">
                       <h4 class="card-title">
@@ -43,7 +43,7 @@ const { data: posts } = await useFetch("/api/posts", {
                         </NuxtLink>
                       </div>
                     </div>
-                  </div>
+                  </article>
                 </li>
               </ul>
             </div>
