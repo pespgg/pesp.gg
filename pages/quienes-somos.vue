@@ -41,7 +41,7 @@
               <ul class="glide__slides">
                 <li v-for="(comentario, i) of SCHEMA.comentarios" :key="i" class="glide__slide p-0 px-sm-3" :class="{'glide__slide--active': !i}">
                   <div class="rounded shadow bg-light p-3 p-sm-4 text-center position-relative">
-                    <img :src="`${SITE.dirs.marcas}/${comentario.image}`" width="150" height="150" :alt="comentario.marca">
+                    <img class="rounded-circle shadow-sm mb-3 p-2" :src="`${SITE.dirs.marcas}/${comentario.image}`" width="130" height="130" :alt="comentario.marca">
                     <p class="text-dark m-0">
                       <Icon name="fa6-solid:quote-left" />
                       {{ t(comentario.content) }}
@@ -61,11 +61,6 @@
               <span class="glide__arrow glide__arrow--right shadow" data-glide-dir=">">
                 <Icon name="solar:alt-arrow-right-bold" size="30" />
               </span>
-            </div>
-            <div class="glide__bullets" data-glide-el="controls[nav]">
-              <button class="glide__bullet" data-glide-dir="=0" />
-              <button class="glide__bullet" data-glide-dir="=1" />
-              <button class="glide__bullet" data-glide-dir="=2" />
             </div>
           </div>
         </div>

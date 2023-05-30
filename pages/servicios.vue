@@ -56,9 +56,7 @@
               </span>
             </div>
             <div class="glide__bullets" data-glide-el="controls[nav]">
-              <button class="glide__bullet" data-glide-dir="=0" />
-              <button class="glide__bullet" data-glide-dir="=1" />
-              <button class="glide__bullet" data-glide-dir="=2" />
+              <button v-for="(caso, i) of SCHEMA.casos_exito" :key="i" class="glide__bullet" :data-glide-dir="`=${i}`" />
             </div>
           </div>
         </div>

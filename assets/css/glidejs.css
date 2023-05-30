@@ -25,12 +25,12 @@
   }
 }
 
-#actualidad .glide__slide--active, #casos-exito .glide__slide--active {
+.glide__slide--active {
   opacity: 100%!important;
   filter: blur(0)!important;
 }
 
-#actualidad .glide__slide, #casos-exito .glide__slide {
+#actualidad .glide__slide, #casos-exito .glide__slide, #comentarios .glide__slide {
   opacity: 30%;
   filter: blur(3px);
 }
