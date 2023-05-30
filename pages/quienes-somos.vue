@@ -2,10 +2,10 @@
   <main>
     <!-- Banner -->
     <BannerPage banner="quienes-somos.jpg" :text="t('nosotros')" />
-    <section id="servicios">
+    <section id="quienes-somos">
       <div class="container py-5">
         <template v-for="(nosotros, i) of SCHEMA.nosotros" :key="i">
-          <div :id="nosotros.title" class="row m-0 p-0 bg-dark rounded overflow-hidden" :class="{ 'mb-4': i < SCHEMA.servicios.length - 1 }">
+          <div :id="nosotros.title" class="row m-0 p-0 bg-dark rounded overflow-hidden" :class="{ 'mb-4': i < SCHEMA.nosotros.length - 1 }">
             <!-- Info col -->
             <div class="col-md-8 col-lg-6 p-sm-4 shadow" :class="i % 2 ? 'order-1 order-md-2' : 'order-1 order-md-1'">
               <h3 class="text-uppercase mb-4 mt-4"><strong>{{ t(nosotros.title) }}</strong></h3>
@@ -30,6 +30,47 @@
       </div>
     </section>
     <StatsBand :stats="SCHEMA.stats.socials" :col="3" />
+    <section id="comentarios">
+      <div class="container-fluid py-5">
+        <h2 class="text-center text-uppercase mb-4">
+          <strong>{{ t("comentarios") }}</strong>
+        </h2>
+        <div class="glide-wrapper rounded">
+          <div class="glide">
+            <div class="glide__track" data-glide-el="track">
+              <ul class="glide__slides">
+                <li v-for="(comentario, i) of SCHEMA.comentarios" :key="i" class="glide__slide p-0 px-sm-3" :class="{'glide__slide--active': !i}">
+                  <div class="rounded shadow bg-light p-3 p-sm-4 text-center position-relative">
+                    <img :src="`${SITE.dirs.marcas}/${comentario.image}`" width="150" height="150" :alt="comentario.marca">
+                    <p class="text-dark m-0">
+                      <Icon name="fa6-solid:quote-left" />
+                      {{ t(comentario.content) }}
+                      <Icon name="fa6-solid:quote-right" />
+                    </p>
+                    <h5 class="text-end text-dark mt-3">
+                      <strong>— {{ t(comentario.marca) }}</strong>
+                    </h5>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="glide__arrows" data-glide-el="controls">
+              <span class="glide__arrow glide__arrow--left shadow" data-glide-dir="<">
+                <Icon name="solar:alt-arrow-left-bold" size="30" />
+              </span>
+              <span class="glide__arrow glide__arrow--right shadow" data-glide-dir=">">
+                <Icon name="solar:alt-arrow-right-bold" size="30" />
+              </span>
+            </div>
+            <div class="glide__bullets" data-glide-el="controls[nav]">
+              <button class="glide__bullet" data-glide-dir="=0" />
+              <button class="glide__bullet" data-glide-dir="=1" />
+              <button class="glide__bullet" data-glide-dir="=2" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 </template>
 
@@ -38,6 +79,19 @@ export default {
   mounted () {
     SCHEMA.nosotros.forEach((nosotros) => {
       this.$nuxt.$bootstrap.startCarousel(`#${nosotros.title} .carousel`);
+    });
+
+    this.$nuxt.$glide("#comentarios .glide", {
+      type: "carousel",
+      autoplay: 5000,
+      animationDuration: 500,
+      gap: 0,
+      focusAt: "center",
+      perView: 1,
+      peek: {
+        before: 0,
+        after: 0
+      }
     });
   }
 };

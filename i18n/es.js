@@ -71,5 +71,8 @@ export default {
   calidad_p3: "Todo esto desarrollado en un ambiente profesional, pero con la suficiente emoción y pasión que nos caracteriza.",
   /* Quienes somos: Apoyando */
   apoyando_p1: "Uno de nuestros objetivos es <i><strong>Apoyar el Talento Gamer</strong></i>, impulsando los deportes electrónicos (Esports), en Panamá y en Latinoamérica, desarrollando y creando un espacio profesional y atractivo que influya de manera positiva en la juventud.",
-  apoyando_p2: "A través de nuestra gestión y promoción cultural Esports, hacemos énfasis en la educación integral y el avance tecnológico, utilizados como herramientas principales, sentando las bases que permitan obtener un crecimiento reflejado en el conocimiento, economía, tecnología y oportunidad laboral."
+  apoyando_p2: "A través de nuestra gestión y promoción cultural Esports, hacemos énfasis en la educación integral y el avance tecnológico, utilizados como herramientas principales, sentando las bases que permitan obtener un crecimiento reflejado en el conocimiento, economía, tecnología y oportunidad laboral.",
+  /* Comentarios */
+  comentarios: "Comentarios",
+  comentario_lg: "Estamos muy contentos y agradecidos de trabajar ya hace varios años con PESP en torneos y actividades para nuestros monitores LG UltraGear.  Su trabajo es de primera calidad y su equipo es 100% profesional, superando las expectativas! Trabajo 100% recomendado."
 };

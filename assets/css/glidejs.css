@@ -15,8 +15,12 @@
   max-width: 70vw;
 }
 
+#comentarios .glide {
+  max-width: 60vw;
+}
+
 @media screen and (max-width: 992px) {
-  #actualidad .glide, #casos-exito .glide {
+  #actualidad .glide, #casos-exito .glide, #comentarios .glide {
     max-width: 100%;
   }
 }
