@@ -78,5 +78,7 @@ export default {
   comentario_yoytec: "Realmente valoramos y felicitamos al equipo de PESP, por todo el apoyo y buen servicio que nos han brindado desde el 2019, trabajando juntos. Su constante innovación, profesionalismo, conocimiento y pericia en Esports, nos han brindado resultados satisfactorios en cada proyecto realizado. Apostamos que lograrán cada objetivo que se propongan, por su gran pasión y esfuerzo que los caracteriza. ¡Felicidades chicos, vamos por más!.",
   comentario_vsg: "Desde nuestros inicios, PESP ha sido uno de nuestros mejores aliados en nuestra misión de impulsar el universo Gamer, contagiando la pasión a más y más jugadores.",
   comentario_gamerton: "Como organizador de la GamerTon 20-30 me sentí en todo momento respaldado de excelentes profesionales como los de PESP. Este equipo de trabajo de jóvenes tienen la mejor experiencia y dedicación en Panamá para llevar eventos de Esports al más alto nivel.",
-  comentario_loltec: "Nuestra experiencia con PESP ha sido excelente, y lo que hace la diferencia al organizar eventos es su planificación, al establecer un plan de trabajo y cumplir las métricas al 100%, podemos estar confiados que saldrá bien, por su gran equipo de trabajo y conocimiento."
+  comentario_loltec: "Nuestra experiencia con PESP ha sido excelente, y lo que hace la diferencia al organizar eventos es su planificación, al establecer un plan de trabajo y cumplir las métricas al 100%, podemos estar confiados que saldrá bien, por su gran equipo de trabajo y conocimiento.",
+  /* Galería */
+  galeria: "Galería"
 };

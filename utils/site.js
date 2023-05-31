@@ -11,7 +11,8 @@ export const SITE = {
     servicios: "/images/servicios",
     casos_exito: "/images/casos_exito",
     marcas: "/images/marcas",
-    nosotros: "/images/nosotros"
+    nosotros: "/images/nosotros",
+    galeria: "/images/galeria"
   },
   socials: [
     {

@@ -31,7 +31,7 @@
     </section>
     <StatsBand :stats="SCHEMA.stats.socials" :col="3" />
     <section id="comentarios">
-      <div class="container-fluid py-5">
+      <div class="container-fluid py-5 bg-dark">
         <h2 class="text-center text-uppercase mb-4">
           <strong>{{ t("comentarios") }}</strong>
         </h2>
@@ -66,6 +66,35 @@
         </div>
       </div>
     </section>
+    <section id="galeria">
+      <div class="container-fluid py-5">
+        <h2 class="text-center text-uppercase mb-4">
+          <strong>{{ t("galeria") }}</strong>
+        </h2>
+        <div class="glide-wrapper overflow-hidden rounded">
+          <div class="glide bullets">
+            <div class="glide__track" data-glide-el="track">
+              <ul class="glide__slides">
+                <li v-for="(image, i) of SCHEMA.galeria" :key="i" class="glide__slide p-0 px-sm-3" :class="{'glide__slide--active': !i}">
+                  <img :src="`${SITE.dirs.galeria}/${image}`" class="img-fluid w-100 rounded shadow">
+                </li>
+              </ul>
+            </div>
+            <div class="glide__arrows" data-glide-el="controls">
+              <span class="glide__arrow glide__arrow--left shadow" data-glide-dir="<">
+                <Icon name="solar:alt-arrow-left-bold" size="30" />
+              </span>
+              <span class="glide__arrow glide__arrow--right shadow" data-glide-dir=">">
+                <Icon name="solar:alt-arrow-right-bold" size="30" />
+              </span>
+            </div>
+            <div class="glide__bullets" data-glide-el="controls[nav]">
+              <button v-for="(caso, i) of SCHEMA.galeria" :key="i" class="glide__bullet" :data-glide-dir="`=${i}`" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 </template>
 
@@ -77,6 +106,19 @@ export default {
     });
 
     this.$nuxt.$glide("#comentarios .glide", {
+      type: "carousel",
+      autoplay: 5000,
+      animationDuration: 500,
+      gap: 0,
+      focusAt: "center",
+      perView: 1,
+      peek: {
+        before: 0,
+        after: 0
+      }
+    });
+
+    this.$nuxt.$glide("#galeria .glide", {
       type: "carousel",
       autoplay: 5000,
       animationDuration: 500,

@@ -22,15 +22,15 @@
               </div>
             </div>
           </div>
-          <h4 v-if="!stat.carousel" class="m-0 text-uppercase">
+          <div v-if="!stat.carousel" class="m-0 text-uppercase">
             <template v-if="stat.seguidores">
               <strong>{{ t(stat.title) }}</strong>
               <h1>
                 <Icon :name="stat.icon" />
               </h1>
             </template>
-            <strong v-else>{{ t(stat.title) }}</strong>
-          </h4>
+            <h4 v-else>{{ t(stat.title) }}</h4>
+          </div>
         </div>
       </div>
     </div>
