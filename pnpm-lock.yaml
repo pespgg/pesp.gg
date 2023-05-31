@@ -58,9 +58,6 @@ devDependencies:
   nuxt:
     specifier: ^3.5.2
     version: 3.5.2(@types/node@20.2.5)(eslint@8.41.0)(stylelint@15.6.2)(typescript@5.0.4)
-  pnpm:
-    specifier: ^8.6.0
-    version: 8.6.0
   stylelint:
     specifier: ^15.6.2
     version: 15.6.2
@@ -7749,12 +7746,6 @@ packages:
   /pluralize@8.0.0:
     resolution: {integrity: sha512-Nc3IT5yHzflTfbjgqWcCPpo7DaKy4FnpB0l/zCAW0Tc7jxAiuqSxHasntB3D7887LSrA93kDJ9IXovxJYxyLCA==}
     engines: {node: '>=4'}
-    dev: true
-
-  /pnpm@8.6.0:
-    resolution: {integrity: sha512-uMaWGXlvG+m5NIJaR4JEEenChbg+1AP4zVpqs4PEcZg4uH+lXMTd/X/lirKZA+TC0w0d+++y3btINcwyKsuwAA==}
-    engines: {node: '>=16.14'}
-    hasBin: true
     dev: true
 
   /postcss-calc@9.0.1(postcss@8.4.24):
