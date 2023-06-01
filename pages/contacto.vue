@@ -38,13 +38,13 @@
           </form>
         </div>
         <div class="py-5">
-          <div class="unete bg-light rounded position-relative px-5">
+          <div class="unete bg-light rounded position-relative px-5" role="button" @click="more = !more">
             <Transition name="fade">
               <img v-if="sticker" class="sticker position-absolute bottom-0" width="250" height="250" :src="`${SITE.dirs.stickers}/${sticker}.png`">
             </Transition>
             <div class="py-3 mx-0">
               <div class="col-12 col-md-5 text-center text-dark ms-auto scale-hover" style="margin-right: 6.5rem;">
-                <div id="unete-pesp" role="button" @click="more = !more">
+                <div id="unete-pesp">
                   <h3 class="m-0"><strong>¿Quieres unirte <br>a nuestro equipo?</strong></h3>
                   <Icon name="solar:alt-arrow-down-bold" size="2rem" />
                 </div>
@@ -78,11 +78,11 @@
                     <h5><strong>{{ t("mayor") }}</strong></h5>
                     <div class="d-flex">
                       <div class="form-check">
-                        <input v-model="unirse.legal" class="form-check-input" type="radio" required>
+                        <input v-model="unirse.legal" :value="true" class="form-check-input" type="radio" required>
                         <label class="form-check-label">{{ t("si") }}</label>
                       </div>
                       <div class="form-check ms-5">
-                        <input v-model="unirse.legal" class="form-check-input" type="radio">
+                        <input v-model="unirse.legal" :value="false" class="form-check-input" type="radio">
                         <label class="form-check-label">{{ t("no") }}</label>
                       </div>
                     </div>
@@ -116,18 +116,18 @@ export default {
         message: "",
         success: true
       },
-      unirse: {
-        name: "",
-        email: "",
-        message: "",
-        legal: false
-      },
       contacto: {
         token: "",
         name: "",
         email: "",
         subject: "",
         message: ""
+      },
+      unirse: {
+        name: "",
+        email: "",
+        message: "",
+        legal: null
       },
       sticker: "",
       stickers: [
@@ -157,7 +157,7 @@ export default {
         name: "",
         email: "",
         message: "",
-        legal: false
+        legal: null
       };
     },
     async sendMail (name) {

@@ -36,6 +36,7 @@ export default defineEventHandler(async (event) => {
       contacto: t("contacto"),
       equipo_pesp: t("equipo_pesp"),
       str_asunto: t("asunto"),
+      asunto: subject,
       str_mensaje: t("mensaje")
     },
     unirse: {
