@@ -48,7 +48,6 @@ export default {
     "nuxt-icon",
     "nuxt-twemoji",
     "@pinia/nuxt",
-    "nuxt-mail",
     "@nuxtjs/turnstile"
   ],
 
@@ -59,24 +58,6 @@ export default {
     ]
   },
 
-  mail: {
-    message: {
-      cc: process.env.EMAIL_CC,
-      from: process.env.EMAIL_FROM,
-      envelope: {
-        from: `${process.env.EMAIL_FROM_NAME} <${process.env.EMAIL_FROM}>`
-      }
-    },
-    smtp: {
-      host: process.env.EMAIL_HOST,
-      port: process.env.EMAIL_PORT,
-      auth: {
-        user: process.env.EMAIL_LOGIN,
-        pass: process.env.EMAIL_PASS
-      }
-    }
-  },
-
   turnstile: {
     siteKey: "0x4AAAAAAAFcwNNtzi_jhLif",
     addValidateEndpoint: true
@@ -84,6 +65,21 @@ export default {
 
   imports: {
     dirs: ["stores"]
+  },
+
+  runtimeConfig: {
+    mail: {
+      cc: "",
+      from: "",
+      fromName: "",
+      host: "",
+      port: "",
+      login: "",
+      pass: ""
+    },
+    turnstile: {
+      secretKey: ""
+    }
   },
 
   experimental: {

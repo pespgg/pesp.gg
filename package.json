@@ -48,8 +48,8 @@
     "drizzle-kit": "^0.18.1",
     "drizzle-orm": "^0.26.3",
     "handlebars": "^4.7.7",
+    "nodemailer": "^6.9.3",
     "nuxt-icon": "^0.4.1",
-    "nuxt-mail": "^4.0.1",
     "nuxt-twemoji": "^3.2.6"
   },
   "overrides": {
