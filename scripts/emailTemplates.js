@@ -1,5 +1,10 @@
-import { readFileSync, writeFileSync } from "fs";
+import { readFileSync, writeFileSync, readdirSync } from "fs";
 
-const contacto = readFileSync("./assets/email/templates/contacto.html", "utf8").replace(/\r\n/g, "").replace(/\s+/g, " ");
+const path = "./assets/email/templates";
+const templates = {};
+readdirSync(path).forEach((file) => {
+  const name = file.replace(".html", "");
+  templates[name] = readFileSync(`${path}/${file}`, "utf8").replace(/\r\n/g, "").replace(/\s+/g, " ");
+});
 
-writeFileSync("./server/utils/hbs.js", `export const templates = { contacto: ${JSON.stringify(contacto)} };`, "utf8");
+writeFileSync("./server/utils/hbs.js", `export const templates = ${JSON.stringify(templates)};`, "utf8");
