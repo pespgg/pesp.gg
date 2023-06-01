@@ -1,28 +1,26 @@
-import mailChannelsPlugin from "@cloudflare/pages-plugin-mailchannels";
-
-export const mailChannels = (config, message) => mailChannelsPlugin({
-  personalizations: [
-    {
-      to: [{ email: message.to, name: message.name }]
-    }
-  ],
-  from: {
-    email: config.mail.from,
-    name: `"${config.mail.fromName}"`
-  },
-  subject: message.subject,
-  content: [
-    {
-      type: "text/html",
-      value: message.html
-    }
-  ],
-  respondWith: () => {
-    return new Response(
-      "Thank you for submitting your enquiry. A member of the team will be in touch shortly."
-    );
-  }
-});
+export const mailChannels = (config, message) => {
+  const { to, subject, html } = message;
+  return $fetch("https://api.mailchannels.net/tx/v1/send", {
+    method: "POST",
+    headers: {
+      "content-type": "application/json"
+    },
+    body: JSON.stringify({
+      personalizations: [{
+        to: [{ email: to.email, name: to.name }]
+      }],
+      from: {
+        email: config.mail.from,
+        name: `"${config.mail.fromName}"`
+      },
+      subject,
+      content: [{
+        type: "text/html",
+        value: html
+      }]
+    })
+  });
+};
 
 export const sendMail = async (config, message) => {
   if (!process.dev) {
@@ -54,8 +52,11 @@ export const sendMail = async (config, message) => {
       if (!verified) {
         reject(new Error("SMTP server not verified."));
       }
+      const { to, subject, html } = message;
       const mail = {
-        ...message,
+        to: `"${to.name}" <${to.email}>`,
+        subject,
+        html,
         cc: config.mail.cc,
         from: `"${config.mail.fromName}" <${config.mail.from}>`
       };

@@ -20,7 +20,7 @@ export default defineEventHandler(async (event) => {
   const html = Mustache.render(templates[template], {});
 
   const mail = await sendMail(config, {
-    to: email,
+    to: { email, name },
     subject,
     html
   });
