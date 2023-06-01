@@ -1,4 +1,4 @@
-import Handlebars from "handlebars";
+import Mustache from "mustache";
 
 export default defineEventHandler(async (event) => {
   const { token, template, form } = await readBody(event);
@@ -12,20 +12,18 @@ export default defineEventHandler(async (event) => {
   }
 
   const verify = await verifyTurnstile(config.turnstile.secretKey, token);
-  console.log(config);
-  console.log(verify);
+
   if (!verify.success) {
     return verify.success;
   }
 
-  const hbs = Handlebars.compile(templates[template]);
-  const html = hbs();
-  
+  const html = Mustache.render(templates[template], {});
+
   const mail = await sendMail(config, {
     to: email,
     subject,
     html
   });
 
-  console.log(mail);
+  console.log("mail", mail);
 });

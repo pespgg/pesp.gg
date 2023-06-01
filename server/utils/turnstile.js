@@ -1,6 +1,6 @@
 const endpoint = "https://challenges.cloudflare.com/turnstile/v0/siteverify";
-export const verifyTurnstile = async (secret, token) => {
-  return await $fetch(endpoint, {
+export const verifyTurnstile = (secret, token) => {
+  return $fetch(endpoint, {
     method: "POST",
     body: JSON.stringify({
       secret,
