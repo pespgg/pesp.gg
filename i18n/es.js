@@ -57,6 +57,7 @@ export default {
   /* Servicios: Marcas */
   confian: "Ellos confían en nosotros",
   patrocina: "Marcas patrocinadoras de nuestros eventos",
+
   /* Quienes somos */
   somos: "¡Somos PESP!",
   calidad: "Experiencia, Innovación Y Calidad",
@@ -80,5 +81,15 @@ export default {
   comentario_gamerton: "Como organizador de la GamerTon 20-30 me sentí en todo momento respaldado de excelentes profesionales como los de PESP. Este equipo de trabajo de jóvenes tienen la mejor experiencia y dedicación en Panamá para llevar eventos de Esports al más alto nivel.",
   comentario_loltec: "Nuestra experiencia con PESP ha sido excelente, y lo que hace la diferencia al organizar eventos es su planificación, al establecer un plan de trabajo y cumplir las métricas al 100%, podemos estar confiados que saldrá bien, por su gran equipo de trabajo y conocimiento.",
   /* Galería */
-  galeria: "Galería"
+  galeria: "Galería",
+
+  /* Contacto */
+  contacto_info: "¡Nuestro equipo está preparado para ayudarte en todo momento y responder cualquier duda o consulta!",
+  form1_title: "Llena el siguiente formulario para contactarnos",
+  form1_desc: "Y te responderemos a la brevedad posible, vía correo electrónico.",
+  nombre: "Nombre",
+  correo: "Correo electrónico",
+  mensaje: "Mensaje",
+  enviar: "Enviar",
+  asunto: "Asunto"
 };

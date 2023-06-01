@@ -40,13 +40,16 @@ export default {
     "~/assets/css/main.css",
     "~/assets/css/dark.css",
     "~/assets/css/transitions.css",
-    "~/assets/css/glidejs.css"
+    "~/assets/css/glidejs.css",
+    "~/assets/css/forms.css"
   ],
 
   modules: [
     "nuxt-icon",
     "nuxt-twemoji",
-    "@pinia/nuxt"
+    "@pinia/nuxt",
+    "nuxt-mail",
+    "@nuxtjs/turnstile"
   ],
 
   pinia: {
@@ -56,8 +59,37 @@ export default {
     ]
   },
 
+  mail: {
+    message: {
+      cc: process.env.EMAIL_CC,
+      from: process.env.EMAIL_FROM,
+      envelope: {
+        from: `${process.env.EMAIL_FROM_NAME} <${process.env.EMAIL_FROM}>`
+      }
+    },
+    smtp: {
+      host: process.env.EMAIL_HOST,
+      port: process.env.EMAIL_PORT,
+      auth: {
+        user: process.env.EMAIL_LOGIN,
+        pass: process.env.EMAIL_PASS
+      }
+    }
+  },
+
+  turnstile: {
+    siteKey: process.env.TRUNSTILE_SITE,
+    addValidateEndpoint: true
+  },
+
   imports: {
     dirs: ["stores"]
+  },
+
+  runtimeConfig: {
+    turnstile: {
+      secretKey: ""
+    }
   },
 
   experimental: {

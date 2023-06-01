@@ -1,0 +1,13 @@
+#contacto .form-control {
+  background-color: var(--form-input-background);
+  border-color: var(--form-border);
+  color: var(--text-on-white);
+}
+
+.form-floating label {
+  color: var(--text-on-white-muted)!important;
+}
+
+.form-floating label::after {
+  background-color: transparent!important;
+}

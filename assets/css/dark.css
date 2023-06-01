@@ -9,10 +9,14 @@
   --bs-primary-rgb: 193, 35, 76;
   --bs-link-color-rgb: 214, 58, 99;
   --bs-link-hover-color-rgb: 226, 68, 110;
+  --form-border: #ced4da;
+  --form-input-background: #fff;
+  --text-on-white: #232323;
+  --text-on-white-muted: #6c757d;
 }
 
 [data-bs-theme=dark] .text-dark strong, [data-bs-theme=dark] .text-dark {
-  color: #232323!important;
+  color: var(--text-on-white)!important;
 }
 
 [data-bs-theme=dark] .carousel .carousel-indicators [data-bs-target] {
