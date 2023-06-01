@@ -56,6 +56,29 @@ export default {
       ["defineStore", "definePiniaStore"]
     ]
   },
+/*
+  mail: {
+    message: {
+      cc: process.env.EMAIL_CC,
+      from: process.env.EMAIL_FROM,
+      envelope: {
+        from: `${process.env.EMAIL_FROM_NAME} <${process.env.EMAIL_FROM}>`
+      }
+    },
+    smtp: {
+      host: process.env.EMAIL_HOST,
+      port: process.env.EMAIL_PORT,
+      auth: {
+        user: process.env.EMAIL_LOGIN,
+        pass: process.env.EMAIL_PASS
+      }
+    }
+  },
+*/
+  turnstile: {
+    siteKey: "0x4AAAAAAAFcwNNtzi_jhLif",
+    addValidateEndpoint: true
+  },
 
   imports: {
     dirs: ["stores"]
