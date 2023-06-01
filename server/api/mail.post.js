@@ -11,7 +11,7 @@ export default defineEventHandler(async (event) => {
   }
 
   const { success } = await verifyTurnstileToken(token);
-
+  console.log("verify", success);
   if (!success) {
     return success;
   }
