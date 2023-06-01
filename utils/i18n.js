@@ -1,5 +1,5 @@
-import es from "~/i18n/es.js";
-import en from "~/i18n/en.js";
+import es from "./../i18n/es.js";
+import en from "./../i18n/en.js";
 
 const locales = { es, en };
 

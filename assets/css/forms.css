@@ -4,10 +4,30 @@
   color: var(--text-on-white);
 }
 
+#contacto .form-check-input {
+  --bs-form-check-bg: var(--form-input-background);
+  border-color: var(--form-border);
+}
+
 .form-floating label {
   color: var(--text-on-white-muted)!important;
 }
 
 .form-floating label::after {
   background-color: transparent!important;
+}
+
+.unete {
+  background-image: url("/images/backgrounds/unete.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+@media screen and (max-width: 768px) {
+  .unete .sticker {
+    left: -1.5rem;
+    width: 100px;
+    height: 100px;
+  }
 }

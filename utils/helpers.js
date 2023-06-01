@@ -57,3 +57,7 @@ export const KtoNumber = (str = "") => {
   }
   return Number(str.replace("k", "")) * 1000;
 };
+
+export const getRandomFromArray = (arr = []) => {
+  return arr[Math.floor(Math.random() * arr.length)];
+};

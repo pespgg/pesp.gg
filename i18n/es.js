@@ -1,5 +1,7 @@
 export default {
   lang: "es",
+  si: "Sí",
+  no: "No",
   /* Navbar */
   inicio: "Inicio",
   nosotros: "¿Quiénes somos?",
@@ -85,13 +87,21 @@ export default {
 
   /* Contacto */
   contacto_info: "¡Nuestro equipo está preparado para ayudarte en todo momento y responder cualquier duda o consulta!",
-  form1_title: "Llena el siguiente formulario para contactarnos",
-  form1_desc: "Y te responderemos a la brevedad posible, vía correo electrónico.",
+  contacto_title: "Llena el siguiente formulario para contactarnos",
+  contacto_desc: "Y te responderemos a la brevedad posible, vía correo electrónico.",
   nombre: "Nombre",
+  nombre_full: "Nombre completo",
   correo: "Correo electrónico",
   mensaje: "Mensaje",
   enviar: "Enviar",
   asunto: "Asunto",
+  unirse_title: "Este es el primer paso para ser PESP",
+  unirse_desc: "Nuestro equipo se pondrá en contacto contigo vía correo electrónico.",
+  porque_pesp: "¿Por qué quieres ser parte de PESP?",
+  cuentanos: "Cuéntanos más sobre ti",
+  mayor: "¿Eres mayor de edad?",
+  correo_enviado: "El correo ha sido enviado exitosamente",
+  correo_error: "Ha ocurrido un error al enviar el correo",
 
   /* Mail Templates */
   equipo_pesp: "Equipo PESP",
@@ -100,5 +110,7 @@ export default {
   visita_nuestra_web: "visita nuestro sitio web",
   informacion_enviada: "Información enviada",
   correo_informacion: "La siguiente información ha sido enviada a través de la página de contacto de PESP.",
-  correo_footer: "Esta comunicación contiene información que es confidencial y también puede contener información privilegiada. Es para uso exclusivo del destinatario/s. Si usted no es el destinatario/s tenga en cuenta que cualquier distribución, copia o uso de esta comunicación o la información que contiene está estrictamente prohibida. Si usted ha recibido esta comunicación por error por favor notifíquelo por correo electrónico."
+  correo_footer: "Esta comunicación contiene información que es confidencial y también puede contener información privilegiada. Es para uso exclusivo del destinatario/s. Si usted no es el destinatario/s tenga en cuenta que cualquier distribución, copia o uso de esta comunicación o la información que contiene está estrictamente prohibida. Si usted ha recibido esta comunicación por error por favor notifíquelo por correo electrónico.",
+  quieres_unirte: "¿Quiéres unirte a nuestro equipo?",
+  asunto_interesado: "está interesado en unirse al equipo PESP"
 };

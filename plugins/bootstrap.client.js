@@ -10,6 +10,11 @@ class Bootstrap {
     }
   }
 
+  showModal (id) {
+    const modal = new Modal(id);
+    modal.show();
+  }
+
   startCarousel (id) {
     const instance = Carousel.getOrCreateInstance(id);
     if (instance) {
