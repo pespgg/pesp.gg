@@ -16,20 +16,15 @@ export default defineEventHandler(async (event) => {
     return success;
   }
 
-  const mailer = await setupMail(event);
-
-  if (!mailer) {
-    return mailer;
-  }
-
   const hbs = Handlebars.compile(templates[template]);
   const html = hbs();
 
-  const mail = await sendMail({
+  const config = useRuntimeConfig(event);
+  const mail = await sendMail(config, {
     to: email,
     subject,
     html
   });
 
-  return mail.accepted.includes(email);
+  console.log(mail);
 });
