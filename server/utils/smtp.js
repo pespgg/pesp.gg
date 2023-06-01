@@ -1,6 +1,6 @@
 import mailChannelsPlugin from "@cloudflare/pages-plugin-mailchannels";
 
-export const mailChannels = mailChannelsPlugin({
+export const mailChannels = (config, message) => mailChannelsPlugin({
   personalizations: [
     {
       to: [{ email: message.to, name: message.name }]
