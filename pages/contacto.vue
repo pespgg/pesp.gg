@@ -29,7 +29,7 @@
             <label for="floatingTextarea2">{{ t("mensaje") }}</label>
           </div>
           <div class="text-center my-3">
-            <NuxtTurnstile v-model="token" class="w-100" />
+       
           </div>
           <div class="d-grid">
             <button class="btn btn-lg btn-success" type="submit">{{ t("enviar") }}</button>
