@@ -47,7 +47,8 @@ export default {
   modules: [
     "nuxt-icon",
     "nuxt-twemoji",
-    "@pinia/nuxt"
+    "@pinia/nuxt",
+    "@nuxtjs/turnstile"
   ],
 
   pinia: {
