@@ -1,26 +1,27 @@
-const mailChannels = (config, message) => $fetch("https://api.mailchannels.net/tx/v1/send", {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json"
+import mailChannelsPlugin from "@cloudflare/pages-plugin-mailchannels";
+
+export const mailChannels = mailChannelsPlugin({
+  personalizations: [
+    {
+      to: [{ email: message.to, name: message.name }]
+    }
+  ],
+  from: {
+    email: config.mail.from,
+    name: `"${config.mail.fromName}"`
   },
-  body: JSON.stringify({
-    personalizations: [
-      {
-        to: [{ email: message.to, name: message.name }]
-      }
-    ],
-    from: {
-      email: config.mail.from,
-      name: `"${config.mail.fromName}"`
-    },
-    subject: message.subject,
-    content: [
-      {
-        type: "text/html",
-        value: message.html
-      }
-    ]
-  })
+  subject: message.subject,
+  content: [
+    {
+      type: "text/html",
+      value: message.html
+    }
+  ],
+  respondWith: () => {
+    return new Response(
+      "Thank you for submitting your enquiry. A member of the team will be in touch shortly."
+    );
+  }
 });
 
 export const sendMail = async (config, message) => {

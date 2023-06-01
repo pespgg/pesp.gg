@@ -5,7 +5,7 @@
     <section id="contacto">
       <div class="container">
         <h5 class="text-center py-5 m-0">{{ t("contacto_info") }}</h5>
-        <form class="col-lg-8 mx-auto bg-light px-3 py-4 p-sm-5 rounded" @submit.prevent="sendMail('contacto')">
+        <form class="col-lg-8 mx-auto bg-light px-3 py-4 p-sm-5 rounded" data-static-form-name="contacto" @submit.prevent="sendMail('contacto')">
           <div class="text-center text-dark mb-4">
             <h2>
               <strong>{{ t("form1_title") }}</strong>
