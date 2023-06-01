@@ -1,4 +1,4 @@
-import Handlebars from "handlebars";
+
 
 export default defineEventHandler(async (event) => {
   const { token, template } = await readBody(event);
@@ -11,6 +11,6 @@ export default defineEventHandler(async (event) => {
   }
 
   const { success } = await verifyTurnstileToken(token);
-  const hbs = Handlebars.compile(templates[template]);
-  return { success, html: hbs() };
+
+  return { success };
 });
