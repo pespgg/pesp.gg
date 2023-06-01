@@ -1,34 +1,26 @@
-export const mailChannels = (config, message) => {
-  return new Promise((resolve, reject) => {
-    const { to, subject, html } = message;
-    const send = fetch("https://api.mailchannels.net/tx/v1/send", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json"
+export const mailChannels = async (config, message) => {
+  const { to, subject, html } = message;
+  return await $fetch("https://api.mailchannels.net/tx/v1/send", {
+    method: "POST",
+    headers: {
+      "content-type": "application/json"
+    },
+    body: JSON.stringify({
+      personalizations: [{
+        to: [{ email: to.email, name: to.name }],
+        cc: [{ email: config.mail.cc }]
+      }],
+      from: {
+        email: config.mail.from,
+        name: `"${config.mail.fromName}"`
       },
-      body: JSON.stringify({
-        personalizations: [{
-          to: [{ email: to.email, name: to.name }],
-          cc: [{ email: config.mail.cc }]
-        }],
-        from: {
-          email: config.mail.from,
-          name: `"${config.mail.fromName}"`
-        },
-        subject,
-        content: [{
-          type: "text/html",
-          value: html
-        }]
-      })
-    });
-    if (send.status === 200) {
-      resolve(true);
-    }
-    else {
-      reject(new Error("MailChannels error"));
-    }
-  });
+      subject,
+      content: [{
+        type: "text/html",
+        value: html
+      }]
+    })
+  }).then(() => true).catch(err => err);
 };
 
 export const sendMail = async (config, message) => {
