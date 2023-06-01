@@ -48,6 +48,7 @@ export default {
     "nuxt-icon",
     "nuxt-twemoji",
     "@pinia/nuxt",
+    "nuxt-mail",
     "@nuxtjs/turnstile"
   ],
 
@@ -57,7 +58,7 @@ export default {
       ["defineStore", "definePiniaStore"]
     ]
   },
-/*
+
   mail: {
     message: {
       cc: process.env.EMAIL_CC,
@@ -75,7 +76,7 @@ export default {
       }
     }
   },
-*/
+
   turnstile: {
     siteKey: "0x4AAAAAAAFcwNNtzi_jhLif",
     addValidateEndpoint: true
