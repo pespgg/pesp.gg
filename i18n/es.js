@@ -91,5 +91,14 @@ export default {
   correo: "Correo electrónico",
   mensaje: "Mensaje",
   enviar: "Enviar",
-  asunto: "Asunto"
+  asunto: "Asunto",
+
+  /* Mail Templates */
+  equipo_pesp: "Equipo PESP",
+  correo_recibido: "¡Hemos recibido tu formulario de contacto! Nuestro equipo pronto se pondrá en contacto con usted a través de esta conversación de correo electrónico.",
+  mientras_esperas: "Mientras esperas",
+  visita_nuestra_web: "visita nuestro sitio web",
+  informacion_enviada: "Información enviada",
+  correo_informacion: "La siguiente información ha sido enviada a través de la página de contacto de PESP.",
+  correo_footer: "Esta comunicación contiene información que es confidencial y también puede contener información privilegiada. Es para uso exclusivo del destinatario/s. Si usted no es el destinatario/s tenga en cuenta que cualquier distribución, copia o uso de esta comunicación o la información que contiene está estrictamente prohibida. Si usted ha recibido esta comunicación por error por favor notifíquelo por correo electrónico."
 };

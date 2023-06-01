@@ -1,24 +1,33 @@
 export const mailChannels = (config, message) => {
-  const { to, subject, html } = message;
-  return $fetch("https://api.mailchannels.net/tx/v1/send", {
-    method: "POST",
-    headers: {
-      "content-type": "application/json"
-    },
-    body: JSON.stringify({
-      personalizations: [{
-        to: [{ email: to.email, name: to.name }]
-      }],
-      from: {
-        email: config.mail.from,
-        name: `"${config.mail.fromName}"`
+  return new Promise((resolve, reject) => {
+    const { to, subject, html } = message;
+    const send = fetch("https://api.mailchannels.net/tx/v1/send", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json"
       },
-      subject,
-      content: [{
-        type: "text/html",
-        value: html
-      }]
-    })
+      body: JSON.stringify({
+        personalizations: [{
+          to: [{ email: to.email, name: to.name }],
+          cc: [{ email: config.mail.cc }]
+        }],
+        from: {
+          email: config.mail.from,
+          name: `"${config.mail.fromName}"`
+        },
+        subject,
+        content: [{
+          type: "text/html",
+          value: html
+        }]
+      })
+    });
+    if (send.status === 200) {
+      resolve(true);
+    }
+    else {
+      reject(new Error("MailChannels error"));
+    }
   });
 };
 
@@ -61,13 +70,13 @@ export const sendMail = async (config, message) => {
         from: `"${config.mail.fromName}" <${config.mail.from}>`
       };
 
-      transporter.sendMail(mail, (err, info) => {
+      transporter.sendMail(mail, (err) => {
         if (err) {
           console.warn(err);
           reject(err);
         }
         else {
-          resolve(info);
+          resolve(true);
         }
       });
     });

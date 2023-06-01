@@ -17,7 +17,7 @@ class I18n {
   }
 }
 
-const i18n = new I18n("es");
+export const i18n = new I18n("es");
 
 export const t = (key) => {
   return i18n.get(key);
