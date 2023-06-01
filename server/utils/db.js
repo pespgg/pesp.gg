@@ -18,7 +18,7 @@ export const useDb = () => {
       _db = drizzle(sqlite);
     }
     else {
-      throw new Error("No database configured for production");
+      console.warn("No database configured for production");
     }
   }
   return _db;

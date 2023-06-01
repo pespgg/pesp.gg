@@ -8,3 +8,4 @@ package-lock.json
 db.sqlite
 public/posts
 .env
+server/utils/hbs.js

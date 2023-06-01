@@ -1,7 +1,7 @@
 import Handlebars from "handlebars";
 
 export default defineEventHandler(async (event) => {
-  const { token } = await readBody(event);
+  const { token, template } = await readBody(event);
 
   if (!token) {
     throw createError({
@@ -11,6 +11,6 @@ export default defineEventHandler(async (event) => {
   }
 
   const { success } = await verifyTurnstileToken(token);
-  const template = Handlebars.compile(useHbs().contacto);
-  return { success, html: template() };
+  const hbs = Handlebars.compile(templates[template]);
+  return { success, html: hbs() };
 });

@@ -54,19 +54,20 @@ export default {
     };
   },
   methods: {
-    getTemplate () {
+    getTemplate (name) {
       return $fetch("/api/template", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
         },
         body: JSON.stringify({
-          token: this.token
+          token: this.token,
+          template: name
         })
       });
     },
     async sendEmailContact () {
-      const { success, html } = await this.getTemplate();
+      const { success, html } = await this.getTemplate("contacto");
       console.info(success, html);
       /*
       this.$nuxt.$mail.send({
