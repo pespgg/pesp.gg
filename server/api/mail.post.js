@@ -11,7 +11,7 @@ export default defineEventHandler(async (event) => {
     });
   }
 
-  const verify = await verifyTurnstileToken(token);
+  const verify = await verifyTurnstile(config.turnstile.secretKey, token);
   console.log(config);
   console.log(verify);
   if (!verify.success) {
@@ -20,7 +20,6 @@ export default defineEventHandler(async (event) => {
 
   const hbs = Handlebars.compile(templates[template]);
   const html = hbs();
-
   
   const mail = await sendMail(config, {
     to: email,
