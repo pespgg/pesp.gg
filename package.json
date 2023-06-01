@@ -14,7 +14,7 @@
     "url": "https://github.com/Yizack/pesp.gg/issues"
   },
   "scripts": {
-    "build": "nuxt build",
+    "build": "pnpm email:templates && nuxt build",
     "dev": "nuxt dev --port=5173",
     "dev:cf": "wrangler dev",
     "generate": "nuxt generate",
@@ -23,7 +23,8 @@
     "husky:install": "husky install",
     "husky:msg": "husky add .husky/commit-msg  \"npx --no -- commitlint --edit ${1}\"",
     "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js --verbose --coverage",
-    "db:migration": "drizzle-kit generate:sqlite"
+    "db:migration": "drizzle-kit generate:sqlite",
+    "email:templates": "node ./scripts/emailTemplates.js"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.6.5",
