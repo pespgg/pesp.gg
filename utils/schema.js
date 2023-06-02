@@ -1,12 +1,13 @@
-import categorias from "./schema/categorias";
-import servicios from "./schema/servicios";
-import stats from "./schema/stats";
-import pages from "./schema/pages";
-import casos_exito from "./schema/casos_exito";
-import marcas from "./schema/marcas";
-import nosotros from "./schema/nosotros";
-import comentarios from "./schema/comentarios";
-import galeria from "./schema/galeria";
+import categorias from "./schema/categorias.js";
+import servicios from "./schema/servicios.js";
+import stats from "./schema/stats.js";
+import pages from "./schema/pages.js";
+import casos_exito from "./schema/casos_exito.js";
+import marcas from "./schema/marcas.js";
+import nosotros from "./schema/nosotros.js";
+import comentarios from "./schema/comentarios.js";
+import galeria from "./schema/galeria.js";
+import tags from "./schema/tags.js";
 
 export const SCHEMA = {
   categorias,
@@ -17,5 +18,6 @@ export const SCHEMA = {
   marcas,
   nosotros,
   comentarios,
-  galeria
+  galeria,
+  tags
 };

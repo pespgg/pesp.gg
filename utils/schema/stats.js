@@ -1,3 +1,5 @@
+import { SITE } from "./../site.js";
+
 export default {
   experience: [
     {

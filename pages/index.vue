@@ -1,7 +1,7 @@
 <script setup>
 const { data: posts } = await useFetch("/api/posts", {
   query: {
-    props: ["image", "titulo", "fecha", "permalink"].join(","),
+    props: ["titulo", "fecha", "permalink", "tag", "updated"].join(","),
     limit: 3
   }
 });
@@ -23,13 +23,14 @@ const { data: posts } = await useFetch("/api/posts", {
               <ul class="glide__slides">
                 <li v-for="(post, i) of posts" :key="i" class="glide__slide p-0 px-sm-3" :class="{'glide__slide--active': !i}">
                   <article class="card mx-auto border-0 shadow">
-                    <img :src="post.image" class="card-img-top">
+                    <img :src="`${SITE.cdn}/posts/images/${post.permalink}.jpg?updated=${post.updated}`" class="card-img-top">
                     <div class="card-body bg-dark">
                       <h4 class="card-title">
                         <strong>
                           <NuxtLink :to="'/p/' + post.permalink">{{ post.titulo }}</NuxtLink>
                         </strong>
                       </h4>
+                      <div class="bg-body text-white text-center mb-2 rounded small text-uppercase" role="button">{{ SCHEMA.tags.find(v => v.tag == post.tag)?.name }}</div>
                       <LoadPost :permalink="post.permalink" :truncate="200" />
                     </div>
                     <div class="card-footer bg-dark p-0 overflow-hidden">

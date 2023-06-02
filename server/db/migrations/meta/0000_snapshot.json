@@ -1,7 +1,7 @@
 {
   "version": "5",
   "dialect": "sqlite",
-  "id": "e9deca4d-fba2-4c59-a7f2-1521529f82ca",
+  "id": "37e5006e-20b6-4d5f-a924-9bb1e0daf82a",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "tables": {
     "actualidad": {
@@ -17,16 +17,23 @@
           "name": "titulo",
           "type": "text",
           "primaryKey": false,
-          "notNull": false
+          "notNull": true
         },
-        "image": {
-          "name": "image",
+        "tag": {
+          "name": "tag",
           "type": "text",
           "primaryKey": false,
-          "notNull": false
+          "notNull": true
         },
         "visible": {
           "name": "visible",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "updated": {
+          "name": "updated",
           "type": "integer",
           "primaryKey": false,
           "notNull": true,

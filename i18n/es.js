@@ -112,5 +112,9 @@ export default {
   correo_informacion: "La siguiente información ha sido enviada a través de la página de contacto de PESP.",
   correo_footer: "Esta comunicación contiene información que es confidencial y también puede contener información privilegiada. Es para uso exclusivo del destinatario/s. Si usted no es el destinatario/s tenga en cuenta que cualquier distribución, copia o uso de esta comunicación o la información que contiene está estrictamente prohibida. Si usted ha recibido esta comunicación por error por favor notifíquelo por correo electrónico.",
   quieres_unirte: "¿Quiéres unirte a nuestro equipo?",
-  asunto_interesado: "está interesado en unirse al equipo PESP"
+  asunto_interesado: "está interesado en unirse al equipo PESP",
+
+  /* Actualidad */
+  recientes: "Publicaciones recientes",
+  actualidad_info: "Mantente actualizado(a) y conoce todas las novedades de PESP, actividades, eventos y torneos que desarrollamos especialmente para ti."
 };

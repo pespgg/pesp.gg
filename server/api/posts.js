@@ -1,10 +1,23 @@
 import { eq } from "drizzle-orm";
+// import data from "../../data/posts.json";
+// import { SCHEMA } from "../../utils/schema.js";
 
 export default defineEventHandler((event) => {
   const query = getQuery(event);
   let select = useDb().select();
   const { props, limit, permalink } = query;
-
+  /*
+  data.posts.forEach((post) => {
+    useDb().insert(tables.actualidad).values({
+      permalink: post.permalink,
+      titulo: post.titulo_es,
+      tag: SCHEMA.tags.find(tag => tag.name === post.etiqueta).tag,
+      visible: post.visible === "public" ? 1 : 0,
+      updated: new Date(post.fecha).getTime(),
+      fecha: new Date(post.fecha).getTime()
+    }).run();
+  });
+  */
   if (props) {
     const propsArray = props.split(",");
     const columns = {};
