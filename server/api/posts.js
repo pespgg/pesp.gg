@@ -1,4 +1,4 @@
-import { eq } from "drizzle-orm";
+import { eq, desc } from "drizzle-orm";
 // import data from "../../data/posts.json";
 // import { SCHEMA } from "../../utils/schema.js";
 
@@ -30,12 +30,13 @@ export default defineEventHandler((event) => {
   }
 
   const from = select.from(tables.actualidad);
+  const visible = eq(tables.actualidad.visible, 1);
 
   if (permalink) {
-    return from.where(eq(tables.actualidad.permalink, permalink)).limit(1).get();
+    return from.where(eq(tables.actualidad.permalink, permalink), visible).limit(1).get();
   }
 
-  const where = from.where(eq(tables.actualidad.visible, Number(true)));
+  const where = from.where(visible).orderBy(desc(tables.actualidad.fecha));
 
   if (limit) {
     return where.limit(limit).all();
