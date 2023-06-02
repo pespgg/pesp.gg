@@ -33,7 +33,7 @@ useHead({
           <strong>{{ t("actualidad") }}</strong>
         </h2>
         <div class="glide-wrapper">
-          <div class="glide">
+          <div class="glide bullets">
             <div class="glide__track" data-glide-el="track">
               <ul class="glide__slides">
                 <li v-for="(post, i) of posts" :key="i" class="glide__slide p-0 px-sm-3" :class="{'glide__slide--active': !i}">
@@ -62,6 +62,9 @@ useHead({
                   </article>
                 </li>
               </ul>
+            </div>
+            <div class="glide__bullets" data-glide-el="controls[nav]">
+              <button v-for="i of posts.length" :key="i" class="glide__bullet" :data-glide-dir="`=${i}`" />
             </div>
           </div>
         </div>
