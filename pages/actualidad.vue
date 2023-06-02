@@ -19,7 +19,7 @@ const { data: posts } = await useFetch("/api/posts", {
       </div>
       <div class="row row-gap-3">
         <div v-for="(post, i) of posts" :key="i" class="col-md-6 col-lg-4">
-          <article class="card mx-auto border-0 shadow">
+          <article class="card mx-auto border-0 shadow h-100 overflow-hidden">
             <img :src="getPostImage(post.permalink, post.updated)" class="card-img-top">
             <div class="card-body bg-dark">
               <h4 class="card-title">

@@ -31,14 +31,14 @@ const { data: posts } = await useFetch("/api/posts", {
           <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
             <h6 class="text-uppercase fw-bold">{{ t("sobre_nosotros") }}</h6>
             <hr class="mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
-            <p v-for="(item, i) of footer.sobre_nosotros" :key="i">
+            <p v-for="(item, i) of footer.sobre_nosotros" :key="i" class="scale-hover">
               <NuxtLink :to="item.link" class="text-white">{{ item.name }}</NuxtLink>
             </p>
           </div>
           <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
             <h6 class="text-uppercase fw-bold">{{ t("ayuda") }}</h6>
             <hr class="mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
-            <p v-for="(item, i) of footer.ayuda" :key="i">
+            <p v-for="(item, i) of footer.ayuda" :key="i" class="scale-hover">
               <NuxtLink :to="item.link" class="text-white">{{ item.name }}</NuxtLink>
             </p>
           </div>
