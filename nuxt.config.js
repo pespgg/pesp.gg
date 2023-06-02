@@ -3,6 +3,8 @@ import { SITE } from "./utils/site.js";
 export default {
   app: {
     head: {
+      charset: "utf-8",
+      viewport: "width=device-width, initial-scale=1",
       title: SITE.name.full,
       htmlAttrs: {
         lang: "es"
@@ -11,14 +13,22 @@ export default {
         "data-bs-theme": "dark"
       },
       meta: [
-        { charset: "utf-8" },
-        { name: "viewport", content: "width=device-width, initial-scale=1.0" },
         { name: "robots", content: "index, follow" },
         { name: "apple-mobile-web-app-title", content: SITE.name.web },
         { name: "application-name", content: SITE.name.web },
         { name: "msapplication-TileColor", content: "#071018" },
         { name: "theme-color", content: "#071018" },
-        { name: "apple-mobile-web-app-capable", content: SITE.name.web }
+        { name: "apple-mobile-web-app-capable", content: SITE.name.web },
+        { property: "og:type", content: "website" },
+        { property: "og:title", content: SITE.name.web },
+        { property: "og:site_name", content: SITE.name.full },
+        { property: "og:image", content: `${SITE.url}/images/card.jpg` },
+        { property: "og:image:alt", content: SITE.name.full },
+        { property: "og:image:width", content: 400 },
+        { property: "og:image:height", content: 400 },
+        { name: "twitter:card", content: "summary" },
+        { name: "twitter:image", content: `${SITE.url}/images/card.jpg` },
+        { name: "twitter:site", content: SITE.twitter }
       ],
       link: [
         { rel: "preload", href: "/fonts/Gilroy-Bold.woff", as: "font", type: "font/woff", crossorigin: "anonymous" },

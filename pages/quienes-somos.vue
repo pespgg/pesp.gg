@@ -1,3 +1,22 @@
+<script setup>
+useSeoMeta({
+  title: `${t("nosotros")} | ${SITE.name.web}`,
+  description: t("nosotros_description"),
+  keywords: t("nosotros_keywords"),
+  ogUrl: `${SITE.url}/quienes-somos/`,
+  ogTitle: `${t("nosotros")} | ${SITE.name.web}`,
+  ogDescription: t("nosotros_description"),
+  twitterTitle: `${t("nosotros")} | ${SITE.name.web}`,
+  twitterDescription: t("nosotros_description")
+});
+
+useHead({
+  link: [
+    { rel: "canonical", href: `${SITE.url}/quienes-somos/` }
+  ]
+});
+</script>
+
 <template>
   <main>
     <!-- Banner -->

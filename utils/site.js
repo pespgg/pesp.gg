@@ -4,8 +4,10 @@ export const SITE = {
     short: "PESP",
     web: "PESP.GG"
   },
+  url: "https://pesp.gg",
   cdn: "https://cdn.pesp.gg",
   local: "http://localhost:5173",
+  twitter: "@pesp_gg",
   description: "La mejor experiencia gaming. Apoyando el Talento Gamer.",
   dirs: {
     banners: "/images/banners",

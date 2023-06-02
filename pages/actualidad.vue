@@ -4,6 +4,23 @@ const { data: posts } = await useFetch("/api/posts", {
     props: ["image", "titulo", "fecha", "permalink", "tag", "updated"].join(",")
   }
 });
+
+useSeoMeta({
+  title: `${t("actualidad")} | ${SITE.name.web}`,
+  description: t("actualidad_description"),
+  keywords: t("actualidad_keywords"),
+  ogUrl: `${SITE.url}/actualidad/`,
+  ogTitle: `${t("actualidad")} | ${SITE.name.web}`,
+  ogDescription: t("actualidad_description"),
+  twitterTitle: `${t("actualidad")} | ${SITE.name.web}`,
+  twitterDescription: t("actualidad_description")
+});
+
+useHead({
+  link: [
+    { rel: "canonical", href: `${SITE.url}/actualidad/` }
+  ]
+});
 </script>
 
 <template>
@@ -28,7 +45,7 @@ const { data: posts } = await useFetch("/api/posts", {
                 </strong>
               </h4>
               <div class="bg-body text-white text-center mb-2 rounded small text-uppercase" role="button">{{ SCHEMA.tags.find(v => v.tag == post.tag).name }}</div>
-              <LoadPost :permalink="post.permalink" :truncate="200" />
+              <LoadPost :permalink="post.permalink" :truncate="220" />
             </div>
             <div class="card-footer bg-dark p-0 overflow-hidden">
               <div class="d-flex align-items-center ps-3">

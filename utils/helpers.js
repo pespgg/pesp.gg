@@ -33,9 +33,16 @@ export const tweenNumber = async ({ target, duration }, callback = (n = 0) => {}
 export const stripTags = (str = "") => {
   const tags = [/<\/?([a-z][a-z0-9]*)\b[^>]*>/gi, " "];
   const comments = [/<!--[\s\S]*?-->/gi, ""];
-  const nbsp = [/&nbsp;/gi, " "];
-  const breaklines = [/(\r\n|\n|\r)/gm, ""];
-  return str.replace(...comments).replace(...tags).replace(...nbsp).replace(...breaklines);
+  const nbsp = [/&nbsp;/g, " "];
+  const spaces = [/\s\s+/g, " "];
+  const breaklines = [/(\r\n|\n|\r)/g, " "];
+  return str
+    .replace(...comments)
+    .replace(...tags)
+    .replace(...nbsp)
+    .replace(...breaklines)
+    .replace(...spaces)
+    .trim();
 };
 
 export const truncateString = (str = "", n = 0) => {

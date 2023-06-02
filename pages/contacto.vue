@@ -1,3 +1,22 @@
+<script setup>
+useSeoMeta({
+  title: `${t("contacto")} | ${SITE.name.web}`,
+  description: t("contacto_description"),
+  keywords: t("contacto_keywords"),
+  ogUrl: `${SITE.url}/actualidad/`,
+  ogTitle: `${t("contacto")} | ${SITE.name.web}`,
+  ogDescription: t("contacto_description"),
+  twitterTitle: `${t("contacto")} | ${SITE.name.web}`,
+  twitterDescription: t("contacto_description")
+});
+
+useHead({
+  link: [
+    { rel: "canonical", href: `${SITE.url}/contacto/` }
+  ]
+});
+</script>
+
 <template>
   <main>
     <!-- Banner -->

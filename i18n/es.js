@@ -118,5 +118,16 @@ export default {
   recientes: "Publicaciones recientes",
   actualidad_info: "Mantente actualizado(a) y conoce todas las novedades de PESP, actividades, eventos y torneos que desarrollamos especialmente para ti.",
   publicado_el: "Publicado el",
-  abrir: "Abrir"
+  abrir: "Abrir",
+
+  /* SEO */
+  home_keywords: "pespgg, panama, esports, pesp.gg, gamers, gaming, experiencia, profesionales",
+  home_description: "Panama Esports Productions, la mejor experiencia gaming. Apoyando el Talento Gamer.",
+  actualidad_keywords: "actualidad, panama, noticias, eventos, torneos",
+  actualidad_description: "Mantente actualizado(a) y conoce todas las novedades de PESP, actividades, eventos y torneos que desarrollamos especialmente para ti.",
+  contacto_keywords: "contacto, unirse, dudas, preguntas, pesp.gg",
+  contacto_description: "Ponte en contacto con nosotros, y te responderemos a la brevedad posible, vía correo electrónico.",
+  nosotros_keywords: "nosotros, quienes, somos, pesp.gg, conócenos, panama, esports, experiencia, calidad, innovación",
+  nosotros_description: "Conoce más sobre nosotros, quienes somos, nuestra experiencia, calidad e innovación.",
+  post_keywords: "post, publicación, pesp.gg, panama, esports, actualidad, noticias, eventos, torneos"
 };

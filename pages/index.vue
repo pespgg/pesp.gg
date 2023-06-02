@@ -5,6 +5,21 @@ const { data: posts } = await useFetch("/api/posts", {
     limit: 3
   }
 });
+
+useSeoMeta({
+  description: t("home_description"),
+  keywords: t("home_keywords"),
+  ogUrl: SITE.url,
+  ogDescription: t("home_description"),
+  twitterTitle: `${SITE.name.web} | ${SITE.name.full}`,
+  twitterDescription: t("home_description")
+});
+
+useHead({
+  link: [
+    { rel: "canonical", href: `${SITE.url}/` }
+  ]
+});
 </script>
 
 <template>
@@ -31,7 +46,7 @@ const { data: posts } = await useFetch("/api/posts", {
                         </strong>
                       </h4>
                       <div class="bg-body text-white text-center mb-2 rounded small text-uppercase" role="button">{{ SCHEMA.tags.find(v => v.tag == post.tag).name }}</div>
-                      <LoadPost :permalink="post.permalink" :truncate="200" />
+                      <LoadPost :permalink="post.permalink" :truncate="220" />
                     </div>
                     <div class="card-footer bg-dark p-0 overflow-hidden">
                       <div class="d-flex align-items-center ps-3">

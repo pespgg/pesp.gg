@@ -1,3 +1,22 @@
+<script setup>
+useSeoMeta({
+  title: `${t("servicios")} | ${SITE.name.web}`,
+  description: t("servicios_description"),
+  keywords: t("servicios_keywords"),
+  ogUrl: `${SITE.url}/servicios/`,
+  ogTitle: `${t("servicios")} | ${SITE.name.web}`,
+  ogDescription: t("servicios_description"),
+  twitterTitle: `${t("servicios")} | ${SITE.name.web}`,
+  twitterDescription: t("servicios_description")
+});
+
+useHead({
+  link: [
+    { rel: "canonical", href: `${SITE.url}/servicios/` }
+  ]
+});
+</script>
+
 <template>
   <main>
     <!-- Banner -->

@@ -15,6 +15,15 @@ if (!content.value) {
   const url = process.dev ? `${SITE.local}/posts/content` : `${SITE.cdn}/posts/content`;
   const html = await $fetch(`${url}/${props.permalink}.html`).then(v => v).catch(() => "");
   content.value = props.truncate ? truncateString(stripTags(html), props.truncate) : html;
+
+  if (!props.truncate) {
+    const desc_meta = truncateString(stripTags(html), 220);
+    useSeoMeta({
+      description: desc_meta,
+      ogDescription: desc_meta,
+      twitterDescription: desc_meta
+    });
+  }
 }
 </script>
 

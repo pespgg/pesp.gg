@@ -5,6 +5,20 @@ const { data: post } = await useFetch("/api/posts", {
     permalink: params.permalink
   }
 });
+
+useSeoMeta({
+  title: `${post.value.titulo} | ${SITE.name.web}`,
+  keywords: t("post_keywords"),
+  ogUrl: `${SITE.url}/p/${post.value.permalink}/`,
+  ogTitle: `${post.value.titulo} | ${SITE.name.web}`,
+  ogImage: `${SITE.cdn}/posts/images/${post.value.permalink}.jpg`,
+  ogImageAlt: post.value.titulo,
+  ogImageWidth: 1290,
+  ogImageHeight: 600,
+  twitterCard: "summary_large_image",
+  twitterImage: `${SITE.cdn}/posts/images/${post.value.permalink}.jpg`,
+  twitterTitle: `${post.value.titulo} | ${SITE.name.web}`
+});
 </script>
 
 <template>
