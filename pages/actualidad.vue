@@ -17,7 +17,7 @@ const { data: posts } = await useFetch("/api/posts", {
         </h2>
         <p class="m-0">{{ t("actualidad_info") }}</p>
       </div>
-      <div class="row">
+      <div class="row row-gap-3">
         <div v-for="(post, i) of posts" :key="i" class="col-md-6 col-lg-4">
           <article class="card mx-auto border-0 shadow">
             <img :src="`${SITE.cdn}/posts/images/${post.permalink}.jpg?updated=${post.updated}`" class="card-img-top">
@@ -27,7 +27,7 @@ const { data: posts } = await useFetch("/api/posts", {
                   <NuxtLink :to="'/p/' + post.permalink">{{ post.titulo }}</NuxtLink>
                 </strong>
               </h4>
-              <div class="bg-body text-white text-center mb-2 rounded small text-uppercase" role="button">{{ SCHEMA.tags.find(v => v.tag == post.tag)?.name }}</div>
+              <div class="bg-body text-white text-center mb-2 rounded small text-uppercase" role="button">{{ SCHEMA.tags.find(v => v.tag == post.tag).name }}</div>
               <LoadPost :permalink="post.permalink" :truncate="200" />
             </div>
             <div class="card-footer bg-dark p-0 overflow-hidden">
