@@ -66,3 +66,7 @@ export const getPostImage = (name, updated) => {
   const path = process.dev ? `${SITE.local}/posts/images` : `${SITE.cdn}/posts/images`;
   return `${path}/${name}.jpg?updated=${updated}`;
 };
+
+export const getTagName = (tag = "") => {
+  return SCHEMA.tags.find(t => t.tag === tag).name;
+};

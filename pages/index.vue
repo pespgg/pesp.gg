@@ -27,7 +27,7 @@ const { data: posts } = await useFetch("/api/posts", {
                     <div class="card-body bg-dark">
                       <h4 class="card-title">
                         <strong>
-                          <NuxtLink :to="'/p/' + post.permalink">{{ post.titulo }}</NuxtLink>
+                          <NuxtLink :to="`/p/${post.permalink}/`">{{ post.titulo }}</NuxtLink>
                         </strong>
                       </h4>
                       <div class="bg-body text-white text-center mb-2 rounded small text-uppercase" role="button">{{ SCHEMA.tags.find(v => v.tag == post.tag).name }}</div>
@@ -40,7 +40,7 @@ const { data: posts } = await useFetch("/api/posts", {
                           {{ formatDate(post.fecha) }}
                         </small>
                         <NuxtLink class="hover ms-auto bg-primary text-white py-1 px-3" :to="'/p/' + post.permalink">
-                          <small>{{ t("leer_mas") }} <Icon name="solar:arrow-right-bold" size="1.5rem" /></small>
+                          <small>{{ t("abrir") }} <Icon name="solar:arrow-right-bold" size="1.5rem" /></small>
                         </NuxtLink>
                       </div>
                     </div>

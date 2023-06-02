@@ -120,3 +120,26 @@ iframe {
   background: repeating-linear-gradient(to right, var(--bs-link-color) 0%, var(--bs-link-hover-color) 50%,var(--bs-link-color) 100%)!important;
   box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
 }
+
+.light:after, .light:before {
+  border-radius: inherit;
+  bottom: 0;
+  content: "";
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: -1;
+}
+
+.light:hover:before {
+  background: linear-gradient(90deg, var(--led-color),  var(--led-color-2));
+  filter: blur(20px);
+  opacity: 1;
+  transform: translateZ(0) scale(.95);
+  transition: opacity .3s;
+}
+
+.light:after {
+  background: inherit;
+}
