@@ -41,7 +41,7 @@ useSeoMeta({
       </h1>
       <hr>
       <!-- eslint-disable-next-line vue/no-v-html -->
-      <div class="p-3">
+      <div class="p-0 p-lg-3">
         <LoadPost :permalink="post.permalink" />
       </div>
     </article>
