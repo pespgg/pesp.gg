@@ -23,7 +23,7 @@ const { data: posts } = await useFetch("/api/posts", {
     </section>
     <section>
       <div class="container-fluid text-center text-md-start mt-5">
-        <div class="row mt-3">
+        <div class="row mt-3 overflow-hidden">
           <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
             <Icon class="mb-3 w-100 p-2 p-sm-0" name="LogoFull" width="100%" height="100" />
             <p>{{ SITE.description }}</p>
