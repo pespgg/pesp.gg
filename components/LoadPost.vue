@@ -12,7 +12,7 @@ const props = defineProps({
 
 const content = useState(`content:${props.permalink}${props.truncate ? "_truncated" : ""}`, () => "");
 if (!content.value) {
-  const url = process.dev ? "http://localhost:5173/posts/content/" : "https://cdn.pesp.gg/posts/content/";
+  const url = process.dev ? "http://localhost:5173/posts/content" : `${SITE.cdn}/posts/content`;
   const html = await $fetch(`${url}/${props.permalink}.html`).then(v => v).catch(() => "");
   content.value = props.truncate ? truncateString(stripTags(html), props.truncate) : html;
 }
