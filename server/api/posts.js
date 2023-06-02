@@ -8,14 +8,19 @@ export default defineEventHandler((event) => {
   const { props, limit, permalink } = query;
   /*
   data.posts.forEach((post) => {
-    useDb().insert(tables.actualidad).values({
-      permalink: post.permalink,
-      titulo: post.titulo_es,
-      tag: SCHEMA.tags.find(tag => tag.name === post.etiqueta).tag,
-      visible: post.visible === "public" ? 1 : 0,
-      updated: new Date(post.fecha).getTime(),
-      fecha: new Date(post.fecha).getTime()
-    }).run();
+    try {
+      useDb().insert(tables.actualidad).values({
+        permalink: post.permalink,
+        titulo: post.titulo_es,
+        tag: SCHEMA.tags.find(tag => tag.name === post.etiqueta).tag,
+        visible: post.visible === "public" ? 1 : 0,
+        updated: new Date(post.fecha).getTime(),
+        fecha: new Date(post.fecha).getTime()
+      }).run();
+    }
+    catch {
+      console.info("skip", post.permalink);
+    }
   });
   */
   if (props) {

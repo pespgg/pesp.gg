@@ -72,7 +72,7 @@ footer .lo-ultimo img {
   background-color: var(--bs-link-color)!important;
 }
 
-strong {
+strong, b {
   color: var(--bs-heading-color);
 }
 

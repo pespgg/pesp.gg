@@ -58,5 +58,10 @@ export default [
     name: "Call of Duty: Mobile",
     image: "cod-mobile.jpg",
     tag: "call-of-duty-mobile"
+  },
+  {
+    name: "Clash Royale",
+    image: "clashroyale.jpg",
+    tag: "clash-royale"
   }
 ];

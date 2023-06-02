@@ -10,9 +10,9 @@ const { data: posts } = await useFetch("/api/posts", {
   <main>
     <!-- Banner -->
     <BannerPage banner="actualidad.jpg" :text="t('actualidad')" />
-    <div class="container">
-      <div class="my-4">
-        <h2 class="text-center text-uppercase">
+    <div class="container-fluid py-5">
+      <div class="my-4 text-center ">
+        <h2 class="text-uppercase">
           <strong>{{ t("recientes") }}</strong>
         </h2>
         <p class="m-0">{{ t("actualidad_info") }}</p>
