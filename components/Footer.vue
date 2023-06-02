@@ -2,7 +2,7 @@
 import { twFlagPanama } from "nuxt-twemoji/emojis";
 const { data: posts } = await useFetch("/api/posts", {
   query: {
-    props: ["titulo", "fecha", "permalink"].join(","),
+    props: ["titulo", "fecha", "permalink", "updated"].join(","),
     limit: 2
   }
 });
@@ -46,7 +46,7 @@ const { data: posts } = await useFetch("/api/posts", {
             <h5 class="text-uppercase fw-bold">{{ t("ultimo") }}</h5>
             <NuxtLink v-for="(post, i) of posts" :key="i" class="d-flex align-items-center mb-2 text-white" :to="'/p/' + post.permalink">
               <div class="lo-ultimo">
-                <img class="rounded" :src="`${SITE.cdn}/posts/images/${post.permalink}.jpg?updated=${post.updated}`">
+                <img class="rounded" :src="getPostImage(post.permalink, post.updated)">
               </div>
               <div class="ms-2 small text-start">
                 <p class="m-0">{{ post.titulo }}</p>

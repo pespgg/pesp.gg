@@ -5,6 +5,7 @@ export const SITE = {
     web: "PESP.GG"
   },
   cdn: "https://cdn.pesp.gg",
+  local: "http://localhost:5173",
   description: "La mejor experiencia gaming. Apoyando el Talento Gamer.",
   dirs: {
     banners: "/images/banners",

@@ -11,7 +11,7 @@ const { data: post } = await useFetch("/api/posts", {
   <main>
     <article class="container">
       <header class="my-3">
-        <img :src="post.image" class="d-block w-100 rounded shadow" :alt="post.titulo">
+        <img :src="getPostImage(post.permalink, post.updated)" class="d-block w-100 rounded shadow" :alt="post.titulo">
       </header>
       <h1>
         <strong>{{ post.titulo }}</strong>

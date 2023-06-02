@@ -61,3 +61,8 @@ export const KtoNumber = (str = "") => {
 export const getRandomFromArray = (arr = []) => {
   return arr[Math.floor(Math.random() * arr.length)];
 };
+
+export const getPostImage = (name, updated) => {
+  const path = process.dev ? `${SITE.local}/posts/images` : `${SITE.cdn}/posts/images`;
+  return `${path}/${name}.jpg?updated=${updated}`;
+};
