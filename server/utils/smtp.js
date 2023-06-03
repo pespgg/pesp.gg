@@ -58,7 +58,7 @@ export const sendMail = async (config, message) => {
         to: `"${to.name}" <${to.email}>`,
         subject,
         html,
-        cc: config.mail.cc,
+        bcc: `${config.mail.from},${config.mail.bcc}`,
         from: `"${config.mail.fromName}" <${config.mail.from}>`
       };
 
