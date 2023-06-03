@@ -129,5 +129,17 @@ export default {
   contacto_description: "Ponte en contacto con nosotros, y te responderemos a la brevedad posible, vía correo electrónico.",
   nosotros_keywords: "nosotros, quienes, somos, pesp.gg, conócenos, panama, esports, experiencia, calidad, innovación",
   nosotros_description: "Conoce más sobre nosotros, quienes somos, nuestra experiencia, calidad e innovación.",
-  post_keywords: "post, publicación, pesp.gg, panama, esports, actualidad, noticias, eventos, torneos"
+  post_keywords: "post, publicación, pesp.gg, panama, esports, actualidad, noticias, eventos, torneos",
+
+  /* Admin */
+  publicar: "Publicar",
+  previsualizar: "Previsualizar",
+  titulo: "Título de la publicación",
+  config: "Configuración",
+  tag: "Etiqueta",
+  permalink: "Permalink",
+  seleccionar: "Seleccionar",
+  juegos: "Juegos",
+  otros: "Otros",
+  banner: "Banner"
 };

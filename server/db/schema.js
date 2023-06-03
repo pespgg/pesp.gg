@@ -8,3 +8,9 @@ export const actualidad = sqliteTable("actualidad", {
   updated: integer("updated").notNull(),
   fecha: integer("fecha").notNull()
 });
+
+export const admins = sqliteTable("admins", {
+  id: integer("id").primaryKey().notNull(),
+  username: text("username").notNull(),
+  password: text("password").notNull()
+});

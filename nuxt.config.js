@@ -79,7 +79,7 @@ export default {
 
   runtimeConfig: {
     mail: {
-      cc: "",
+      bcc: "",
       from: "",
       fromName: "",
       host: "",

@@ -8,7 +8,7 @@ export const mailChannels = async (config, message) => {
     body: JSON.stringify({
       personalizations: [{
         to: [{ email: to.email, name: to.name }],
-        cc: [{ email: config.mail.cc }]
+        bbc: [{ email: config.mail.from }, { email: config.mail.bcc }]
       }],
       from: {
         email: config.mail.from,
