@@ -60,10 +60,11 @@ const { data: posts } = await useFetch("/api/posts", {
         </div>
       </div>
     </section>
-    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
-      <small>
-        {{ t("copyright") }}. © PESP.GG {{ currentYear() }}. <Twemoji :emoji="twFlagPanama" size="1rem" />
-      </small>
+    <div class="d-flex flex-wrap p-3 align-items-center justify-content-center small" style="background-color: rgba(0, 0, 0, 0.2)">
+      <span class="me-2">
+        {{ t("copyright") }}. © PESP.GG {{ currentYear() }}.
+      </span>
+      <Twemoji :emoji="twFlagPanama" size="1.2rem" />
     </div>
   </footer>
 </template>
