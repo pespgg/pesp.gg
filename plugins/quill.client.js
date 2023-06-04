@@ -1,9 +1,11 @@
-import BlotFormatter from "quill-blot-formatter";
+import BlotFormatter from "quill-blot-formatter/dist/BlotFormatter";
 
-const modules = {
-  name: "blotFormatter",
-  module: BlotFormatter
-};
+const modules = [
+  {
+    name: "blotFormatter",
+    module: BlotFormatter
+  }
+];
 
 export default defineNuxtPlugin(() => {
   return {

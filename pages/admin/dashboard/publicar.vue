@@ -19,11 +19,18 @@ definePageMeta({ layout: "dashboard" });
       <div class="container-fluid">
         <div class="row flex-row">
           <div class="col-xl-9 p-2">
-            <div class="rounded border overflow-hidden">
-              <ClientOnly>
-                <QuillEditor v-model.lazy="form.content" class="border-0" toolbar="full" :modules="$nuxt.$quill.modules" />
-              </ClientOnly>
-            </div>
+            <Transition name="fade" mode="out-in">
+              <div v-if="editor" class="rounded border h-100 overflow-hidden">
+                <ClientOnly>
+                  <QuillEditor v-model.lazy="form.content" class="border-0" toolbar="full" :modules="$nuxt.$quill.modules" />
+                </ClientOnly>
+              </div>
+              <div v-else class="d-flex justify-content-center align-items-center h-100">
+                <div class="spinner-border text-white" role="status">
+                  <span class="visually-hidden">Loading...</span>
+                </div>
+              </div>
+            </Transition>
           </div>
           <div class="col-xl-3 shadow p-0 bg-dark">
             <div class="border-bottom p-3">
@@ -62,6 +69,7 @@ definePageMeta({ layout: "dashboard" });
 export default {
   data () {
     return {
+      editor: false,
       form: {
         title: "",
         content: "",
@@ -72,7 +80,7 @@ export default {
     };
   },
   mounted () {
-    console.log(this.$nuxt.$quill);
+    this.editor = true;
   },
   methods: {
     generatePermalink (e) {
