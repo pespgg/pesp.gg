@@ -3,10 +3,10 @@ import { QuillEditor } from "@vueup/vue-quill";
 import "@vueup/vue-quill/dist/vue-quill.snow.css";
 import "~/assets/css/quill.css";
 
-let modules = {};
+const modules = ref({});
 if (process.client) {
   const { default: BlotFormatter } = await import("quill-blot-formatter");
-  modules = {
+  modules.value = {
     name: "blotFormatter",
     module: BlotFormatter
   };
