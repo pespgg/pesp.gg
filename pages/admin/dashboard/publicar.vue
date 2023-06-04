@@ -1,7 +1,17 @@
 <script setup>
+import { QuillEditor } from "@vueup/vue-quill";
 import "@vueup/vue-quill/dist/vue-quill.snow.css";
 import "~/assets/css/quill.css";
-import { QuillEditor } from "@vueup/vue-quill";
+
+let modules = {};
+if (process.client) {
+  const { default: BlotFormatter } = await import("quill-blot-formatter");
+  modules = {
+    name: "blotFormatter",
+    module: BlotFormatter
+  };
+}
+
 definePageMeta({ layout: "dashboard" });
 </script>
 
@@ -19,9 +29,9 @@ definePageMeta({ layout: "dashboard" });
       <div class="container-fluid">
         <div class="row flex-row">
           <div class="col-xl-9 p-2">
-            <div class="border rounded overflow-hidden h-100">
+            <div class="rounded border overflow-hidden">
               <ClientOnly>
-                <QuillEditor v-model="form.content" class="border-0 rounded" toolbar="full" />
+                <QuillEditor v-model.lazy="form.content" class="border-0" :modules="modules" toolbar="full" />
               </ClientOnly>
             </div>
           </div>

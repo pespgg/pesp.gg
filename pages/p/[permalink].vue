@@ -23,7 +23,7 @@ useSeoMeta({
 
 <template>
   <main>
-    <article class="container">
+    <article id="post" class="container">
       <header class="my-3">
         <img :src="getPostImage(post.permalink, post.updated)" class="d-block w-100 rounded shadow" :alt="post.titulo">
       </header>

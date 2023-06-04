@@ -2,3 +2,10 @@
   border: 0;
   background: #fff;
 }
+
+.ql-snow .ql-editor img {
+  pointer-events: unset;
+  -webkit-user-select: unset;
+  -moz-user-select: unset;
+  user-select: unset;
+}
