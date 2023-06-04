@@ -2,16 +2,6 @@
 import { QuillEditor } from "@vueup/vue-quill";
 import "@vueup/vue-quill/dist/vue-quill.snow.css";
 import "~/assets/css/quill.css";
-
-const modules = ref({});
-if (process.client) {
-  const { default: BlotFormatter } = await import("quill-blot-formatter");
-  modules.value = {
-    name: "blotFormatter",
-    module: BlotFormatter
-  };
-}
-
 definePageMeta({ layout: "dashboard" });
 </script>
 
@@ -31,7 +21,7 @@ definePageMeta({ layout: "dashboard" });
           <div class="col-xl-9 p-2">
             <div class="rounded border overflow-hidden">
               <ClientOnly>
-                <QuillEditor v-model.lazy="form.content" class="border-0" :modules="modules" toolbar="full" />
+                <QuillEditor v-model.lazy="form.content" class="border-0" toolbar="full" :modules="$nuxt.$quill.modules" />
               </ClientOnly>
             </div>
           </div>
@@ -80,6 +70,9 @@ export default {
         permalink: ""
       }
     };
+  },
+  mounted () {
+    console.log(this.$nuxt.$quill);
   },
   methods: {
     generatePermalink (e) {

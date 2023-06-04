@@ -1,6 +1,6 @@
 import Glide from "@glidejs/glide";
 
-export const glide = (el, options) => {
+const glide = (el, options) => {
   new Glide(el, options).mount();
 };
 
