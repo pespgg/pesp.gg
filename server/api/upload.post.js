@@ -10,10 +10,10 @@ export default defineEventHandler(async (event) => {
     return { url: `/uploads/${filename}?updated=${dateTime}` };
   }
   else if (process.env.CDN) {
-    const { cloudflare } = event;
+    const { cloudflare } = event.context;
     const headers = new Headers({ "Content-Type": type });
-    const upload = await cloudflare.context.env.CDN.put(`uploads/${filename}`, data, { httpMetadata: headers });
+    const upload = await cloudflare.env.CDN.put(`uploads/${filename}`, data, { httpMetadata: headers });
     console.log(upload);
-    return { url: `${SITE.CDN}/uploads/${filename}?updated=${dateTime}` };
+    return { url: `${SITE.cdn}/uploads/${filename}?updated=${dateTime}` };
   }
 });
