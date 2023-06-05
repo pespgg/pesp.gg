@@ -1,0 +1,22 @@
+.ck.ck-editor__main>.ck-editor__editable {
+  background: transparent;
+  border-radius: 0;
+}
+
+.ck.ck-editor, .ck.ck-editor__main, .ck-editor__editable {
+  overflow: hidden;
+  border: 0;
+  height: 100%;
+}
+
+.ck.ck-content {
+  border: 0;
+}
+
+.ck.ck-balloon-panel {
+  display: none!important;
+}
+
+.ck-editor__editable.ck-focused {
+  border: 0!important;
+}

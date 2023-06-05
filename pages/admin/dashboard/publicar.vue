@@ -1,7 +1,7 @@
 <script setup>
-import { QuillEditor } from "@vueup/vue-quill";
-import "@vueup/vue-quill/dist/vue-quill.snow.css";
-import "~/assets/css/quill.css";
+import { component as Editor } from "@ckeditor/ckeditor5-vue";
+import "~/assets/css/ckeditor.css";
+
 definePageMeta({ layout: "dashboard" });
 </script>
 
@@ -22,7 +22,7 @@ definePageMeta({ layout: "dashboard" });
             <Transition name="fade" mode="out-in">
               <div v-if="editor" class="rounded border h-100 overflow-hidden">
                 <ClientOnly>
-                  <QuillEditor v-model.lazy="form.content" class="border-0" toolbar="full" :modules="$nuxt.$quill.modules" />
+                  <Editor v-model="form.content" :editor="$nuxt.$ckeditor.editor" :config="$nuxt.$ckeditor.config" />
                 </ClientOnly>
               </div>
               <div v-else class="d-flex justify-content-center align-items-center h-100">
