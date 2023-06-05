@@ -13,7 +13,7 @@ export default defineEventHandler(async (event) => {
     const { cloudflare } = event.context;
     const headers = new Headers({ "Content-Type": type });
     const upload = await cloudflare.env.CDN.put(`uploads/${filename}`, data, { httpMetadata: headers });
-    console.log(upload);
+    console.log(JSON.stringify(upload));
     return { url: `${SITE.cdn}/uploads/${filename}?updated=${dateTime}` };
   }
 });
