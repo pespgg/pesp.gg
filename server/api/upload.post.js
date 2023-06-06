@@ -1,7 +1,14 @@
 import { SITE } from "./../../utils/site.js";
+
 export default defineEventHandler(async (event) => {
   const file = await readMultipartFormData(event);
+
+  checkFileSize(event);
+
   const { type, filename, data } = file[0];
+
+  checkFileType(type);
+
   const dateTime = new Date().getTime();
 
   if (process.dev) {

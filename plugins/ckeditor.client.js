@@ -2,6 +2,9 @@ import "~/assets/ckeditor/build/ckeditor";
 
 const config = {
   image: {
+    upload: {
+      types: ["jpeg", "png", "webp", "gif", "svg+xml"]
+    },
     toolbar: [
       "toggleImageCaption",
       "imageTextAlternative",
