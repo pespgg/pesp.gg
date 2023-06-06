@@ -1,5 +1,11 @@
+<script setup>
+useSeoMeta({
+  robots: "noindex,nofollow"
+});
+</script>
+
 <template>
-  <main>
+  <main v-if="post">
     <article id="post" class="container">
       <header class="my-3">
         <img :src="post.banner.src" class="img-fluid w-100 rounded shadow" :alt="post.titulo">
@@ -22,20 +28,20 @@
         <div v-html="post.content" />
       </div>
     </article>
+    <div class="position-fixed bottom-0 start-0 p-3">
+      <button type="button" class="btn btn-lg btn-warning py-3 fw-bold text-uppercase" @click="backToEditor()">
+        <Icon name="solar:arrow-left-bold" size="2rem" />
+        {{ t("volver_editor") }}
+      </button>
+    </div>
   </main>
-  <div class="position-fixed bottom-0 start-0 p-3" style="z-index: 11">
-    <button type="button" class="btn btn-lg btn-warning py-3 fw-bold text-uppercase" @click="backToEditor()">
-      <Icon name="solar:arrow-left-bold" size="2rem" />
-      {{ t("volver_editor") }}
-    </button>
-  </div>
 </template>
 
 <script>
 export default {
   data () {
     return {
-      post: {}
+      post: null
     };
   },
   mounted () {
