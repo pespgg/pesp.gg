@@ -95,15 +95,6 @@ export default {
     }
   },
 
-  experimental: {
-    payloadExtraction: true
-  },
-
-  nitro: {
-    prerender: {
-      crawlLinks: true
-    }
-  },
   devtools: {
     enabled: true
   }

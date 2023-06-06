@@ -1,9 +1,8 @@
 <script setup>
-const limit = 3;
 const { data: posts } = await useFetch("/api/posts", {
   query: {
     props: ["titulo", "fecha", "permalink", "tag", "updated"].join(","),
-    limit
+    limit: 3
   }
 });
 
@@ -65,7 +64,7 @@ useHead({
               </ul>
             </div>
             <div class="glide__bullets" data-glide-el="controls[nav]">
-              <button v-for="i of limit" :key="i" class="glide__bullet" :data-glide-dir="`=${i}`" />
+              <button v-for="i of posts.length" :key="i" class="glide__bullet" :data-glide-dir="`=${i}`" />
             </div>
           </div>
         </div>
