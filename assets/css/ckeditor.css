@@ -3,9 +3,9 @@
   border-radius: 0;
 }
 
-.ck.ck-editor, .ck.ck-editor__main, .ck-editor__editable {
+.ck.ck-editor, .ck.ck-editor__main, .ck-editor__editable, .ck-source-editing-area, .ck-source-editing-area textarea {
   overflow: hidden;
-  border: 0;
+  border: 0!important;
   height: 100%;
 }
 
@@ -13,10 +13,15 @@
   border: 0;
 }
 
-.ck.ck-balloon-panel {
+.ck.ck-balloon-panel.ck-powered-by-balloon {
   display: none!important;
 }
 
 .ck-editor__editable.ck-focused {
   border: 0!important;
+}
+
+img {
+  pointer-events: unset;
+  user-select: unset;
 }

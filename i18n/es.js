@@ -141,5 +141,7 @@ export default {
   seleccionar: "Seleccionar",
   juegos: "Juegos",
   otros: "Otros",
-  banner: "Banner"
+  banner: "Banner",
+  fecha: "Fecha",
+  volver_editor: "Volver al editor"
 };

@@ -39,6 +39,8 @@ import SourceEditing from '@ckeditor/ckeditor5-source-editing/src/sourceediting.
 import Table from '@ckeditor/ckeditor5-table/src/table.js';
 import TableCaption from '@ckeditor/ckeditor5-table/src/tablecaption.js';
 import TableCellProperties from '@ckeditor/ckeditor5-table/src/tablecellproperties';
+import TableColumnResize from '@ckeditor/ckeditor5-table/src/tablecolumnresize.js';
+import TableProperties from '@ckeditor/ckeditor5-table/src/tableproperties';
 import TableToolbar from '@ckeditor/ckeditor5-table/src/tabletoolbar.js';
 import TextTransformation from '@ckeditor/ckeditor5-typing/src/texttransformation.js';
 import TodoList from '@ckeditor/ckeditor5-list/src/todolist';
@@ -85,6 +87,8 @@ Editor.builtinPlugins = [
 	Table,
 	TableCaption,
 	TableCellProperties,
+	TableColumnResize,
+	TableProperties,
 	TableToolbar,
 	TextTransformation,
 	TodoList,
@@ -130,7 +134,7 @@ Editor.defaultConfig = {
 			'sourceEditing'
 		]
 	},
-	language: 'es-co',
+	language: 'es',
 	image: {
 		toolbar: [
 			'imageTextAlternative',
@@ -146,7 +150,8 @@ Editor.defaultConfig = {
 			'tableColumn',
 			'tableRow',
 			'mergeTableCells',
-			'tableCellProperties'
+			'tableCellProperties',
+			'tableProperties'
 		]
 	}
 };
