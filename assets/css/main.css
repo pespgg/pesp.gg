@@ -121,6 +121,10 @@ strong, b {
   box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
 }
 
+.light {
+  position: relative;
+}
+
 .light:after, .light:before {
   border-radius: inherit;
   bottom: 0;

@@ -18,6 +18,9 @@
             <li v-for="(page, key) of pages" :key="key" class="nav-item text-uppercase" data-bs-dismiss="offcanvas">
               <NuxtLink class="nav-link text-decoration-none" aria-current="page" :to="page.to">{{ t(key) }}</NuxtLink>
             </li>
+            <li class="nav-item text-uppercase" data-bs-dismiss="offcanvas">
+              <div class="nav-link text-decoration-none" role="button" @click="logout()">{{ t("logout") }}</div>
+            </li>
           </ul>
         </div>
       </div>
@@ -48,6 +51,14 @@ export default {
         }
       }
     };
+  },
+  methods: {
+    async logout () {
+      const { loggedOut } = await useUserSession().clear();
+      if (loggedOut) {
+        this.$router.push("/admin/");
+      }
+    }
   }
 };
 </script>

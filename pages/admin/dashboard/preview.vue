@@ -1,4 +1,5 @@
 <script setup>
+definePageMeta({ layout: "dashboard", middleware: "auth" });
 useSeoMeta({
   robots: "noindex,nofollow"
 });
@@ -28,10 +29,14 @@ useSeoMeta({
         <div v-html="post.content" />
       </div>
     </article>
-    <div class="position-fixed bottom-0 start-0 p-3">
-      <button type="button" class="btn btn-lg btn-warning py-3 fw-bold text-uppercase" @click="backToEditor()">
+    <div class="position-fixed bottom-0 p-3 z-1 d-flex flex-wrap justify-content-between w-100">
+      <button type="button" class="btn btn-warning py-3 fw-bold text-uppercase shadow" @click="backToEditor()">
         <Icon name="solar:arrow-left-bold" size="2rem" />
         {{ t("volver_editor") }}
+      </button>
+      <button type="button" class="btn btn-info py-3 fw-bold text-uppercase shadow">
+        <Icon name="solar:archive-minimalistic-line-duotone" size="2rem" />
+        {{ t("publicar") }}
       </button>
     </div>
   </main>

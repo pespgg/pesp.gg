@@ -2,25 +2,25 @@
 import { component as Editor } from "@ckeditor/ckeditor5-vue";
 import "~/assets/css/ckeditor.css";
 
-definePageMeta({ layout: "dashboard" });
+definePageMeta({ layout: "dashboard", middleware: "auth" });
 </script>
 
 <template>
   <section>
-    <form ref="form">
-      <div class="d-flex p-3 border-bottom align-items-center gap-2 shadow bg-dark">
+    <form ref="form" @submit.prevent="publishPost()">
+      <div class="d-flex flex-wrap px-3 py-1 align-items-center gap-2 shadow bg-dark">
         <div class="form-floating flex-grow-1">
-          <input v-model="form.titulo" type="text" class="form-control" :placeholder="t('titulo')" @input="generatePermalink($event)">
+          <input v-model="form.titulo" type="text" class="form-control" :placeholder="t('titulo')" required @input="generatePermalink($event)">
           <label>{{ t("titulo") }}</label>
         </div>
-        <button class="btn btn-primary py-3" type="submit">{{ t("publicar") }}</button>
-        <button class="btn btn-warning py-3" type="button" @click="previewPost()">{{ t("previsualizar") }}</button>
+        <button class="btn btn-info py-3 fw-bold" type="submit">{{ t("publicar") }}</button>
+        <button class="btn btn-warning py-3 fw-bold" type="button" @click="previewPost()">{{ t("previsualizar") }}</button>
       </div>
       <div class="container-fluid">
         <div class="row flex-row">
           <div class="col-xl-10 p-2">
             <Transition name="fade" mode="out-in">
-              <div v-if="editor" class="rounded border h-100 overflow-hidden">
+              <div v-if="editor" class="rounded border overflow-hidden">
                 <ClientOnly>
                   <Editor v-model="form.content" :editor="$nuxt.$ckeditor.editor" :config="$nuxt.$ckeditor.config" />
                 </ClientOnly>
@@ -37,31 +37,31 @@ definePageMeta({ layout: "dashboard" });
               <h5 class="m-0"><Icon name="solar:alt-arrow-down-bold" /> {{ t("config") }}</h5>
             </div>
             <div class="border-bottom p-3">
-              <h5 class="m-0"><Icon name="solar:gallery-add-linear" /> {{ t("banner") }}</h5>
-              <p class="text-muted small mb-1">JPG (1290x600)</p>
-              <input type="file" class="form-control" :required="!form.banner.src" @change="addBanner($event)">
+              <h5><Icon name="solar:gallery-add-linear" /> {{ t("banner") }}</h5>
+              <input type="file" class="form-control form-control-sm" :required="!form.banner.src" @change="addBanner($event)">
               <div class="pt-2">
+                <p class="text-muted small mb-0">JPG (1290x600)</p>
                 <img class="img-fluid rounded bg-body" :src="form.banner.src ? form.banner.src : `/images/placeholder.png`" width="1290" height="600">
               </div>
             </div>
             <div class="border-bottom p-3">
               <h5><Icon name="solar:tag-linear" /> {{ t("tag") }}</h5>
-              <select v-model="form.tag" class="form-select" required>
-                <option disabled selected>{{ t("seleccionar") }}</option>
+              <select v-model="form.tag" class="form-select form-select-sm" required>
+                <option value="" disabled selected>{{ t("seleccionar") }}</option>
                 <option disabled>-- {{ t("juegos") }} --</option>
                 <option v-for="(tag, i) of SCHEMA.tags.filter(v => v.type === 'juegos')" :key="i" class="text-white" :value="tag.tag">{{ tag.name }}</option>
                 <option disabled>-- {{ t("otros") }} --</option>
                 <option v-for="(tag, i) of SCHEMA.tags.filter(v => v.type === 'otros')" :key="i" class="text-white" :value="tag.tag">{{ tag.name }}</option>
               </select>
             </div>
-            <div class="p-3">
+            <div class="border-bottom p-3">
               <h5><Icon name="solar:calendar-linear" /> {{ t("fecha") }}</h5>
-              <input v-if="date.show" v-model="form.fecha" type="date" class="form-control" required @mouseleave="date.show = date.focus && date.show" @focusin="date.focus = true" @focusout="date.focus = false; date.show = false">
-              <input v-else type="text" class="form-control" :value="formatDate(form.fecha)" readonly @mouseenter="date.show = true">
+              <input v-if="date.show" v-model="form.fecha" type="date" class="form-control form-control-sm" required @mouseleave="date.show = date.focus && date.show" @focusin="date.focus = true" @focusout="date.focus = false; date.show = false">
+              <input v-else type="text" class="form-control form-control-sm" :value="formatDate(form.fecha)" readonly @mouseenter="date.show = true">
             </div>
             <div class="p-3">
               <h5><Icon name="solar:link-minimalistic-2-linear" /> {{ t("permalink") }}</h5>
-              <input v-model="form.permalink" type="text" class="form-control" required>
+              <input v-model="form.permalink" type="text" class="form-control form-control-sm" required>
             </div>
           </div>
         </div>
@@ -123,6 +123,9 @@ export default {
         next();
       });
       this.$router.push({ name: "admin-dashboard-preview" });
+    },
+    publishPost () {
+      // console.log("publish");
     }
   }
 };

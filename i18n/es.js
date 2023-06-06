@@ -143,5 +143,9 @@ export default {
   otros: "Otros",
   banner: "Banner",
   fecha: "Fecha",
-  volver_editor: "Volver al editor"
+  volver_editor: "Volver al editor",
+  login: "Iniciar sesión",
+  usuario: "Usuario",
+  pass: "Contraseña",
+  admin: "Admin"
 };

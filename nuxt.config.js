@@ -57,7 +57,6 @@ export default {
   modules: [
     "nuxt-icon",
     "nuxt-twemoji",
-    "@pinia/nuxt",
     "@nuxtjs/turnstile"
   ],
 
@@ -78,6 +77,10 @@ export default {
   },
 
   runtimeConfig: {
+    session: {
+      name: "nuxt-session",
+      password: ""
+    },
     mail: {
       bcc: "",
       from: "",
