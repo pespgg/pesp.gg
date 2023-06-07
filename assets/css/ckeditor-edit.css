@@ -1,10 +1,14 @@
+.ck-editor .ck-content {
+  background: transparent!important;
+}
+
 @media screen and (max-width: 992px) {
-  .ck.ck-editor, .ck.ck-editor__main, .ck-source-editing-area, .ck-source-editing-area textarea {
+  .ck-editor, .ck-editor__main, .ck-editor .ck-content, .ck-source-editing-area, .ck-source-editing-area textarea {
     min-height: 400px;
   }
 }
 
-.ck.ck-editor, .ck.ck-editor__main, .ck-source-editing-area, .ck-source-editing-area textarea {
+.ck-editor, .ck-editor__main, .ck-editor .ck-content, .ck-source-editing-area, .ck-source-editing-area textarea {
   overflow: hidden;
   border: 0!important;
   height: 100%!important;
@@ -24,7 +28,7 @@
   overflow: unset!important;
 }
 
-.ck-editor .ck.ck-balloon-panel.ck-powered-by-balloon {
+.ck-balloon-panel.ck-powered-by-balloon {
   display: none!important;
 } 
 
