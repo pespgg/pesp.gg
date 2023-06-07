@@ -1,4 +1,7 @@
 const config = {
+  mediaEmbed: {
+    previewsInData: true
+  },
   image: {
     upload: {
       types: ["jpeg", "png", "webp", "gif", "svg+xml"]

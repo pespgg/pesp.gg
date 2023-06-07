@@ -40,3 +40,10 @@
   pointer-events: unset;
   user-select: unset;
 }
+
+.ck-editor .media {
+  margin: auto!important;
+  max-width: 560px;
+  width: 100%;
+  height: 315px;
+}

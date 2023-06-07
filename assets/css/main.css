@@ -76,7 +76,7 @@ strong, b {
   color: var(--bs-heading-color);
 }
 
-#post iframe {
+#post iframe, .ck-content iframe {
   border-radius: var(--bs-border-radius);
   border-width: 0;
 }
