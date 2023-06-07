@@ -47,7 +47,7 @@ useHead({
       </h1>
       <hr>
       <div class="p-0 p-lg-3">
-        <LoadPost :permalink="post.permalink" />
+        <LoadPost class="ck-content" :permalink="post.permalink" />
       </div>
     </article>
   </main>

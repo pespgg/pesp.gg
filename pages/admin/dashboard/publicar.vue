@@ -58,6 +58,13 @@ definePageMeta({ layout: "dashboard", middleware: "auth" });
               </select>
             </div>
             <div class="border-bottom p-3">
+              <h5><Icon name="solar:eye-linear" /> {{ t("visibilidad") }}</h5>
+              <div class="form-check">
+                <input v-model="form.visible" class="form-check-input" type="checkbox">
+                <label class="form-check-label">{{ t("publico") }}</label>
+              </div>
+            </div>
+            <div class="border-bottom p-3">
               <h5><Icon name="solar:calendar-linear" /> {{ t("fecha") }}</h5>
               <input v-if="date.show" v-model="form.fecha" type="date" class="form-control form-control-sm" required @mouseleave="date.show = date.focus && date.show" @focusin="date.focus = true" @focusout="date.focus = false; date.show = false">
               <input v-else type="text" class="form-control form-control-sm" :value="formatDate(form.fecha)" readonly @mouseenter="date.show = true">
@@ -92,7 +99,8 @@ export default {
         },
         tag: "",
         fecha: new Date().toISOString().split("T")[0],
-        permalink: ""
+        permalink: "",
+        visible: true
       }
     };
   },
@@ -132,8 +140,16 @@ export default {
       });
       this.$router.push({ name: "admin-dashboard-preview" });
     },
-    publishPost () {
-      // console.log("publish");
+    async publishPost () {
+      if (this.form.banner.src) {
+        const { permalink } = await $fetch("/api/posts", {
+          method: "POST",
+          body: this.form
+        }).catch(() => ({}));
+        if (permalink) {
+          this.$router.push("/admin/dashboard/actualidad/");
+        }
+      }
     }
   }
 };

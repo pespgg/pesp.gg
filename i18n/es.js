@@ -147,5 +147,8 @@ export default {
   login: "Iniciar sesión",
   usuario: "Usuario",
   pass: "Contraseña",
-  admin: "Admin"
+  admin: "Admin",
+  publico: "Público",
+  visibilidad: "Visibilidad",
+  oculto: "Oculto"
 };

@@ -19,12 +19,5 @@ export const setUserSession = async (event, data) => {
 };
 
 export const requireUserSession = async (event) => {
-  const userSession = await getUserSession(event);
-  if (!userSession.user) {
-    throw createError({
-      statusCode: 401,
-      message: "Unauthorized"
-    });
-  }
-  return userSession;
+  return await getUserSession(event).catch(() => {});
 };
