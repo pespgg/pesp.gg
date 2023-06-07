@@ -32,7 +32,7 @@ useSeoMeta({
           <div class="bg-primary px-1">
             <Icon class="text-white" name="solar:tag-linear" size="1.1rem" />
           </div>
-          <div class="bg-body px-2">{{ getTagName(post.tag) }}</div>
+          <div class="bg-body-tertiary px-2">{{ getTagName(post.tag) }}</div>
         </NuxtLink>
       </div>
       <p class="m-0">{{ t("publicado_el") }} {{ formatDate(post.fecha) }}</p>
@@ -46,3 +46,7 @@ useSeoMeta({
     </article>
   </main>
 </template>
+
+<style>
+@import "~/assets/css/ckeditor.css";
+</style>

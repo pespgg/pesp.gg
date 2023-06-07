@@ -44,7 +44,7 @@ useHead({
                   <NuxtLink :to="`/p/${post.permalink}/`">{{ post.titulo }}</NuxtLink>
                 </strong>
               </h4>
-              <div class="bg-body text-white text-center mb-2 rounded small text-uppercase" role="button">{{ SCHEMA.tags.find(v => v.tag == post.tag).name }}</div>
+              <div class="bg-body-tertiary text-white text-center mb-2 rounded small text-uppercase" role="button">{{ SCHEMA.tags.find(v => v.tag == post.tag).name }}</div>
               <LoadPost :permalink="post.permalink" :truncate="220" />
             </div>
             <div class="card-footer bg-dark p-0 overflow-hidden">

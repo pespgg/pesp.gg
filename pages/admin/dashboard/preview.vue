@@ -16,7 +16,7 @@ useSeoMeta({
           <div class="bg-primary px-1">
             <Icon class="text-white" name="solar:tag-linear" size="1.1rem" />
           </div>
-          <div class="bg-body px-2">{{ getTagName(post.tag) }}</div>
+          <div class="bg-body-tertiary px-2">{{ getTagName(post.tag) }}</div>
         </NuxtLink>
       </div>
       <p class="m-0">{{ t("publicado_el") }} {{ formatDate(new Date(post.fecha).getTime()) }}</p>
@@ -26,7 +26,7 @@ useSeoMeta({
       <hr>
       <div class="p-0 p-lg-3">
         <!-- eslint-disable-next-line vue/no-v-html -->
-        <div v-html="post.content" />
+        <div class="ck-content" v-html="post.content" />
       </div>
     </article>
     <div class="position-fixed bottom-0 p-3 z-1 d-flex flex-wrap justify-content-between w-100">
@@ -65,3 +65,7 @@ export default {
   }
 };
 </script>
+
+<style>
+@import "~/assets/css/ckeditor.css";
+</style>

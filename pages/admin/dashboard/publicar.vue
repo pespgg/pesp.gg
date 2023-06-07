@@ -7,40 +7,44 @@ definePageMeta({ layout: "dashboard", middleware: "auth" });
   <section>
     <form ref="form" @submit.prevent="publishPost()">
       <div class="container-fluid">
-        <div class="row flex-row">
+        <div class="row">
           <div class="col-12 d-flex flex-wrap py-1 align-items-center gap-2 shadow bg-dark">
             <div class="form-floating flex-grow-1">
               <input v-model="form.titulo" type="text" class="form-control" :placeholder="t('titulo')" required @input="generatePermalink($event)">
               <label>{{ t("titulo") }}</label>
             </div>
-            <button class="btn btn-info py-3 fw-bold" type="submit">{{ t("publicar") }}</button>
-            <button class="btn btn-warning py-3 fw-bold" type="button" @click="previewPost()">{{ t("previsualizar") }}</button>
+            <div class="d-flex gap-2 flex-grow-1 flex-sm-grow-0">
+              <button class="btn btn-info py-3 fw-bold w-100" type="submit">{{ t("publicar") }}</button>
+              <button class="btn btn-warning py-3 fw-bold w-100" type="button" @click="previewPost()">{{ t("previsualizar") }}</button>
+            </div>
           </div>
-          <div class="col-xl-10 p-2">
+          <div class="col-lg-10 p-2">
             <Transition name="fade" mode="out-in">
-              <div v-if="editor" class="rounded border overflow-hidden">
+              <div v-if="editor" class="rounded border overflow-hidden h-100 shadow">
                 <ClientOnly>
                   <Editor v-model="form.content" :editor="$nuxt.$ckeditor.editor" :config="$nuxt.$ckeditor.config" />
                 </ClientOnly>
               </div>
               <div v-else class="d-flex justify-content-center align-items-center h-100">
-                <div class="spinner-border text-white" role="status">
+                <div class="spinner-border spinner-lg text-white" role="status">
                   <span class="visually-hidden">Loading...</span>
                 </div>
               </div>
             </Transition>
           </div>
-          <div class="col-xl-2 shadow p-0 bg-dark">
-            <div class="border-bottom p-3">
-              <h5 class="m-0"><Icon name="solar:alt-arrow-down-bold" /> {{ t("config") }}</h5>
-            </div>
-            <div class="border-bottom p-3">
-              <h5><Icon name="solar:gallery-add-linear" /> {{ t("banner") }}</h5>
-              <input type="file" class="form-control form-control-sm" :required="!form.banner.src" @change="addBanner($event)">
-              <div class="pt-2">
-                <p class="text-muted small mb-0">JPG (1290x600)</p>
-                <img class="img-fluid rounded bg-body" :src="form.banner.src ? form.banner.src : `/images/placeholder.png`" width="1290" height="600">
-              </div>
+          <div class="col-lg-2 shadow p-0 bg-dark h-100">
+            <div id="image-upload" class="border-bottom p-3">
+              <h5><Icon name="solar:gallery-wide-linear" /> {{ t("banner") }}</h5>
+              <input id="banner" type="file" @change="addBanner($event)">
+              <p class="text-muted small mb-0">JPG (1290x600, 8MB Max)</p>
+              <label for="banner" class="rounded bg-body position-relative overflow-hidden">
+                <div class="overlay position-absolute bg-dark w-100 h-100">
+                  <div class="d-flex justify-content-center align-items-center h-100">
+                    <Icon name="solar:gallery-edit-outline" size="2.5rem" />
+                  </div>
+                </div>
+                <img class="img-fluid" :src="form.banner.src ? form.banner.src : `/images/placeholder.png`" width="1290" height="600">
+              </label>
             </div>
             <div class="border-bottom p-3">
               <h5><Icon name="solar:tag-linear" /> {{ t("tag") }}</h5>
@@ -130,5 +134,5 @@ export default {
 </script>
 
 <style>
-@import "~/assets/css/ckeditor.css";
+@import "~/assets/css/ckeditor-edit.css";
 </style>
