@@ -9,7 +9,7 @@ useSeoMeta({
   <main v-if="post">
     <article id="post" class="container">
       <header class="my-3">
-        <img :src="post.banner.src" class="img-fluid w-100 rounded shadow" :alt="post.titulo">
+        <img :src="post.banner.src ? post.banner.src : '/images/placeholder.png'" class="img-fluid w-100 rounded shadow bg-body-tertiary" :alt="post.titulo">
       </header>
       <div class="d-flex mb-2">
         <NuxtLink class="d-flex align-items-center rounded overflow-hidden text-white" :to="`/tag/${post.tag}/`">

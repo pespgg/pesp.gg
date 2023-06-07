@@ -18,11 +18,12 @@ definePageMeta({ layout: "dashboard", middleware: "auth" });
               <button class="btn btn-warning py-3 fw-bold w-100" type="button" @click="previewPost()">{{ t("previsualizar") }}</button>
             </div>
           </div>
-          <div class="col-lg-10 p-2">
+          <div class="col-lg-10 pt-2 pb-2 pb-lg-0">
             <Transition name="fade" mode="out-in">
-              <div v-if="editor" class="rounded border overflow-hidden h-100 shadow">
+              <div v-if="editor" class="rounded border h-100 shadow d-flex flex-column overflow-hidden">
                 <ClientOnly>
-                  <Editor v-model="form.content" :editor="$nuxt.$ckeditor.editor" :config="$nuxt.$ckeditor.config" />
+                  <Editor ref="wordcount" v-model="form.content" :editor="$nuxt.$ckeditor.editor" :config="$nuxt.$ckeditor.config" @ready="onEditorLoaded($event)" />
+                  <div ref="wordcount" class="bg-light text-dark py-1 px-2 small" />
                 </ClientOnly>
               </div>
               <div v-else class="d-flex justify-content-center align-items-center h-100">
@@ -32,18 +33,18 @@ definePageMeta({ layout: "dashboard", middleware: "auth" });
               </div>
             </Transition>
           </div>
-          <div class="col-lg-2 shadow p-0 bg-dark h-100">
+          <div class="col-lg-2 shadow p-0 bg-dark">
             <div id="image-upload" class="border-bottom p-3">
               <h5><Icon name="solar:gallery-wide-linear" /> {{ t("banner") }}</h5>
               <input id="banner" type="file" @change="addBanner($event)">
               <p class="text-muted small mb-0">JPG (1290x600, 8MB Max)</p>
-              <label for="banner" class="rounded bg-body position-relative overflow-hidden">
+              <label for="banner" class="rounded bg-body-tertiary position-relative overflow-hidden">
                 <div class="overlay position-absolute bg-dark w-100 h-100">
                   <div class="d-flex justify-content-center align-items-center h-100">
                     <Icon name="solar:gallery-edit-outline" size="2.5rem" />
                   </div>
                 </div>
-                <img class="img-fluid" :src="form.banner.src ? form.banner.src : `/images/placeholder.png`" width="1290" height="600">
+                <img class="img-fluid" :src="form.banner.src ? form.banner.src : '/images/placeholder.png'" width="1290" height="600">
               </label>
             </div>
             <div class="border-bottom p-3">
@@ -102,6 +103,11 @@ export default {
     }
   },
   methods: {
+    onEditorLoaded (ckeditor) {
+      const wordCountPlugin = ckeditor.plugins.get("WordCount");
+      const wordCountWrapper = this.$refs.wordcount;
+      wordCountWrapper.appendChild(wordCountPlugin.wordCountContainer);
+    },
     generatePermalink (e) {
       this.form.permalink = e.target.value.toLowerCase().replace(/ /g, "-").normalize("NFD").replace(/[\u0300-\u036F]/g, "").replace(/[^a-zA-Z0-9-]/g, "");
     },
