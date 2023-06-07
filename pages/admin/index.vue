@@ -40,7 +40,7 @@ export default {
     async login () {
       const { user } = await useUserSession().set(this.form);
       if (user) {
-        this.$router.push("/admin/dashboard/");
+        this.$router.replace("/admin/dashboard/");
       }
     }
   }
