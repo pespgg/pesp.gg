@@ -1,15 +1,15 @@
-.ck.ck-editor__main>.ck-editor__editable {
+.ck.ck-editor__main>.ck.ck-content {
   background: transparent!important;
   border-radius: 0;
 }
 
 @media screen and (max-width: 992px) {
-  .ck.ck-editor, .ck.ck-editor__main, .ck-editor__editable, .ck-source-editing-area, .ck-source-editing-area textarea {
+  .ck.ck-editor, .ck.ck-editor__main, .ck.ck-content, .ck-source-editing-area, .ck-source-editing-area textarea {
     min-height: 400px;
   }
 }
 
-.ck.ck-editor, .ck.ck-editor__main, .ck-editor__editable, .ck-source-editing-area, .ck-source-editing-area textarea {
+.ck.ck-editor, .ck.ck-editor__main, .ck.ck-content, .ck-source-editing-area, .ck-source-editing-area textarea {
   overflow: hidden;
   border: 0!important;
   height: 100%!important;
