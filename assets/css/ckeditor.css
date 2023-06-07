@@ -110,22 +110,8 @@
   text-align: center;
   margin: 0.9em auto;
   min-width: 50px;
-
-}
-
-.ck-content .image > img {
   border-radius: var(--bs-border-radius);
-}
-
-.ck-content .image > img:has(+figcaption) {
-  border-bottom-left-radius: 0!important;
-  border-bottom-right-radius: 0!important;
-}
-
-
-.ck-content .image > figcaption {
-  border-bottom-left-radius: var(--bs-border-radius);
-  border-bottom-right-radius: var(--bs-border-radius);
+  overflow: hidden;
 }
 
 /* @ckeditor/ckeditor5-image/theme/image.css */

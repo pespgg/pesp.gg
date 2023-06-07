@@ -1,33 +1,38 @@
-.ck.ck-editor__main>.ck.ck-content {
-  background: transparent!important;
-  border-radius: 0;
-}
-
 @media screen and (max-width: 992px) {
-  .ck.ck-editor, .ck.ck-editor__main, .ck.ck-content, .ck-source-editing-area, .ck-source-editing-area textarea {
+  .ck.ck-editor, .ck.ck-editor__main, .ck-source-editing-area, .ck-source-editing-area textarea {
     min-height: 400px;
   }
 }
 
-.ck.ck-editor, .ck.ck-editor__main, .ck.ck-content, .ck-source-editing-area, .ck-source-editing-area textarea {
+.ck.ck-editor, .ck.ck-editor__main, .ck-source-editing-area, .ck-source-editing-area textarea {
   overflow: hidden;
   border: 0!important;
   height: 100%!important;
 }
 
-.ck.ck-content {
-  border: 0;
+
+.ck-editor .ck-content .image {
+  border-radius: var(--bs-border-radius);
+  overflow: hidden;
 }
 
-.ck.ck-balloon-panel.ck-powered-by-balloon {
-  display: none!important;
+.ck-editor .ck-content .image.ck-widget_selected {
+  overflow: unset!important;
 }
+
+.ck-editor .ck-content .image:hover {
+  overflow: unset!important;
+}
+
+.ck-editor .ck.ck-balloon-panel.ck-powered-by-balloon {
+  display: none!important;
+} 
 
 .ck-editor__editable.ck-focused {
   border: 0!important;
 }
 
-img {
+.ck-editor img {
   pointer-events: unset;
   user-select: unset;
 }
