@@ -14,8 +14,8 @@
     "url": "https://github.com/Yizack/pesp.gg/issues"
   },
   "scripts": {
-    "build": "pnpm email:templates && build:ckeditor && nuxt build",
-    "build:ckeditor": "cd assets/ckeditor && npm install && npm run build",
+    "build": "pnpm email:templates && pnpm build:ckeditor && nuxt build",
+    "build:ckeditor": "cd assets/ckeditor && pnpm install && pnpm build",
     "dev": "nuxt dev --port=5173",
     "dev:cf": "wrangler dev",
     "generate": "nuxt generate",
