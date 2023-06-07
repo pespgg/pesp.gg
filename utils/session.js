@@ -13,7 +13,7 @@ export const useUserSession = () => {
 };
 
 const set = async (body) => {
-  useUserSessionState().value = await $fetch("/api/admin/auth", { method: "POST", body });
+  useUserSessionState().value = await $fetch("/api/admin/auth", { method: "POST", body }).catch(() => ({}));
   return useUserSessionState().value;
 };
 
