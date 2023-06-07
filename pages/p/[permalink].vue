@@ -19,6 +19,12 @@ useSeoMeta({
   twitterImage: `${SITE.cdn}/posts/images/${post.value.permalink}.jpg`,
   twitterTitle: `${post.value.titulo} | ${SITE.name.web}`
 });
+
+useHead({
+  link: [
+    { rel: "canonical", href: `${SITE.url}/p/${post.value.permalink}/` }
+  ]
+});
 </script>
 
 <template>
