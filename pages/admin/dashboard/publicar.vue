@@ -6,16 +6,16 @@ definePageMeta({ layout: "dashboard", middleware: "auth" });
 <template>
   <section>
     <form ref="form" @submit.prevent="publishPost()">
-      <div class="d-flex flex-wrap px-3 py-1 align-items-center gap-2 shadow bg-dark">
-        <div class="form-floating flex-grow-1">
-          <input v-model="form.titulo" type="text" class="form-control" :placeholder="t('titulo')" required @input="generatePermalink($event)">
-          <label>{{ t("titulo") }}</label>
-        </div>
-        <button class="btn btn-info py-3 fw-bold" type="submit">{{ t("publicar") }}</button>
-        <button class="btn btn-warning py-3 fw-bold" type="button" @click="previewPost()">{{ t("previsualizar") }}</button>
-      </div>
       <div class="container-fluid">
         <div class="row flex-row">
+          <div class="col-12 d-flex flex-wrap py-1 align-items-center gap-2 shadow bg-dark">
+            <div class="form-floating flex-grow-1">
+              <input v-model="form.titulo" type="text" class="form-control" :placeholder="t('titulo')" required @input="generatePermalink($event)">
+              <label>{{ t("titulo") }}</label>
+            </div>
+            <button class="btn btn-info py-3 fw-bold" type="submit">{{ t("publicar") }}</button>
+            <button class="btn btn-warning py-3 fw-bold" type="button" @click="previewPost()">{{ t("previsualizar") }}</button>
+          </div>
           <div class="col-xl-10 p-2">
             <Transition name="fade" mode="out-in">
               <div v-if="editor" class="rounded border overflow-hidden">
