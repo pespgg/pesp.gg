@@ -1,7 +1,5 @@
 <script setup>
-import { component as Editor } from "@ckeditor/ckeditor5-vue";
-import "~/assets/css/ckeditor.css";
-
+const { component: Editor } = await import("@ckeditor/ckeditor5-vue");
 definePageMeta({ layout: "dashboard", middleware: "auth" });
 </script>
 
@@ -130,3 +128,7 @@ export default {
   }
 };
 </script>
+
+<style>
+@import "~/assets/css/ckeditor.css";
+</style>
