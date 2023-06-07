@@ -1,3 +1,5 @@
+import "~/assets/ckeditor/build/ckeditor";
+
 const config = {
   image: {
     upload: {
@@ -24,8 +26,7 @@ const config = {
   }
 };
 
-export default defineNuxtPlugin(async () => {
-  await import("~/assets/ckeditor/build/ckeditor");
+export default defineNuxtPlugin(() => {
   return {
     provide: { ckeditor: { editor: ClassicEditor, config } }
   };
