@@ -27,8 +27,9 @@ async function getPostContent (permalink) {
             </div>
             <div class="d-flex gap-2 flex-grow-1 flex-sm-grow-0">
               <button class="btn btn-info py-3 fw-bold w-100 text-uppercase d-flex gap-2 align-items-center" type="submit">
-                <Icon name="solar:archive-minimalistic-line-duotone" size="1.5rem" />
-                {{ t("publicar") }}
+                <Icon v-if="meta.edit" name="solar:diskette-linear" size="1.5rem" />
+                <Icon v-else name="solar:archive-minimalistic-line-duotone" size="1.5rem" />
+                {{ t(meta.edit ? "guardar" : "publicar") }}
               </button>
               <button class="btn btn-warning py-3 fw-bold w-100 text-uppercase d-flex gap-2 align-items-center" type="button" @click="previewPost()">
                 <Icon name="solar:test-tube-outline" size="1.5rem" />
@@ -59,7 +60,8 @@ async function getPostContent (permalink) {
               <label for="banner" class="rounded bg-body-tertiary position-relative overflow-hidden">
                 <div class="overlay position-absolute bg-dark w-100 h-100">
                   <div class="d-flex justify-content-center align-items-center h-100">
-                    <Icon name="solar:gallery-edit-outline" size="2.5rem" />
+                    <Icon v-if="meta.edit" name="solar:gallery-edit-outline" size="2.5rem" />
+                    <Icon v-else name="solar:gallery-add-outline" size="2.5rem" />
                   </div>
                 </div>
                 <img class="img-fluid" :src="form.banner.src ? form.banner.src : '/images/placeholder.png'" width="1290" height="600">
@@ -162,7 +164,7 @@ export default {
     async publishPost () {
       if (this.form.banner.src) {
         const { permalink } = await $fetch("/api/posts", {
-          method: "POST",
+          method: this.$route.meta.edit ? "PUT" : "POST",
           body: this.form
         }).catch(() => ({}));
         if (permalink) {
