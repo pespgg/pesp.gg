@@ -150,5 +150,6 @@ export default {
   admin: "Admin",
   publico: "Público",
   visibilidad: "Visibilidad",
-  oculto: "Oculto"
+  oculto: "Oculto",
+  confirm_delete_post: "¿Estás seguro que deseas eliminar esta publicación?"
 };

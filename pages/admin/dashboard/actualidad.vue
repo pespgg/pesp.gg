@@ -4,7 +4,7 @@ definePageMeta({ layout: "dashboard", middleware: "auth" });
 const { data: posts } = await useFetch("/api/posts");
 
 const deletePost = async (permalink) => {
-  if (confirm(t("confirmar_borrado"))) {
+  if (confirm(t("confirm_delete_post"))) {
     await useFetch(`/api/posts/${permalink}`, { method: "DELETE" });
     posts.value = posts.value.filter(post => post.permalink !== permalink);
   }
@@ -35,7 +35,7 @@ const deletePost = async (permalink) => {
               </td>
               <td>
                 <div class="d-flex gap-2">
-                  <button class="btn btn-primary" @click="editPost(post.permalink)">
+                  <button class="btn btn-primary" @click="editPost(post)">
                     <Icon name="solar:pen-linear" size="1.5rem" />
                   </button>
                   <button class="btn btn-danger" @click="deletePost(post.permalink)">
@@ -50,3 +50,34 @@ const deletePost = async (permalink) => {
     </div>
   </section>
 </template>
+
+<script>
+export default {
+  beforeRouteLeave (to, from, next) {
+    if (to.name === "admin-dashboard-publicar") {
+      to.meta = from.meta;
+    }
+    next();
+  },
+  methods: {
+    editPost (post) {
+      const { titulo, permalink, tag, fecha, visible } = post;
+      const data = {
+        titulo,
+        content: "",
+        banner: {
+          src: "",
+          type: ""
+        },
+        tag,
+        fecha: new Date(fecha).toISOString().split("T")[0],
+        permalink,
+        visible: Boolean(visible)
+      };
+      this.$route.meta.data = data;
+      this.$route.meta.edit = true;
+      this.$router.push("/admin/dashboard/publicar/");
+    }
+  }
+};
+</script>

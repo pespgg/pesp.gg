@@ -44,6 +44,12 @@ useSeoMeta({
 
 <script>
 export default {
+  beforeRouteLeave (to, from, next) {
+    if (to.name === "admin-dashboard-publicar") {
+      to.meta = from.meta;
+    }
+    next();
+  },
   data () {
     return {
       post: null
@@ -54,13 +60,7 @@ export default {
   },
   methods: {
     backToEditor () {
-      this.$router.beforeEach((to, from, next) => {
-        if (to.name === "admin-dashboard-publicar") {
-          to.meta.data = this.$route.meta.data;
-        }
-        next();
-      });
-      this.$router.push({ name: "admin-dashboard-publicar" });
+      this.$router.push("/admin/dashboard/publicar/");
     }
   }
 };

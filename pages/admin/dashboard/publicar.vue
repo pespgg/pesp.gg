@@ -1,6 +1,18 @@
 <script setup>
-const { component: Editor } = await import("@ckeditor/ckeditor5-vue");
 definePageMeta({ layout: "dashboard", middleware: "auth" });
+const { component: Editor } = await import("@ckeditor/ckeditor5-vue");
+const { meta } = useRoute();
+
+if (meta.data && meta.edit) {
+  meta.data.content = await getPostContent(meta.data.permalink);
+  meta.data.banner.src = getPostImage(meta.data.permalink, meta.data.fecha);
+  meta.data.banner.type = "url";
+}
+
+async function getPostContent (permalink) {
+  const url = process.dev ? `${SITE.local}/posts/content` : `${SITE.cdn}/posts/content`;
+  return await $fetch(`${url}/${permalink}.html`).catch(() => "");
+}
 </script>
 
 <template>
@@ -14,8 +26,14 @@ definePageMeta({ layout: "dashboard", middleware: "auth" });
               <label>{{ t("titulo") }}</label>
             </div>
             <div class="d-flex gap-2 flex-grow-1 flex-sm-grow-0">
-              <button class="btn btn-info py-3 fw-bold w-100" type="submit">{{ t("publicar") }}</button>
-              <button class="btn btn-warning py-3 fw-bold w-100" type="button" @click="previewPost()">{{ t("previsualizar") }}</button>
+              <button class="btn btn-info py-3 fw-bold w-100 text-uppercase d-flex gap-2 align-items-center" type="submit">
+                <Icon name="solar:archive-minimalistic-line-duotone" size="1.5rem" />
+                {{ t("publicar") }}
+              </button>
+              <button class="btn btn-warning py-3 fw-bold w-100 text-uppercase d-flex gap-2 align-items-center" type="button" @click="previewPost()">
+                <Icon name="solar:test-tube-outline" size="1.5rem" />
+                {{ t("previsualizar") }}
+              </button>
             </div>
           </div>
           <div class="col-lg-10 pt-2 pb-2 pb-lg-0">
@@ -83,6 +101,12 @@ definePageMeta({ layout: "dashboard", middleware: "auth" });
 <script>
 
 export default {
+  beforeRouteLeave (to, from, next) {
+    if (to.name === "admin-dashboard-preview") {
+      to.meta = from.meta;
+    }
+    next();
+  },
   data () {
     return {
       editor: false,
@@ -132,13 +156,8 @@ export default {
       if (!this.$refs.form.reportValidity()) {
         return;
       }
-      this.$router.beforeEach((to, from, next) => {
-        if (to.name === "admin-dashboard-preview") {
-          to.meta.data = this.form;
-        }
-        next();
-      });
-      this.$router.push({ name: "admin-dashboard-preview" });
+      this.$route.meta.data = this.form;
+      this.$router.replace("/admin/dashboard/preview/");
     },
     async publishPost () {
       if (this.form.banner.src) {
