@@ -1,7 +1,11 @@
 <script setup>
 definePageMeta({ layout: "dashboard", middleware: "auth" });
 
-const { data: posts } = await useFetch("/api/posts");
+const { data: posts } = await useFetch("/api/posts", {
+  query: {
+    hidden: true
+  }
+});
 
 const deletePost = async (permalink) => {
   if (confirm(t("confirm_delete_post"))) {
@@ -61,7 +65,7 @@ export default {
   },
   methods: {
     editPost (post) {
-      const { titulo, permalink, tag, fecha, visible } = post;
+      const { titulo, permalink, tag, fecha, visible, updated } = post;
       const data = {
         titulo,
         content: "",
@@ -71,6 +75,7 @@ export default {
         },
         tag,
         fecha: new Date(fecha).toISOString().split("T")[0],
+        updated,
         permalink,
         visible: Boolean(visible)
       };

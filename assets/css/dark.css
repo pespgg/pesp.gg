@@ -1,6 +1,7 @@
 [data-bs-theme=dark] {
   --bs-body-bg: #071018;
   --bs-body-bg-rgb: 7, 16, 24;
+  --body-track: #0e161f;
   --bs-dark: #07090e;
   --bs-dark-rgb: 7, 9, 14;
   --bs-heading-color: #f8f9fa;

@@ -17,6 +17,10 @@
   background-color: transparent!important;
 }
 
+.form-control:disabled {
+  background-color: var(--body-track);
+}
+
 .unete {
   background-image: url("/images/backgrounds/unete.jpg");
   background-repeat: no-repeat;

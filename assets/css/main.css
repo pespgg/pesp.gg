@@ -20,7 +20,7 @@
 
 *::-webkit-scrollbar-track {
   border-radius: 8px;
-  background-color: #0e161f;
+  background-color: var(--body-track);
 }
 
 *::-webkit-scrollbar-thumb {

@@ -5,7 +5,7 @@ const { meta } = useRoute();
 
 if (meta.data && meta.edit) {
   meta.data.content = await getPostContent(meta.data.permalink);
-  meta.data.banner.src = getPostImage(meta.data.permalink, meta.data.fecha);
+  meta.data.banner.src = getPostImage(meta.data.permalink, meta.data.updated);
   meta.data.banner.type = "url";
 }
 
@@ -37,7 +37,7 @@ async function getPostContent (permalink) {
               </button>
             </div>
           </div>
-          <div class="col-lg-10 pt-2 pb-2 pb-lg-0">
+          <div class="col-lg-10 py-2">
             <Transition name="fade" mode="out-in">
               <div v-if="editor" class="rounded border h-100 shadow d-flex flex-column overflow-hidden">
                 <ClientOnly>
@@ -91,7 +91,7 @@ async function getPostContent (permalink) {
             </div>
             <div class="p-3">
               <h5><Icon name="solar:link-minimalistic-2-linear" /> {{ t("permalink") }}</h5>
-              <input v-model="form.permalink" type="text" class="form-control form-control-sm" required>
+              <input v-model="form.permalink" type="text" class="form-control form-control-sm" :disabled="$route.meta.edit" required>
             </div>
           </div>
         </div>
@@ -143,7 +143,9 @@ export default {
       wordCountWrapper.appendChild(wordCountPlugin.wordCountContainer);
     },
     generatePermalink (e) {
-      this.form.permalink = e.target.value.toLowerCase().replace(/ /g, "-").normalize("NFD").replace(/[\u0300-\u036F]/g, "").replace(/[^a-zA-Z0-9-]/g, "");
+      if (!this.$route.meta.edit) {
+        this.form.permalink = e.target.value.toLowerCase().replace(/ /g, "-").normalize("NFD").replace(/[\u0300-\u036F]/g, "").replace(/[^a-zA-Z0-9-]/g, "");
+      }
     },
     addBanner (e) {
       const file = e.target.files[0];
@@ -163,7 +165,8 @@ export default {
     },
     async publishPost () {
       if (this.form.banner.src) {
-        const { permalink } = await $fetch("/api/posts", {
+        const url = this.$route.meta.edit ? `/api/posts/${this.form.permalink}` : "/api/posts";
+        const { permalink } = await $fetch(url, {
           method: this.$route.meta.edit ? "PUT" : "POST",
           body: this.form
         }).catch(() => ({}));

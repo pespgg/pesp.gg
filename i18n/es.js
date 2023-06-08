@@ -151,5 +151,6 @@ export default {
   publico: "Público",
   visibilidad: "Visibilidad",
   oculto: "Oculto",
-  confirm_delete_post: "¿Estás seguro que deseas eliminar esta publicación?"
+  confirm_delete_post: "¿Estás seguro que deseas eliminar esta publicación?",
+  acciones: "Acciones"
 };

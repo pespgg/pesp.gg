@@ -45,13 +45,13 @@ export default defineEventHandler(async (event) => {
   }
   else if (process.env.CDN) {
     const { cloudflare } = event.context;
-    await cloudflare.env.CDN.put(`posts/content/${filename}.html`, content, {
+    await cloudflare.env.CDN.put(`posts/content/${permalink}.html`, content, {
       httpMetadata: {
         contentType: "text/html"
       }
     });
 
-    await cloudflare.env.CDN.put(`posts/images/${filename}.jpg`, bannerBuffer, {
+    await cloudflare.env.CDN.put(`posts/images/${permalink}.jpg`, bannerBuffer, {
       httpMetadata: {
         contentType: "image/jpeg",
         contentEncoding: "base64"

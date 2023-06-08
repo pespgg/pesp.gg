@@ -2,10 +2,10 @@ import { eq, desc, and } from "drizzle-orm";
 // import data from "../../data/posts.json";
 // import { SCHEMA } from "../../utils/schema.js";
 
-export default defineEventHandler((event) => {
+export default defineEventHandler(async (event) => {
   const query = getQuery(event);
   let select = useDb().select();
-  const { props, limit, permalink } = query;
+  const { props, limit, permalink, hidden } = query;
   /*
   data.posts.forEach((post) => {
     try {
@@ -35,13 +35,14 @@ export default defineEventHandler((event) => {
   }
 
   const from = select.from(tables.actualidad);
-  const visible = eq(tables.actualidad.visible, 1);
+  const { user } = await requireUserSession(event);
+  const visible = user && hidden ? null : eq(tables.actualidad.visible, 1);
 
   if (permalink) {
     return from.where(and(eq(tables.actualidad.permalink, permalink), visible)).limit(1).get();
   }
 
-  const where = from.where(visible).orderBy(desc(tables.actualidad.fecha));
+  const where = from.where(visible).orderBy(desc(tables.actualidad.fecha), desc(tables.actualidad.updated));
 
   if (limit) {
     return where.limit(limit).all();
