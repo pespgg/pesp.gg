@@ -55,8 +55,8 @@ useHead({
                   <div class="rounded overflow-hidden shadow bg-dark">
                     <div class="row mx-0">
                       <div class="order-2 order-md-1 col-md-7 p-4">
-                        <h3 class="text-uppercase text-white"><strong>{{ t(caso.title) }}</strong></h3>
-                        <p class="text-white m-0">{{ t(caso.description) }}</p>
+                        <h3 class="text-uppercase text-light"><strong>{{ t(caso.title) }}</strong></h3>
+                        <p class="m-0">{{ t(caso.description) }}</p>
                       </div>
                       <div class="order-1 order-md-2 col-md-5 p-0">
                         <img :src="`${SITE.dirs.casos_exito}/${caso.image}`" class="img-fluid w-100 h-100 object-fit-cover">

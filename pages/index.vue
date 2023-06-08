@@ -45,16 +45,16 @@ useHead({
                           <NuxtLink :to="`/p/${post.permalink}/`">{{ post.titulo }}</NuxtLink>
                         </strong>
                       </h4>
-                      <div class="bg-body-tertiary text-white text-center mb-2 rounded small text-uppercase" role="button">{{ SCHEMA.tags.find(v => v.tag == post.tag).name }}</div>
+                      <div class="bg-body-tertiary text-light text-center mb-2 rounded small text-uppercase" role="button">{{ SCHEMA.tags.find(v => v.tag == post.tag).name }}</div>
                       <LoadPost :permalink="post.permalink" :truncate="220" />
                     </div>
                     <div class="card-footer bg-dark p-0 overflow-hidden">
                       <div class="d-flex align-items-center ps-3">
-                        <Icon class="text-white" name="solar:calendar-linear" size="1.1rem" />
+                        <Icon class="text-light" name="solar:calendar-linear" size="1.1rem" />
                         <small class="text-body-secondary ms-1" :title="post.fecha">
                           {{ formatDate(post.fecha) }}
                         </small>
-                        <NuxtLink class="hover ms-auto bg-primary text-white py-1 px-3" :to="'/p/' + post.permalink">
+                        <NuxtLink class="hover ms-auto bg-primary text-light py-1 px-3" :to="'/p/' + post.permalink">
                           <small>{{ t("abrir") }} <Icon name="solar:arrow-right-bold" size="1.5rem" /></small>
                         </NuxtLink>
                       </div>
@@ -93,8 +93,8 @@ useHead({
             <button class="btn btn-outline-light rounded-pill position-relative px-4" @click="moreCategorias = !moreCategorias">
               {{ moreCategorias ? t("ver_menos") : t("ver_mas") }}
               <Transition name="fade" mode="out-in">
-                <Icon v-if="moreCategorias" class="position-absolute bottom-100 start-50 translate-middle-x text-white" name="solar:alt-arrow-up-bold" size="2rem" />
-                <Icon v-else class="position-absolute top-100 start-50 translate-middle-x text-white" name="solar:alt-arrow-down-bold" size="2rem" />
+                <Icon v-if="moreCategorias" class="position-absolute bottom-100 start-50 translate-middle-x text-light" name="solar:alt-arrow-up-bold" size="2rem" />
+                <Icon v-else class="position-absolute top-100 start-50 translate-middle-x text-light" name="solar:alt-arrow-down-bold" size="2rem" />
               </Transition>
             </button>
           </div>
@@ -114,7 +114,7 @@ useHead({
                 <div class="scale-position">
                   <img class="img-fluid shadow" :src="`${SITE.dirs.servicios}/${servicio.images[0]}`">
                 </div>
-                <NuxtLink class="position-absolute bottom-0 bg-dark w-100 bg-opacity-75 px-3 py-2 text-white d-flex justify-content-between align-items-center" :to="`/servicios/#${servicio.title}`">
+                <NuxtLink class="position-absolute bottom-0 bg-dark w-100 bg-opacity-75 px-3 py-2 text-light d-flex justify-content-between align-items-center" :to="`/servicios/#${servicio.title}`">
                   <h5 class="m-0">{{ t(servicio.title) }}</h5>
                   <Icon name="solar:square-bottom-up-linear" size="1.5rem" />
                 </NuxtLink>

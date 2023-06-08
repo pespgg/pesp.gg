@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-dark bg-dark sticky-top shadow">
+  <nav class="navbar navbar-dark bg-dark sticky-top">
     <div class="container-fluid">
       <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
         <Icon name="solar:hamburger-menu-linear" size="2rem" />

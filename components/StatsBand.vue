@@ -15,16 +15,14 @@
                   <h1>
                     <Icon :name="item.icon" />
                   </h1>
-                  <h4 class="m-0 text-uppercase">
-                    <strong>{{ t(item.title) }}</strong>
-                  </h4>
+                  <h4 class="m-0 text-uppercase">{{ t(item.title) }}</h4>
                 </div>
               </div>
             </div>
           </div>
           <div v-if="!stat.carousel" class="m-0 text-uppercase">
             <template v-if="stat.seguidores">
-              <strong>{{ t(stat.title) }}</strong>
+              <h4 class="m-0">{{ t(stat.title) }}</h4>
               <h1>
                 <Icon :name="stat.icon" />
               </h1>
