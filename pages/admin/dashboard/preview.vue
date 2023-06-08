@@ -34,9 +34,10 @@ useSeoMeta({
         <Icon name="solar:arrow-left-bold" size="2rem" />
         {{ t("volver_editor") }}
       </button>
-      <button type="button" class="btn btn-info py-3 fw-bold text-uppercase shadow">
-        <Icon name="solar:archive-minimalistic-line-duotone" size="2rem" />
-        {{ t("publicar") }}
+      <button type="button" class="btn btn-info py-3 fw-bold text-uppercase shadow" @click="publishPost()">
+        <Icon v-if="edit" name="solar:diskette-linear" size="2rem" />
+        <Icon v-else name="solar:archive-minimalistic-line-duotone" size="2rem" />
+        {{ t(edit ? "guardar" : "publicar") }}
       </button>
     </div>
   </main>
@@ -52,15 +53,29 @@ export default {
   },
   data () {
     return {
+      edit: false,
       post: null
     };
   },
   mounted () {
+    this.edit = this.$route.meta.edit;
     this.post = this.$route.meta.data;
   },
   methods: {
     backToEditor () {
       this.$router.push("/admin/dashboard/publicar/");
+    },
+    async publishPost () {
+      if (this.post.banner.src) {
+        const url = this.edit ? `/api/posts/${this.post.permalink}` : "/api/posts";
+        const { permalink } = await $fetch(url, {
+          method: this.edit ? "PUT" : "POST",
+          body: this.post
+        }).catch(() => ({}));
+        if (permalink) {
+          this.$router.push("/admin/dashboard/actualidad/");
+        }
+      }
     }
   }
 };
