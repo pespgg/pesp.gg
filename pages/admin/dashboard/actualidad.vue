@@ -17,10 +17,13 @@ const deletePost = async (permalink) => {
 
 <template>
   <section>
-    <div class="container-fluid">
-      <h1>Actualidad</h1>
+    <div class="container-fluid py-5">
+      <div class="text-center mb-2">
+        <h1>{{ t("actualidad") }}</h1>
+        <p>{{ t("actualidad_admin_description") }}</p>
+      </div>
       <div class="table-responsive">
-        <table class="table table-dark rounded overflow-hidden table-striped table-hover align-middle">
+        <table class="table table-dark rounded shadow overflow-hidden table-striped table-hover align-middle">
           <thead>
             <tr>
               <th scope="col">{{ t("titulo") }}</th>

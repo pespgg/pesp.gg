@@ -152,5 +152,6 @@ export default {
   visibilidad: "Visibilidad",
   oculto: "Oculto",
   confirm_delete_post: "¿Estás seguro que deseas eliminar esta publicación?",
-  acciones: "Acciones"
+  acciones: "Acciones",
+  actualidad_admin_description: "En esta sección podrás editar y eliminar publicaciones de actualidad."
 };
