@@ -2,6 +2,13 @@
 definePageMeta({ layout: "dashboard", middleware: "auth" });
 
 const { data: posts } = await useFetch("/api/posts");
+
+const deletePost = async (permalink) => {
+  if (confirm(t("confirmar_borrado"))) {
+    await useFetch(`/api/posts/${permalink}`, { method: "DELETE" });
+    posts.value = posts.value.filter(post => post.permalink !== permalink);
+  }
+};
 </script>
 
 <template>
