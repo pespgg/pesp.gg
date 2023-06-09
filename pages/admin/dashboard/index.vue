@@ -16,7 +16,7 @@ const getEmoji = fullName => Object.values(emojis).find((emoji) => {
       </div>
       <Transition name="tab" mode="out-in">
         <div v-if="charts.general">
-          <select  v-model="filter.days" class="form-select ms-auto mb-2" :style="{ width: 'auto' }" @change="filterBy($event)">
+          <select v-model="filter.days" class="form-select ms-auto mb-2" :style="{ width: 'auto' }" @change="filterBy($event)">
             <option value="7">{{ t("ultimos_7_dias") }}</option>
             <option value="30">{{ t("ultimos_30_dias") }}</option>
             <option value="60">{{ t("ultimos_60_dias") }}</option>
