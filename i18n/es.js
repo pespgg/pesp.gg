@@ -153,5 +153,13 @@ export default {
   oculto: "Oculto",
   confirm_delete_post: "¿Estás seguro que deseas eliminar esta publicación?",
   acciones: "Acciones",
-  actualidad_admin_description: "En esta sección podrás editar y eliminar publicaciones de actualidad."
+  actualidad_admin_description: "En esta sección podrás editar y eliminar publicaciones de actualidad.",
+  visitas: "Visitas",
+  visitas_unicas: "Visitas únicas",
+  visitas_60: "Visitas en los últimos 60 días",
+  dashboard: "Dashboard",
+  estadisticas: "Aquí podrás ver las estadísticas generales del dominio y subdominios.",
+  pais_region: "País / Región",
+  solicitudes: "Solicitudes",
+  desconocido: "Desconocido"
 };

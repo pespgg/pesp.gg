@@ -45,11 +45,7 @@ async function getPostContent (permalink) {
                   <div ref="wordcount" class="bg-light text-dark py-1 px-2 small" />
                 </ClientOnly>
               </div>
-              <div v-else class="d-flex justify-content-center align-items-center h-100">
-                <div class="spinner-border spinner-lg text-light" role="status">
-                  <span class="visually-hidden">Loading...</span>
-                </div>
-              </div>
+              <SpinnerCircle v-else class="h-100" />
             </Transition>
           </div>
           <div class="col-lg-2 shadow p-0 bg-dark">

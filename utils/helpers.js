@@ -1,8 +1,8 @@
-export const formatDate = (date = "", lang = "es") => {
+export const formatDate = (date = "", style = "long", lang = "es") => {
   const d = new Date(date);
   return d.toLocaleDateString(lang, {
     year: "numeric",
-    month: "long",
+    month: style,
     day: "2-digit"
   });
 };
@@ -76,4 +76,13 @@ export const getPostImage = (name, updated) => {
 
 export const getTagName = (tag = "") => {
   return SCHEMA.tags.find(t => t.tag === tag).name;
+};
+
+export const getRandom = (min, max) => {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+};
+
+export const generateColor = (number) => {
+  const hue = number * 137.508; // use golden angle approximation
+  return `hsla(${hue},100%,75%)`;
 };

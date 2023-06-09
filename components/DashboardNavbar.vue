@@ -33,7 +33,7 @@ export default {
   data () {
     return {
       pages: {
-        inicio: {
+        dashboard: {
           to: "/admin/dashboard/",
           icon: ""
         },

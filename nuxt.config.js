@@ -92,6 +92,11 @@ export default {
     },
     turnstile: {
       secretKey: ""
+    },
+    cloudflare: {
+      apiKey: "",
+      email: "",
+      zoneTag: ""
     }
   },
 
