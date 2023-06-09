@@ -1,12 +1,13 @@
 export default defineNuxtPlugin(async () => {
   const { default: Chartjs } = await import("chart.js/auto");
-  const bodyColor = "#0e161f";
+  const bodyColor = "#adb5bd";
+  const bodyTrack = "#0e161f";
   class Chart {
     constructor (ctx) {
       this.ctx = ctx;
     }
 
-    render ({ dimensions, datasets }, callback) {
+    render ({ dimensions, datasets }) {
       const randomSeed = getRandom(0, 100);
       return new Chartjs(this.ctx, {
         type: "line",
@@ -14,7 +15,7 @@ export default defineNuxtPlugin(async () => {
           labels: dimensions,
           datasets: datasets.map((chart, i) => {
             const color = generateColor(randomSeed + i);
-            const fillColor = color.replace(")", ", 0.2)");
+            const fillColor = color.replace(")", ", 0.1)");
             return {
               data: chart.data,
               label: chart.label,
@@ -40,6 +41,7 @@ export default defineNuxtPlugin(async () => {
                 boxHeight: 16,
                 useBorderRadius: true,
                 borderRadius: 8,
+                color: bodyColor,
                 font: {
                   size: 16
                 }
@@ -59,15 +61,16 @@ export default defineNuxtPlugin(async () => {
           scales: {
             x: {
               border: {
-                color: bodyColor
+                color: bodyTrack
               },
               grid: {
-                color: bodyColor,
-                tickColor: bodyColor
+                color: bodyTrack,
+                tickColor: bodyTrack
               },
               display: true,
               stacked: true,
               ticks: {
+                color: bodyColor,
                 font: {
                   size: 16
                 },
@@ -78,19 +81,20 @@ export default defineNuxtPlugin(async () => {
             },
             y: {
               border: {
-                color: bodyColor
+                color: bodyTrack
               },
               grid: {
-                color: bodyColor,
-                tickColor: bodyColor
+                color: bodyTrack,
+                tickColor: bodyTrack
               },
               ticks: {
+                color: bodyColor,
                 font: {
                   size: 13
                 },
                 autoSkip: true
               },
-              stacked: true,
+              stacked: false,
               beginAtZero: true
             }
           }

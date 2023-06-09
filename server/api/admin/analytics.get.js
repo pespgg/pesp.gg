@@ -1,16 +1,25 @@
 export default eventHandler(async (event) => {
+  const { user } = await requireUserSession(event);
+  if (!user) {
+    throw createError({
+      statusCode: 401,
+      statusMessage: "Unauthorized"
+    });
+  }
+
   const { cloudflare } = useRuntimeConfig(event);
   const { days } = getQuery(event);
 
   const { zoneTag, email, apiKey } = cloudflare;
 
-  const lt = new Date();
+  const leq = new Date();
+  leq.setDate(leq.getDate());
 
-  const gt = new Date(lt);
+  const gt = new Date(leq);
   gt.setDate(gt.getDate() - days);
 
-  const date_lt = lt.toISOString().split("T")[0];
   const date_gt = gt.toISOString().split("T")[0];
+  const date_leq = leq.toISOString().split("T")[0];
 
   const graphql = {
     query: `{
@@ -20,15 +29,20 @@ export default eventHandler(async (event) => {
             orderBy: [date_ASC]
             limit: 1000
             filter: {
-              date_geq: "${date_gt}"
-              date_lt: "${date_lt}"
+              date_gt: "${date_gt}"
+              date_leq: "${date_leq}"
             }
           ) {
             dimensions {
               date
             }
             sum {
+              browserMap {
+                pageViews
+                uaBrowserFamily
+              }
               pageViews
+              threats
               countryMap {
                 clientCountryName
                 requests

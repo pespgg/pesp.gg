@@ -1,7 +1,10 @@
 <script setup>
 definePageMeta({ layout: "dashboard", middleware: "auth" });
 const emojis = await import("nuxt-twemoji/emojis").catch(() => ({}));
-const getEmoji = name => Object.values(emojis).find(emoji => emoji.name === name);
+const getEmoji = fullName => Object.values(emojis).find((emoji) => {
+  const name = `flag-${String(fullName).toLowerCase().replace(/\s+/g, "-")}`;
+  return emoji.name === name;
+})?.emoji;
 </script>
 
 <template>
@@ -12,9 +15,35 @@ const getEmoji = name => Object.values(emojis).find(emoji => emoji.name === name
         <p>{{ t("estadisticas") }}</p>
       </div>
       <Transition name="tab" mode="out-in">
-        <div v-if="charts[0] && charts[0].rendered" class="bg-dark rounded p-4 px-2 px-lg-4 img-fluid w-100">
-          <h5 class="text-center">{{ t("visitas_60") }}</h5>
-          <div ref="d60" :style="{ height: '400px' }" />
+        <div v-if="charts.general">
+          <select  v-model="filter.days" class="form-select ms-auto mb-2" :style="{ width: 'auto' }" @change="filterBy($event)">
+            <option value="7">{{ t("ultimos_7_dias") }}</option>
+            <option value="30">{{ t("ultimos_30_dias") }}</option>
+            <option value="60">{{ t("ultimos_60_dias") }}</option>
+            <option value="90">{{ t("ultimos_90_dias") }}</option>
+            <option value="180">{{ t("ultimos_180_dias") }}</option>
+            <option value="365">{{ t("ultimos_365_dias") }}</option>
+          </select>
+          <div class="bg-dark rounded p-4 px-2 px-lg-4 img-fluid w-100">
+            <h5 class="text-center">{{ t("visitas_60") }}</h5>
+            <div class="row mb-4 mx-0 border-bottom py-2">
+              <div class="col-6 border-end">
+                <p class="m-0 ">{{ t("max_unique") }}</p>
+                <p class="m-0">
+                  <small>{{ t("por_dia") }}</small>
+                </p>
+                <h4>{{ unique.max }}</h4>
+              </div>
+              <div class="col-6">
+                <p class="m-0">{{ t("min_unique") }}</p>
+                <p class="m-0">
+                  <small>{{ t("por_dia") }}</small>
+                </p>
+                <h4>{{ unique.min }}</h4>
+              </div>
+            </div>
+            <div ref="general" :style="{ height: '400px' }" />
+          </div>
         </div>
         <SpinnerCircle v-else :style="{ height: '400px' }" />
       </Transition>
@@ -30,7 +59,7 @@ const getEmoji = name => Object.values(emojis).find(emoji => emoji.name === name
             <tbody>
               <tr v-for="(country, i) in countries" :key="i">
                 <td class="d-flex gap-2 align-items-center">
-                  <Twemoji :emoji="getEmoji(`flag-${String(country.info?.name_en).toLowerCase().replace(/\s+/g, '-')}`)" size="1.5rem" />
+                  <Twemoji v-if="getEmoji(country.info?.name_en)" :emoji="getEmoji(country.info?.name_en)" size="1.5rem" />
                   {{ country.info?.name_es || t("desconocido") }}
                 </td>
                 <td class="border-start text-end">{{ country.requests }}</td>
@@ -39,6 +68,22 @@ const getEmoji = name => Object.values(emojis).find(emoji => emoji.name === name
           </table>
         </div>
       </Transition>
+      <div v-if="browsers.length" class="mt-3">
+        <table class="table table-dark table-striped table-hover rounded overflow-hidden">
+          <thead>
+            <tr>
+              <th>{{ t("browser") }}</th>
+              <th class="text-end border-start">{{ t("visitas") }}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="(browser, i) in browsers" :key="i">
+              <td class="d-flex gap-2 align-items-center">{{ browser.name }}</td>
+              <td class="border-start text-end">{{ browser.pageViews }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </section>
 </template>
@@ -47,65 +92,103 @@ const getEmoji = name => Object.values(emojis).find(emoji => emoji.name === name
 export default {
   data () {
     return {
+      countriesData: [],
+      filter: {
+        days: 60
+      },
       analytics: [],
-      charts: [],
-      countries: []
+      charts: {}
     };
   },
+  computed: {
+    dates () {
+      return this.analytics.map(record => formatDate(record.dimensions.date, "short"));
+    },
+    pageViews () {
+      return {
+        data: this.analytics.map(record => record.sum.pageViews),
+        label: t("visitas")
+      };
+    },
+    uniques () {
+      return {
+        data: this.analytics.map(record => record.uniq.uniques),
+        label: t("visitas_unicas")
+      };
+    },
+    threats () {
+      return {
+        data: this.analytics.map(record => record.sum.threats),
+        label: t("amenazas")
+      };
+    },
+    countries () {
+      const countryMap = this.analytics.map(record => record.sum.countryMap.map(c => c));
+      const countryMapReduced = countryMap.flat().reduce((acc, { clientCountryName, requests }) => {
+        acc[clientCountryName] = acc[clientCountryName] ? acc[clientCountryName] + requests : requests;
+        return acc;
+      }, {});
+      const countryMapSorted = Object.entries(countryMapReduced).sort(([, a], [, b]) => b - a);
+      return countryMapSorted.map(([code, requests]) => ({
+        code,
+        info: this.countriesData.find(c => c.code_2 === code),
+        requests
+      })).slice(0, 10);
+    },
+    unique () {
+      return {
+        max: Math.max(...this.uniques.data),
+        min: Math.min(...this.uniques.data)
+      };
+    },
+    browsers () {
+      const browserMap = this.analytics.map(record => record.sum.browserMap.map(b => b));
+      const browserMapReduced = browserMap.flat().reduce((acc, { uaBrowserFamily, pageViews }) => {
+        acc[uaBrowserFamily] = acc[uaBrowserFamily] ? acc[uaBrowserFamily] + pageViews : pageViews;
+        return acc;
+      }, {});
+      const browserMapSorted = Object.entries(browserMapReduced).sort(([, a], [, b]) => b - a);
+      return browserMapSorted.map(([name, pageViews]) => ({
+        name,
+        pageViews
+      }));
+    },
+    generalChartContent () {
+      return {
+        dimensions: this.dates,
+        datasets: [this.pageViews, this.uniques, this.threats]
+      };
+    }
+  },
   async mounted () {
-    this.analytics = await $fetch("/api/admin/analytics", {
-      query: {
-        days: 60
-      }
-    }).catch(() => []);
-
-    const d60Canva = document.createElement("canvas");
-    d60Canva.height = 400;
-    d60Canva.style.height = "400px";
-    d60Canva.style.maxHeight = "400px";
-    const d60Context = d60Canva.getContext("2d");
-
-    const dates = this.analytics.map(record => formatDate(record.dimensions.date, "short"));
-    const pageViews = {
-      data: this.analytics.map(record => record.sum.pageViews),
-      label: t("visitas")
-    };
-    const uniques = {
-      data: this.analytics.map(record => record.uniq.uniques),
-      label: t("visitas_unicas")
-    };
-
-    this.charts.push({
-      context: d60Context,
-      content: {
-        dimensions: dates,
-        datasets: [pageViews, uniques]
-      },
-      rendered: true
-    });
-
+    await this.requestAnalytics(this.filter.days);
+    this.countriesData = await $fetch("https://gist.githubusercontent.com/Yizack/bbfce31e0217a3689c8d961a356cb10d/raw/3e4c6e5fb7b767b8e24110ad3108db6acb749ba7/countries.json").then(c => JSON.parse(c).countries).catch(() => []);
+    const generalCanva = document.createElement("canvas");
+    generalCanva.height = 400;
+    generalCanva.style.height = "400px";
+    generalCanva.style.maxHeight = "400px";
+    const generalContext = generalCanva.getContext("2d");
+    this.charts.general = new this.$nuxt.$Chart(generalContext);
     setTimeout(() => {
-      this.$refs.d60.appendChild(d60Canva);
-    }, 500);
+      this.$refs.general.appendChild(generalCanva);
+    }, 1000);
 
-    this.charts.forEach((c) => {
-      const chart = new this.$nuxt.$Chart(c.context);
-      chart.render(c.content);
-    });
-
-    const countriesData = await $fetch("https://gist.githubusercontent.com/Yizack/bbfce31e0217a3689c8d961a356cb10d/raw/3e4c6e5fb7b767b8e24110ad3108db6acb749ba7/countries.json").then(c => JSON.parse(c).countries).catch(() => {});
-
-    const countryMap = this.analytics.map(record => record.sum.countryMap.map(c => c));
-    const countryMapReduced = countryMap.flat().reduce((acc, { clientCountryName, requests }) => {
-      acc[clientCountryName] = acc[clientCountryName] ? acc[clientCountryName] + requests : requests;
-      return acc;
-    }, {});
-    const countryMapSorted = Object.entries(countryMapReduced).sort(([, a], [, b]) => b - a);
-    this.countries = countryMapSorted.map(([code, requests]) => ({
-      code,
-      info: countriesData.find(c => c.code_2 === code),
-      requests
-    })).slice(0, 10);
+    this.renderChart();
+  },
+  methods: {
+    renderChart () {
+      this.$nuxt.$Chart.destroyAll();
+      this.charts.general.render(this.generalChartContent);
+    },
+    async requestAnalytics (days) {
+      this.analytics = await $fetch("/api/admin/analytics", {
+        query: { days }
+      }).catch(() => []);
+    },
+    async filterBy (e) {
+      await this.requestAnalytics(e.target.value);
+      this.renderChart();
+    }
   }
 };
 </script>

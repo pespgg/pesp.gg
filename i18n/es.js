@@ -161,5 +161,15 @@ export default {
   estadisticas: "Aquí podrás ver las estadísticas generales del dominio y subdominios.",
   pais_region: "País / Región",
   solicitudes: "Solicitudes",
-  desconocido: "Desconocido"
+  desconocido: "Desconocido",
+  browser: "Navegador",
+  max_unique: "Máximo de visitas únicas",
+  min_unique: "Mínimo de visitas únicas",
+  por_dia: "Por día",
+  ultimos_7_dias: "Últimos 7 días",
+  ultimos_30_dias: "Últimos 30 días",
+  ultimos_60_dias: "Últimos 60 días",
+  ultimos_90_dias: "Últimos 90 días",
+  ultimos_180_dias: "Últimos 180 días",
+  ultimos_365_dias: "Últimos 365 días"
 };
