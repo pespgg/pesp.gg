@@ -57,7 +57,7 @@ const getEmoji = fullName => Object.values(emojis).find((emoji) => {
               </tr>
             </thead>
             <tbody>
-              <tr v-for="(country, i) in countries" :key="i">
+              <tr v-for="country in countries" :key="country.code">
                 <td class="d-flex gap-2 align-items-center">
                   <Twemoji v-if="getEmoji(country.info?.name_en)" :emoji="getEmoji(country.info?.name_en)" size="1.5rem" />
                   {{ country.info?.name_es || t("desconocido") }}
