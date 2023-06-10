@@ -142,7 +142,7 @@ export default {
     },
     generatePermalink (e) {
       if (!this.$route.meta.edit) {
-        this.form.permalink = e.target.value.trim().toLowerCase().replace(/ /g, "-").normalize("NFD").replace(/[\u0300-\u036F]/g, "").replace(/[^a-zA-Z0-9-]/g, "");
+        this.form.permalink = e.target.value.trim().toLowerCase().replace(/\s+/g, "-").normalize("NFD").replace(/[\u0300-\u036F]/g, "").replace(/[^a-zA-Z0-9-]/g, "");
       }
     },
     addBanner (e) {
