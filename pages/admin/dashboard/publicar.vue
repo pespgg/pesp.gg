@@ -4,14 +4,14 @@ const { component: Editor } = await import("@ckeditor/ckeditor5-vue");
 const { meta } = useRoute();
 
 if (meta.data && meta.edit) {
-  meta.data.content = await getPostContent(meta.data.permalink);
+  meta.data.content = await getPostContent(meta.data.permalink, meta.data.updated);
   meta.data.banner.src = getPostImage(meta.data.permalink, meta.data.updated);
   meta.data.banner.type = "url";
 }
 
-async function getPostContent (permalink) {
+async function getPostContent (permalink, updated) {
   const url = process.dev ? `${SITE.local}/posts/content` : `${SITE.cdn}/posts/content`;
-  return await $fetch(`${url}/${permalink}.html`).catch(() => "");
+  return await $fetch(`${url}/${permalink}.html?updated=${updated}`).catch(() => "");
 }
 </script>
 
