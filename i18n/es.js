@@ -156,7 +156,7 @@ export default {
   actualidad_admin_description: "En esta sección podrás editar y eliminar publicaciones de actualidad.",
   visitas: "Visitas",
   visitas_unicas: "Visitas únicas",
-  visitas_60: "Visitas en los últimos 60 días",
+  visitas_en: "Visitas en los",
   dashboard: "Dashboard",
   estadisticas: "Aquí podrás ver las estadísticas generales del dominio y subdominios.",
   pais_region: "País / Región",

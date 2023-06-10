@@ -16,16 +16,16 @@ const getEmoji = fullName => Object.values(emojis).find((emoji) => {
       </div>
       <Transition name="tab" mode="out-in">
         <div v-if="charts.general">
-          <select v-model="filter.days" class="form-select ms-auto mb-2" :style="{ width: 'auto' }" @change="filterBy($event)">
-            <option value="7">{{ t("ultimos_7_dias") }}</option>
-            <option value="30">{{ t("ultimos_30_dias") }}</option>
-            <option value="60">{{ t("ultimos_60_dias") }}</option>
-            <option value="90">{{ t("ultimos_90_dias") }}</option>
-            <option value="180">{{ t("ultimos_180_dias") }}</option>
-            <option value="365">{{ t("ultimos_365_dias") }}</option>
-          </select>
+          <div class="d-flex justify-content-end align-items-center mb-2">
+            <Transition name="fade" mode="out-in">
+              <SpinnerCircle v-if="changeRequest" />
+            </Transition>
+            <select v-model="filter.days" class="form-select ms-3" :style="{ width: 'auto' }" @change="filterBy($event)">
+              <option v-for="n of daysOptions" :key="n" :value="n">{{ t(`ultimos_${n}_dias`) }}</option>
+            </select>
+          </div>
           <div class="bg-dark rounded p-4 px-2 px-lg-4 img-fluid w-100">
-            <h5 class="text-center">{{ t("visitas_60") }}</h5>
+            <h5 class="text-center">{{ t("visitas_en") }} {{ t(`ultimos_${filter.days}_dias`).toLowerCase() }}</h5>
             <div class="row mb-4 mx-0 border-bottom py-2">
               <div class="col-6 border-end">
                 <p class="m-0 ">{{ t("max_unique") }}</p>
@@ -96,8 +96,10 @@ export default {
       filter: {
         days: 60
       },
+      daysOptions: [7, 30, 60, 90, 180, 365],
       analytics: [],
-      charts: {}
+      charts: {},
+      changeRequest: false
     };
   },
   computed: {
@@ -178,7 +180,9 @@ export default {
   methods: {
     renderChart () {
       this.$nuxt.$Chart.destroyAll();
-      this.charts.general.render(this.generalChartContent);
+      this.charts.general.render(this.generalChartContent, () => {
+        this.changeRequest = false;
+      });
     },
     async requestAnalytics (days) {
       this.analytics = await $fetch("/api/admin/analytics", {
@@ -186,6 +190,7 @@ export default {
       }).catch(() => []);
     },
     async filterBy (e) {
+      this.changeRequest = true;
       await this.requestAnalytics(e.target.value);
       this.renderChart();
     }

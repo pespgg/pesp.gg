@@ -7,7 +7,7 @@ export default defineNuxtPlugin(async () => {
       this.ctx = ctx;
     }
 
-    render ({ dimensions, datasets }) {
+    render ({ dimensions, datasets }, callback = () => {}) {
       const randomSeed = getRandom(0, 100);
       return new Chartjs(this.ctx, {
         type: "line",
@@ -29,6 +29,11 @@ export default defineNuxtPlugin(async () => {
           })
         },
         options: {
+          animation: {
+            onComplete: () => {
+              callback();
+            }
+          },
           plugins: {
             title: {
               display: false
