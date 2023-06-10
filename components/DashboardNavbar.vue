@@ -1,10 +1,10 @@
 <template>
-  <nav class="navbar navbar-dark bg-dark sticky-top">
-    <div class="container-fluid">
+  <nav class="navbar navbar-dark navbar-expand-md bg-dark sticky-top">
+    <div class="container">
       <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
         <Icon name="solar:hamburger-menu-linear" size="2rem" />
       </button>
-      <NuxtLink class="navbar-brand d-flex" to="/">
+      <NuxtLink class="navbar-brand d-flex" to="/admin">
         <Icon name="LogoIcon" size="2rem" />
       </NuxtLink>
       <div id="offcanvasNavbar" class="offcanvas offcanvas-start text-white bg-dark" tabindex="-1" aria-labelledby="offcanvasNavbarLabel">
@@ -14,12 +14,18 @@
           <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close" />
         </div>
         <div class="offcanvas-body text-center">
-          <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+          <ul class="admin-nav navbar-nav justify-content-center gap-md-5 flex-grow-1">
             <li v-for="(page, key) of pages" :key="key" class="nav-item text-uppercase" data-bs-dismiss="offcanvas">
-              <NuxtLink class="nav-link text-decoration-none" aria-current="page" :to="page.to">{{ t(key) }}</NuxtLink>
+              <NuxtLink class="d-flex align-items-center gap-2 nav-link text-decoration-none px-2" aria-current="page" :to="page.to">
+                <Icon class="text-light" :name="page.icon" size="1.5rem" />
+                <span>{{ t(key) }}</span>
+              </NuxtLink>
             </li>
             <li class="nav-item text-uppercase" data-bs-dismiss="offcanvas">
-              <div class="nav-link text-decoration-none" role="button" @click="logout()">{{ t("logout") }}</div>
+              <div class="d-flex align-items-center gap-2 px-2 nav-link text-decoration-none" role="button" @click="logout()">
+                <Icon class="text-light" name="solar:power-linear" size="1.5rem" />
+                <div>{{ t("logout") }}</div>
+              </div>
             </li>
           </ul>
         </div>
@@ -35,19 +41,15 @@ export default {
       pages: {
         dashboard: {
           to: "/admin/dashboard/",
-          icon: ""
+          icon: "solar:round-graph-linear"
         },
         publicar: {
           to: "/admin/dashboard/publicar/",
-          icon: ""
+          icon: "solar:pen-new-square-linear"
         },
         actualidad: {
           to: "/admin/dashboard/actualidad/",
-          icon: ""
-        },
-        uploader: {
-          to: "/admin/dashboard/uploader/",
-          icon: ""
+          icon: "solar:inbox-archive-outline"
         }
       }
     };
@@ -62,3 +64,18 @@ export default {
   }
 };
 </script>
+
+<style>
+.admin-nav .nav-link {
+  border-radius: var(--bs-border-radius);
+}
+
+.admin-nav .nav-link:hover {
+  background-color: var(--body-track);
+}
+
+.admin-nav .router-link-exact-active {
+  background-color: var(--bs-primary)!important;
+  color: var(--bs-heading-color);
+}
+</style>
