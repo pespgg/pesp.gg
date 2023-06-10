@@ -13,7 +13,7 @@ export default defineEventHandler(async (event) => {
 
   const post = await useDb().update(tables.actualidad).set({
     permalink,
-    titulo,
+    titulo: titulo.trim(),
     tag,
     visible: Number(visible),
     updated: new Date().getTime(),

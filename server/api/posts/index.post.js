@@ -28,7 +28,7 @@ export default defineEventHandler(async (event) => {
 
   const post = await useDb().insert(tables.actualidad).values({
     permalink,
-    titulo,
+    titulo: titulo.trim(),
     tag,
     visible: Number(visible),
     updated: new Date(fecha).getTime(),
