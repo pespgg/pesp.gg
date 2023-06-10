@@ -155,6 +155,7 @@ export default {
   acciones: "Acciones",
   actualidad_admin_description: "En esta sección podrás editar y eliminar publicaciones de actualidad.",
   visitas: "Visitas",
+  amenazas: "Amenazas",
   visitas_unicas: "Visitas únicas",
   visitas_en: "Visitas en los",
   dashboard: "Dashboard",
@@ -171,5 +172,6 @@ export default {
   ultimos_60_dias: "Últimos 60 días",
   ultimos_90_dias: "Últimos 90 días",
   ultimos_180_dias: "Últimos 180 días",
-  ultimos_365_dias: "Últimos 365 días"
+  ultimos_365_dias: "Últimos 365 días",
+  logout: "Salir"
 };
