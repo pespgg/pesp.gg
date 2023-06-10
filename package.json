@@ -52,7 +52,7 @@
     "drizzle-orm": "^0.26.5",
     "mustache": "^4.2.0",
     "nuxt-icon": "^0.4.1",
-    "nuxt-twemoji": "^3.2.6"
+    "nuxt-twemoji": "^3.3.0"
   },
   "overrides": {
     "vue": "latest"
