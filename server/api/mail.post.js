@@ -12,7 +12,7 @@ export default defineEventHandler(async (event) => {
     });
   }
 
-  const verify = await verifyTurnstile(config.turnstile.secretKey, token);
+  const verify = await verifyTurnstileToken(token, event);
 
   if (!verify.success) {
     return verify.success;
