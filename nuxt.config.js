@@ -1,6 +1,6 @@
 import { SITE } from "./utils/site.js";
 
-export default {
+export default defineNuxtConfig({
   app: {
     head: {
       charset: "utf-8",
@@ -102,5 +102,9 @@ export default {
 
   devtools: {
     enabled: true
+  },
+
+  experimental: {
+    inlineSSRStyles: false
   }
-};
+});
