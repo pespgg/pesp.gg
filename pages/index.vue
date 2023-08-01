@@ -64,7 +64,7 @@ useHead({
               </ul>
             </div>
             <div class="glide__bullets" data-glide-el="controls[nav]">
-              <button v-for="i of posts.length" :key="i" class="glide__bullet" :data-glide-dir="`=${i}`" />
+              <button v-for="i of posts?.length" :key="i" class="glide__bullet" :data-glide-dir="`=${i}`" />
             </div>
           </div>
         </div>
