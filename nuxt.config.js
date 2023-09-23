@@ -96,6 +96,7 @@ export default defineNuxtConfig({
     cloudflare: {
       apiKey: "",
       email: "",
+      account: "",
       zoneTag: ""
     }
   },
