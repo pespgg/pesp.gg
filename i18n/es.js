@@ -173,5 +173,6 @@ export default {
   ultimos_90_dias: "Últimos 90 días",
   ultimos_180_dias: "Últimos 180 días",
   ultimos_365_dias: "Últimos 365 días",
-  logout: "Salir"
+  logout: "Salir",
+  correo_vinculado: "Correo vinculado"
 };

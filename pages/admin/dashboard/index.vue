@@ -97,7 +97,7 @@ const getEmoji = fullName => Object.values(emojis).find((emoji) => {
           <thead>
             <tr>
               <th>{{ t("correo") }}</th>
-              <th class="border-start">{{ t("gmail_vinculado") }}</th>
+              <th class="border-start">{{ t("correo_vinculado") }}</th>
             </tr>
           </thead>
           <tbody>
@@ -196,7 +196,7 @@ export default {
     const generalContext = generalCanva.getContext("2d");
     this.charts.general = new this.$nuxt.$Chart(generalContext);
     setTimeout(() => {
-      this.$refs.general.appendChild(generalCanva);
+      this.$refs.general?.appendChild(generalCanva);
     }, 1000);
 
     this.renderChart();

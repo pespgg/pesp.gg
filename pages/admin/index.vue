@@ -11,11 +11,11 @@ definePageMeta({ layout: false, middleware: "auth" });
           <h5 class="text-center mb-4 text-uppercase">{{ t("admin") }}</h5>
         </div>
         <div class="form-floating mb-3">
-          <input v-model="form.user" type="text" class="form-control" :placeholder="t('usuario')" required>
+          <input v-model="form.user" type="text" class="form-control" :placeholder="t('usuario')" autocomplete="username" required>
           <label>{{ t("usuario") }}</label>
         </div>
         <div class="form-floating mb-3">
-          <input v-model="form.pass" type="password" class="form-control" :placeholder="t('usuario')" required>
+          <input v-model="form.pass" type="password" class="form-control" :placeholder="t('usuario')" autocomplete="current-password" required>
           <label>{{ t("pass") }}</label>
         </div>
         <div class="d-grid">

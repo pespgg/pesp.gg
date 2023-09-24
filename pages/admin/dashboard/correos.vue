@@ -13,7 +13,7 @@ definePageMeta({ layout: false, middleware: "auth" });
           <input v-model.trim="form.customAddress" pattern="[a-zA-Z0-9.]+" type="text" class="form-control" placeholder="Correo">
           <span class="input-group-text">@pesp.gg</span>
         </div>
-        <input v-model.trim="form.destinationAddress" type="email" class="form-control mb-3" placeholder="correo@gmail.com" required>
+        <input v-model.trim="form.destinationAddress" type="email" class="form-control mb-3" placeholder="correo@outlook.com" required>
         <div class="d-grid">
           <button class="btn btn-info btn-lg" type="submit" :disabled="loading">
             <SpinnerCircle v-if="loading" />

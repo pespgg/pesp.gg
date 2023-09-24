@@ -53,5 +53,6 @@ export default {
   mobile: "Mobile Competitions",
   /* Services: Brands */
   confian: "They trust us",
-  patrocina: "Brands that sponsor our events"
+  patrocina: "Brands that sponsor our events",
+  correo_vinculado: "Linked email"
 };
