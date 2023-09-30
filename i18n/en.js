@@ -54,5 +54,6 @@ export default {
   /* Services: Brands */
   confian: "They trust us",
   patrocina: "Brands that sponsor our events",
-  correo_vinculado: "Linked email"
+  correo_corporativo: "Corporate email",
+  correo_personal: "Personal email",
 };

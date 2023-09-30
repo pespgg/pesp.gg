@@ -96,8 +96,8 @@ const getEmoji = fullName => Object.values(emojis).find((emoji) => {
         <table class="table table-dark table-striped table-hover rounded-bottom overflow-hidden">
           <thead>
             <tr>
-              <th>{{ t("correo") }}</th>
-              <th class="border-start">{{ t("correo_vinculado") }}</th>
+              <th>{{ t("correo_corporativo") }}</th>
+              <th class="border-start">{{ t("correo_personal") }}</th>
             </tr>
           </thead>
           <tbody>
