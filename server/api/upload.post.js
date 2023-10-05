@@ -1,4 +1,4 @@
-import { SITE } from "./../../utils/site.js";
+import { SITE } from "~/utils/site";
 
 export default defineEventHandler(async (event) => {
   const file = await readMultipartFormData(event);
