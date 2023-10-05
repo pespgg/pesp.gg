@@ -1,4 +1,6 @@
-export const formatDate = (date = "", style = "long", lang = "es") => {
+
+
+export const formatDate = (date: string | number, style: Intl.DateTimeFormatOptions["month"], lang: string = "es") => {
   const d = new Date(date);
   return d.toLocaleDateString(lang, {
     year: "numeric",
@@ -11,11 +13,11 @@ export const currentYear = () => {
   return new Date().getFullYear();
 };
 
-export function sleep (ms) {
+export function sleep (ms: number) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-export const tweenNumber = async ({ target, duration }, callback = (n = 0) => {}) => {
+export const tweenNumber = async ({ target, duration }: { target: number, duration: number}, callback: (count: number) => void) => {
   let count = 0;
   while (count < target) {
     const add = target / (60 * duration);
@@ -31,17 +33,12 @@ export const tweenNumber = async ({ target, duration }, callback = (n = 0) => {}
 };
 
 export const stripTags = (str = "") => {
-  const tags = [/<\/?([a-z][a-z0-9]*)\b[^>]*>/gi, " "];
-  const comments = [/<!--[\s\S]*?-->/gi, ""];
-  const nbsp = [/&nbsp;/g, " "];
-  const spaces = [/\s\s+/g, " "];
-  const breaklines = [/(\r\n|\n|\r)/g, " "];
   return str
-    .replace(...comments)
-    .replace(...tags)
-    .replace(...nbsp)
-    .replace(...breaklines)
-    .replace(...spaces)
+    .replace(/<!--[\s\S]*?-->/gi, "") // comments
+    .replace(/<\/?([a-z][a-z0-9]*)\b[^>]*>/gi, " ") // tags
+    .replace(/&nbsp;/g, " ") // non breaking spaces
+    .replace(/(\r\n|\n|\r)/g, " ") // breaklines
+    .replace(/\s\s+/g, " ") // multiple spaces
     .trim();
 };
 
@@ -69,20 +66,20 @@ export const getRandomFromArray = (arr = []) => {
   return arr[Math.floor(Math.random() * arr.length)];
 };
 
-export const getPostImage = (name, updated) => {
+export const getPostImage = (name: string, updated: number) => {
   const path = process.dev ? `${SITE.local}/posts/images` : `${SITE.cdn}/posts/images`;
   return `${path}/${name}.jpg?updated=${updated}`;
 };
 
-export const getTagName = (tag = "") => {
-  return SCHEMA.tags.find(t => t.tag === tag).name;
+export const getTagName = (tag: string) => {
+  return SCHEMA.tags.find(t => t.tag === tag)?.name;
 };
 
-export const getRandom = (min, max) => {
+export const getRandom = (min: number, max: number) => {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 };
 
-export const generateColor = (number) => {
+export const generateColor = (number: number) => {
   const hue = number * 137.508; // use golden angle approximation
   return `hsla(${hue},100%,75%)`;
 };
