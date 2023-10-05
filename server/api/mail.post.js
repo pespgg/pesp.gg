@@ -1,5 +1,5 @@
 import Mustache from "mustache";
-import { i18n, t } from "./../../utils/i18n.js";
+import { i18n, t } from "./../../utils/i18n.ts";
 
 export default defineEventHandler(async (event) => {
   const { template, form, lang } = await readBody(event);
