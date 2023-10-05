@@ -1,5 +1,5 @@
 import Mustache from "mustache";
-import { i18n, t } from "./../../utils/i18n.ts";
+import { strings, t } from "~/utils/strings";
 
 export default defineEventHandler(async (event) => {
   const { template, form, lang } = await readBody(event);
@@ -18,7 +18,7 @@ export default defineEventHandler(async (event) => {
     return verify.success;
   }
 
-  i18n.setLanguage(lang);
+  strings.setLanguage(lang);
 
   const template_strings = {
     shared: {
