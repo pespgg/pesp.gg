@@ -1,4 +1,4 @@
-import { SITE } from "./utils/site.ts";
+import { SITE } from "./utils/site.js";
 
 export default defineNuxtConfig({
   app: {

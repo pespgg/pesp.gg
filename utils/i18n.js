@@ -1,15 +1,14 @@
-import es from "~/i18n/es.js";
-import en from "~/i18n/en.js";
+import es from "./../i18n/es.js";
+import en from "./../i18n/en.js";
 
-const locales: Record<string, Record<string, string>> = { es, en };
+const locales = { es, en };
 
 class I18n {
-  code: string;
-  constructor (code: string) {
+  constructor (code) {
     this.code = String(code).toLowerCase();
   }
 
-  get (key:string) {
+  get (key = "") {
     return locales[this.code][key] || locales.en[key] || key;
   }
 
@@ -20,6 +19,6 @@ class I18n {
 
 export const i18n = new I18n("es");
 
-export const t = (key: string) => {
+export const t = (key) => {
   return i18n.get(key);
 };
