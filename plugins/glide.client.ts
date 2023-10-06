@@ -1,6 +1,6 @@
 import Glide from "@glidejs/glide";
 
-const glide = (el, options) => {
+const glide = (el: string, options: Partial<Glide.Options>) => {
   new Glide(el, options).mount();
 };
 

@@ -2,12 +2,22 @@ export default defineNuxtPlugin(async () => {
   const { default: Chartjs } = await import("chart.js/auto");
   const bodyColor = "#adb5bd";
   const bodyTrack = "#0e161f";
+
+  interface ChartRender {
+    dimensions: Array<string>;
+    datasets: Array<{
+      data: Array<number>;
+      label: string;
+    }>;
+  }
+
   class Chart {
-    constructor (ctx) {
+    ctx: CanvasRenderingContext2D;
+    constructor (ctx: CanvasRenderingContext2D) {
       this.ctx = ctx;
     }
 
-    render ({ dimensions, datasets }, callback = () => {}) {
+    render ({ dimensions, datasets }: ChartRender, callback: () => void) {
       const randomSeed = getRandom(0, 100);
       return new Chartjs(this.ctx, {
         type: "line",
@@ -51,16 +61,15 @@ export default defineNuxtPlugin(async () => {
                   size: 16
                 }
               }
+            },
+            tooltip: {
+              position: "nearest"
             }
           },
           responsive: true,
           maintainAspectRatio: false,
           interaction: {
             mode: "index",
-            intersect: false
-          },
-          tooltips: {
-            mode: "interpolate",
             intersect: false
           },
           scales: {
