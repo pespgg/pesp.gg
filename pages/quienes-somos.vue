@@ -35,7 +35,7 @@ useHead({
             <div class="col-md-4 col-lg-6 p-0 text-center shadow overflow-hidden" :class="i % 2 ? 'order-2 order-md-1' : 'order-2 order-md-2'">
               <div class="carousel slide h-100">
                 <div class="carousel-indicators">
-                  <button v-for="j of nosotros.images.length" :key="j" type="button" :data-bs-target="`#${nosotros.title} .carousel`" :data-bs-slide-to="j" :class="{ active: !j }" aria-current="true" aria-label="Slide" />
+                  <button v-for="j of nosotros.images.length" :key="j" type="button" :data-bs-target="`#${nosotros.title} .carousel`" :data-bs-slide-to="j-1" :class="{ active: !(j-1) }" aria-current="true" :aria-label="`Slide ${j}`" />
                 </div>
                 <div class="carousel-inner h-100">
                   <div v-for="(image, j) of nosotros.images" :key="j" class="carousel-item scale-hover h-100" :class="{ active: !j }" data-bs-interval="10000">
