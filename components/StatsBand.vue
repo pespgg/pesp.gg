@@ -65,11 +65,11 @@ export default {
     window.removeEventListener("scroll", this.onView);
   },
   methods: {
-    async tweenCounters () {
+    tweenCounters () {
       const counters = this.$refs.counters as HTMLElement[];
       for (const counter of counters) {
         const target = KtoNumber(counter.innerText);
-        await tweenNumber({ target, duration: 1 }, (tween: number) => {
+        tweenNumber({ target, duration: 1 }, (tween: number) => {
           counter.innerText = thousandToK(Number(tween.toFixed(0)));
           this.tweened = true;
         });
