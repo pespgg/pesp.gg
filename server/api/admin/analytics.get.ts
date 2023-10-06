@@ -1,11 +1,5 @@
 export default eventHandler(async (event) => {
-  const { user } = await requireUserSession(event);
-  if (!user) {
-    throw createError({
-      statusCode: 401,
-      statusMessage: "Unauthorized"
-    });
-  }
+  await requireUserSession(event);
 
   const { cloudflare } = useRuntimeConfig(event);
   const { days } = getQuery(event);
@@ -16,7 +10,7 @@ export default eventHandler(async (event) => {
   leq.setDate(leq.getDate());
 
   const gt = new Date(leq);
-  gt.setDate(gt.getDate() - days);
+  gt.setDate(gt.getDate() - Number(days));
 
   const date_gt = gt.toISOString().split("T")[0];
   const date_leq = leq.toISOString().split("T")[0];
@@ -66,7 +60,7 @@ export default eventHandler(async (event) => {
     }
   });
 
-  const { data } = cloudflareAnalytics;
+  const { data } = cloudflareAnalytics as any;
   const { httpRequests1dGroups } = data.viewer.zones[0];
   return httpRequests1dGroups;
 });

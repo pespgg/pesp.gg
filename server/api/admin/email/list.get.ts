@@ -1,11 +1,5 @@
 export default defineEventHandler(async (event) => {
-  const { user } = await requireUserSession(event);
-  if (!user) {
-    throw createError({
-      statusCode: 401,
-      statusMessage: "Unauthorized"
-    });
-  }
+  await requireUserSession(event);
 
   const { cloudflare } = useRuntimeConfig(event);
 
@@ -17,10 +11,17 @@ export default defineEventHandler(async (event) => {
       "X-Auth-Email": cloudflare.email,
       "X-Auth-Key": cloudflare.apiKey
     }
-  }).catch(() => null);
+  }).catch(() => null) as { result: any } | null;
+
+  if (!emailList) {
+    throw createError({
+      statusCode: 500,
+      message: t("failed")
+    });
+  }
 
   const emailRules = emailList?.result || [];
   if (!emailRules.length) return [];
-  const correos = emailRules.filter((c) => c.matchers[0].type === "literal" && c.actions[0].type === "forward" && c.enabled);
+  const correos = emailRules.filter((c: any) => c.matchers[0].type === "literal" && c.actions[0].type === "forward" && c.enabled);
   return correos;
 });

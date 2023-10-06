@@ -29,7 +29,6 @@
     "lint:stylelint": "stylelint \"**/*.css\" --fix"
   },
   "devDependencies": {
-    "@nuxt/devtools": "^0.8.5",
     "@nuxt/eslint-config": "^0.2.0",
     "@nuxtjs/turnstile": "^0.6.3",
     "@types/bootstrap": "^5.2.7",

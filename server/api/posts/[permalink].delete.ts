@@ -1,13 +1,8 @@
 import { eq } from "drizzle-orm";
 
 export default defineEventHandler(async (event) => {
-  const { user } = await requireUserSession(event);
-  if (!user) {
-    throw createError({
-      statusCode: 401,
-      statusMessage: "Unauthorized"
-    });
-  }
+  await requireUserSession(event);
+
   const { permalink } = getRouterParams(event);
 
   const deletedPost = await useDb().delete(tables.actualidad).where(eq(tables.actualidad.permalink, permalink)).returning().get();
@@ -15,7 +10,7 @@ export default defineEventHandler(async (event) => {
   if (!deletedPost) {
     throw createError({
       statusCode: 404,
-      message: "Post not found"
+      message: t("post_not_found")
     });
   }
 

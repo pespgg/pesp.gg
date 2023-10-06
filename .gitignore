@@ -9,6 +9,6 @@ db.sqlite
 public/posts
 public/uploads
 .env
-server/utils/hbs.js
+server/utils/mustache.ts
 assets/ckeditor/build
 scripts/*.js
