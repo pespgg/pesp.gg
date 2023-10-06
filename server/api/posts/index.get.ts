@@ -35,11 +35,11 @@ export default defineEventHandler(async (event) => {
   }
 
   const from = select.from(tables.actualidad);
-  const { user } = await requireUserSession(event);
+  const { user } = await getUserSession(event);
   const visible = user && hidden ? undefined : eq(tables.actualidad.visible, 1);
 
   if (permalink) {
-    return from.where(and(eq(tables.actualidad.permalink, String(permalink)), visible)).limit(1).get();
+    return from.where(and(eq(tables.actualidad.permalink, String(permalink)), visible)).limit(1).all();
   }
 
   const where = from.where(visible).orderBy(desc(tables.actualidad.fecha), desc(tables.actualidad.updated));

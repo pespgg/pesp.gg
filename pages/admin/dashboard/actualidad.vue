@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 definePageMeta({ layout: "dashboard", middleware: "auth" });
 
 const { data: posts } = await useFetch("/api/posts", {
@@ -7,7 +7,7 @@ const { data: posts } = await useFetch("/api/posts", {
   }
 });
 
-const deletePost = async (permalink) => {
+const deletePost = async (permalink: string) => {
   if (confirm(t("confirm_delete_post"))) {
     await useFetch(`/api/posts/${permalink}`, { method: "DELETE" });
     posts.value = posts.value.filter(post => post.permalink !== permalink);
@@ -58,7 +58,7 @@ const deletePost = async (permalink) => {
   </section>
 </template>
 
-<script>
+<script lang="ts">
 export default {
   beforeRouteLeave (to, from, next) {
     if (to.name === "admin-dashboard-publicar") {

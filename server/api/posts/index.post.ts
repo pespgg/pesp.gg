@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-export default defineEventHandler(async (event) => {
+export default defineEventHandler(async (event): Promise<PespPost> => {
   await requireUserSession(event);
 
   const { titulo, content, banner, tag, fecha, permalink, visible } = await readBody(event);

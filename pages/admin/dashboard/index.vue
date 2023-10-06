@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 definePageMeta({ layout: "dashboard", middleware: "auth" });
 
 const { data: emailList } = await useFetch("/api/admin/email/list");
@@ -112,7 +112,7 @@ const getEmoji = fullName => Object.values(emojis).find((emoji) => {
   </section>
 </template>
 
-<script>
+<script lang="ts">
 export default {
   data () {
     return {
@@ -128,7 +128,7 @@ export default {
   },
   computed: {
     dates () {
-      return this.analytics.map(record => formatDate(record.dimensions.date, "short"));
+      return this.analytics.map(record => formatDate(record.dimensions.date, { style: "short" }));
     },
     pageViews () {
       return {

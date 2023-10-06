@@ -135,6 +135,7 @@ Editor.defaultConfig = {
     ]
   },
   language: "es",
+  // @ts-ignore
   image: {
     toolbar: [
       "imageTextAlternative",

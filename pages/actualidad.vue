@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 const { data: posts } = await useFetch("/api/posts", {
   query: {
     props: ["image", "titulo", "fecha", "permalink", "tag", "updated"].join(",")
@@ -44,7 +44,7 @@ useHead({
                   <NuxtLink :to="`/p/${post.permalink}/`">{{ post.titulo }}</NuxtLink>
                 </strong>
               </h4>
-              <div class="bg-body-tertiary text-light text-center mb-2 rounded small text-uppercase" role="button">{{ SCHEMA.tags.find(v => v.tag == post.tag).name }}</div>
+              <div class="bg-body-tertiary text-light text-center mb-2 rounded small text-uppercase" role="button">{{ getTagName(post.tag) }}</div>
               <LoadPost :permalink="post.permalink" :truncate="220" />
             </div>
             <div class="card-footer bg-dark p-0 overflow-hidden">
