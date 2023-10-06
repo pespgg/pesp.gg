@@ -1,3 +1,7 @@
+.form-control:disabled {
+  background-color: var(--body-track);
+}
+
 #contacto .form-control {
   background-color: var(--form-input-background);
   border-color: var(--form-border);
@@ -6,6 +10,7 @@
 
 #contacto .form-check-input {
   --bs-form-check-bg: var(--form-input-background);
+
   border-color: var(--form-border);
 }
 
@@ -17,10 +22,6 @@
   background-color: transparent!important;
 }
 
-.form-control:disabled {
-  background-color: var(--body-track);
-}
-
 .unete {
   background-image: url("/images/backgrounds/unete.jpg");
   background-repeat: no-repeat;
@@ -28,7 +29,7 @@
   background-position: center;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (width <= 768px) {
   .unete .sticker {
     left: -1.5rem;
     width: 100px;
