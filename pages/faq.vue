@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 useSeoMeta({
   title: `${t("faq")} | ${SITE.name.web}`,
   description: t("faq_description"),
