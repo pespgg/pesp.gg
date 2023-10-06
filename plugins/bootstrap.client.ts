@@ -1,5 +1,6 @@
 import "bootstrap/js/dist/offcanvas";
 import "bootstrap/js/dist/dropdown";
+import "bootstrap/js/dist/collapse";
 import Carousel from "bootstrap/js/dist/carousel";
 import Modal from "bootstrap/js/dist/modal";
 

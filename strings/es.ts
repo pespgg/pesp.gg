@@ -130,6 +130,8 @@ export default {
   nosotros_keywords: "nosotros, quienes, somos, pesp.gg, conócenos, panama, esports, experiencia, calidad, innovación",
   nosotros_description: "Conoce más sobre nosotros, quienes somos, nuestra experiencia, calidad e innovación.",
   post_keywords: "post, publicación, pesp.gg, panama, esports, actualidad, noticias, eventos, torneos",
+  faq_keywords: "faq, preguntas, respuestas, frecuentes, pesp.gg, panama, esports, eventos, torneos",
+  faq_description: "Preguntas frecuentes sobre PESP",
 
   /* Admin */
   publicar: "Publicar",
@@ -186,5 +188,21 @@ export default {
   bad_request: "Solicitud incorrecta",
   token_not_provided: "Token no proporcionado",
   conflict: "Conflicto",
-  post_not_found: "Publicación no encontrada"
+  post_not_found: "Publicación no encontrada",
+
+  /* FAQ */
+  faq_q1: "¿Quiénes somos?",
+  faq_a1: "Panamá Esports Productions (PESP), una empresa Esports, Nos dedicamos a la organización de eventos, torneos, ligas y producción de streaming gaming en modalidad virtual o presencial, con experiencia en todas las categorías de juegos, abarcando todas las plataformas: PC, consola y móvil.",
+  faq_q2: "¿Qué tipo de competencias realizamos?",
+  faq_a2: "En PESP, realizamos distintas competencias de diferente nivel, abiertas para toda la escena gamer y también Esports.",
+  faq_q3: "¿Desde hace cuánto realizan competencias?",
+  faq_a3: "Tenemos experiencia desde hace mas de 5 años, realizando eventos, torneos, competencias, activaciones y asesorando a distintas empresas de la escena.",
+  faq_q4: "¿Puedo participar en sus competencias?",
+  faq_a4: "¡Claro que sí, es lo que queremos! Recuerda que siempre podrás participar en las competencias organizadas por PESP siempre y cuando cumplas todos los requisitos del reglamento ¡recuerda leerlo!",
+  faq_q5: "¿Podemos trabajar en conjunto en una actividad?",
+  faq_a5: "Por su puesto, envíanos un correo y te responderemos cuanto antes, nuestro equipo está capacitado para responder todas tus consultas o dudas.",
+  faq_q6: "¿Quiénes conforman PESP?",
+  faq_a6: "Panama Esports Productions (PESP) está conformado por un equipo de jóvenes expertos en Esports desarrollados en distintas ramas profesionales como marketing, legal, organizadores de torneos, árbitros, animadores, diseñadores, programadores, productores musicales, directores de streaming, host, casters y entre muchas otras profesiones que trabajan fuertemente en el desarrollo de la escena competitiva y gamer en Panamá y la región.",
+  faq_q7: "¿Quién creó PESP?",
+  faq_a7: "El fundador de Panamá Esports Productions, es conocido como “Zako” (Zadquiel Montenegro), jugador, organizador de competencias, empresario, una persona que ha tenido la visión y fe en los Esports desde hace más de 6 años buscando realzar y enaltecer este deporte en Panamá y Latinoamérica. si tienes alguna duda o consulta puedes contactarlo a su <a class=\"fw-bold\" href=\"https://www.linkedin.com/in/zadquiel-montenegro-8517951a6/\" target=\"_blank\">LinkedIn</a>.",
 };
