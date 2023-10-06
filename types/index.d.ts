@@ -37,7 +37,7 @@ declare global {
     title: string;
     icon: string;
     counter?: number;
-    seguidores?: number;
+    seguidores?: boolean;
     carousel?: {
       icon: string;
       title: string;

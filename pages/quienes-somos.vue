@@ -120,7 +120,7 @@ useHead({
 <script lang="ts">
 export default {
   mounted () {
-    for (const nosotros of this.SCHEMA.nosotros) {
+    for (const nosotros of SCHEMA.nosotros) {
       this.$nuxt.$bootstrap.startCarousel(`#${nosotros.title} .carousel`);
     }
 
