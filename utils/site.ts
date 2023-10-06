@@ -26,9 +26,9 @@ export const SITE = {
       link: "https://facebook.com/pesp.gg"
     },
     {
-      name: "Twitter",
-      icon: "bi:twitter",
-      link: "https://twitter.com/pesp_gg"
+      name: "X (Twitter)",
+      icon: "ri:twitter-x-fill",
+      link: "https://x.com/pesp_gg"
     },
     {
       name: "Youtube",
