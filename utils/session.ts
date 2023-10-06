@@ -1,20 +1,14 @@
-const useUserSessionState = () => useState("nuxt-session", () => ({}));
+const useUserSessionState = () => useState<PespSession>("nuxt-session", () => ({}));
 
 export const useUserSession = () => {
   const sessionState = useUserSessionState();
   return {
     loggedIn: computed(() => Boolean(sessionState.value.user)),
-    user: computed(() => sessionState.value.user || null),
+    user: computed(() => sessionState.value.user || null as any as PespUser),
     data: sessionState,
     fetch,
-    clear,
-    set
+    clear
   };
-};
-
-const set = async (body) => {
-  useUserSessionState().value = await $fetch("/api/admin/auth", { method: "POST", body }).catch(() => ({}));
-  return useUserSessionState().value;
 };
 
 const fetch = async () => {

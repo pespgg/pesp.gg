@@ -1,20 +1,14 @@
 import { eq } from "drizzle-orm";
 
 export default defineEventHandler(async (event) => {
-  const { user } = await requireUserSession(event);
-  if (!user) {
-    throw createError({
-      statusCode: 401,
-      statusMessage: "Unauthorized"
-    });
-  }
+  await requireUserSession(event);
 
   const { titulo, content, banner, tag, fecha, permalink, visible } = await readBody(event);
 
   if (banner && banner.type !== "image/jpeg") {
     throw createError({
       statusCode: 415,
-      statusMessage: "Unsupported Media Type"
+      message: t("unsupported_media")
     });
   }
 
@@ -22,7 +16,7 @@ export default defineEventHandler(async (event) => {
   if (dbCheck.length) {
     throw createError({
       statusCode: 409,
-      statusMessage: "Conflict"
+      message: t("conflict")
     });
   }
 

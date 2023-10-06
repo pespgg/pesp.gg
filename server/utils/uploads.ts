@@ -1,20 +1,22 @@
-export const checkFileSize = (event) => {
+import type { H3Event } from "h3";
+
+export const checkFileSize = (event: H3Event) => {
   const headers = getHeaders(event);
-  const MBsize = headers["content-length"] / 1024 / 1024;
+  const MBsize = Number(headers["content-length"]) / 1024 / 1024;
   if (MBsize > 8) {
     throw createError({
       statusCode: 413,
-      statusMessage: "File too large"
+      message: t("file_too_large")
     });
   }
 };
 
 const validTypes = ["image/jpeg", "image/x-png", "image/png", "image/svg+xml", "image/gif", "image/webp"];
-export const checkFileType = (type) => {
+export const checkFileType = (type: string = "") => {
   if (!validTypes.includes(type)) {
     throw createError({
       statusCode: 415,
-      statusMessage: "Unsupported Media Type"
+      message: t("unsupported_media")
     });
   }
 };

@@ -1,4 +1,4 @@
-import { SITE } from "./utils/site.ts";
+import { SITE } from "./utils/site";
 
 export default defineNuxtConfig({
   app: {
@@ -60,13 +60,6 @@ export default defineNuxtConfig({
     "@nuxtjs/turnstile"
   ],
 
-  pinia: {
-    autoImports: [
-      "defineStore",
-      ["defineStore", "definePiniaStore"]
-    ]
-  },
-
   turnstile: {
     siteKey: "0x4AAAAAAAFcwNNtzi_jhLif",
     addValidateEndpoint: true
@@ -99,10 +92,6 @@ export default defineNuxtConfig({
       account: "",
       zoneTag: ""
     }
-  },
-
-  devtools: {
-    enabled: true
   },
 
   experimental: {

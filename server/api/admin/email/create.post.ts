@@ -52,5 +52,5 @@ export default defineEventHandler(async (event) => {
       name: `Send to ${destinationAddress} rule.`,
       priority: 0
     }
-  });
+  }).catch(() => null);
 });

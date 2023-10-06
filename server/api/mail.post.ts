@@ -1,5 +1,5 @@
+// @ts-ignore
 import Mustache from "mustache";
-import { strings, t } from "~/utils/strings";
 
 export default defineEventHandler(async (event) => {
   const { template, form, lang } = await readBody(event);
@@ -8,7 +8,7 @@ export default defineEventHandler(async (event) => {
   if (!token) {
     throw createError({
       statusCode: 422,
-      statusMessage: "Token not provided."
+      message: "token_not_provided"
     });
   }
 
@@ -19,8 +19,7 @@ export default defineEventHandler(async (event) => {
   }
 
   strings.setLanguage(lang);
-
-  const template_strings = {
+  const template_strings: Record<string, Record<string,string>> = {
     shared: {
       language: t("lang"),
       correo_informacion: t("correo_informacion"),
@@ -50,9 +49,9 @@ export default defineEventHandler(async (event) => {
 
   const asunto = template === "contacto" ? subject : `${name} ${t("asunto_interesado")}`;
 
-  const html = Mustache.render(templates[template], {
+  const html = Mustache.render(templates[template as "contacto" | "unirse"], {
     ...template_strings.shared,
-    ...template_strings[template],
+    ...template_strings[template as "contacto" | "unirse"],
     nombre: name,
     email,
     mensaje: message

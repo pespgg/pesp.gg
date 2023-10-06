@@ -24,28 +24,28 @@ export default defineEventHandler(async (event) => {
   });
   */
   if (props) {
-    const propsArray = props.split(",");
-    const columns = {};
-    propsArray.forEach((prop) => {
-      if (tables.actualidad[prop]) {
-        columns[prop] = tables.actualidad[prop];
+    const propsArray = String(props).split(",");
+    const columns: Record<string, any> = {};
+    for (const prop of propsArray) {
+      if (tables.actualidad[prop as keyof typeof tables.actualidad]) {
+        columns[prop] = tables.actualidad[prop as keyof typeof tables.actualidad];
       }
-    });
-    select = useDb().select(columns);
+    }
+    select = useDb().select(columns as any);
   }
 
   const from = select.from(tables.actualidad);
   const { user } = await requireUserSession(event);
-  const visible = user && hidden ? null : eq(tables.actualidad.visible, 1);
+  const visible = user && hidden ? undefined : eq(tables.actualidad.visible, 1);
 
   if (permalink) {
-    return from.where(and(eq(tables.actualidad.permalink, permalink), visible)).limit(1).get();
+    return from.where(and(eq(tables.actualidad.permalink, String(permalink)), visible)).limit(1).get();
   }
 
   const where = from.where(visible).orderBy(desc(tables.actualidad.fecha), desc(tables.actualidad.updated));
 
   if (limit) {
-    return where.limit(limit).all();
+    return where.limit(Number(limit)).all();
   }
 
   return where.all();

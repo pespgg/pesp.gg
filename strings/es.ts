@@ -176,5 +176,15 @@ export default {
   logout: "Salir",
   correo_vinculado: "Correo vinculado",
   correo_corporativo: "Correo corporativo",
-  correo_personal: "Correo personal"
+  correo_personal: "Correo personal",
+
+  /* Errors */
+  unauthorized: "No autorizado",
+  unsupported_media: "Tipo de archivo no soportado",
+  file_too_large: "El archivo es demasiado grande",
+  login_error: "Usuario o contraseña incorrectos",
+  bad_request: "Solicitud incorrecta",
+  token_not_provided: "Token no proporcionado",
+  conflict: "Conflicto",
+  post_not_found: "Publicación no encontrada"
 };
