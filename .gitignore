@@ -11,3 +11,4 @@ public/uploads
 .env
 server/utils/hbs.js
 assets/ckeditor/build
+scripts/*.js
