@@ -20,7 +20,7 @@
     "dev:cf": "wrangler dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare",
+    "postinstall": "npm run email:templates && npm run build:ckeditor && nuxt prepare",
     "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js --verbose --coverage",
     "db:migration": "drizzle-kit generate:sqlite",
     "email:templates": "tsc ./scripts/emailTemplates.ts --module nodenext && node ./scripts/emailTemplates.js",
