@@ -1,7 +1,6 @@
 node_modules
 .nuxt
 .husky/_
-data
 .output
 dist
 package-lock.json
