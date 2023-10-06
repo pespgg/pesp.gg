@@ -8,6 +8,7 @@ import nosotros from "./schema/nosotros.js";
 import comentarios from "./schema/comentarios.js";
 import galeria from "./schema/galeria.js";
 import tags from "./schema/tags.js";
+import faq from "./schema/faq.js";
 
 export const SCHEMA = {
   categorias,
@@ -19,5 +20,6 @@ export const SCHEMA = {
   nosotros,
   comentarios,
   galeria,
-  tags
+  tags,
+  faq
 };

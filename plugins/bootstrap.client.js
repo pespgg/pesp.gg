@@ -2,6 +2,7 @@ import "bootstrap/js/dist/offcanvas";
 import "bootstrap/js/dist/dropdown";
 import Carousel from "bootstrap/js/dist/carousel";
 import Modal from "bootstrap/js/dist/modal";
+import Collapse from "bootstrap/js/dist/collapse";
 class Bootstrap {
   hideModal (id) {
     const instance = Modal.getInstance(id);
@@ -21,7 +22,12 @@ class Bootstrap {
       instance.cycle();
     }
   }
-};
+
+  toogleCollapse (el) {
+    const bsCollapse = new Collapse(el);
+    bsCollapse.toggle();
+  }
+}
 
 const bootstrap = new Bootstrap();
 
