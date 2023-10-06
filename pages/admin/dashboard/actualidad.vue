@@ -10,7 +10,7 @@ const { data: posts } = await useFetch("/api/posts", {
 const deletePost = async (permalink: string) => {
   if (confirm(t("confirm_delete_post"))) {
     await useFetch(`/api/posts/${permalink}`, { method: "DELETE" });
-    posts.value = posts.value.filter(post => post.permalink !== permalink);
+    posts.value = posts.value?.filter(post => post.permalink !== permalink) || null;
   }
 };
 </script>
@@ -67,7 +67,7 @@ export default {
     next();
   },
   methods: {
-    editPost (post) {
+    editPost (post: PespPost) {
       const { titulo, permalink, tag, fecha, visible, updated } = post;
       const data = {
         titulo,

@@ -1,15 +1,12 @@
 <script setup lang="ts">
+import countriesData from "~/assets/data/countries.json";
 definePageMeta({ layout: "dashboard", middleware: "auth" });
 
 const { data: emailList } = await useFetch("/api/admin/email/list");
 
 const correos = emailList.value || [];
 
-const emojis = await import("nuxt-twemoji/emojis").catch(() => ({}));
-const getEmoji = fullName => Object.values(emojis).find((emoji) => {
-  const name = `flag-${String(fullName).toLowerCase().replace(/\s+/g, "-")}`;
-  return emoji.name === name;
-})?.emoji;
+const getEmoji = (code: string) => countriesData.find((country) => country.code_2 === code)?.emoji || "";
 </script>
 
 <template>
@@ -25,7 +22,7 @@ const getEmoji = fullName => Object.values(emojis).find((emoji) => {
             <Transition name="fade" mode="out-in">
               <SpinnerCircle v-if="changeRequest" />
             </Transition>
-            <select v-model="filter.days" class="form-select ms-3" :style="{ width: 'auto' }" @change="filterBy($event)">
+            <select v-model.number="filter.days" class="form-select ms-3" :style="{ width: 'auto' }" @change="filterBy($event)">
               <option v-for="n of daysOptions" :key="n" :value="n">{{ t(`ultimos_${n}_dias`) }}</option>
             </select>
           </div>
@@ -64,7 +61,7 @@ const getEmoji = fullName => Object.values(emojis).find((emoji) => {
             <tbody>
               <tr v-for="country in countries" :key="country.code">
                 <td class="d-flex gap-2 align-items-center">
-                  <Twemoji v-if="getEmoji(country.info?.name_en)" :emoji="getEmoji(country.info?.name_en)" size="1.5rem" />
+                  <Twemoji v-if="getEmoji(country.code)" :emoji="getEmoji(country.code)" size="1.5rem" />
                   {{ country.info?.name_es || t("desconocido") }}
                 </td>
                 <td class="border-start text-end">{{ country.requests }}</td>
@@ -122,42 +119,42 @@ export default {
       },
       daysOptions: [7, 30, 60, 90, 180, 365],
       analytics: [],
-      charts: {},
+      charts: {} as any,
       changeRequest: false
     };
   },
   computed: {
     dates () {
-      return this.analytics.map(record => formatDate(record.dimensions.date, { style: "short" }));
+      return this.analytics.map((record: any) => formatDate(record.dimensions.date, { style: "short" }));
     },
     pageViews () {
       return {
-        data: this.analytics.map(record => record.sum.pageViews),
+        data: this.analytics.map((record: any) => record.sum.pageViews),
         label: t("visitas")
       };
     },
     uniques () {
       return {
-        data: this.analytics.map(record => record.uniq.uniques),
+        data: this.analytics.map((record: any) => record.uniq.uniques),
         label: t("visitas_unicas")
       };
     },
     threats () {
       return {
-        data: this.analytics.map(record => record.sum.threats),
+        data: this.analytics.map((record: any) => record.sum.threats),
         label: t("amenazas")
       };
     },
     countries () {
-      const countryMap = this.analytics.map(record => record.sum.countryMap.map(c => c));
+      const countryMap = this.analytics.map((record: any) => record.sum.countryMap.map((c: any) => c));
       const countryMapReduced = countryMap.flat().reduce((acc, { clientCountryName, requests }) => {
         acc[clientCountryName] = acc[clientCountryName] ? acc[clientCountryName] + requests : requests;
         return acc;
       }, {});
-      const countryMapSorted = Object.entries(countryMapReduced).sort(([, a], [, b]) => b - a);
+      const countryMapSorted = Object.entries(countryMapReduced).sort(([, a]: any, [, b]: any) => b - a);
       return countryMapSorted.map(([code, requests]) => ({
         code,
-        info: this.countriesData.find(c => c.code_2 === code),
+        info: countriesData.find(c => c.code_2 === code),
         requests
       })).slice(0, 10);
     },
@@ -168,12 +165,12 @@ export default {
       };
     },
     browsers () {
-      const browserMap = this.analytics.map(record => record.sum.browserMap.map(b => b));
+      const browserMap = this.analytics.map((record: any) => record.sum.browserMap.map((b: any) => b));
       const browserMapReduced = browserMap.flat().reduce((acc, { uaBrowserFamily, pageViews }) => {
         acc[uaBrowserFamily] = acc[uaBrowserFamily] ? acc[uaBrowserFamily] + pageViews : pageViews;
         return acc;
       }, {});
-      const browserMapSorted = Object.entries(browserMapReduced).sort(([, a], [, b]) => b - a);
+      const browserMapSorted = Object.entries(browserMapReduced).sort(([, a]: any, [, b]: any) => b - a);
       return browserMapSorted.map(([name, pageViews]) => ({
         name,
         pageViews
@@ -188,7 +185,6 @@ export default {
   },
   async mounted () {
     await this.requestAnalytics(this.filter.days);
-    this.countriesData = await $fetch("https://gist.githubusercontent.com/Yizack/bbfce31e0217a3689c8d961a356cb10d/raw/3e4c6e5fb7b767b8e24110ad3108db6acb749ba7/countries.json").then(c => JSON.parse(c).countries).catch(() => []);
     const generalCanva = document.createElement("canvas");
     generalCanva.height = 400;
     generalCanva.style.height = "400px";
@@ -196,7 +192,7 @@ export default {
     const generalContext = generalCanva.getContext("2d");
     this.charts.general = new this.$nuxt.$Chart(generalContext);
     setTimeout(() => {
-      this.$refs.general?.appendChild(generalCanva);
+      (this.$refs.general as HTMLElement)?.appendChild(generalCanva);
     }, 1000);
 
     this.renderChart();
@@ -208,14 +204,15 @@ export default {
         this.changeRequest = false;
       });
     },
-    async requestAnalytics (days) {
+    async requestAnalytics (days: number) {
       this.analytics = await $fetch("/api/admin/analytics", {
         query: { days }
       }).catch(() => []);
     },
-    async filterBy (e) {
+    async filterBy (e: Event) {
       this.changeRequest = true;
-      await this.requestAnalytics(e.target.value);
+      const target = e.target as HTMLInputElement;
+      await this.requestAnalytics(Number(target.value));
       this.renderChart();
     }
   }

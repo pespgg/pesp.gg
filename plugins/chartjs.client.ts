@@ -12,13 +12,14 @@ export default defineNuxtPlugin(async () => {
   }
 
   class Chart {
-    ctx: CanvasRenderingContext2D;
-    constructor (ctx: CanvasRenderingContext2D) {
+    ctx: CanvasRenderingContext2D | null;
+    constructor (ctx: CanvasRenderingContext2D | null) {
       this.ctx = ctx;
     }
 
     render ({ dimensions, datasets }: ChartRender, callback: () => void) {
       const randomSeed = getRandom(0, 100);
+      if (!this.ctx) return;
       return new Chartjs(this.ctx, {
         type: "line",
         data: {
