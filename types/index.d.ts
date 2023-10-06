@@ -33,4 +33,14 @@ declare global {
       updated: number;
     }
   }
+  interface PespStats {
+    title: string;
+    icon: string;
+    counter?: number;
+    seguidores?: number;
+    carousel?: {
+      icon: string;
+      title: string;
+    }[];
+  }
 }

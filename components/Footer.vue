@@ -69,7 +69,7 @@ const { data: posts } = await useFetch("/api/posts", {
   </footer>
 </template>
 
-<script>
+<script lang="ts">
 export default {
   name: "FooterPage",
   data () {

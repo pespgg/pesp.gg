@@ -1,5 +1,5 @@
 <template>
-  <section id="stats" ref="stats" @scroll.self="test()">
+  <section id="stats" ref="stats">
     <div class="band container-fluid bg-dark py-5">
       <div class="row row-gap-4 justify-content-center">
         <div v-for="(stat, i) of stats" :key="i" :class="`col-12 col-sm-6 col-md-${col} text-center`">
@@ -35,11 +35,11 @@
   </section>
 </template>
 
-<script>
+<script lang="ts">
 export default {
   props: {
     stats: {
-      type: Array,
+      type: Array as () => PespStats[],
       required: true
     },
     col: {
@@ -65,22 +65,20 @@ export default {
     window.removeEventListener("scroll", this.onView);
   },
   methods: {
-    tweenCounters () {
-      const counters = this.$refs.counters;
-      counters.forEach(async (counter) => {
+    async tweenCounters () {
+      const counters = this.$refs.counters as HTMLElement[];
+      for (const counter of counters) {
         const target = KtoNumber(counter.innerText);
-        await tweenNumber({ target, duration: 1 }, (tween) => {
-          counter.innerText = thousandToK(tween.toFixed(0));
+        await tweenNumber({ target, duration: 1 }, (tween: number) => {
+          counter.innerText = thousandToK(Number(tween.toFixed(0)));
           this.tweened = true;
         });
-      });
+      }
     },
     onView () {
-      const { top, bottom } = this.$refs.stats.getBoundingClientRect();
+      const { top, bottom } = (this.$refs.stats as HTMLElement).getBoundingClientRect();
       if (top < window.innerHeight && bottom > 0) {
-        if (!this.tweened) {
-          this.tweenCounters();
-        }
+        if (!this.tweened) this.tweenCounters();
       }
       else {
         this.tweened = false;

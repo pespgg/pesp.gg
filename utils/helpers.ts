@@ -58,7 +58,7 @@ export const truncateString = (str = "", n = 0) => {
 
 export const thousandToK = (n = 0) => {
   if (n < 1000) {
-    return n;
+    return n.toString();
   }
   const k = n / 1000;
   return `${k.toFixed(1)}k`;

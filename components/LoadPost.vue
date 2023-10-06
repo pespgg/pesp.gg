@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 const props = defineProps({
   permalink: {
     type: String,
@@ -13,7 +13,7 @@ const props = defineProps({
 const content = useState(`content:${props.permalink}${props.truncate ? "_truncated" : ""}`, () => "");
 if (!content.value) {
   const url = process.dev ? `${SITE.local}/posts/content` : `${SITE.cdn}/posts/content`;
-  const html = await $fetch(`${url}/${props.permalink}.html`).then(v => v).catch(() => "");
+  const html = await $fetch(`${url}/${props.permalink}.html`).then(v => v).catch(() => "") as string;
   content.value = props.truncate ? truncateString(stripTags(html), props.truncate) : html;
 
   if (!props.truncate) {
