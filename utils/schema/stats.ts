@@ -33,25 +33,25 @@ export default {
       title: "twitch",
       counter: 3200,
       seguidores: true,
-      icon: SITE.socials.find(s => s.name === "Twitch")?.icon || ""
+      icon: SITE.socials.find(s => s.name === "Twitch")?.icon
     },
     {
       title: "instagram",
       counter: 12000,
       seguidores: true,
-      icon: SITE.socials.find(s => s.name === "Instagram")?.icon || ""
+      icon: SITE.socials.find(s => s.name === "Instagram")?.icon
     },
     {
       title: "facebook",
       counter: 6000,
       seguidores: true,
-      icon: SITE.socials.find(s => s.name === "Facebook")?.icon || ""
+      icon: SITE.socials.find(s => s.name === "Facebook")?.icon
     },
     {
       title: "twitter",
       counter: 850,
       seguidores: true,
-      icon: SITE.socials.find(s => s.name === "X (Twitter)")?.icon || ""
+      icon: SITE.socials.find(s => s.name === "X (Twitter)")?.icon
     }
   ]
 };

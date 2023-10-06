@@ -24,7 +24,7 @@
             <template v-if="stat.seguidores">
               <h4 class="m-0">{{ t(stat.title) }}</h4>
               <h1>
-                <Icon :name="stat.icon" />
+                <Icon :name="stat.icon || ''" />
               </h1>
             </template>
             <h4 v-else>{{ t(stat.title) }}</h4>

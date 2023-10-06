@@ -35,7 +35,7 @@ declare global {
   }
   interface PespStats {
     title: string;
-    icon: string;
+    icon?: string;
     counter?: number;
     seguidores?: boolean;
     carousel?: {
