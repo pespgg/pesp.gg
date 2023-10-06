@@ -28,7 +28,7 @@
   max-width: 40vw;
 }
 
-@media screen and (max-width: 992px) {
+@media screen and (width <= 992px) {
   #actualidad .glide,
   #casos-exito .glide,
   #comentarios .glide,
@@ -37,8 +37,10 @@
   }
 }
 
+/* stylelint-disable */
+
 .glide__slide--active {
-  opacity: 100%!important;
+  opacity: 1!important;
   filter: blur(0)!important;
 }
 
@@ -46,7 +48,7 @@
 #casos-exito .glide__slide,
 #comentarios .glide__slide,
 #galeria .glide__slide {
-  opacity: 30%;
+  opacity: 0.3;
   filter: blur(3px);
 }
 
@@ -60,7 +62,7 @@
 
 /* Arrows */
 
-@media screen and (max-width: 992px) {
+@media screen and (width <= 992px) {
   .glide__arrows {
     display: none;
   }

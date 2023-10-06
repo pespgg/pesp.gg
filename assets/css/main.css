@@ -10,7 +10,8 @@
 }
 
 :root {
-  --bs-body-font-family: Gilroy;
+  --bs-body-font-family: gilroy;
+
   scroll-behavior: unset;
 }
 
@@ -76,7 +77,7 @@ strong, b {
   color: var(--bs-heading-color);
 }
 
-#post iframe, .ck-content iframe {
+.ck-content iframe, #post iframe {
   border-radius: var(--bs-border-radius);
   border-width: 0;
 }
@@ -118,25 +119,22 @@ strong, b {
 
 .nuxt-loading-indicator {
   background: repeating-linear-gradient(to right, var(--bs-link-color) 0%, var(--bs-link-hover-color) 50%,var(--bs-link-color) 100%)!important;
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 10px rgb(255 255 255 / 50%);
 }
 
 .light {
   position: relative;
 }
 
-.light:after, .light:before {
+.light::after, .light::before {
   border-radius: inherit;
-  bottom: 0;
+  inset: 0;
   content: "";
-  left: 0;
   position: absolute;
-  right: 0;
-  top: 0;
   z-index: -1;
 }
 
-.light:hover:before {
+.light:hover::before {
   background: linear-gradient(90deg, var(--led-color),  var(--led-color-2));
   filter: blur(20px);
   opacity: 1;
@@ -144,6 +142,6 @@ strong, b {
   transition: opacity .3s;
 }
 
-.light:after {
+.light::after {
   background: inherit;
 }
