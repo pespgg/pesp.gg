@@ -23,7 +23,7 @@
     "postinstall": "nuxt prepare",
     "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js --verbose --coverage",
     "db:migration": "drizzle-kit generate:sqlite",
-    "email:templates": "node ./scripts/emailTemplates.js",
+    "email:templates": "tsc ./scripts/emailTemplates.ts --module nodenext && node ./scripts/emailTemplates.js",
     "lint": "npm run lint:eslint && npm run lint:stylelint",
     "lint:eslint": "eslint --ext .ts,.js,.vue --fix --ignore-path .gitignore .",
     "lint:stylelint": "stylelint \"**/*.css\" --fix"
