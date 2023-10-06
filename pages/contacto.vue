@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 useSeoMeta({
   title: `${t("contacto")} | ${SITE.name.web}`,
   description: t("contacto_description"),
@@ -125,7 +125,7 @@ useHead({
   </main>
 </template>
 
-<script>
+<script lang="ts">
 export default {
   data () {
     return {
@@ -143,6 +143,7 @@ export default {
         message: ""
       },
       unirse: {
+        token: "",
         name: "",
         email: "",
         message: "",
@@ -173,13 +174,14 @@ export default {
         message: ""
       };
       this.unirse = {
+        token: "",
         name: "",
         email: "",
         message: "",
         legal: null
       };
     },
-    async sendMail (name) {
+    async sendMail (name: string) {
       this.submit = true;
       this.$nuxt.$bootstrap.showModal("#dialog");
       this.result.success = await $fetch("/api/mail", {
@@ -187,13 +189,12 @@ export default {
         headers: {
           "Content-Type": "application/json"
         },
-        body: JSON.stringify({
-          token: this.token,
+        body: {
           template: name,
           lang: t("lang"),
-          form: this[name]
-        })
-      });
+          form: this[name as "contacto" | "unirse"]
+        }
+      }).catch(() => false);
       if (this.result.success) {
         this.result.message = t("correo_enviado");
         this.resetForms();
@@ -201,6 +202,7 @@ export default {
       else {
         this.result.message = t("correo_error");
       }
+      // @ts-ignore
       this.$refs[name].reset();
       this.submit = false;
     }

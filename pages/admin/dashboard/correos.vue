@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 definePageMeta({ layout: false, middleware: "auth" });
 </script>
 
@@ -25,7 +25,7 @@ definePageMeta({ layout: false, middleware: "auth" });
   </section>
 </template>
 
-<script>
+<script lang="ts">
 export default {
   data () {
     return {

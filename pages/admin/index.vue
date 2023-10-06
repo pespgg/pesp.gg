@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 definePageMeta({ layout: false, middleware: "auth" });
 </script>
 
@@ -26,7 +26,7 @@ definePageMeta({ layout: false, middleware: "auth" });
   </section>
 </template>
 
-<script>
+<script lang="ts">
 export default {
   data () {
     return {
@@ -38,10 +38,14 @@ export default {
   },
   methods: {
     async login () {
-      const { user } = await useUserSession().set(this.form);
-      if (user) {
-        this.$router.replace("/admin/dashboard/");
-      }
+      const login = await $fetch("/api/admin/auth", {
+        method: "POST",
+        body: this.form,
+      }).catch(() => null);
+
+      if (!login) return;
+
+      navigateTo("/admin/dashboard/", { external: true, replace: true });
     }
   }
 };

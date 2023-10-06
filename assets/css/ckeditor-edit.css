@@ -1,3 +1,5 @@
+/* stylelint-disable */
+
 :root {
   --ck-color-base-background: #f8f9fa!important;
 }
@@ -10,7 +12,7 @@
   background: transparent!important;
 }
 
-@media screen and (max-width: 992px) {
+@media screen and (width <= 992px) {
   .ck-editor, .ck-editor__main, .ck-editor .ck-content, .ck-source-editing-area, .ck-source-editing-area textarea {
     min-height: 400px;
   }

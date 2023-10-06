@@ -23,12 +23,16 @@
     "postinstall": "nuxt prepare",
     "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js --verbose --coverage",
     "db:migration": "drizzle-kit generate:sqlite",
-    "email:templates": "node ./scripts/emailTemplates.js"
+    "email:templates": "tsc ./scripts/emailTemplates.ts --module nodenext && node ./scripts/emailTemplates.js",
+    "lint": "npm run lint:eslint && npm run lint:stylelint",
+    "lint:eslint": "eslint --ext .ts,.js,.vue --fix --ignore-path .gitignore .",
+    "lint:stylelint": "stylelint \"**/*.css\" --fix"
   },
   "devDependencies": {
-    "@nuxt/devtools": "^0.8.5",
     "@nuxt/eslint-config": "^0.2.0",
     "@nuxtjs/turnstile": "^0.6.3",
+    "@types/bootstrap": "^5.2.7",
+    "@types/glidejs__glide": "^3.6.2",
     "better-sqlite3": "^8.6.0",
     "chalk": "^5.3.0",
     "eslint": "^8.50.0",
@@ -37,6 +41,7 @@
     "nodemailer": "^6.9.5",
     "nuxt": "^3.7.4",
     "stylelint": "^15.10.3",
+    "stylelint-config-standard": "^34.0.0",
     "xml": "^1.0.1"
   },
   "dependencies": {
