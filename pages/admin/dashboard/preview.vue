@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 definePageMeta({ layout: "dashboard", middleware: "auth" });
 useSeoMeta({
   robots: "noindex,nofollow"
@@ -43,7 +43,7 @@ useSeoMeta({
   </main>
 </template>
 
-<script>
+<script lang="ts">
 export default {
   beforeRouteLeave (to, from, next) {
     if (to.name === "admin-dashboard-publicar") {
@@ -53,28 +53,28 @@ export default {
   },
   data () {
     return {
-      edit: false,
-      post: null
+      edit: false as boolean | undefined,
+      post: undefined as PespEditorMeta["data"] | undefined
     };
   },
   mounted () {
-    this.edit = this.$route.meta.edit;
-    this.post = this.$route.meta.data;
+    const meta = this.$route.meta as PespEditorMeta;
+    this.edit = meta.edit;
+    this.post = meta.data;
   },
   methods: {
     backToEditor () {
       this.$router.push("/admin/dashboard/publicar/");
     },
     async publishPost () {
-      if (this.post.banner.src) {
+      if (this.post?.banner.src) {
         const url = this.edit ? `/api/posts/${this.post.permalink}` : "/api/posts";
-        const { permalink } = await $fetch(url, {
+        const post = await $fetch(url, {
           method: this.edit ? "PUT" : "POST",
           body: this.post
-        }).catch(() => ({}));
-        if (permalink) {
-          this.$router.push("/admin/dashboard/actualidad/");
-        }
+        }).catch(() => null);
+
+        if (post) this.$router.push("/admin/dashboard/actualidad/");
       }
     }
   }

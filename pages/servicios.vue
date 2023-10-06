@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 useSeoMeta({
   title: `${t("servicios")} | ${SITE.name.web}`,
   description: t("servicios_description"),
@@ -109,7 +109,7 @@ useHead({
   </main>
 </template>
 
-<script>
+<script lang="ts">
 export default {
   mounted () {
     this.$nuxt.$glide("#casos-exito .glide", {

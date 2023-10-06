@@ -5,7 +5,7 @@
   "version": "0.0.1",
   "license": "SEE LICENSE IN LICENSE.md",
   "private": true,
-  "main": "./build/ckeditor.js",
+  "main": "./build/ckeditor.ts",
   "devDependencies": {
     "@ckeditor/ckeditor5-alignment": "^38.0.1",
     "@ckeditor/ckeditor5-autoformat": "^38.0.1",
@@ -41,7 +41,8 @@
     "style-loader": "^2.0.0",
     "terser-webpack-plugin": "^4.2.3",
     "webpack": "^5.83.1",
-    "webpack-cli": "^4.10.0"
+    "webpack-cli": "^4.10.0",
+    "@babel/register": "^7.22.15"
   },
   "scripts": {
     "build": "webpack --mode production"

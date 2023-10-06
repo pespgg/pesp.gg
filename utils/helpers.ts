@@ -1,7 +1,16 @@
 
 
-export const formatDate = (date: string | number, style: Intl.DateTimeFormatOptions["month"], lang: string = "es") => {
-  const d = new Date(date);
+export const formatDate = (date: string | number, options?: Partial<{ style: Intl.DateTimeFormatOptions["month"], lang: string, offset: boolean }>) => {
+  const { style = "long", lang = "es", offset = false} = options || {};
+  let d;
+  if (offset) {
+    const timeOffset = new Date().getTimezoneOffset() * 60000;
+    d = new Date(new Date(date).getTime() + timeOffset);
+  }
+  else {
+    d = new Date(date);
+  }
+
   return d.toLocaleDateString(lang, {
     year: "numeric",
     month: style,
@@ -62,7 +71,7 @@ export const KtoNumber = (str = "") => {
   return Number(str.replace("k", "")) * 1000;
 };
 
-export const getRandomFromArray = (arr = []) => {
+export const getRandomFromArray = (arr: any[] = []) => {
   return arr[Math.floor(Math.random() * arr.length)];
 };
 

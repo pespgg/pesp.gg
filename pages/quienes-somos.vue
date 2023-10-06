@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 useSeoMeta({
   title: `${t("nosotros")} | ${SITE.name.web}`,
   description: t("nosotros_description"),
@@ -117,12 +117,12 @@ useHead({
   </main>
 </template>
 
-<script>
+<script lang="ts">
 export default {
   mounted () {
-    SCHEMA.nosotros.forEach((nosotros) => {
+    for (const nosotros of this.SCHEMA.nosotros) {
       this.$nuxt.$bootstrap.startCarousel(`#${nosotros.title} .carousel`);
-    });
+    }
 
     this.$nuxt.$glide("#comentarios .glide", {
       type: "carousel",

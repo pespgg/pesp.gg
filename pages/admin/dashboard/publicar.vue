@@ -1,7 +1,8 @@
-<script setup>
+<script setup lang="ts">
 definePageMeta({ layout: "dashboard", middleware: "auth" });
+// @ts-ignore
 const { component: Editor } = await import("@ckeditor/ckeditor5-vue");
-const { meta } = useRoute();
+const { meta } = useRoute() as { meta: PespEditorMeta };
 
 if (meta.data && meta.edit) {
   meta.data.content = await getPostContent(meta.data.permalink, meta.data.updated);
@@ -9,9 +10,9 @@ if (meta.data && meta.edit) {
   meta.data.banner.type = "url";
 }
 
-async function getPostContent (permalink, updated) {
+async function getPostContent (permalink: string, updated: number) {
   const url = process.dev ? `${SITE.local}/posts/content` : `${SITE.cdn}/posts/content`;
-  return await $fetch(`${url}/${permalink}.html?updated=${updated}`).catch(() => "");
+  return await $fetch(`${url}/${permalink}.html?updated=${updated}`).catch(() => "") as string;
 }
 </script>
 
@@ -84,11 +85,11 @@ async function getPostContent (permalink, updated) {
               <div class="border-bottom p-3">
                 <h5><Icon name="solar:calendar-linear" /> {{ t("fecha") }}</h5>
                 <input v-if="date.show" v-model="form.fecha" type="date" class="form-control form-control-sm" required @mouseleave="date.show = date.focus && date.show" @focusin="date.focus = true" @focusout="date.focus = false; date.show = false">
-                <input v-else type="text" class="form-control form-control-sm" :value="formatDate(form.fecha)" readonly @mouseenter="date.show = true">
+                <input v-else type="text" class="form-control form-control-sm" :value="formatDate(form.fecha, { offset: true })" readonly @mouseenter="date.show = true">
               </div>
               <div class="p-3">
                 <h5><Icon name="solar:link-minimalistic-2-linear" /> {{ t("permalink") }}</h5>
-                <input v-model="form.permalink" type="text" class="form-control form-control-sm" :disabled="$route.meta.edit" required>
+                <input v-model="form.permalink" type="text" class="form-control form-control-sm" :disabled="($route.meta as PespEditorMeta).edit" required>
               </div>
             </div>
           </div>
@@ -98,8 +99,7 @@ async function getPostContent (permalink, updated) {
   </section>
 </template>
 
-<script>
-
+<script lang="ts">
 export default {
   beforeRouteLeave (to, from, next) {
     if (to.name === "admin-dashboard-preview") {
@@ -128,33 +128,41 @@ export default {
       }
     };
   },
-  mounted () {
-    this.editor = true;
-    if (this.$route.meta.data) {
-      this.form = this.$route.meta.data;
+  computed: {
+    dateToOffset () {
+      return new Date(new Date(this.form.fecha).getTimezoneOffset() * 60000).toISOString().split("T")[0];
     }
   },
+  mounted () {
+    this.editor = true;
+    const data = (this.$route.meta as PespEditorMeta).data;
+    if (data) this.form = data;
+  },
   methods: {
-    onEditorLoaded (ckeditor) {
+    onEditorLoaded (ckeditor: any) {
       const wordCountPlugin = ckeditor.plugins.get("WordCount");
-      const wordCountWrapper = this.$refs.wordcount;
+      const wordCountWrapper = this.$refs.wordcount as HTMLElement;
       wordCountWrapper.appendChild(wordCountPlugin.wordCountContainer);
     },
-    generatePermalink (e) {
+    generatePermalink (e: Event) {
       if (!this.$route.meta.edit) {
-        this.form.permalink = e.target.value.trim().toLowerCase().replace(/\s+/g, "-").normalize("NFD").replace(/[\u0300-\u036F]/g, "").replace(/[^a-zA-Z0-9-]/g, "");
+        const target = e.target as HTMLInputElement;
+        this.form.permalink = target.value.trim().toLowerCase().replace(/\s+/g, "-").normalize("NFD").replace(/[\u0300-\u036F]/g, "").replace(/[^a-zA-Z0-9-]/g, "");
       }
     },
-    addBanner (e) {
-      const file = e.target.files[0];
+    addBanner (e: Event) {
+      const target = e.target as HTMLInputElement;
+      if (!target.files?.length) return;
+      const file = target.files[0];
       const reader = new FileReader();
       reader.readAsDataURL(file);
       reader.onload = () => {
-        this.form.banner.src = reader.result;
+        this.form.banner.src = reader.result?.toString() || "";
         this.form.banner.type = file.type;
       };
     },
     previewPost () {
+      // @ts-ignore
       if (!this.$refs.form.reportValidity()) {
         return;
       }
@@ -163,14 +171,12 @@ export default {
     },
     async publishPost () {
       if (this.form.banner.src) {
-        const url = this.$route.meta.edit ? `/api/posts/${this.form.permalink}` : "/api/posts";
-        const { permalink } = await $fetch(url, {
+        const post = await $fetch(this.$route.meta.edit ? `/api/posts/${this.form.permalink}` : "/api/posts", {
           method: this.$route.meta.edit ? "PUT" : "POST",
           body: this.form
-        }).catch(() => ({}));
-        if (permalink) {
-          this.$router.push("/admin/dashboard/actualidad/");
-        }
+        }).catch(() => null);
+
+        if (post) this.$router.push("/admin/dashboard/actualidad/");
       }
     }
   }
