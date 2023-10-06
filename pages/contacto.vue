@@ -48,8 +48,8 @@ useHead({
               <textarea v-model="contacto.message" class="form-control" :placeholder="t('mensaje')" style="height: 200px" required />
               <label for="floatingTextarea2">{{ t("mensaje") }}</label>
             </div>
-            <div class="text-center my-3">
-              <NuxtTurnstile ref="contacto" v-model="contacto.token" />
+            <div class="my-3">
+              <NuxtTurnstile ref="contacto" v-model="contacto.token" class="turnstile" :options="{ theme: 'dark' }" />
             </div>
             <div class="d-grid">
               <button class="btn btn-lg btn-success" type="submit" :disabled="submit">{{ t("enviar") }}</button>
@@ -108,7 +108,7 @@ useHead({
                   </div>
                   <div class="col-md-6">
                     <div class="text-center my-3 my-md-0">
-                      <NuxtTurnstile ref="unirse" v-model="unirse.token" />
+                      <NuxtTurnstile ref="unirse" v-model="unirse.token" class="turnstile" :options="{ theme: 'dark' }" />
                     </div>
                   </div>
                 </div>

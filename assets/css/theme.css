@@ -1,4 +1,6 @@
-[data-bs-theme="dark"] {
+:root {
+  color-scheme: dark;
+
   --bs-body-bg: #071018;
   --bs-body-bg-rgb: 7, 16, 24;
   --body-track: #0e161f;
@@ -17,16 +19,9 @@
   --form-input-background: #fff;
   --text-on-white: #232323;
   --text-on-white-muted: #6c757d;
-}
-
-[data-bs-theme="dark"] .text-dark strong, [data-bs-theme="dark"] .text-dark {
-  color: var(--text-on-white)!important;
-}
-
-[data-bs-theme="dark"] .carousel .carousel-indicators [data-bs-target] {
-  background-color: #fff;
-}
-
-[data-bs-theme="dark"] .carousel .carousel-control-next-icon, [data-bs-theme="dark"] .carousel .carousel-control-prev-icon {
-  filter: invert(0) grayscale(100);
+  --bs-tertiary-bg: #2b3035;
+  --bs-tertiary-bg-rgb: 43,48,53;
+  --bs-body-color: #dee2e6;
+  --bs-body-color-rgb: 222,226,230;
+  --bs-border-color: #495057;
 }

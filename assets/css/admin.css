@@ -2,12 +2,10 @@
   display: none;
 }
 
-
 #image-upload label .overlay {
   opacity: 0;
   transition: opacity 0.3s ease-in-out;
 }
-
 
 #image-upload label:hover .overlay {
   opacity: .85;

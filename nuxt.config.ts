@@ -9,9 +9,6 @@ export default defineNuxtConfig({
       htmlAttrs: {
         lang: "es"
       },
-      bodyAttrs: {
-        "data-bs-theme": "dark"
-      },
       meta: [
         { name: "robots", content: "index, follow" },
         { name: "apple-mobile-web-app-title", content: SITE.name.web },
@@ -48,7 +45,7 @@ export default defineNuxtConfig({
     "@glidejs/glide/dist/css/glide.core.min.css",
     "@glidejs/glide/dist/css/glide.theme.min.css",
     "~/assets/css/main.css",
-    "~/assets/css/dark.css",
+    "~/assets/css/theme.css",
     "~/assets/css/transitions.css",
     "~/assets/css/glidejs.css",
     "~/assets/css/forms.css"

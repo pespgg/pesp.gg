@@ -18,6 +18,11 @@
   color: var(--text-on-white-muted)!important;
 }
 
+#contacto input:-webkit-autofill { 
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: var(--text-on-white) !important;
+}
+
 .form-floating label::after {
   background-color: transparent!important;
 }
