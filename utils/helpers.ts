@@ -1,21 +1,21 @@
 
 
-export const formatDate = (date: string | number, options?: Partial<{ style: Intl.DateTimeFormatOptions["month"], lang: string, offset: boolean }>) => {
-  const { style = "long", lang = "es", offset = false} = options || {};
-  let d;
-  if (offset) {
-    const timeOffset = new Date().getTimezoneOffset() * 60000;
-    d = new Date(new Date(date).getTime() + timeOffset);
-  }
-  else {
-    d = new Date(date);
-  }
+export const formatDate = (date: string | number, options?: Partial<{ style: Intl.DateTimeFormatOptions["month"], lang: string, type: string }>) => {
+  const { style = "long", lang = "es", type = "text" } = options || {};
 
-  return d.toLocaleDateString(lang, {
-    year: "numeric",
-    month: style,
-    day: "2-digit"
-  });
+  const timeOffset = new Date().getTimezoneOffset() * 60000;
+  const d = new Date(new Date(date).getTime() + timeOffset);
+
+  switch (type) {
+  case "iso":
+    return d.toISOString();
+  default:
+    return d.toLocaleDateString(lang, {
+      year: "numeric",
+      month: style,
+      day: "2-digit"
+    });
+  }
 };
 
 export const currentYear = () => {

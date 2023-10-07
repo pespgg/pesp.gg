@@ -35,7 +35,7 @@ const deletePost = async (permalink: string) => {
           <tbody>
             <tr v-for="(post, i) of posts" :key="i">
               <td>{{ post.titulo }}</td>
-              <td>{{ formatDate(post.fecha) }}</td>
+              <td :title="formatDate(post.fecha, { type: 'iso' })">{{ formatDate(post.fecha) }}</td>
               <td>
                 <span v-if="post.visible" class="bg-info text-dark rounded-pill p-2 fw-bold">{{ t("publico") }}</span>
                 <span v-else class="bg-warning text-dark rounded-pill p-2 fw-bold">{{ t("oculto") }}</span>

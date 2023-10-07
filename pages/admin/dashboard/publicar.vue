@@ -85,7 +85,7 @@ async function getPostContent (permalink: string, updated: number) {
               <div class="border-bottom p-3">
                 <h5><Icon name="solar:calendar-linear" /> {{ t("fecha") }}</h5>
                 <input v-if="date.show" v-model="form.fecha" type="date" class="form-control form-control-sm" required @mouseleave="date.show = date.focus && date.show" @focusin="date.focus = true" @focusout="date.focus = false; date.show = false">
-                <input v-else type="text" class="form-control form-control-sm" :value="formatDate(form.fecha, { offset: true })" readonly @mouseenter="date.show = true">
+                <input v-else type="text" class="form-control form-control-sm" :value="formatDate(form.fecha)" readonly @mouseenter="date.show = true">
               </div>
               <div class="p-3">
                 <h5><Icon name="solar:link-minimalistic-2-linear" /> {{ t("permalink") }}</h5>
