@@ -75,7 +75,7 @@ useHead({
               </span>
             </div>
             <div class="glide__bullets" data-glide-el="controls[nav]">
-              <button v-for="i of SCHEMA.casos_exito.length" :key="i" class="glide__bullet" :data-glide-dir="`=${i}`" :aria-label="`${SCHEMA.casos_exito[i - 1].title}`" />
+              <button v-for="(caso, i) of SCHEMA.casos_exito" :key="i" class="glide__bullet" :data-glide-dir="`=${i}`" :aria-label="caso.title" />
             </div>
           </div>
         </div>

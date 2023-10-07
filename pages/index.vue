@@ -87,8 +87,8 @@ useHead({
                 </li>
               </ul>
             </div>
-            <div v-if="posts" class="glide__bullets" data-glide-el="controls[nav]">
-              <button v-for="i of posts?.length" :key="i" class="glide__bullet" :data-glide-dir="`=${i}`" :aria-label="`${posts[i - 1].titulo}`" />
+            <div class="glide__bullets" data-glide-el="controls[nav]">
+              <button v-for="(post, i) of posts" :key="i" class="glide__bullet" :data-glide-dir="`=${i}`" :aria-label="post.titulo" />
             </div>
           </div>
         </div>
