@@ -59,7 +59,7 @@ useHead({
                         <p class="m-0">{{ t(caso.description) }}</p>
                       </div>
                       <div class="order-1 order-md-2 col-md-5 p-0">
-                        <img :src="`${SITE.dirs.casos_exito}/${caso.image}`" class="img-fluid w-100 h-100 object-fit-cover">
+                        <img :src="`${SITE.dirs.casos_exito}/${caso.image}`" class="img-fluid w-100 h-100 object-fit-cover" :alt="t(caso.title)">
                       </div>
                     </div>
                   </div>

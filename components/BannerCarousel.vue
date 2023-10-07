@@ -6,7 +6,7 @@
       </div>
       <div class="carousel-inner">
         <div v-for="(banner, i) of banners" :key="i" class="carousel-item" :class="{ active: !i }" data-bs-interval="10000">
-          <img :src="`${SITE.dirs.banners}/${banner}`" class="d-block w-100" alt="PESP.GG Banner">
+          <img :src="`${SITE.dirs.banners}/${banner}`" class="d-block w-100" :alt="`${SITE.name.web} Banner`">
         </div>
       </div>
     </div>

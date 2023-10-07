@@ -136,7 +136,7 @@ useHead({
             <div class="col-md-6 p-2 p-md-3">
               <div class="position-relative rounded overflow-hidden scale-position-hover">
                 <div class="scale-position">
-                  <img class="img-fluid shadow" :src="`${SITE.dirs.servicios}/${servicio.images[0]}`">
+                  <img class="img-fluid shadow" :src="`${SITE.dirs.servicios}/${servicio.images[0]}`" :alt="t(servicio.title)">
                 </div>
                 <NuxtLink class="position-absolute bottom-0 bg-dark w-100 bg-opacity-75 px-3 py-2 text-light d-flex justify-content-between align-items-center" :to="`/servicios/#${servicio.title}`">
                   <h5 class="m-0">{{ t(servicio.title) }}</h5>

@@ -59,7 +59,7 @@ useHead({
         <div class="py-5">
           <div class="unete bg-light rounded position-relative px-5" role="button" @click="more = !more">
             <Transition name="fade">
-              <img v-if="sticker" class="sticker position-absolute bottom-0" width="250" height="250" :src="`${SITE.dirs.stickers}/${sticker}.png`">
+              <img v-if="sticker" class="sticker position-absolute bottom-0" width="250" height="250" :src="`${SITE.dirs.stickers}/${sticker}.png`" :alt="sticker">
             </Transition>
             <div class="py-3 mx-0">
               <div class="col-12 col-md-5 text-center text-dark ms-auto scale-hover" style="margin-right: 6.5rem;">
