@@ -23,12 +23,12 @@ useHead({
         <h2 class="text-center text-uppercase mb-4">
           <strong>{{ t("faq") }}</strong>
         </h2>
-        <div class="accordion">
-          <div v-for="(faq, i) of SCHEMA.faq" :key="i" class="accordion-item">
+        <div itemscope itemtype="https://schema.org/FAQPage" class="accordion">
+          <div v-for="(faq, i) of SCHEMA.faq" :key="i" itemprop="mainEntity" itemscope itemtype="https://schema.org/Question" class="accordion-item">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" :data-bs-target="`#panels-collapse${i}`" aria-expanded="true" :aria-controls="`panels-collapse${i}`">
               <h4 class="accordion-header">{{ t(faq.question) }}</h4>
             </button>
-            <div :id="`panels-collapse${i}`" class="accordion-collapse collapse" :aria-labelledby="`${i}`">
+            <div :id="`panels-collapse${i}`" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer" class="accordion-collapse collapse" :aria-labelledby="`${i}`">
               <div class="accordion-body">
                 <!-- eslint-disable-next-line vue/no-v-html -->
                 <span v-html="t(faq.answer)" />
