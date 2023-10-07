@@ -48,6 +48,10 @@ useHead({
         </NuxtLink>
       </div>
       <p class="m-0">{{ t("publicado_el") }} <span itemprop="datePublished" :content="formatDate(post.fecha, { type: 'iso' })">{{ formatDate(post.fecha) }}</span></p>
+      <div class="d-none" itemprop="author" itemscope itemtype="https://schema.org/Organization">
+        <meta itemprop="name" :content="SITE.name.full">
+        <link itemprop="url" :href="SITE.url">
+      </div>
       <h1>
         <strong itemprop="headline">{{ post.titulo }}</strong>
       </h1>

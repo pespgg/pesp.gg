@@ -60,6 +60,10 @@ useHead({
                 </NuxtLink>
               </div>
             </div>
+            <div class="d-none" itemprop="author" itemscope itemtype="https://schema.org/Organization">
+              <meta itemprop="name" :content="SITE.name.full">
+              <link itemprop="url" :href="SITE.url">
+            </div>
           </article>
         </div>
       </div>
