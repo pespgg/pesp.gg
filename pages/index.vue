@@ -55,12 +55,14 @@ useHead({
             <div class="glide__track" data-glide-el="track">
               <ul class="glide__slides">
                 <li v-for="(post, i) of posts" :key="i" class="glide__slide p-0 px-sm-3" :class="{'glide__slide--active': !i}">
-                  <article class="card mx-auto border-0 shadow">
-                    <img :src="getPostImage(post.permalink, post.updated)" class="card-img-top">
+                  <article class="card mx-auto border-0 shadow" itemscope itemtype="https://schema.org/BlogPosting">
+                    <img :src="getPostImage(post.permalink, post.updated)" class="card-img-top" :alt="post.titulo" itemprop="image">
                     <div class="card-body bg-dark">
                       <h4 class="card-title">
                         <strong>
-                          <NuxtLink :to="`/p/${post.permalink}/`">{{ post.titulo }}</NuxtLink>
+                          <NuxtLink :to="`/p/${post.permalink}/`">
+                            <span itemprop="headline">{{ post.titulo }}</span>
+                          </NuxtLink>
                         </strong>
                       </h4>
                       <div class="bg-body-tertiary text-light text-center mb-2 rounded small text-uppercase" role="button">{{ getTagName(post.tag) }}</div>
@@ -69,13 +71,17 @@ useHead({
                     <div class="card-footer bg-dark p-0 overflow-hidden">
                       <div class="d-flex align-items-center ps-3">
                         <Icon class="text-light" name="solar:calendar-linear" size="1.1rem" />
-                        <small class="text-body-secondary ms-1" :title="String(post.fecha)">
+                        <small class="text-body-secondary ms-1" :title="String(post.fecha)" itemprop="datePublished" :content="formatDate(post.fecha, { type: 'iso' })">
                           {{ formatDate(post.fecha) }}
                         </small>
                         <NuxtLink class="hover ms-auto bg-primary text-light py-1 px-3" :to="'/p/' + post.permalink">
                           <small>{{ t("abrir") }} <Icon name="solar:arrow-right-bold" size="1.5rem" /></small>
                         </NuxtLink>
                       </div>
+                    </div>
+                    <div class="d-none" itemprop="author" itemscope itemtype="https://schema.org/Organization">
+                      <meta itemprop="name" :content="SITE.name.full">
+                      <link itemprop="url" :href="SITE.url">
                     </div>
                   </article>
                 </li>
