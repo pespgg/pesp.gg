@@ -35,9 +35,9 @@ useHead({
 
 <template>
   <main>
-    <article id="post" class="container">
+    <article id="post" class="container" itemscope itemtype="https://schema.org/BlogPosting">
       <header class="my-3">
-        <img :src="getPostImage(post.permalink, post.updated)" class="d-block w-100 rounded shadow" :alt="post.titulo">
+        <img :src="getPostImage(post.permalink, post.updated)" class="d-block w-100 rounded shadow" :alt="post.titulo" itemprop="image">
       </header>
       <div class="d-flex mb-2">
         <NuxtLink class="d-flex align-items-center rounded overflow-hidden text-white" :to="`/tag/${post.tag}/`">
@@ -47,9 +47,9 @@ useHead({
           <div class="bg-body-tertiary px-2">{{ getTagName(post.tag) }}</div>
         </NuxtLink>
       </div>
-      <p class="m-0">{{ t("publicado_el") }} {{ formatDate(post.fecha) }}</p>
+      <p class="m-0">{{ t("publicado_el") }} <span itemprop="datePublished" :content="formatDate(post.fecha, { type: 'iso' })">{{ formatDate(post.fecha) }}</span></p>
       <h1>
-        <strong>{{ post.titulo }}</strong>
+        <strong itemprop="headline">{{ post.titulo }}</strong>
       </h1>
       <hr>
       <div class="p-0 p-lg-3">
