@@ -95,7 +95,7 @@ useHead({
             <div class="glide__track" data-glide-el="track">
               <ul class="glide__slides">
                 <li v-for="(image, i) of SCHEMA.galeria" :key="i" class="glide__slide p-0 px-sm-3" :class="{'glide__slide--active': !i}">
-                  <img :src="`${SITE.dirs.galeria}/${image}`" class="img-fluid w-100 rounded shadow" :alt="`${t('galeria')}`">
+                  <img :src="`${SITE.dirs.galeria}/${image}`" class="img-fluid w-100 rounded shadow" :alt="t('galeria')">
                 </li>
               </ul>
             </div>
@@ -108,7 +108,7 @@ useHead({
               </span>
             </div>
             <div class="glide__bullets" data-glide-el="controls[nav]">
-              <button v-for="(caso, i) of SCHEMA.galeria" :key="i" class="glide__bullet" :data-glide-dir="`=${i}`" />
+              <button v-for="(caso, i) of SCHEMA.galeria" :key="i" class="glide__bullet" :data-glide-dir="`=${i}`" :aria-label="`${t('galeria')} ${i}`" />
             </div>
           </div>
         </div>

@@ -87,8 +87,8 @@ useHead({
                 </li>
               </ul>
             </div>
-            <div class="glide__bullets" data-glide-el="controls[nav]">
-              <button v-for="i of posts?.length" :key="i" class="glide__bullet" :data-glide-dir="`=${i}`" />
+            <div v-if="posts" class="glide__bullets" data-glide-el="controls[nav]">
+              <button v-for="i of posts?.length" :key="i" class="glide__bullet" :data-glide-dir="`=${i}`" :aria-label="`${posts[i - 1].titulo}`" />
             </div>
           </div>
         </div>
@@ -139,7 +139,7 @@ useHead({
                   <img class="img-fluid shadow" :src="`${SITE.dirs.servicios}/${servicio.images[0]}`" :alt="t(servicio.title)">
                 </div>
                 <NuxtLink class="position-absolute bottom-0 bg-dark w-100 bg-opacity-75 px-3 py-2 text-light d-flex justify-content-between align-items-center" :to="`/servicios/#${servicio.title}`">
-                  <h5 class="m-0">{{ t(servicio.title) }}</h5>
+                  <p class="m-0 h5">{{ t(servicio.title) }}</p>
                   <Icon name="solar:square-bottom-up-linear" size="1.5rem" />
                 </NuxtLink>
               </div>
