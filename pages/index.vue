@@ -6,6 +6,21 @@ const { data: posts } = await useFetch("/api/posts", {
   }
 });
 
+const schemaOrg = {
+  organization: {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": SITE.name.full,
+    "alternateName": SITE.name.short,
+    "url": SITE.url,
+    "logo": `${SITE.url}/images/card.jpg`,
+    "sameAs": [
+      ...SITE.socials.map(social => social.link),
+      SITE.url
+    ]
+  }
+};
+
 useSeoMeta({
   description: t("home_description"),
   keywords: t("home_keywords"),
@@ -16,8 +31,11 @@ useSeoMeta({
 });
 
 useHead({
+  script: [
+    { type: "application/ld+json", children: JSON.stringify(schemaOrg.organization) },
+  ],
   link: [
-    { rel: "canonical", href: `${SITE.url}/` }
+    { rel: "canonical", href: SITE.url }
   ]
 });
 </script>

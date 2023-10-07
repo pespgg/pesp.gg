@@ -33,7 +33,7 @@ export const SITE = {
     {
       name: "Youtube",
       icon: "bi:youtube",
-      link: "https://youtube.com/channel/UCR1DrxgUzQHynABliRLN21g"
+      link: "https://youtube.com/@PanamaEsportsProductions"
     },
     {
       name: "Instagram",
