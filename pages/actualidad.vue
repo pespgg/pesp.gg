@@ -22,7 +22,8 @@ useHead({
   ]
 });
 
-const currentPage = ref(1);
+const { query } = useRouter();
+const currentPage = ref(query?.p ? query.p : 1);
 const perPage = ref(6);
 
 const numberOfPages = computed (() => {

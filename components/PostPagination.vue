@@ -2,13 +2,13 @@
   <nav aria-label="Page navigation">
     <ul class="pagination m-0">
       <!-- First -->
-      <li class="page-item">
+      <li v-if="currentPage > 1" class="page-item">
         <button class="page-link d-flex align-items-center justify-content-center" aria-label="First" type="button" :disabled="isInFirstPage" @click="onClickFirstPage">
           <Icon name="solar:double-alt-arrow-left-bold-duotone" size="1.4rem" />
         </button>
       </li>
       <!-- Previous -->
-      <li class="page-item">
+      <li v-if="totalPages > maxVisibleButtons && currentPage > 1" class="page-item">
         <button class="page-link d-flex align-items-center justify-content-center" aria-label="Previous" type="button" :disabled="isInFirstPage" @click="onClickPreviousPage">
           <Icon name="solar:alt-arrow-left-linear" size="1.4rem" />
         </button>
@@ -20,13 +20,13 @@
         </button>
       </li>
       <!-- Next -->
-      <li class="page-item">
+      <li v-if="totalPages > maxVisibleButtons && currentPage < totalPages" class="page-item">
         <button class="page-link d-flex align-items-center justify-content-center" aria-label="Next" type="button" :disabled="isInLastPage" @click="onClickNextPage">
           <Icon name="solar:alt-arrow-right-linear" size="1.4rem" />
         </button>
       </li>
       <!-- Last -->
-      <li class="page-item">
+      <li v-if="currentPage < totalPages" class="page-item">
         <button class="page-link d-flex align-items-center justify-content-center" aria-label="Next" type="button" :disabled="isInLastPage" @click="onClickLastPage">
           <Icon name="solar:double-alt-arrow-right-bold-duotone" size="1.4rem" />
         </button>
