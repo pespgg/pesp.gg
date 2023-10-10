@@ -94,7 +94,7 @@ export default {
       this.currentPage = page;
     },
     numberOfPages (post) {
-      return Math.ceil(post.length / this.perPage);
+      return Math.ceil(post?.length / this.perPage);
     },
     showPosts (post) {
       const sliceFix = this.currentPage * this.perPage;
