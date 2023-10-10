@@ -87,7 +87,7 @@ const showPosts = computed (() => {
           </article>
         </div>
       </div>
-      <PostPagination class="pt-5 pb-2 d-flex align-items-center justify-content-center" :total-pages="numberOfPages" :current-page="currentPage" @pagechanged="onPageChange" />
+      <PostPagination v-if="numberOfPages > 1" class="pt-5 pb-2 d-flex align-items-center justify-content-center" :total-pages="numberOfPages" :current-page="currentPage" @pagechanged="onPageChange" />
     </div>
   </main>
 </template>
