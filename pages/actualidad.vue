@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 const { data: posts } = await useFetch("/api/posts", {
   query: {
     props: ["image", "titulo", "fecha", "permalink", "tag", "updated"].join(",")
@@ -21,6 +21,24 @@ useHead({
     { rel: "canonical", href: `${SITE.url}/actualidad/` }
   ]
 });
+
+const currentPage = ref(1);
+const perPage = ref(6);
+
+const numberOfPages = computed (() => {
+  if (!posts.value) return 0;
+  return Math.ceil(posts.value.length / 6);
+});
+
+const onPageChange = (page: number) => {
+  currentPage.value = page;
+};
+
+const showPosts = computed (() => {
+  if (!posts.value) return [];
+  const sliceFix = currentPage.value * perPage.value;
+  return posts.value.slice(sliceFix - perPage.value, sliceFix);
+});
 </script>
 
 <template>
@@ -34,13 +52,8 @@ useHead({
         </h2>
         <p class="m-0">{{ t("actualidad_info") }}</p>
       </div>
-      <PostPagination class="pt-3 pb-5 d-flex align-items-center justify-content-center"
-                      :total-pages="numberOfPages(posts)"
-                      :current-page="currentPage"
-                      @pagechanged="onPageChange"
-      />
       <div class="row row-gap-3">
-        <div v-for="(post, i) of showPosts(posts)" :key="i" class="col-md-6 col-lg-4">
+        <div v-for="(post, i) of showPosts" :key="i" class="col-md-6 col-lg-4">
           <article class="card mx-auto border-0 shadow h-100 light" itemscope itemtype="https://schema.org/BlogPosting">
             <img :src="getPostImage(post.permalink, post.updated)" class="card-img-top" :alt="post.titulo" itemprop="image">
             <div class="card-body bg-dark">
@@ -72,34 +85,7 @@ useHead({
           </article>
         </div>
       </div>
-      <PostPagination class="pt-5 pb-2 d-flex align-items-center justify-content-center"
-                      :total-pages="numberOfPages(posts)"
-                      :current-page="currentPage"
-                      @pagechanged="onPageChange"
-      />
+      <PostPagination class="pt-5 pb-2 d-flex align-items-center justify-content-center" :total-pages="numberOfPages" :current-page="currentPage" @pagechanged="onPageChange" />
     </div>
   </main>
 </template>
-
-<script>
-export default {
-  data () {
-    return {
-      currentPage: 1,
-      perPage: 6,
-    };
-  },
-  methods: {
-    onPageChange(page) {
-      this.currentPage = page;
-    },
-    numberOfPages (post) {
-      return Math.ceil(post?.length / this.perPage);
-    },
-    showPosts (post) {
-      const sliceFix = this.currentPage * this.perPage;
-      return post.slice(sliceFix - this.perPage, sliceFix);
-    }
-  }
-};
-</script>
