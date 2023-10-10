@@ -115,9 +115,3 @@ export default {
   }
 };
 </script>
-<style>
-.active {
-  background-color: #4AAE9B;
-  color: #ffffff;
-}
-</style>
