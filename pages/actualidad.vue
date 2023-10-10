@@ -22,8 +22,8 @@ useHead({
   ]
 });
 
-const { query } = useRouter();
-const currentPage = ref(query?.p ? query.p : 1);
+const { query } = useRoute();
+const currentPage = ref(query.p ? query.p : 1);
 const perPage = ref(6);
 
 const numberOfPages = computed (() => {
@@ -86,7 +86,7 @@ const showPosts = computed (() => {
           </article>
         </div>
       </div>
-      <PostPagination class="pt-5 pb-2 d-flex align-items-center justify-content-center" :total-pages="numberOfPages" :current-page="currentPage" @pagechanged="onPageChange" />
+      <PostPagination class="pt-5 pb-2 d-flex align-items-center justify-content-center" :total-pages="numberOfPages" :current-page="Number(currentPage)" @pagechanged="onPageChange" />
     </div>
   </main>
 </template>
