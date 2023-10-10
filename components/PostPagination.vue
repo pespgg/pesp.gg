@@ -35,7 +35,7 @@
   </nav>
 </template>
 
-<script>
+<script lang="ts">
 export default {
   props: {
     maxVisibleButtons: {
@@ -100,7 +100,7 @@ export default {
     onClickPreviousPage() {
       this.$emit("pagechanged", this.currentPage - 1);
     },
-    onClickPage(page) {
+    onClickPage(page: number) {
       this.$emit("pagechanged", page);
     },
     onClickNextPage() {
@@ -109,7 +109,7 @@ export default {
     onClickLastPage() {
       this.$emit("pagechanged", this.totalPages);
     },
-    isPageActive(page) {
+    isPageActive(page: number) {
       return this.currentPage === page;
     }
   }
