@@ -181,3 +181,38 @@ strong, b {
 .text-dark strong, .text-dark {
   color: var(--text-on-white)!important;
 }
+
+/* Pagination */
+.pagination {
+  list-style-type: none;
+}
+
+.pagination-item {
+  display: inline-block;
+}
+
+.page-link {
+  width: 60px;
+  height: 50px;
+  background-color: var(--bs-dark);
+  transition: none;
+  padding: 2px;
+  border: none;
+}
+
+.active>.page-link, .page-link.active, .page-link:focus, .page-link:disabled {
+  border-color: var(--bs-primary);
+  color: var(--bs-heading-color);
+}
+
+.page-link:disabled {
+  background-color: rgb(var(--bs-primary-rgb), 0.2);
+}
+
+.active>.page-link, .page-link.active, .page-link:focus {
+  background-color: var(--bs-primary);
+}
+
+.page-item {
+  padding: 0 2px;
+}
