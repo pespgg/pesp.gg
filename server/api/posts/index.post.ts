@@ -33,8 +33,11 @@ export default defineEventHandler(async (event): Promise<PespPost> => {
   const bannerBuffer = Buffer.from(base64, "base64");
 
   if (process.dev) {
-    const { writeFileSync } = await import("fs");
+    const { writeFileSync, existsSync, mkdirSync } = await import("fs");
+    if (!existsSync("./public/posts/content")) mkdirSync("./public/posts/content", { recursive: true });
     writeFileSync(`./public/posts/content/${permalink}.html`, content);
+
+    if (!existsSync("./public/posts/images")) mkdirSync("./public/posts/images", { recursive: true });
     writeFileSync(`./public/posts/images/${permalink}.jpg`, bannerBuffer);
   }
   else if (process.env.CDN) {

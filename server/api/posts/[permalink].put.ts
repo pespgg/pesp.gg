@@ -29,9 +29,11 @@ export default defineEventHandler(async (event): Promise<PespPost> => {
   };
 
   if (process.dev) {
-    const { writeFileSync } = await import("fs");
+    const { writeFileSync, existsSync, mkdirSync } = await import("fs");
+    if (!existsSync("./public/posts/content")) mkdirSync("./public/posts/content", { recursive: true });
     writeFileSync(`./public/posts/content/${permalink}.html`, content);
     if (newImage) {
+      if (!existsSync("./public/posts/images")) mkdirSync("./public/posts/images", { recursive: true });
       writeFileSync(`./public/posts/images/${permalink}.jpg`, bannerBuffer(banner.src));
     }
   }
