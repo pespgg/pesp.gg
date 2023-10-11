@@ -26,6 +26,7 @@ const { query, path } = useRoute();
 const p = Number(query.p);
 const currentPage = ref(p ? p : 1);
 const perPage = ref(6);
+const actualidad: Ref<HTMLElement> = ref("actualidad") as any;
 
 const numberOfPages = computed (() => {
   if (!posts.value) return 0;
@@ -34,6 +35,7 @@ const numberOfPages = computed (() => {
 
 const onPageChange = (page: number) => {
   currentPage.value = page;
+  scrollTo({ top: actualidad.value.offsetTop, behavior: "smooth" });
 };
 
 const showPosts = computed (() => {
@@ -53,7 +55,7 @@ watch(currentPage, () => {
   <main>
     <!-- Banner -->
     <BannerPage banner="actualidad.jpg" :text="t('actualidad')" />
-    <div class="container-fluid py-5">
+    <div ref="actualidad" class="container-fluid py-5">
       <div class="my-4 text-center ">
         <h2 class="text-uppercase">
           <strong>{{ t("recientes") }}</strong>
