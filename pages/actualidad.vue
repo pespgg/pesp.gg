@@ -77,7 +77,7 @@ watch(currentPage, () => {
               <div class="bg-body-tertiary text-light text-center mb-2 rounded small text-uppercase" role="button">{{ getTagName(post.tag) }}</div>
               <LoadPost :permalink="post.permalink" :truncate="220" />
             </div>
-            <div class="card-footer bg-dark p-0 overflow-hidden">
+            <div class="card-footer bg-dark p-0 rounded-bottom overflow-hidden">
               <div class="d-flex align-items-center ps-3">
                 <Icon class="text-light" name="solar:calendar-linear" size="1.1rem" />
                 <small class="text-body-secondary ms-1" itemprop="datePublished" :content="formatDate(post.fecha, { type: 'iso' })">
