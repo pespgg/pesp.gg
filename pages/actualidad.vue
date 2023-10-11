@@ -22,7 +22,9 @@ useHead({
   ]
 });
 
-const currentPage = ref(1);
+const { query, path } = useRoute();
+const p = Number(query.p);
+const currentPage = ref(p ? p : 1);
 const perPage = ref(6);
 
 const numberOfPages = computed (() => {
@@ -38,6 +40,12 @@ const showPosts = computed (() => {
   if (!posts.value) return [];
   const sliceFix = currentPage.value * perPage.value;
   return posts.value.slice(sliceFix - perPage.value, sliceFix);
+});
+
+watch(currentPage, () => {
+  if (process.server) return;
+  const url = currentPage.value > 1 ? `${path}?p=${currentPage.value}` : path;
+  window.history.replaceState({}, "", url);
 });
 </script>
 
@@ -85,7 +93,7 @@ const showPosts = computed (() => {
           </article>
         </div>
       </div>
-      <PostPagination class="pt-5 pb-2 d-flex align-items-center justify-content-center" :total-pages="numberOfPages" :current-page="currentPage" @pagechanged="onPageChange" />
+      <PostPagination v-if="numberOfPages > 1" class="pt-5 pb-2 d-flex align-items-center justify-content-center" :total-pages="numberOfPages" :current-page="currentPage" @pagechanged="onPageChange" />
     </div>
   </main>
 </template>
