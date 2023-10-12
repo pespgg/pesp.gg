@@ -9,6 +9,7 @@ export const SITE = {
   local: "http://localhost:5173",
   twitter: "@pesp_gg",
   description: "La mejor experiencia gaming. Apoyando el Talento Gamer.",
+  creation: "September 16, 2015",
   dirs: {
     banners: "/images/banners",
     categorias: "/images/categorias",
