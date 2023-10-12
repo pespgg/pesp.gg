@@ -1,5 +1,5 @@
-import { getAge } from "~/utils/helpers";
-import { SITE } from "~/utils/site";
+import { getAge } from "../utils/helpers";
+import { SITE } from "../utils/site";
 
 export default {
   lang: "es",
