@@ -133,6 +133,14 @@ export default {
       return new Date(new Date(this.form.fecha).getTimezoneOffset() * 60000).toISOString().split("T")[0];
     }
   },
+  computed: {
+    juegos () {
+      return SCHEMA_tags.filter(v => v.type === "juegos").sort((a, b) => a.name.localeCompare(b.name));
+    },
+    otros () {
+      return SCHEMA_tags.filter(v => v.type === "otros").sort((a, b) => a.name.localeCompare(b.name));
+    }
+  },
   mounted () {
     this.editor = true;
     const data = (this.$route.meta as PespEditorMeta).data;
@@ -178,14 +186,6 @@ export default {
 
         if (post) this.$router.push("/admin/dashboard/actualidad/");
       }
-    }
-  },
-  computed: {
-    juegos () {
-      return SCHEMA_tags.filter(v => v.type === 'juegos').sort((a, b) => a.name.localeCompare(b.name));
-    },
-    otros () {
-      return SCHEMA_tags.filter(v => v.type === 'otros').sort((a, b) => a.name.localeCompare(b.name));
     }
   }
 };
