@@ -220,3 +220,8 @@ strong, b {
 .page-item {
   padding: 0 2px;
 }
+
+img.post {
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
