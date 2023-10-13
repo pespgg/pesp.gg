@@ -59,6 +59,7 @@ useHead({
       <div class="p-0 p-lg-3">
         <LoadPost class="ck-content" :permalink="post.permalink" />
       </div>
+      <hr>
       <NewsletterForm />
     </article>
   </main>
