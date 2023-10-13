@@ -1,4 +1,4 @@
-export default [
+export const SCHEMA_marcas = [
   {
     name: "Yoytec",
     image: "yoytec.png"

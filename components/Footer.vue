@@ -78,15 +78,15 @@ export default {
         sobre_nosotros: [
           {
             name: t("nosotros"),
-            link: SCHEMA.pages.nosotros.to
+            link: SCHEMA_pages.nosotros.to
           },
           {
             name: t("servicios"),
-            link: SCHEMA.pages.servicios.to
+            link: SCHEMA_pages.servicios.to
           },
           {
             name: t("contacto"),
-            link: SCHEMA.pages.contacto.to
+            link: SCHEMA_pages.contacto.to
           }
         ],
         ayuda: [

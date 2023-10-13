@@ -53,11 +53,3 @@ export const SITE = {
     }
   ]
 };
-
-export const getAge = (date: string) => {
-  const now = Number(new Date());
-  const birth = Number(new Date(`${date} 00:00:00`));
-  const diff = Math.abs(now - birth);
-  const age = Math.floor(diff / (1000 * 60 * 60 * 24 * 365.25));
-  return age;
-};

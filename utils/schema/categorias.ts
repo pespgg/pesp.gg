@@ -1,4 +1,4 @@
-export default [
+export const SCHEMA_categorias = [
   {
     name: "League of Legends",
     image: "lol.jpg",

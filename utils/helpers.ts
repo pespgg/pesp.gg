@@ -79,7 +79,7 @@ export const getPostImage = (name: string, updated: number) => {
 };
 
 export const getTagName = (tag: string) => {
-  return SCHEMA.tags.find(t => t.tag === tag)?.name;
+  return SCHEMA_tags.find(t => t.tag === tag)?.name;
 };
 
 export const getRandom = (min: number, max: number) => {
@@ -89,4 +89,12 @@ export const getRandom = (min: number, max: number) => {
 export const generateColor = (number: number) => {
   const hue = number * 137.508; // use golden angle approximation
   return `hsla(${hue},100%,75%)`;
+};
+
+export const getAge = (date: string) => {
+  const now = Number(new Date());
+  const birth = Number(new Date(`${date} 00:00:00`));
+  const diff = Math.abs(now - birth);
+  const age = Math.floor(diff / (1000 * 60 * 60 * 24 * 365.25));
+  return age;
 };

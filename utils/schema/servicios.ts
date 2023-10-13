@@ -1,4 +1,4 @@
-export default [
+export const SCHEMA_servicios = [
   {
     title: "eventos",
     images: ["eventos-home.jpg", "eventos.jpg"],

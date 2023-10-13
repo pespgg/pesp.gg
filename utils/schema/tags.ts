@@ -1,8 +1,6 @@
-import categorias from "./categorias.js";
+const categorias_tags = SCHEMA_categorias.map(({ tag, name }) => ({ tag, name, type: "juegos" }));
 
-const categorias_tags = categorias.map(({ tag, name }) => ({ tag, name, type: "juegos" }));
-
-export default [
+export const SCHEMA_tags = [
   ...categorias_tags,
   {
     name: "Eventos",

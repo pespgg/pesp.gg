@@ -1,4 +1,4 @@
-export default [
+export const SCHEMA_casos_exito = [
   {
     title: "LG Ultragear Gravity Cup",
     image: "gravitycup.jpg",
