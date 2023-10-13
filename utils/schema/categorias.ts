@@ -45,9 +45,9 @@ export default [
     tag: "rocket-league"
   },
   {
-    name: "FIFA 21",
-    image: "fifa-21.jpg",
-    tag: "fifa-21"
+    name: "FIFA",
+    image: "fifa.jpg",
+    tag: "fifa"
   },
   {
     name: "PUBG",
@@ -63,5 +63,25 @@ export default [
     name: "Clash Royale",
     image: "clashroyale.jpg",
     tag: "clash-royale"
+  },
+  {
+    name: "Efootball",
+    image: "",
+    tag: "efootball"
+  },
+  {
+    name: "Splatoon",
+    image: "",
+    tag: "splatoon"
+  },
+  {
+    name: "Street Fighter",
+    image: "",
+    tag: "street-fighter"
+  },
+  {
+    name: "Mortal Kombat",
+    image: "",
+    tag: "mortal-kombat"
   }
 ];
