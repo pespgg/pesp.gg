@@ -2,13 +2,13 @@
   background-color: var(--body-track);
 }
 
-#contacto .form-control, #actualidad .form-control {
+#contacto .form-control, #boletin .form-control {
   background-color: var(--form-input-background);
   border-color: var(--form-border);
   color: var(--text-on-white);
 }
 
-#contacto .form-check-input, #actualidad .form-check-input {
+#contacto .form-check-input, #boletin .form-check-input {
   --bs-form-check-bg: var(--form-input-background);
 
   border-color: var(--form-border);

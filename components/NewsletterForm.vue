@@ -1,5 +1,5 @@
 <template>
-  <div class="mt-4 p-5 bg-light text-dark rounded text-center">
+  <div id="boletin" class="mt-4 p-5 bg-light text-dark rounded text-center">
     <strong class="h2 fw-bold">{{ t("boletin_title") }}</strong>
     <p>{{ t("boletin_description") }}</p>
     <form class="col-lg-8 mx-auto">
