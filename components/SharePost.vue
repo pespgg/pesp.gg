@@ -1,6 +1,6 @@
 <template>
   <div id="compartir" class="text-center mb-3">
-    <h4>Comparte</h4>
+    <h4>{{ t("lets_share") }}</h4>
     <div class="d-flex justify-content-center flex-wrap">
       <a v-for="(social, i) of socialShare" :key="i" :href="social.shareUrl" type="button" :class="`btn-${social.name}`" class="btn btn-outline-light mx-2 d-flex justify-content-center align-items-center mb-3 text-white">
         <Icon :name="social.icon" class="me-1" size="1.4rem" />{{ social.action }}
@@ -8,12 +8,12 @@
     </div>
     <div v-if="copied" id="permalink_copy" class="alert alert-success alert-dismissible fade show">
       <button type="button" class="btn-close" @click="closeAlert" />
-      <p class="m-0"><Icon name="bi:info-circle" class="me-1" size="1.4rem" />Enlace copiado al portapapeles.</p>
+      <p class="m-0"><Icon name="bi:info-circle" class="me-1" size="1.4rem" />{{ t("link_copied_to_clipboard") }}.</p>
     </div>
     <div class="col-md-6 mx-auto">
       <div class="input-group mb-3">
         <input id="permalink" ref="input" type="text" class="form-control" :value="path" readonly>
-        <button class="btn btn-primary btn input-group-text" title="Copiar enlace" @click="copyPermalink">
+        <button class="btn btn-primary btn input-group-text" :title="t('copy_link')" @click="copyPermalink">
           <Icon name="solar:copy-bold" size="1.4rem" />
         </button>
       </div>
@@ -42,19 +42,19 @@ export default {
           name: "facebook",
           icon: "bi:facebook",
           shareUrl: "https://facebook.com/sharer.php?u=" + this.path,
-          action: "Compartir"
+          action: t("share")
         },
         {
           name: "twitter",
           icon: "bi:twitter",
           shareUrl: `https://twitter.com/intent/tweet?text=%22${this.title}%22%20${this.path}`,
-          action: "Twittear"
+          action: t("tweet")
         },
         {
           name: "whatsapp",
           icon: "bi:whatsapp",
           shareUrl: `whatsapp://send?text=%22${this.title}%22%20${this.path}`,
-          action: "Enviar"
+          action: t("send")
         }
       ];
     }
