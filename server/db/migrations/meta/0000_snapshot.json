@@ -1,7 +1,7 @@
 {
   "version": "5",
   "dialect": "sqlite",
-  "id": "7138dc20-d6b2-405e-afc9-9db221ebd2d0",
+  "id": "33f45286-5549-480b-801c-4a5abb4ea4b5",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "tables": {
     "actualidad": {
@@ -85,8 +85,8 @@
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "suscribers": {
-      "name": "suscribers",
+    "subscribers": {
+      "name": "subscribers",
       "columns": {
         "id": {
           "name": "id",
@@ -118,8 +118,8 @@
         }
       },
       "indexes": {
-        "suscribers_email_unique": {
-          "name": "suscribers_email_unique",
+        "subscribers_email_unique": {
+          "name": "subscribers_email_unique",
           "columns": [
             "email"
           ],

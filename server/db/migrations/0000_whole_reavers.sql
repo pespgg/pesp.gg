@@ -13,11 +13,11 @@ CREATE TABLE `admins` (
 	`password` text NOT NULL
 );
 --> statement-breakpoint
-CREATE TABLE `suscribers` (
+CREATE TABLE `subscribers` (
 	`id` integer PRIMARY KEY NOT NULL,
 	`email` text NOT NULL,
 	`fecha` integer NOT NULL,
 	`intereses` text NOT NULL
 );
 --> statement-breakpoint
-CREATE UNIQUE INDEX `suscribers_email_unique` ON `suscribers` (`email`);
+CREATE UNIQUE INDEX `subscribers_email_unique` ON `subscribers` (`email`);

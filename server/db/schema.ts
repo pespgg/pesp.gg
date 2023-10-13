@@ -15,7 +15,7 @@ export const admins = sqliteTable("admins", {
   password: text("password").notNull()
 });
 
-export const suscribers = sqliteTable("suscribers", {
+export const subscribers = sqliteTable("subscribers", {
   id: integer("id").primaryKey().notNull(),
   email: text("email").notNull().unique(),
   fecha: integer("fecha").notNull(),
