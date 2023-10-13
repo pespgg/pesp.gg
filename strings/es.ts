@@ -205,4 +205,11 @@ export default {
   faq_a6: "Panama Esports Productions (PESP) está conformado por un equipo de jóvenes expertos en Esports desarrollados en distintas ramas profesionales como marketing, legal, organizadores de torneos, árbitros, animadores, diseñadores, programadores, productores musicales, directores de streaming, host, casters y entre muchas otras profesiones que trabajan fuertemente en el desarrollo de la escena competitiva y gamer en Panamá y la región.",
   faq_q7: "¿Quién creó PESP?",
   faq_a7: "El fundador de Panamá Esports Productions, es conocido como “Zako” (Zadquiel Montenegro), jugador, organizador de competencias, empresario, una persona que ha tenido la visión y fe en los Esports desde hace más de 6 años buscando realzar y enaltecer este deporte en Panamá y Latinoamérica. si tienes alguna duda o consulta puedes contactarlo a su <a class=\"fw-bold\" href=\"https://www.linkedin.com/in/zadquiel-montenegro-8517951a6/\" target=\"_blank\">LinkedIn</a>.",
+
+  /* Boletín Informativo */
+  boletin_title: "Suscríbete a nuestro Boletín Informativo",
+  boletin_description: "¡Y entérate de todos los eventos y torneos que PESP trae para ti, de forma exclusiva!",
+  boletin_interests: "Selecciona tus intereses",
+  boletin_tos: "Al marcar esta casilla, confirma que ha leído y está de acuerdo con nuestros <a href=\"/terminos\" target=\"_blank\"><u>Términos de Uso</u></a> con respecto al almacenamiento de los datos enviados a través de este formulario.",
+  boletin_suscribe: "Suscribirse",
 };
