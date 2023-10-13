@@ -1,4 +1,4 @@
-export default {
+export const SCHEMA_pages = {
   inicio: {
     to: "/"
   },

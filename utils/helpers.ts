@@ -79,7 +79,7 @@ export const getPostImage = (name: string, updated: number) => {
 };
 
 export const getTagName = (tag: string) => {
-  return SCHEMA.tags.find(t => t.tag === tag)?.name;
+  return SCHEMA_tags.find(t => t.tag === tag)?.name;
 };
 
 export const getRandom = (min: number, max: number) => {

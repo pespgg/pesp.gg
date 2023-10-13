@@ -1,4 +1,4 @@
-export default [
+export const SCHEMA_nosotros = [
   {
     title: "somos",
     images: ["pesp-1.jpg", "pesp-2.jpg", "pesp-3.jpg"],

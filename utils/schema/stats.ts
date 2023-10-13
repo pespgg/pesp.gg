@@ -1,6 +1,4 @@
-import { SITE } from "./../site.js";
-
-export default {
+export const SCHEMA_stats = {
   experience: [
     {
       title: "experiencia",

@@ -24,7 +24,7 @@ useHead({
           <strong>{{ t("faq") }}</strong>
         </h2>
         <div itemscope itemtype="https://schema.org/FAQPage" class="accordion">
-          <div v-for="(faq, i) of SCHEMA.faq" :key="i" itemprop="mainEntity" itemscope itemtype="https://schema.org/Question" class="accordion-item">
+          <div v-for="(faq, i) of SCHEMA_faqs" :key="i" itemprop="mainEntity" itemscope itemtype="https://schema.org/Question" class="accordion-item">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" :data-bs-target="`#panels-collapse${i}`" aria-expanded="true" :aria-controls="`panels-collapse${i}`">
               <h4 class="accordion-header" itemprop="name">{{ t(faq.question) }}</h4>
             </button>

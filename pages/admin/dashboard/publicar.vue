@@ -70,9 +70,9 @@ async function getPostContent (permalink: string, updated: number) {
                 <select v-model="form.tag" class="form-select form-select-sm" required>
                   <option value="" disabled selected>{{ t("seleccionar") }}</option>
                   <option disabled>-- {{ t("juegos") }} --</option>
-                  <option v-for="(tag, i) of SCHEMA.tags.filter(v => v.type === 'juegos')" :key="i" class="text-light" :value="tag.tag">{{ tag.name }}</option>
+                  <option v-for="(tag, i) of SCHEMA_tags.filter(v => v.type === 'juegos')" :key="i" class="text-light" :value="tag.tag">{{ tag.name }}</option>
                   <option disabled>-- {{ t("otros") }} --</option>
-                  <option v-for="(tag, i) of SCHEMA.tags.filter(v => v.type === 'otros')" :key="i" class="text-light" :value="tag.tag">{{ tag.name }}</option>
+                  <option v-for="(tag, i) of SCHEMA_tags.filter(v => v.type === 'otros')" :key="i" class="text-light" :value="tag.tag">{{ tag.name }}</option>
                 </select>
               </div>
               <div class="border-bottom p-3">

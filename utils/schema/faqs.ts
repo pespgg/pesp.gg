@@ -1,4 +1,4 @@
-export default [
+export const SCHEMA_faqs = [
   {
     question: "faq_q1",
     answer: "faq_a1",

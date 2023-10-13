@@ -108,7 +108,7 @@ useHead({
             <template v-for="(n, i) of 12" :key="i">
               <Transition name="tab">
                 <div v-if="n <= 6 || moreCategorias" class="col-6 col-md-4 p-2 p-md-3">
-                  <img class="img-fluid rounded shadow" :src="`${SITE.dirs.categorias}/${SCHEMA.categorias[i].image}`" :title="SCHEMA.categorias[i].name">
+                  <img class="img-fluid rounded shadow" :src="`${SITE.dirs.categorias}/${SCHEMA_categorias[i].image}`" :title="SCHEMA_categorias[i].name">
                 </div>
               </Transition>
             </template>
@@ -132,7 +132,7 @@ useHead({
           <strong>{{ t("servicios") }}</strong>
         </h2>
         <div class="row">
-          <template v-for="(servicio, i) of SCHEMA.servicios" :key="i">
+          <template v-for="(servicio, i) of SCHEMA_servicios" :key="i">
             <div class="col-md-6 p-2 p-md-3">
               <div class="position-relative rounded overflow-hidden scale-position-hover">
                 <div class="scale-position">

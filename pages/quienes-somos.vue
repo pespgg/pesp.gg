@@ -23,8 +23,8 @@ useHead({
     <BannerPage banner="quienes-somos.jpg" :text="t('nosotros')" />
     <section id="quienes-somos">
       <div class="container py-5">
-        <template v-for="(nosotros, i) of SCHEMA.nosotros" :key="i">
-          <div :id="nosotros.title" class="row m-0 p-0 bg-dark rounded overflow-hidden" :class="{ 'mb-4': i < SCHEMA.nosotros.length - 1 }">
+        <template v-for="(nosotros, i) of SCHEMA_nosotros" :key="i">
+          <div :id="nosotros.title" class="row m-0 p-0 bg-dark rounded overflow-hidden" :class="{ 'mb-4': i < SCHEMA_nosotros.length - 1 }">
             <!-- Info col -->
             <div class="col-md-8 col-lg-6 p-sm-4 shadow" :class="i % 2 ? 'order-1 order-md-2' : 'order-1 order-md-1'">
               <h3 class="text-uppercase mb-4 mt-4"><strong>{{ t(nosotros.title) }}</strong></h3>
@@ -48,7 +48,7 @@ useHead({
         </template>
       </div>
     </section>
-    <StatsBand :stats="SCHEMA.stats.socials" :col="3" />
+    <StatsBand :stats="SCHEMA_stats.socials" :col="3" />
     <section id="comentarios">
       <div class="container-fluid py-5 bg-dark">
         <h2 class="text-center text-uppercase mb-4">
@@ -58,7 +58,7 @@ useHead({
           <div class="glide">
             <div class="glide__track" data-glide-el="track">
               <ul class="glide__slides">
-                <li v-for="(comentario, i) of SCHEMA.comentarios" :key="i" class="glide__slide p-0 px-sm-3" :class="{'glide__slide--active': !i}">
+                <li v-for="(comentario, i) of SCHEMA_comentarios" :key="i" class="glide__slide p-0 px-sm-3" :class="{'glide__slide--active': !i}">
                   <div class="rounded shadow bg-light p-3 p-sm-4 text-center position-relative">
                     <img class="rounded-circle shadow-sm mb-3 p-2" :src="`${SITE.dirs.marcas}/${comentario.image}`" width="130" height="130" :alt="comentario.marca">
                     <p class="text-dark m-0">
@@ -94,7 +94,7 @@ useHead({
           <div class="glide bullets">
             <div class="glide__track" data-glide-el="track">
               <ul class="glide__slides">
-                <li v-for="(image, i) of SCHEMA.galeria" :key="i" class="glide__slide p-0 px-sm-3" :class="{'glide__slide--active': !i}">
+                <li v-for="(image, i) of SCHEMA_galeria" :key="i" class="glide__slide p-0 px-sm-3" :class="{'glide__slide--active': !i}">
                   <img :src="`${SITE.dirs.galeria}/${image}`" class="img-fluid w-100 rounded shadow" :alt="t('galeria')">
                 </li>
               </ul>
@@ -108,7 +108,7 @@ useHead({
               </span>
             </div>
             <div class="glide__bullets" data-glide-el="controls[nav]">
-              <button v-for="(galeria, i) of SCHEMA.galeria" :key="i" class="glide__bullet" :data-glide-dir="`=${i}`" :aria-label="`${t('galeria')} ${i}`" />
+              <button v-for="(galeria, i) of SCHEMA_galeria" :key="i" class="glide__bullet" :data-glide-dir="`=${i}`" :aria-label="`${t('galeria')} ${i}`" />
             </div>
           </div>
         </div>
@@ -120,7 +120,7 @@ useHead({
 <script lang="ts">
 export default {
   mounted () {
-    for (const nosotros of SCHEMA.nosotros) {
+    for (const nosotros of SCHEMA_nosotros) {
       this.$nuxt.$bootstrap.startCarousel(`#${nosotros.title} .carousel`);
     }
 

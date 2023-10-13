@@ -1,4 +1,4 @@
-export default [
+export const SCHEMA_comentarios = [
   {
     marca: "LG Panamá",
     content: "comentario_lg",

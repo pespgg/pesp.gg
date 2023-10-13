@@ -23,8 +23,8 @@ useHead({
     <BannerPage banner="servicios.jpg" :text="t('servicios')" />
     <section id="servicios">
       <div class="container py-5">
-        <template v-for="(servicio, i) of SCHEMA.servicios" :key="i">
-          <div :id="servicio.title" class="row m-0 p-0 bg-dark rounded overflow-hidden" :class="{ 'mb-4': i < SCHEMA.servicios.length - 1 }">
+        <template v-for="(servicio, i) of SCHEMA_servicios" :key="i">
+          <div :id="servicio.title" class="row m-0 p-0 bg-dark rounded overflow-hidden" :class="{ 'mb-4': i < SCHEMA_servicios.length - 1 }">
             <!-- Info col -->
             <div class="col-md-8 col-lg-6 p-sm-4 shadow" :class="i % 2 ? 'order-1 order-md-2' : 'order-1 order-md-1'">
               <h3 class="text-uppercase mb-4 mt-4"><strong>{{ t(servicio.title) }}</strong></h3>
@@ -41,7 +41,7 @@ useHead({
         </template>
       </div>
     </section>
-    <StatsBand :stats="SCHEMA.stats.experience" />
+    <StatsBand :stats="SCHEMA_stats.experience" />
     <section id="casos-exito">
       <div class="container-fluid py-5">
         <h2 class="text-center text-uppercase mb-4">
@@ -51,7 +51,7 @@ useHead({
           <div class="glide bullets">
             <div class="glide__track" data-glide-el="track">
               <ul class="glide__slides">
-                <li v-for="(caso, i) of SCHEMA.casos_exito" :key="i" class="glide__slide p-0 px-sm-3" :class="{'glide__slide--active': !i}">
+                <li v-for="(caso, i) of SCHEMA_casos_exito" :key="i" class="glide__slide p-0 px-sm-3" :class="{'glide__slide--active': !i}">
                   <div class="rounded overflow-hidden shadow bg-dark">
                     <div class="row mx-0">
                       <div class="order-2 order-md-1 col-md-7 p-4">
@@ -75,7 +75,7 @@ useHead({
               </span>
             </div>
             <div class="glide__bullets" data-glide-el="controls[nav]">
-              <button v-for="(caso, i) of SCHEMA.casos_exito" :key="i" class="glide__bullet" :data-glide-dir="`=${i}`" :aria-label="caso.title" />
+              <button v-for="(caso, i) of SCHEMA_casos_exito" :key="i" class="glide__bullet" :data-glide-dir="`=${i}`" :aria-label="caso.title" />
             </div>
           </div>
         </div>
@@ -96,7 +96,7 @@ useHead({
             <div class="glide overflow-hidden rounded-pill">
               <div class="glide__track" data-glide-el="track">
                 <ul class="glide__slides">
-                  <li v-for="(marca, i) of SCHEMA.marcas" :key="i" class="glide__slide" :class="{'glide__slide--active': !i}">
+                  <li v-for="(marca, i) of SCHEMA_marcas" :key="i" class="glide__slide" :class="{'glide__slide--active': !i}">
                     <img :src="`${SITE.dirs.marcas}/${marca.image}`" class="img-fluid" width="150" height="150" :alt="marca.name" :title="marca.name">
                   </li>
                 </ul>
