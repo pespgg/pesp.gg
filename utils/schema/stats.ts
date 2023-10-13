@@ -2,7 +2,7 @@ export const SCHEMA_stats = {
   experience: [
     {
       title: "experiencia",
-      counter: 5
+      counter: getAge(SITE.creation) - 2
     },
     {
       title: "actividades",
