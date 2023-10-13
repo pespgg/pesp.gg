@@ -19,7 +19,7 @@
       </div>
       <div class="input-group my-3">
         <input id="email" type="email" class="form-control" :placeholder="t('correo')" name="email" required>
-        <button class="btn btn-success input-group-text" type="submit">Suscribirse</button>
+        <button class="btn btn-success input-group-text" type="submit">{{ t("boletin_suscribe") }}</button>
       </div>
       <div class="form-check text-start">
         <input id="terminos" type="checkbox" class="form-check-input" value="acepto" name="terminos" required="">
