@@ -6,6 +6,7 @@ export default defineNitroPlugin(() => {
     try {
       const DB = useDb() as any as BetterSQLite3Database;
       migrate(DB, { migrationsFolder: "./server/db/migrations" });
+      if (process.dev) seedDev(DB);
     }
     catch (err) {
       console.info("Cannot migrate database", err);
