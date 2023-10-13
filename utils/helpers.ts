@@ -98,3 +98,12 @@ export const getAge = (date: string) => {
   const age = Math.floor(diff / (1000 * 60 * 60 * 24 * 365.25));
   return age;
 };
+
+
+export const copyToClipboard = async (text: string) => {
+  if (typeof navigator === "undefined" || !navigator.clipboard || !navigator.clipboard.writeText) {
+    return { success: false, message: t("copy_not_supported") };
+  }
+  await navigator.clipboard.writeText(text);
+  return { success: true, message: t("copy_success") };
+};

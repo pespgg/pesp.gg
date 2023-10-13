@@ -227,3 +227,20 @@ img.post {
   aspect-ratio: 16 / 9;
   object-fit: cover;
 }
+
+/* Share Post */
+
+#compartir .btn-facebook:hover {
+  background-color: #3b5998!important;
+  border-color: #3b5998!important;
+}
+
+#compartir .btn-twitter:hover {
+  background-color: #1da1f2!important;
+  border-color: #1da1f2!important;
+}
+
+#compartir .btn-whatsapp:hover {
+  background-color: #25d366!important;
+  border-color: #25d366!important;
+}
