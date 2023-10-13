@@ -1,5 +1,3 @@
-
-
 export const formatDate = (date: string | number, options?: Partial<{ style: Intl.DateTimeFormatOptions["month"], lang: string, type: string }>) => {
   const { style = "long", lang = "es", type = "text" } = options || {};
 
@@ -93,7 +91,7 @@ export const generateColor = (number: number) => {
   return `hsla(${hue},100%,75%)`;
 };
 
-export const getAge = (date: string) => {
+export function getAge (date: string) {
   const now = Number(new Date());
   const birth = Number(new Date(`${date} 00:00:00`));
   const diff = Math.abs(now - birth);

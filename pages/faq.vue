@@ -31,7 +31,7 @@ useHead({
             <div :id="`panels-collapse${i}`" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer" class="accordion-collapse collapse" :aria-labelledby="`${i}`">
               <div class="accordion-body">
                 <!-- eslint-disable-next-line vue/no-v-html -->
-                <p itemprop="text" v-html="t(faq.answer)" />
+                <p itemprop="text" v-html="t(faq.answer, faq.value)" />
               </div>
             </div>
           </div>
