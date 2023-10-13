@@ -167,7 +167,11 @@ strong, b {
 }
 
 .accordion-button:focus {
-  box-shadow: 0 0 0 0.25rem rgb(var(--bs-primary-rgb) 0.5);
+  box-shadow: 0 0 0 0.25rem rgba(var(--bs-primary-rgb), 0.5);
+}
+
+.accordion-body {
+  background-color: var(--bs-dark);
 }
 
 .carousel .carousel-indicators [data-bs-target] {

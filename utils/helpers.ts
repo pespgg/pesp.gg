@@ -1,5 +1,3 @@
-
-
 export const formatDate = (date: string | number, options?: Partial<{ style: Intl.DateTimeFormatOptions["month"], lang: string, type: string }>) => {
   const { style = "long", lang = "es", type = "text" } = options || {};
 

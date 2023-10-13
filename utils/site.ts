@@ -9,6 +9,7 @@ export const SITE = {
   local: "http://localhost:5173",
   twitter: "@pesp_gg",
   description: "La mejor experiencia gaming. Apoyando el Talento Gamer.",
+  creation: "September 16, 2015",
   dirs: {
     banners: "/images/banners",
     categorias: "/images/categorias",
@@ -51,4 +52,12 @@ export const SITE = {
       link: "https://linkedin.com/company/pesp"
     }
   ]
+};
+
+export const getAge = (date: string) => {
+  const now = Number(new Date());
+  const birth = Number(new Date(`${date} 00:00:00`));
+  const diff = Math.abs(now - birth);
+  const age = Math.floor(diff / (1000 * 60 * 60 * 24 * 365.25));
+  return age;
 };
