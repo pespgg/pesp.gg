@@ -65,7 +65,7 @@ export default {
       if (copy.success) {
         (this.$refs.input as HTMLInputElement).select();
         this.copied = true;
-      };
+      }
     },
     closeAlert () {
       this.copied = false;
