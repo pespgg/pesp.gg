@@ -10,7 +10,7 @@ export default [
   {
     question: "faq_q3",
     answer: "faq_a3",
-    value: { age: getAge(SITE.creation) }
+    value: { age: getAge(SITE.creation) - 2 }
   },
   {
     question: "faq_q4",
