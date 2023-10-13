@@ -14,3 +14,10 @@ export const admins = sqliteTable("admins", {
   username: text("username").notNull(),
   password: text("password").notNull()
 });
+
+export const suscribers = sqliteTable("suscribers", {
+  id: integer("id").primaryKey().notNull(),
+  email: text("email").notNull().unique(),
+  fecha: integer("fecha").notNull(),
+  intereses: text("intereses").notNull()
+});
