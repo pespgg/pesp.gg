@@ -10,6 +10,7 @@
 
 #contacto .form-check-input, #actualidad .form-check-input {
   --bs-form-check-bg: var(--form-input-background);
+
   border-color: var(--form-border);
 }
 
