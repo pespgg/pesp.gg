@@ -8,7 +8,7 @@
     </div>
     <div v-if="copied" id="permalink_copy" class="alert alert-success alert-dismissible fade show">
       <button type="button" class="btn-close" @click="closeAlert" />
-      <p class="m-0"><Icon name="bi:info-circle" class="me-1" size="1.4rem" />{{ t("link_copied_to_clipboard") }}.</p>
+      <p class="m-0"><Icon name="bi:info-circle" class="me-2" size="1.4rem" />{{ t("link_copied_to_clipboard") }}.</p>
     </div>
     <div class="col-md-6 mx-auto">
       <div class="input-group mb-3">
@@ -20,7 +20,7 @@
     </div>
   </div>
 </template>
-<script>
+<script lang="ts">
 export default {
   props: {
     title: {
@@ -60,10 +60,12 @@ export default {
     }
   },
   methods: {
-    copyPermalink () {
-      this.$refs.input.select();
-      navigator.clipboard.writeText(this.path);
-      this.copied = true;
+    async copyPermalink () {
+      const copy = await copyToClipboard(this.path);
+      if (copy.success) {
+        (this.$refs.input as HTMLInputElement).select();
+        this.copied = true;
+      };
     },
     closeAlert () {
       this.copied = false;
