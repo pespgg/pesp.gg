@@ -254,13 +254,14 @@ img.post {
   border-color: #ced4da!important;
 
 }
-.intereses:hover {
+
+.intereses:hover, .intereses:active {
   color: white!important;
-  background-color: var(--text-on-white-muted);
+  background-color: var(--text-on-white-muted)!important;
 }
 
 .intereses.active {
   color: white!important;
-  border-color: var(--bs-primary);
-  background-color: var(--bs-primary);
+  border-color: var(--bs-primary)!important;
+  background-color: var(--bs-primary)!important;
 }
