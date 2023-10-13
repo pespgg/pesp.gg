@@ -196,7 +196,7 @@ export default {
   faq_q2: "¿Qué tipo de competencias realizamos?",
   faq_a2: "En PESP, realizamos distintas competencias de diferente nivel, abiertas para toda la escena gamer y también Esports.",
   faq_q3: "¿Desde hace cuánto realizan competencias?",
-  faq_a3: `Tenemos experiencia desde hace mas de {{ age }} años, realizando eventos, torneos, competencias, activaciones y asesorando a distintas empresas de la escena.`,
+  faq_a3: "Tenemos experiencia desde hace mas de {{ age }} años, realizando eventos, torneos, competencias, activaciones y asesorando a distintas empresas de la escena.",
   faq_q4: "¿Puedo participar en sus competencias?",
   faq_a4: "¡Claro que sí, es lo que queremos! Recuerda que siempre podrás participar en las competencias organizadas por PESP siempre y cuando cumplas todos los requisitos del reglamento ¡recuerda leerlo!",
   faq_q5: "¿Podemos trabajar en conjunto en una actividad?",
