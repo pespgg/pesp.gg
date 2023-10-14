@@ -20,6 +20,7 @@
     </div>
   </div>
 </template>
+
 <script lang="ts">
 export default {
   props: {
@@ -46,9 +47,9 @@ export default {
         },
         {
           name: "twitter",
-          icon: "bi:twitter",
-          shareUrl: `https://twitter.com/intent/tweet?text=%22${this.title}%22%20${this.path}`,
-          action: t("tweet")
+          icon: "fa6-brands:x-twitter",
+          shareUrl: `https://x.com/intent/tweet?text=%22${this.title}%22%20${this.path}`,
+          action: t("post")
         },
         {
           name: "whatsapp",
@@ -72,5 +73,4 @@ export default {
     }
   }
 };
-
 </script>

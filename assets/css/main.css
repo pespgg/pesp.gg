@@ -236,8 +236,8 @@ img.post {
 }
 
 #compartir .btn-twitter:hover {
-  background-color: #1da1f2!important;
-  border-color: #1da1f2!important;
+  background-color: #000!important;
+  border-color: #000!important;
 }
 
 #compartir .btn-whatsapp:hover {

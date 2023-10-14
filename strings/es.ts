@@ -212,5 +212,5 @@ export default {
   share: "Compartir",
   lets_share: "Comparte",
   send: "Enviar",
-  tweet: "Twitear"
+  post: "Publicar"
 };
