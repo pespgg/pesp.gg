@@ -60,6 +60,7 @@ useHead({
         <LoadPost class="ck-content" :permalink="post.permalink" />
       </div>
       <hr>
+      <SharePost :title="post.titulo" />
       <NewsletterForm />
     </article>
   </main>

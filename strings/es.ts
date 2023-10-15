@@ -212,4 +212,12 @@ export default {
   boletin_interests: "Selecciona tus intereses",
   boletin_tos: "Al marcar esta casilla, confirma que ha leído y está de acuerdo con nuestros <a href=\"/terminos\" target=\"_blank\"><u>Términos de Uso</u></a> con respecto al almacenamiento de los datos enviados a través de este formulario.",
   boletin_suscribe: "Suscribirse",
+
+  /* Compartir */
+  copy_link: "Copiar enlace",
+  link_copied_to_clipboard: "Enlace copiado al portapapeles",
+  share: "Compartir",
+  lets_share: "Comparte",
+  send: "Enviar",
+  post: "Publicar"
 };

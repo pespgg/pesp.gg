@@ -259,3 +259,20 @@ img.post {
   border-color: var(--bs-primary)!important;
   background-color: var(--bs-primary)!important;
 }
+
+/* Share Post */
+
+#compartir .btn-facebook:hover {
+  background-color: #3b5998!important;
+  border-color: #3b5998!important;
+}
+
+#compartir .btn-twitter:hover {
+  background-color: #000!important;
+  border-color: #000!important;
+}
+
+#compartir .btn-whatsapp:hover {
+  background-color: #25d366!important;
+  border-color: #25d366!important;
+}
