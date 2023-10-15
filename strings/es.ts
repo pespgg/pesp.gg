@@ -211,7 +211,7 @@ export default {
   boletin_title: "Suscríbete a nuestro Boletín Informativo",
   boletin_description: "¡Y entérate de todos los eventos y torneos que PESP trae para ti, de forma exclusiva!",
   boletin_interests: "Selecciona tus intereses",
-  boletin_tos: "Al marcar esta casilla, confirma que ha leído y está de acuerdo con nuestros <a href=\"/terminos\" target=\"_blank\"><u>Términos de Uso</u></a> con respecto al almacenamiento de los datos enviados a través de este formulario.",
+  boletin_tos: "Al marcar esta casilla, confirma que ha leído y está de acuerdo con nuestros <a href=\"/tos\" target=\"_blank\"><u>Términos de Uso</u></a> con respecto al almacenamiento de los datos enviados a través de este formulario.",
   boletin_suscribe: "Suscribirse",
   boletin_success: "¡Gracias por suscribirte a nuestro boletín informativo!",
 

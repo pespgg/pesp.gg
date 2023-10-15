@@ -5,10 +5,10 @@
     <form class="col-lg-8 mx-auto" @submit.prevent="subscribe">
       <div class="accordion">
         <div class="accordion-item border-0">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panels-collapse0" aria-expanded="true" aria-controls="panels-collapse0">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#select-interests" aria-expanded="true" aria-controls="select-interests">
             <h5 class="accordion-header">{{ t("boletin_interests") }}</h5>
           </button>
-          <div id="panels-collapse0" class="accordion-collapse collapse bg-light" aria-labelledby="0">
+          <div id="select-interests" class="accordion-collapse collapse bg-light" aria-labelledby="0">
             <div class="accordion-body form-group px-0">
               <label v-for="(interest, i) of SCHEMA_categorias" :key="i" ref="interest" class="btn btn-default border intereses text-dark m-1" @click="interestCheck(i)">
                 <span>{{ interest.name }}</span>
@@ -18,14 +18,14 @@
         </div>
       </div>
       <div class="input-group my-3">
-        <input v-model.trim="form.email" type="email" class="form-control" :placeholder="t('correo')" name="email" required>
+        <input v-model.trim="form.email" type="email" class="form-control" :placeholder="t('correo')" autocomplete="email" required>
         <button class="btn btn-success input-group-text" type="submit" :disabled="loading">
           <SpinnerCircle v-if="loading" sm />
           <span v-else>{{ t("boletin_suscribe") }}</span>
         </button>
       </div>
       <div class="form-check text-start">
-        <input type="checkbox" class="form-check-input" value="acepto" name="terminos" required>
+        <input type="checkbox" class="form-check-input" required>
         <label class="form-check-label text-justify">
           <!--eslint-disable-next-line vue/no-v-html-->
           <small v-html="t('boletin_tos')" />
