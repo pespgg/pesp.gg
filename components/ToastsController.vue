@@ -22,10 +22,10 @@ watch(toasts, () => {
     <div v-for="toast of toasts" :key="toast.id" ref="refToasts" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
       <div class="toast-header">
         <strong class="me-auto d-flex gap-1 align-items-center">
-          <Icon name="LogoIcon" size="2rem" />
+          <Icon name="LogoIcon" size="1.3rem" />
           {{ SITE.name.web }}
         </strong>
-        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close" />
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="toast" aria-label="Close" />
       </div>
       <div class="toast-body">
         <div class="d-flex align-items-center gap-2">

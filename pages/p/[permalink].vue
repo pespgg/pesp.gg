@@ -35,7 +35,7 @@ useHead({
 
 <template>
   <main>
-    <article id="post" class="container" itemscope itemtype="https://schema.org/BlogPosting">
+    <article id="post" class="container pb-5" itemscope itemtype="https://schema.org/BlogPosting">
       <header class="my-3">
         <img :src="getPostImage(post.permalink, post.updated)" class="d-block w-100 rounded shadow" :alt="post.titulo" itemprop="image">
       </header>
@@ -61,6 +61,7 @@ useHead({
       </div>
       <hr>
       <SharePost :title="post.titulo" />
+      <NewsletterForm />
     </article>
   </main>
 </template>

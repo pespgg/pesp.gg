@@ -55,7 +55,7 @@ watch(currentPage, () => {
   <main>
     <!-- Banner -->
     <BannerPage banner="actualidad.jpg" :text="t('actualidad')" />
-    <div ref="actualidad" class="container-fluid py-5">
+    <div id="actualidad" ref="actualidad" class="container-fluid py-5">
       <div class="my-4 text-center ">
         <h2 class="text-uppercase">
           <strong>{{ t("recientes") }}</strong>
@@ -96,6 +96,7 @@ watch(currentPage, () => {
         </div>
       </div>
       <PostPagination v-if="numberOfPages > 1" class="pt-5 pb-2 d-flex align-items-center justify-content-center" :total-pages="numberOfPages" :current-page="currentPage" @pagechanged="onPageChange" />
+      <NewsletterForm class="container" />
     </div>
   </main>
 </template>

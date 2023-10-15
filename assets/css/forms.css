@@ -2,23 +2,23 @@
   background-color: var(--body-track);
 }
 
-#contacto .form-control, #compartir .form-control {
+#contacto .form-control, #boletin .form-control, #compartir .form-control {
   background-color: var(--form-input-background);
   border-color: var(--form-border);
   color: var(--text-on-white);
 }
 
-#contacto .form-check-input {
+#contacto .form-check-input, #boletin .form-check-input {
   --bs-form-check-bg: var(--form-input-background);
 
   border-color: var(--form-border);
 }
 
-.form-floating label {
+.form-floating label, ::placeholder {
   color: var(--text-on-white-muted)!important;
 }
 
-#contacto input:-webkit-autofill { 
+#contacto input:-webkit-autofill, #boletin input:-webkit-autofill { 
   -webkit-background-clip: text;
   -webkit-text-fill-color: var(--text-on-white) !important;
 }
@@ -40,4 +40,10 @@
     width: 100px;
     height: 100px;
   }
+}
+
+.spinner-border-sm {
+  --bs-spinner-width: 1.5rem;
+  --bs-spinner-height: 1.5rem;
+  --bs-spinner-border-width: 0.3em;
 }
