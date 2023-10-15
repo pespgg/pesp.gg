@@ -43,4 +43,9 @@ declare global {
       title: string;
     }[];
   }
+  interface PespToast {
+    message: string;
+    success: boolean;
+    id?: number;
+  }
 }
