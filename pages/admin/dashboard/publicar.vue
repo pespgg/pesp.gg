@@ -131,9 +131,7 @@ export default {
   computed: {
     dateToOffset () {
       return new Date(new Date(this.form.fecha).getTimezoneOffset() * 60000).toISOString().split("T")[0];
-    }
-  },
-  computed: {
+    },
     juegos () {
       return SCHEMA_tags.filter(v => v.type === "juegos").sort((a, b) => a.name.localeCompare(b.name));
     },
