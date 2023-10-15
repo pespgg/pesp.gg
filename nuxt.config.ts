@@ -54,7 +54,8 @@ export default defineNuxtConfig({
   modules: [
     "nuxt-icon",
     "nuxt-twemoji",
-    "@nuxtjs/turnstile"
+    "@nuxtjs/turnstile",
+    "nuxt-simple-sitemap"
   ],
 
   turnstile: {
@@ -89,6 +90,22 @@ export default defineNuxtConfig({
       account: "",
       zoneTag: ""
     }
+  },
+
+  nitro: {
+    prerender: {
+      routes: ["sitemap.xml"],
+    },
+  },
+
+  site: {
+    url: "https://pesp.gg"
+  },
+
+  routeRules: {
+    "/": { sitemap: { priority: 1 } },
+    "/*/**": { sitemap: { priority: 0.8 } },
+    "/admin/**": { index: false },
   },
 
   experimental: {
