@@ -23,7 +23,7 @@ watch(toasts, () => {
       <div class="toast-header">
         <strong class="me-auto d-flex gap-1 align-items-center">
           <Icon name="LogoIcon" size="2rem" />
-          {{ SITE.name }}
+          {{ SITE.name.web }}
         </strong>
         <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close" />
       </div>
