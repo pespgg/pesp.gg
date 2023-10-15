@@ -2,7 +2,7 @@
   background-color: var(--body-track);
 }
 
-#contacto .form-control, #compartir .form-control {
+#contacto .form-control, #boletin .form-control, #compartir .form-control {
   background-color: var(--form-input-background);
   border-color: var(--form-border);
   color: var(--text-on-white);
