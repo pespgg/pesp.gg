@@ -1,5 +1,5 @@
 <template>
-  <div id="boletin" class="mt-4 p-5 bg-light text-dark rounded text-center">
+  <div id="boletin" class="mt-4 p-4 p-sm-5 bg-light text-dark rounded text-center">
     <strong class="h2 fw-bold">{{ t("boletin_title") }}</strong>
     <p>{{ t("boletin_description") }}</p>
     <form class="col-lg-8 mx-auto" @submit.prevent="subscribe">
@@ -9,7 +9,7 @@
             <h5 class="accordion-header">{{ t("boletin_interests") }}</h5>
           </button>
           <div id="panels-collapse0" class="accordion-collapse collapse bg-light" aria-labelledby="0">
-            <div class="accordion-body form-group">
+            <div class="accordion-body form-group px-0">
               <label v-for="(interest, i) of SCHEMA_categorias" :key="i" ref="interest" class="btn btn-default border intereses text-dark m-1" @click="interestCheck(i)">
                 <span>{{ interest.name }}</span>
               </label>
