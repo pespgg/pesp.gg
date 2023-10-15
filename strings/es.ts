@@ -189,6 +189,7 @@ export default {
   token_not_provided: "Token no proporcionado",
   conflict: "Conflicto",
   post_not_found: "Publicación no encontrada",
+  error: "Error inesperado",
 
   /* FAQ */
   faq_q1: "¿Quiénes somos?",
@@ -212,6 +213,7 @@ export default {
   boletin_interests: "Selecciona tus intereses",
   boletin_tos: "Al marcar esta casilla, confirma que ha leído y está de acuerdo con nuestros <a href=\"/terminos\" target=\"_blank\"><u>Términos de Uso</u></a> con respecto al almacenamiento de los datos enviados a través de este formulario.",
   boletin_suscribe: "Suscribirse",
+  boletin_success: "¡Gracias por suscribirte a nuestro boletín informativo!",
 
   /* Compartir */
   copy_link: "Copiar enlace",

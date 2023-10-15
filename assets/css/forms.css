@@ -18,7 +18,7 @@
   color: var(--text-on-white-muted)!important;
 }
 
-#contacto input:-webkit-autofill { 
+#contacto input:-webkit-autofill, #boletin input:-webkit-autofill { 
   -webkit-background-clip: text;
   -webkit-text-fill-color: var(--text-on-white) !important;
 }
@@ -40,4 +40,10 @@
     width: 100px;
     height: 100px;
   }
+}
+
+.spinner-border-sm {
+  --bs-spinner-width: 1.5rem;
+  --bs-spinner-height: 1.5rem;
+  --bs-spinner-border-width: 0.3em;
 }
