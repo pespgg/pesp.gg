@@ -6,7 +6,7 @@ const { $bootstrap, $toasts } = useNuxtApp();
 onMounted(() => {
   $fetch = $fetch.create({
     onResponseError: ({ response }) => {
-      const message = response.status === 500 ? t("error") : t(response._data.message);
+      const message = response.status === 500 ? t("error") : response._data.message;
       $toasts.add({ message, success: false });
     }
   });
