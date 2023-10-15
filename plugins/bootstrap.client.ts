@@ -3,6 +3,7 @@ import "bootstrap/js/dist/dropdown";
 import "bootstrap/js/dist/collapse";
 import Carousel from "bootstrap/js/dist/carousel";
 import Modal from "bootstrap/js/dist/modal";
+import Toast from "bootstrap/js/dist/toast";
 
 class Bootstrap {
   hideModal (id: string) {
@@ -22,6 +23,14 @@ class Bootstrap {
     if (instance) {
       instance.cycle();
     }
+  }
+
+  showToast (id: HTMLElement) {
+    const instance = Toast.getInstance(id);
+    if (instance) return;
+    const toast = new Toast(id);
+    toast.show();
+    return id;
   }
 }
 

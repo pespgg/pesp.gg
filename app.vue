@@ -10,4 +10,5 @@ setScrollBehavior();
       <BackToTop />
     </div>
   </NuxtLayout>
+  <ToastsController />
 </template>
