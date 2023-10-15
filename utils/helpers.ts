@@ -105,5 +105,5 @@ export const copyToClipboard = async (text: string) => {
     return { success: false, message: t("copy_not_supported") };
   }
   await navigator.clipboard.writeText(text);
-  return { success: true, message: t("copy_success") };
+  return { success: true, message: t("link_copied_to_clipboard") };
 };

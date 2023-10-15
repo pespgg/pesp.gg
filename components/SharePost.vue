@@ -6,10 +6,6 @@
         <Icon :name="social.icon" class="me-1" size="1.4rem" />{{ social.action }}
       </a>
     </div>
-    <div v-if="copied" id="permalink_copy" class="alert alert-success alert-dismissible fade show">
-      <button type="button" class="btn-close" @click="closeAlert" />
-      <p class="m-0"><Icon name="bi:info-circle" class="me-2" size="1.4rem" />{{ t("link_copied_to_clipboard") }}.</p>
-    </div>
     <div class="col-md-6 mx-auto">
       <div class="input-group mb-3">
         <input id="permalink" ref="input" type="text" class="form-control" :value="path" readonly>
@@ -32,8 +28,7 @@ export default {
   },
   data () {
     return {
-      path: SITE.url + this.$route.path,
-      copied: false
+      path: SITE.url + this.$route.path
     };
   },
   computed: {
@@ -63,13 +58,8 @@ export default {
   methods: {
     async copyPermalink () {
       const copy = await copyToClipboard(this.path);
-      if (copy.success) {
-        (this.$refs.input as HTMLInputElement).select();
-        this.copied = true;
-      }
-    },
-    closeAlert () {
-      this.copied = false;
+      if (copy.success) (this.$refs.input as HTMLInputElement).select();
+      this.$nuxt.$toasts.add(copy);
     }
   }
 };

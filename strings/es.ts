@@ -221,5 +221,6 @@ export default {
   share: "Compartir",
   lets_share: "Comparte",
   send: "Enviar",
-  post: "Publicar"
+  post: "Publicar",
+  copy_not_supported: "Copiar no está disponible en tu navegador"
 };
