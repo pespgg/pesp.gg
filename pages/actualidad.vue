@@ -18,7 +18,7 @@ useSeoMeta({
 
 useHead({
   link: [
-    { rel: "canonical", href: `${SITE.url}/actualidad/` }
+    { rel: "canonical", href: `${SITE.url}/actualidad` }
   ]
 });
 
@@ -69,7 +69,7 @@ watch(currentPage, () => {
             <div class="card-body bg-dark">
               <h4 class="card-title">
                 <strong>
-                  <NuxtLink :to="`/p/${post.permalink}/`">
+                  <NuxtLink :to="`/p/${post.permalink}`">
                     <span itemprop="headline">{{ post.titulo }}</span>
                   </NuxtLink>
                 </strong>
@@ -83,7 +83,7 @@ watch(currentPage, () => {
                 <small class="text-body-secondary ms-1" itemprop="datePublished" :content="formatDate(post.fecha, { type: 'iso' })">
                   {{ formatDate(post.fecha) }}
                 </small>
-                <NuxtLink class="hover ms-auto bg-primary text-light py-1 px-3" :to="`/p/${post.permalink}/`">
+                <NuxtLink class="hover ms-auto bg-primary text-light py-1 px-3" :to="`/p/${post.permalink}`">
                   <small>{{ t("abrir") }} <Icon name="solar:arrow-right-bold" size="1.5rem" /></small>
                 </NuxtLink>
               </div>

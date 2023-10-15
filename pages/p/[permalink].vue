@@ -28,7 +28,7 @@ useSeoMeta({
 
 useHead({
   link: [
-    { rel: "canonical", href: `${SITE.url}/p/${post.value.permalink}/` }
+    { rel: "canonical", href: `${SITE.url}/p/${post.value.permalink}` }
   ]
 });
 </script>
@@ -40,7 +40,7 @@ useHead({
         <img :src="getPostImage(post.permalink, post.updated)" class="d-block w-100 rounded shadow" :alt="post.titulo" itemprop="image">
       </header>
       <div class="d-flex mb-2">
-        <NuxtLink class="d-flex align-items-center rounded overflow-hidden text-white" :to="`/tag/${post.tag}/`">
+        <NuxtLink class="d-flex align-items-center rounded overflow-hidden text-white" :to="`/tag/${post.tag}`">
           <div class="bg-primary px-1">
             <Icon class="text-white" name="solar:tag-linear" size="1.1rem" />
           </div>

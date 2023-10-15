@@ -60,7 +60,7 @@ useHead({
                     <div class="card-body bg-dark">
                       <h4 class="card-title">
                         <strong>
-                          <NuxtLink :to="`/p/${post.permalink}/`">
+                          <NuxtLink :to="`/p/${post.permalink}`">
                             <span itemprop="headline">{{ post.titulo }}</span>
                           </NuxtLink>
                         </strong>
@@ -74,7 +74,7 @@ useHead({
                         <small class="text-body-secondary ms-1" :title="String(post.fecha)" itemprop="datePublished" :content="formatDate(post.fecha, { type: 'iso' })">
                           {{ formatDate(post.fecha) }}
                         </small>
-                        <NuxtLink class="hover ms-auto bg-primary text-light py-1 px-3" :to="'/p/' + post.permalink">
+                        <NuxtLink class="hover ms-auto bg-primary text-light py-1 px-3" :to="`/p/${post.permalink}`">
                           <small>{{ t("abrir") }} <Icon name="solar:arrow-right-bold" size="1.5rem" /></small>
                         </NuxtLink>
                       </div>
@@ -93,7 +93,7 @@ useHead({
           </div>
         </div>
         <div class="text-center my-3">
-          <NuxtLink to="/actualidad/">{{ t("ver_actualidad") }}</NuxtLink>
+          <NuxtLink :to="SCHEMA_pages.actualidad.to">{{ t("ver_actualidad") }}</NuxtLink>
         </div>
       </div>
     </section>
@@ -138,7 +138,7 @@ useHead({
                 <div class="scale-position">
                   <img class="img-fluid shadow" :src="`${SITE.dirs.servicios}/${servicio.images[0]}`" :alt="t(servicio.title)">
                 </div>
-                <NuxtLink class="position-absolute bottom-0 bg-dark w-100 bg-opacity-75 px-3 py-2 text-light d-flex justify-content-between align-items-center" :to="`/servicios/#${servicio.title}`">
+                <NuxtLink class="position-absolute bottom-0 bg-dark w-100 bg-opacity-75 px-3 py-2 text-light d-flex justify-content-between align-items-center" :to="`${SCHEMA_pages.servicios.to}#${servicio.title}`">
                   <p class="m-0 h5">{{ t(servicio.title) }}</p>
                   <Icon name="solar:square-bottom-up-linear" size="1.5rem" />
                 </NuxtLink>

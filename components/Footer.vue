@@ -44,7 +44,7 @@ const { data: posts } = await useFetch("/api/posts", {
           </div>
           <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
             <h5 class="text-uppercase fw-bold">{{ t("ultimo") }}</h5>
-            <NuxtLink v-for="(post, i) of posts" :key="i" class="d-flex align-items-center mb-2 text-white" :to="`/p/${post.permalink}/`">
+            <NuxtLink v-for="(post, i) of posts" :key="i" class="d-flex align-items-center mb-2 text-white" :to="`/p/${post.permalink}`">
               <div class="lo-ultimo">
                 <img class="rounded" :src="getPostImage(post.permalink, post.updated)" :alt="post.titulo">
               </div>
@@ -92,15 +92,15 @@ export default {
         ayuda: [
           {
             name: t("faq"),
-            link: "/faq/"
+            link: "/faq"
           },
           {
             name: t("privacy"),
-            link: "/privacy/"
+            link: "/privacy"
           },
           {
             name: t("tos"),
-            link: "/tos/"
+            link: "/tos"
           }
         ]
       }

@@ -3,15 +3,15 @@ export const SCHEMA_pages = {
     to: "/"
   },
   nosotros: {
-    to: "/quienes-somos/"
+    to: "/quienes-somos"
   },
   actualidad: {
-    to: "/actualidad/"
+    to: "/actualidad"
   },
   servicios: {
-    to: "/servicios/"
+    to: "/servicios"
   },
   contacto: {
-    to: "/contacto/"
+    to: "/contacto"
   }
 };

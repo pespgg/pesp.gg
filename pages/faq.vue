@@ -12,7 +12,7 @@ useSeoMeta({
 
 useHead({
   link: [
-    { rel: "canonical", href: `${SITE.url}/faq/` }
+    { rel: "canonical", href: `${SITE.url}/faq` }
   ]
 });
 </script>

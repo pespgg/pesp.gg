@@ -40,15 +40,15 @@ export default {
     return {
       pages: {
         dashboard: {
-          to: "/admin/dashboard/",
+          to: "/admin/dashboard",
           icon: "solar:round-graph-linear"
         },
         publicar: {
-          to: "/admin/dashboard/publicar/",
+          to: "/admin/dashboard/publicar",
           icon: "solar:pen-new-square-linear"
         },
         actualidad: {
-          to: "/admin/dashboard/actualidad/",
+          to: "/admin/dashboard/actualidad",
           icon: "solar:inbox-archive-outline"
         }
       }
@@ -58,7 +58,7 @@ export default {
     async logout () {
       const { loggedOut } = await useUserSession().clear();
       if (loggedOut) {
-        this.$router.replace("/admin/");
+        this.$router.replace("/admin");
       }
     }
   }

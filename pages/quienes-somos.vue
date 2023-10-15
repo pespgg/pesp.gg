@@ -12,7 +12,7 @@ useSeoMeta({
 
 useHead({
   link: [
-    { rel: "canonical", href: `${SITE.url}/quienes-somos/` }
+    { rel: "canonical", href: `${SITE.url}/quienes-somos` }
   ]
 });
 </script>
