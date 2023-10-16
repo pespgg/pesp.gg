@@ -26,6 +26,9 @@ async function getPostContent (permalink: string, updated: number) {
               <input v-model="form.titulo" type="text" class="form-control form-control-lg" :placeholder="t('titulo')" required @input="generatePermalink($event)">
               <label>{{ t("titulo") }}</label>
             </div>
+            <Transition name="fade" mode="out-in">
+              <SpinnerCircle v-if="loading" class="spinner-border-sm" />
+            </Transition>
             <div class="d-flex gap-2 flex-grow-1 flex-sm-grow-0">
               <button class="btn btn-info py-3 fw-bold w-100 text-uppercase d-flex justify-content-center gap-2 align-items-center" type="submit">
                 <Icon v-if="meta.edit" name="solar:diskette-linear" size="1.5rem" />
@@ -109,6 +112,7 @@ export default {
   },
   data () {
     return {
+      loading: false,
       editor: false,
       date: {
         focus: false,
@@ -177,12 +181,16 @@ export default {
     },
     async publishPost () {
       if (this.form.banner.src) {
+        this.loading = true;
         const post = await $fetch(this.$route.meta.edit ? `/api/posts/${this.form.permalink}` : "/api/posts", {
           method: this.$route.meta.edit ? "PUT" : "POST",
           body: this.form
         }).catch(() => null);
-
-        if (post) this.$router.push("/admin/dashboard/actualidad/");
+        this.loading = false;
+        if (post) {
+          this.$nuxt.$toasts.add({ success: true, message: t(this.$route.meta.edit ? "guardar_success" : "publicar_success") });
+          this.$router.push("/admin/dashboard/actualidad/");
+        }
       }
     }
   }

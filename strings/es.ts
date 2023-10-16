@@ -179,6 +179,8 @@ export default {
   correo_vinculado: "Correo vinculado",
   correo_corporativo: "Correo corporativo",
   correo_personal: "Correo personal",
+  publicar_success: "¡Publicación creada exitosamente!",
+  guardar_success: "¡Publicación guardada exitosamente!",
 
   /* Errors */
   unauthorized: "No autorizado",
