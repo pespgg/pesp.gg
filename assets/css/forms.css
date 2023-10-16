@@ -14,7 +14,7 @@
   border-color: var(--form-border);
 }
 
-.form-floating label, ::placeholder, .form-floating>.form-control:focus~label, .form-floating>.form-control:not(:placeholder-shown)~label  {
+.form-floating label, ::placeholder, .form-floating>.form-control:focus~label, .form-floating>.form-control:not(:placeholder-shown)~label, #boletin ::placeholder  {
   color: var(--text-on-white-muted);
 }
 
