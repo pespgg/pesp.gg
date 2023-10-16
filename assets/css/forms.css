@@ -14,8 +14,8 @@
   border-color: var(--form-border);
 }
 
-.form-floating label, ::placeholder {
-  color: var(--text-on-white-muted)!important;
+.form-floating label, ::placeholder, .form-floating>.form-control:focus~label, .form-floating>.form-control:not(:placeholder-shown)~label  {
+  color: var(--text-on-white-muted);
 }
 
 #contacto input:-webkit-autofill, #boletin input:-webkit-autofill { 

@@ -34,15 +34,15 @@ useHead({
             </div>
             <div class="form-floating mb-3">
               <input v-model="contacto.name" type="text" class="form-control" :placeholder="t('nombre')" required>
-              <label for="name">{{ t("nombre") }}</label>
+              <label>{{ t("nombre") }}</label>
             </div>
             <div class="form-floating mb-3">
               <input v-model="contacto.email" type="email" class="form-control" :placeholder="t('correo')" required>
-              <label for="name">{{ t("correo") }}</label>
+              <label>{{ t("correo") }}</label>
             </div>
             <div class="form-floating mb-3">
               <input v-model="contacto.subject" type="text" class="form-control" :placeholder="t('asunto')" required>
-              <label for="name">{{ t("asunto") }}</label>
+              <label>{{ t("asunto") }}</label>
             </div>
             <div class="form-floating">
               <textarea v-model="contacto.message" class="form-control" :placeholder="t('mensaje')" style="height: 200px" required />
@@ -81,11 +81,11 @@ useHead({
                 </div>
                 <div class="form-floating mb-3">
                   <input v-model="unirse.name" type="text" class="form-control" :placeholder="t('nombre_full')" required>
-                  <label for="name">{{ t("nombre_full") }}</label>
+                  <label>{{ t("nombre_full") }}</label>
                 </div>
                 <div class="form-floating mb-3">
                   <input v-model="unirse.email" type="email" class="form-control" :placeholder="t('correo')" required>
-                  <label for="name">{{ t("correo") }}</label>
+                  <label>{{ t("correo") }}</label>
                 </div>
                 <h5><strong>{{ t("porque_pesp") }}</strong></h5>
                 <div class="form-floating mb-3">
