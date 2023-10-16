@@ -1,11 +1,11 @@
 export default defineEventHandler(async () => {
-  const [
-    posts,
-  ] = await Promise.all([
-    $fetch("/api/posts"),
+  const [ posts ] = await Promise.all([
+    $fetch("/api/posts")
   ]);
-  console.log(posts);
+
   return [...posts].map((p) => {
-    return { loc: `/p/${p.permalink}`, lastmod: p.fecha };
+    const loc = `/p/${p.permalink}`;
+    const lastmod = new Date(p.fecha).toISOString();
+    return { loc, lastmod };
   });
 });
