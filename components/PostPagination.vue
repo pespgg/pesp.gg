@@ -8,7 +8,7 @@
         </button>
       </li>
       <!-- Previous -->
-      <li v-if="totalPages > maxVisibleButtons && currentPage > 1" class="page-item">
+      <li v-if="totalPages > 2 && currentPage > 1" class="page-item">
         <button class="page-link d-flex align-items-center justify-content-center" aria-label="Previous" type="button" :disabled="isInFirstPage" @click="onClickPreviousPage">
           <Icon name="solar:alt-arrow-left-linear" size="1.4rem" />
         </button>
@@ -20,7 +20,7 @@
         </button>
       </li>
       <!-- Next -->
-      <li v-if="totalPages > maxVisibleButtons && currentPage < totalPages" class="page-item">
+      <li v-if="totalPages > 2 && currentPage < totalPages" class="page-item">
         <button class="page-link d-flex align-items-center justify-content-center" aria-label="Next" type="button" :disabled="isInLastPage" @click="onClickNextPage">
           <Icon name="solar:alt-arrow-right-linear" size="1.4rem" />
         </button>
