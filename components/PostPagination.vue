@@ -3,33 +3,33 @@
     <ul class="pagination m-0">
       <!-- First -->
       <li v-if="currentPage > 1" class="page-item">
-        <button class="page-link d-flex align-items-center justify-content-center" aria-label="First" type="button" :disabled="isInFirstPage" @click="onClickFirstPage">
+        <a href="?p=1" class="page-link d-flex align-items-center justify-content-center" aria-label="First" type="button" :disabled="isInFirstPage" @click="onClickFirstPage">
           <Icon name="solar:double-alt-arrow-left-bold-duotone" size="1.4rem" />
-        </button>
+        </a>
       </li>
       <!-- Previous -->
       <li v-if="totalPages > 2 && currentPage > 1" class="page-item">
-        <button class="page-link d-flex align-items-center justify-content-center" aria-label="Previous" type="button" :disabled="isInFirstPage" @click="onClickPreviousPage">
+        <a :href="`?p=${currentPage - 1}`" class="page-link d-flex align-items-center justify-content-center" aria-label="Previous" type="button" :disabled="isInFirstPage" @click="onClickPreviousPage">
           <Icon name="solar:alt-arrow-left-linear" size="1.4rem" />
-        </button>
+        </a>
       </li>
       <!-- Between -->
       <li v-for="page in pages" :key="page.name" class="page-item">
-        <button type="button" class="page-link d-flex align-items-center justify-content-center" :disabled="page.isDisabled" :class="{ active: isPageActive(page.name) }" @click="onClickPage(page.name)">
+        <a :href="`?p=${page.name}`" type="button" class="page-link d-flex align-items-center justify-content-center" :disabled="page.isDisabled" :class="{ active: isPageActive(page.name) }" @click="onClickPage($event, page.name)">
           <span class="fw-bold">{{ page.name }}</span>
-        </button>
+        </a>
       </li>
       <!-- Next -->
       <li v-if="totalPages > 2 && currentPage < totalPages" class="page-item">
-        <button class="page-link d-flex align-items-center justify-content-center" aria-label="Next" type="button" :disabled="isInLastPage" @click="onClickNextPage">
+        <a :href="`?p=${currentPage + 1}`" class="page-link d-flex align-items-center justify-content-center" aria-label="Next" type="button" :disabled="isInLastPage" @click="onClickNextPage">
           <Icon name="solar:alt-arrow-right-linear" size="1.4rem" />
-        </button>
+        </a>
       </li>
       <!-- Last -->
       <li v-if="currentPage < totalPages" class="page-item">
-        <button class="page-link d-flex align-items-center justify-content-center" aria-label="Next" type="button" :disabled="isInLastPage" @click="onClickLastPage">
+        <a :href="`?p=${totalPages}`" class="page-link d-flex align-items-center justify-content-center" aria-label="Next" type="button" :disabled="isInLastPage" @click="onClickLastPage">
           <Icon name="solar:double-alt-arrow-right-bold-duotone" size="1.4rem" />
-        </button>
+        </a>
       </li>
     </ul>
   </nav>
@@ -94,19 +94,24 @@ export default {
     },
   },
   methods: {
-    onClickFirstPage() {
+    onClickFirstPage(e: Event) {
+      e.preventDefault();
       this.$emit("pagechanged", 1);
     },
-    onClickPreviousPage() {
+    onClickPreviousPage(e: Event) {
+      e.preventDefault();
       this.$emit("pagechanged", this.currentPage - 1);
     },
-    onClickPage(page: number) {
+    onClickPage(e: Event, page: number) {
+      e.preventDefault();
       this.$emit("pagechanged", page);
     },
-    onClickNextPage() {
+    onClickNextPage(e: Event) {
+      e.preventDefault();
       this.$emit("pagechanged", this.currentPage + 1);
     },
-    onClickLastPage() {
+    onClickLastPage(e: Event) {
+      e.preventDefault();
       this.$emit("pagechanged", this.totalPages);
     },
     isPageActive(page: number) {

@@ -16,17 +16,18 @@ useSeoMeta({
   twitterDescription: t("actualidad_description")
 });
 
-useHead({
-  link: [
-    { rel: "canonical", href: `${SITE.url}/actualidad` }
-  ]
-});
-
 const { query, path } = useRoute();
 const p = Number(query.p);
 const currentPage = ref(p ? p : 1);
 const perPage = ref(6);
 const actualidad: Ref<HTMLElement> = ref("actualidad") as any;
+
+const canonicalUrl = `${SITE.url}/actualidad`;
+useHead({
+  link: [
+    { rel: "canonical", href: currentPage.value > 1 ? `${canonicalUrl}?p=${currentPage.value}` : canonicalUrl }
+  ]
+});
 
 const numberOfPages = computed (() => {
   if (!posts.value) return 0;
