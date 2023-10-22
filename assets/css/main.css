@@ -219,6 +219,7 @@ strong, b {
   transition: none;
   padding: 2px;
   border: none;
+  text-decoration: none!important;
 }
 
 .active>.page-link, .page-link.active, .page-link:focus, .page-link:disabled {
