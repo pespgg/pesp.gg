@@ -111,8 +111,7 @@ export default defineNuxtConfig({
     "/admin/**": { index: false },
   },
 
-  experimental: {
-    inlineSSRStyles: false,
-    appManifest: false
+  features: {
+    inlineStyles: false
   }
 });
