@@ -55,7 +55,7 @@ export default defineNuxtConfig({
     "nuxt-icon",
     "nuxt-twemoji",
     "@nuxtjs/turnstile",
-    "nuxt-simple-sitemap"
+    "@nuxtjs/sitemap"
   ],
 
   turnstile: {
