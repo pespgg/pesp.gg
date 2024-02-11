@@ -107,7 +107,7 @@ export default defineNuxtConfig({
 
   routeRules: {
     "/": { sitemap: { priority: 1 } },
-    "/*/**": { sitemap: { priority: 0.8 } },
+    "/*/**": { sitemap: { priority: 0.8, lastmod: new Date().toISOString() } },
     "/admin/**": { index: false },
   },
 
