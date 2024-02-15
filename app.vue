@@ -18,7 +18,6 @@ onMounted(() => {
   <NuxtLayout>
     <div id="page">
       <NuxtPage />
-      <BackToTop />
     </div>
   </NuxtLayout>
   <ToastsController />

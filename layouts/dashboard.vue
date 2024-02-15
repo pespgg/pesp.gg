@@ -8,6 +8,7 @@ useSeoMeta({
   <div id="layout">
     <DashboardNavbar />
     <slot />
+    <BackToTop />
   </div>
 </template>
 

@@ -3,5 +3,6 @@
     <NavBar />
     <slot />
     <Footer />
+    <BackToTop />
   </div>
 </template>
