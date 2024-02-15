@@ -76,12 +76,15 @@ export default {
       }
     },
     onView () {
-      const { top, bottom } = (this.$refs.stats as HTMLElement).getBoundingClientRect();
-      if (top < window.innerHeight && bottom > 0) {
-        if (!this.tweened) this.tweenCounters();
-      }
-      else {
-        this.tweened = false;
+      const statsElement = this.$refs.stats as HTMLElement;
+      if (statsElement) {
+        const { top, bottom } = (this.$refs.stats as HTMLElement).getBoundingClientRect();
+        if (top < window.innerHeight && bottom > 0) {
+          if (!this.tweened) this.tweenCounters();
+        }
+        else {
+          this.tweened = false;
+        }
       }
     }
   }
