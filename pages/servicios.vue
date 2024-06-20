@@ -51,7 +51,7 @@ useHead({
           <div class="glide bullets">
             <div class="glide__track" data-glide-el="track">
               <ul class="glide__slides">
-                <li v-for="(caso, i) of SCHEMA_casos_exito" :key="i" class="glide__slide p-0 px-sm-3" :class="{'glide__slide--active': !i}">
+                <li v-for="(caso, i) of SCHEMA_casos_exito" :key="i" class="glide__slide p-0 px-sm-3" :class="{ 'glide__slide--active': !i }">
                   <div class="rounded overflow-hidden shadow bg-dark">
                     <div class="row mx-0">
                       <div class="order-2 order-md-1 col-md-7 p-4">
@@ -96,7 +96,7 @@ useHead({
             <div class="glide overflow-hidden rounded-pill">
               <div class="glide__track" data-glide-el="track">
                 <ul class="glide__slides">
-                  <li v-for="(marca, i) of SCHEMA_marcas" :key="i" class="glide__slide" :class="{'glide__slide--active': !i}">
+                  <li v-for="(marca, i) of SCHEMA_marcas" :key="i" class="glide__slide" :class="{ 'glide__slide--active': !i }">
                     <img :src="`${SITE.dirs.marcas}/${marca.image}`" class="img-fluid" width="150" height="150" :alt="marca.name" :title="marca.name">
                   </li>
                 </ul>

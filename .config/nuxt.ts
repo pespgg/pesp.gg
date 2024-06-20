@@ -1,4 +1,4 @@
-import { SITE } from "./utils/site";
+import { SITE } from "../utils/site";
 
 export default defineNuxtConfig({
   app: {
@@ -54,11 +54,19 @@ export default defineNuxtConfig({
   ],
 
   modules: [
+    "@nuxt/eslint",
     "nuxt-icon",
     "nuxt-twemoji",
     "@nuxtjs/turnstile",
     "@nuxtjs/sitemap"
   ],
+
+  eslint: {
+    config: {
+      autoInit: false,
+      stylistic: true
+    }
+  },
 
   turnstile: {
     siteKey: "0x4AAAAAAAFcwNNtzi_jhLif",
@@ -110,7 +118,7 @@ export default defineNuxtConfig({
   routeRules: {
     "/": { sitemap: { priority: 1 } },
     "/*/**": { sitemap: { priority: 0.8, lastmod: new Date().toISOString() } },
-    "/admin/**": { index: false },
+    "/admin/**": { index: false }
   },
 
   features: {

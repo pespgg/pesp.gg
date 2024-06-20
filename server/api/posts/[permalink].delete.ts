@@ -14,7 +14,7 @@ export default defineEventHandler(async (event) => {
     });
   }
 
-  if (process.dev) {
+  if (import.meta.dev) {
     const { unlinkSync } = await import("fs");
     unlinkSync(`./public/posts/content/${permalink}.html`);
     unlinkSync(`./public/posts/images/${permalink}.jpg`);

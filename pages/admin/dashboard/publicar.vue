@@ -1,6 +1,6 @@
 <script setup lang="ts">
 definePageMeta({ layout: "dashboard", middleware: "auth" });
-// @ts-ignore
+// @ts-expect-error - no types
 const { component: Editor } = await import("@ckeditor/ckeditor5-vue");
 const { meta } = useRoute() as { meta: PespEditorMeta };
 
@@ -11,7 +11,7 @@ if (meta.data && meta.edit) {
 }
 
 async function getPostContent (permalink: string, updated: number) {
-  const url = process.dev ? `${SITE.local}/posts/content` : `${SITE.cdn}/posts/content`;
+  const url = import.meta.dev ? `${SITE.local}/posts/content` : `${SITE.cdn}/posts/content`;
   return await $fetch(`${url}/${permalink}.html?updated=${updated}`).catch(() => "") as string;
 }
 </script>
@@ -172,7 +172,7 @@ export default {
       };
     },
     previewPost () {
-      // @ts-ignore
+      // @ts-expect-error - no types
       if (!this.$refs.form.reportValidity()) {
         return;
       }

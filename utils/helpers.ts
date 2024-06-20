@@ -5,14 +5,14 @@ export const formatDate = (date: string | number, options?: Partial<{ style: Int
   const d = new Date(new Date(date).getTime() + timeOffset);
 
   switch (type) {
-  case "iso":
-    return d.toISOString();
-  default:
-    return d.toLocaleDateString(lang, {
-      year: "numeric",
-      month: style,
-      day: "2-digit"
-    });
+    case "iso":
+      return d.toISOString();
+    default:
+      return d.toLocaleDateString(lang, {
+        year: "numeric",
+        month: style,
+        day: "2-digit"
+      });
   }
 };
 
@@ -24,7 +24,7 @@ export function sleep (ms: number) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-export const tweenNumber = async ({ target, duration }: { target: number, duration: number}, callback: (count: number) => void) => {
+export const tweenNumber = async ({ target, duration }: { target: number, duration: number }, callback: (count: number) => void) => {
   let count = 0;
   while (count < target) {
     const add = target / (60 * duration);
@@ -69,12 +69,12 @@ export const KtoNumber = (str = "") => {
   return Number(str.replace("k", "")) * 1000;
 };
 
-export const getRandomFromArray = (arr: any[] = []) => {
+export const getRandomFromArray = (arr: string[] = []) => {
   return arr[Math.floor(Math.random() * arr.length)];
 };
 
 export const getPostImage = (name: string, updated: number) => {
-  const path = process.dev ? `${SITE.local}/posts/images` : `${SITE.cdn}/posts/images`;
+  const path = import.meta.dev ? `${SITE.local}/posts/images` : `${SITE.cdn}/posts/images`;
   return `${path}/${name}.jpg?updated=${updated}`;
 };
 
@@ -98,7 +98,6 @@ export const getAge = (date: string) => {
   const age = Math.floor(diff / (1000 * 60 * 60 * 24 * 365.25));
   return age;
 };
-
 
 export const copyToClipboard = async (text: string) => {
   if (typeof navigator === "undefined" || !navigator.clipboard || !navigator.clipboard.writeText) {

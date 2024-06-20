@@ -58,7 +58,7 @@ useHead({
           <div class="glide">
             <div class="glide__track" data-glide-el="track">
               <ul class="glide__slides">
-                <li v-for="(comentario, i) of SCHEMA_comentarios" :key="i" class="glide__slide p-0 px-sm-3" :class="{'glide__slide--active': !i}">
+                <li v-for="(comentario, i) of SCHEMA_comentarios" :key="i" class="glide__slide p-0 px-sm-3" :class="{ 'glide__slide--active': !i }">
                   <div class="rounded shadow bg-light p-3 p-sm-4 text-center position-relative">
                     <img class="rounded-circle shadow-sm mb-3 p-2" :src="`${SITE.dirs.marcas}/${comentario.image}`" width="130" height="130" :alt="comentario.marca">
                     <p class="text-dark m-0">
@@ -94,7 +94,7 @@ useHead({
           <div class="glide bullets">
             <div class="glide__track" data-glide-el="track">
               <ul class="glide__slides">
-                <li v-for="(image, i) of SCHEMA_galeria" :key="i" class="glide__slide p-0 px-sm-3" :class="{'glide__slide--active': !i}">
+                <li v-for="(image, i) of SCHEMA_galeria" :key="i" class="glide__slide p-0 px-sm-3" :class="{ 'glide__slide--active': !i }">
                   <img :src="`${SITE.dirs.galeria}/${image}`" class="img-fluid w-100 rounded shadow" :alt="t('galeria')">
                 </li>
               </ul>

@@ -1,4 +1,3 @@
-// @ts-ignore
 import Mustache from "mustache";
 
 export default defineEventHandler(async (event) => {
@@ -19,7 +18,7 @@ export default defineEventHandler(async (event) => {
   }
 
   strings.setLanguage(lang);
-  const template_strings: Record<string, Record<string,string>> = {
+  const template_strings: Record<string, Record<string, string>> = {
     shared: {
       language: t("lang"),
       correo_informacion: t("correo_informacion"),

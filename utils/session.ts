@@ -4,7 +4,7 @@ export const useUserSession = () => {
   const sessionState = useUserSessionState();
   return {
     loggedIn: computed(() => Boolean(sessionState.value.user)),
-    user: computed(() => sessionState.value.user || null as any as PespUser),
+    user: computed(() => sessionState.value.user || null as unknown as PespUser),
     data: sessionState,
     fetch,
     clear

@@ -16,6 +16,7 @@ useHead({
   ]
 });
 </script>
+
 <template>
   <main>
     <section id="faq">

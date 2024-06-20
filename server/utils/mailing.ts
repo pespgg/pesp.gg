@@ -38,7 +38,7 @@ const mailChannels = async (config: NitroRuntimeConfig, message: EmailMessage): 
 };
 
 const nodeMailer = async (config: NitroRuntimeConfig, message: EmailMessage): Promise<boolean> => {
-  // @ts-ignore
+  // @ts-expect-error - nodemailer is available only on dev
   const nodemailer = await import("nodemailer");
   const transporter = nodemailer.createTransport({
     port: config.mail.port,
@@ -50,7 +50,7 @@ const nodeMailer = async (config: NitroRuntimeConfig, message: EmailMessage): Pr
   });
 
   const verified = await new Promise((resolve, reject) => {
-    transporter.verify((error: any, success: any) => {
+    transporter.verify((error: unknown, success: unknown) => {
       if (error) return reject(error);
       return resolve(success);
     });
@@ -67,7 +67,7 @@ const nodeMailer = async (config: NitroRuntimeConfig, message: EmailMessage): Pr
       from: `"${config.mail.fromName}" <${config.mail.from}>`
     };
 
-    transporter.sendMail(mail, (err: any) => {
+    transporter.sendMail(mail, (err: unknown) => {
       if (err) return reject(err);
       return resolve(true);
     });
@@ -75,6 +75,6 @@ const nodeMailer = async (config: NitroRuntimeConfig, message: EmailMessage): Pr
 };
 
 export const sendMail = async (config: NitroRuntimeConfig, message: EmailMessage) => {
-  if (process.dev) return nodeMailer(config, message);
+  if (import.meta.dev) return nodeMailer(config, message);
   return mailChannels(config, message);
 };

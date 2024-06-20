@@ -1,19 +1,19 @@
 class Toasts {
   toasts: Ref<PespToast[]> = ref([]);
   id = 1;
-  add(toast: PespToast) {
+  add (toast: PespToast) {
     this.toasts.value.unshift({ ...toast, id: this.id++ });
   }
 
-  remove(toast: PespToast) {
+  remove (toast: PespToast) {
     this.toasts.value.splice(this.toasts.value.indexOf(toast), 1);
   }
 
-  removeAll() {
+  removeAll () {
     this.toasts.value.splice(0, this.toasts.value.length);
   }
 
-  getAll() {
+  getAll () {
     return this.toasts.value;
   }
 }

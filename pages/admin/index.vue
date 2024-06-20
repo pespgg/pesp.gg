@@ -40,7 +40,7 @@ export default {
     async login () {
       const login = await $fetch("/api/admin/auth", {
         method: "POST",
-        body: this.form,
+        body: this.form
       }).catch(() => null);
 
       if (!login) return;

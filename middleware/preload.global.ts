@@ -1,5 +1,5 @@
 export default defineNuxtRouteMiddleware(() => {
-  if (process.server) return;
+  if (import.meta.server) return;
 
   const banners = Object.keys(import.meta.glob("~/public/images/banners/*.jpg")).map((path) => {
     return path.replace(/^.*[\\/]/, "");

@@ -14,47 +14,48 @@
     "url": "https://github.com/pespgg/pesp.gg/issues"
   },
   "scripts": {
-    "build": "pnpm email:templates && pnpm build:ckeditor && nuxt build",
-    "build:ckeditor": "cd assets/ckeditor && pnpm install && pnpm build",
-    "dev": "nuxt dev --port=5173",
+    "build": "npm run email:templates && npm run build:ckeditor && nuxt build",
+    "build:ckeditor": "cd assets/ckeditor && pnpm install && npm run build",
+    "dev": "nuxt dev --port=5173 --host",
     "dev:cf": "wrangler dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "npm run email:templates && npm run build:ckeditor && nuxt prepare",
     "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js --verbose --coverage",
-    "db:migration": "drizzle-kit generate:sqlite",
+    "db:migrate": "drizzle-kit generate --config=.config/drizzle.json",
     "email:templates": "tsc ./scripts/emailTemplates.ts --module nodenext && node ./scripts/emailTemplates.js",
     "lint": "npm run lint:eslint && npm run lint:stylelint",
-    "lint:eslint": "eslint --ext .ts,.js,.vue --fix --ignore-path .gitignore .",
-    "lint:stylelint": "stylelint \"**/*.css\" --fix"
+    "lint:eslint": "eslint --fix --config .config/eslint.mjs",
+    "lint:stylelint": "stylelint \"**/*.css\" --fix --config .config/stylelint.json"
   },
   "devDependencies": {
-    "@nuxt/eslint-config": "^0.2.0",
-    "@nuxtjs/sitemap": "^5.1.0",
-    "@nuxtjs/turnstile": "^0.6.3",
+    "@nuxt/eslint": "^0.3.13",
+    "@nuxtjs/sitemap": "^5.2.0",
+    "@nuxtjs/turnstile": "^0.8.0",
     "@types/bootstrap": "^5.2.10",
     "@types/glidejs__glide": "^3.6.5",
-    "better-sqlite3": "^9.4.1",
+    "@types/mustache": "^4.2.5",
+    "better-sqlite3": "^11.0.0",
     "chalk": "^5.3.0",
-    "eslint": "^8.56.0",
-    "husky": "^8.0.3",
+    "eslint": "^9.5.0",
+    "husky": "^9.0.11",
     "jest": "^29.7.0",
-    "nodemailer": "^6.9.9",
-    "nuxt": "^3.10.1",
-    "stylelint": "^16.2.1",
+    "nodemailer": "^6.9.14",
+    "nuxt": "^3.12.2",
+    "stylelint": "^16.6.1",
     "stylelint-config-standard": "^36.0.0",
     "xml": "^1.0.1"
   },
   "dependencies": {
     "@ckeditor/ckeditor5-vue": "^5.1.0",
-    "@glidejs/glide": "^3.6.0",
-    "bootstrap": "^5.3.2",
-    "chart.js": "^4.4.1",
-    "drizzle-kit": "^0.20.14",
-    "drizzle-orm": "^0.29.3",
+    "@glidejs/glide": "^3.6.1",
+    "bootstrap": "^5.3.3",
+    "chart.js": "^4.4.3",
+    "drizzle-kit": "^0.22.7",
+    "drizzle-orm": "^0.31.2",
     "mustache": "^4.2.0",
-    "nuxt-icon": "^0.6.8",
-    "nuxt-twemoji": "^3.4.5"
+    "nuxt-icon": "^0.6.10",
+    "nuxt-twemoji": "^3.5.2"
   },
   "overrides": {
     "vue": "latest"
@@ -64,5 +65,6 @@
     "moduleNameMapper": {
       "^~/(.*)$": "<rootDir>/$1"
     }
-  }
+  },
+  "packageManager": "pnpm@9.4.0"
 }

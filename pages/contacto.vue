@@ -202,7 +202,7 @@ export default {
       else {
         this.result.message = t("correo_error");
       }
-      // @ts-ignore
+      // @ts-expect-error - no types
       this.$refs[name].reset();
       this.submit = false;
     }

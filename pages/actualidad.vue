@@ -20,7 +20,7 @@ const { query, path } = useRoute();
 const p = Number(query.p);
 const currentPage = ref(p ? p : 1);
 const perPage = ref(6);
-const actualidad: Ref<HTMLElement> = ref("actualidad") as any;
+const actualidad = ref<HTMLElement>();
 
 const canonicalUrl = `${SITE.url}/actualidad`;
 useHead({
@@ -36,7 +36,7 @@ const numberOfPages = computed (() => {
 
 const onPageChange = (page: number) => {
   currentPage.value = page;
-  scrollTo({ top: actualidad.value.offsetTop, behavior: "smooth" });
+  scrollTo({ top: actualidad.value?.offsetTop, behavior: "smooth" });
 };
 
 const showPosts = computed (() => {
@@ -46,7 +46,7 @@ const showPosts = computed (() => {
 });
 
 watch(currentPage, () => {
-  if (process.server) return;
+  if (import.meta.server) return;
   const url = currentPage.value > 1 ? `${path}?p=${currentPage.value}` : path;
   window.history.replaceState({}, "", url);
 });

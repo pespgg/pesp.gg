@@ -55,5 +55,5 @@ export default {
   confian: "They trust us",
   patrocina: "Brands that sponsor our events",
   correo_corporativo: "Corporate email",
-  correo_personal: "Personal email",
+  correo_personal: "Personal email"
 };

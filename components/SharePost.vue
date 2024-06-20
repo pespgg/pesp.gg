@@ -32,7 +32,7 @@ export default {
     };
   },
   computed: {
-    socialShare() {
+    socialShare () {
       return [
         {
           name: "facebook",

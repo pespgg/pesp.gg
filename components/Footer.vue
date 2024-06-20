@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { twFlagPanama } from "nuxt-twemoji/emojis";
+
 const { data: posts } = await useFetch("/api/posts", {
   query: {
     props: ["titulo", "fecha", "permalink", "updated"].join(","),

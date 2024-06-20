@@ -31,7 +31,7 @@ declare global {
       permalink: string;
       visible: boolean;
       updated: number;
-    }
+    };
   }
   interface PespStats {
     title: string;

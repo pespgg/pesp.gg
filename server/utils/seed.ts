@@ -1,4 +1,4 @@
-import { BetterSQLite3Database } from "drizzle-orm/better-sqlite3";
+import type { BetterSQLite3Database } from "drizzle-orm/better-sqlite3";
 
 const addAdmin = (DB: BetterSQLite3Database) => {
   console.info("User \"admin\" added");
@@ -7,7 +7,6 @@ const addAdmin = (DB: BetterSQLite3Database) => {
     password: "admin"
   }).onConflictDoNothing().run();
 };
-
 
 export const seedDev = async (DB: BetterSQLite3Database) => {
   addAdmin(DB);

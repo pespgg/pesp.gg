@@ -1,12 +1,13 @@
 <script setup lang="ts">
 import countriesData from "~/assets/data/countries.json";
+
 definePageMeta({ layout: "dashboard", middleware: "auth" });
 
 const { data: emailList } = await useFetch("/api/admin/email/list");
 
 const correos = emailList.value || [];
 
-const getEmoji = (code: string) => countriesData.find((country) => country.code_2 === code)?.emoji || "";
+const getEmoji = (code: string) => countriesData.find(country => country.code_2 === code)?.emoji || "";
 </script>
 
 <template>

@@ -27,7 +27,7 @@
       <div class="form-check text-start">
         <input type="checkbox" class="form-check-input" required>
         <label class="form-check-label text-justify">
-          <!--eslint-disable-next-line vue/no-v-html-->
+          <!-- eslint-disable-next-line vue/no-v-html -->
           <small v-html="t('boletin_tos')" />
         </label>
       </div>

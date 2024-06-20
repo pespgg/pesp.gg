@@ -1,5 +1,5 @@
 export default defineEventHandler(async () => {
-  const [ posts ] = await Promise.all([
+  const [posts] = await Promise.all([
     $fetch("/api/posts")
   ]);
 

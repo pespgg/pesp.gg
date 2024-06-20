@@ -9,7 +9,7 @@ class Strings {
     this.code = String(code).toLowerCase();
   }
 
-  get (key: string, values?: Record<string, string>) {
+  get (key: string, values?: Record<string, unknown>) {
     const text = locales[this.code][key] || locales.en[key] || key;
     if (values) {
       return Object.keys(values).reduce((acc, key) => acc.replace(new RegExp(`{{\\s*${key}\\s*}}`, "gi"), values[key]), text);
@@ -24,6 +24,6 @@ class Strings {
 
 export const strings = new Strings("es");
 
-export const t = (key: string, values?: Record<string, any>) => {
+export const t = (key: string, values?: Record<string, unknown>) => {
   return strings.get(key, values);
 };

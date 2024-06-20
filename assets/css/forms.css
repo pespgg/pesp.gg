@@ -19,7 +19,7 @@
 }
 
 #contacto input:-webkit-autofill, #boletin input:-webkit-autofill { 
-  -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: var(--text-on-white) !important;
 }
 

@@ -54,7 +54,7 @@ export default {
   },
   emits: ["pagechanged"],
   computed: {
-    startPage() {
+    startPage () {
       // When on the first page
       if (this.currentPage === 1) {
         return 1;
@@ -64,14 +64,14 @@ export default {
         return this.totalPages - this.maxVisibleButtons + 1;
       }
       // When inbetween
-      const pivotFix = Math.floor(this.maxVisibleButtons/2);
+      const pivotFix = Math.floor(this.maxVisibleButtons / 2);
       const currentPivot = this.currentPage - pivotFix;
       return this.currentPage > pivotFix ? this.currentPage < this.totalPages - pivotFix + 1 ? currentPivot : currentPivot - 1 : currentPivot + 1;
     },
-    endPage() {
+    endPage () {
       return Math.min(this.startPage + this.maxVisibleButtons - 1, this.totalPages);
     },
-    pages() {
+    pages () {
       const range = [];
       const startFix = this.startPage > 0 ? this.startPage : 1;
       const endFix = this.startPage > 0 || this.totalPages < this.maxVisibleButtons ? this.endPage : this.endPage + 1;
@@ -86,35 +86,35 @@ export default {
       }
       return range;
     },
-    isInFirstPage() {
+    isInFirstPage () {
       return this.currentPage === 1;
     },
-    isInLastPage() {
+    isInLastPage () {
       return this.currentPage === this.totalPages;
-    },
+    }
   },
   methods: {
-    onClickFirstPage(e: Event) {
+    onClickFirstPage (e: Event) {
       e.preventDefault();
       this.$emit("pagechanged", 1);
     },
-    onClickPreviousPage(e: Event) {
+    onClickPreviousPage (e: Event) {
       e.preventDefault();
       this.$emit("pagechanged", this.currentPage - 1);
     },
-    onClickPage(e: Event, page: number) {
+    onClickPage (e: Event, page: number) {
       e.preventDefault();
       this.$emit("pagechanged", page);
     },
-    onClickNextPage(e: Event) {
+    onClickNextPage (e: Event) {
       e.preventDefault();
       this.$emit("pagechanged", this.currentPage + 1);
     },
-    onClickLastPage(e: Event) {
+    onClickLastPage (e: Event) {
       e.preventDefault();
       this.$emit("pagechanged", this.totalPages);
     },
-    isPageActive(page: number) {
+    isPageActive (page: number) {
       return this.currentPage === page;
     }
   }
