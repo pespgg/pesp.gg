@@ -5,8 +5,8 @@
         <button v-for="(banner, i) of banners" :key="i" type="button" data-bs-target="#banner .carousel" :data-bs-slide-to="i" :class="{ active: !i }" aria-current="true" aria-label="Slide" />
       </div>
       <div class="carousel-inner">
-        <div v-for="(banner, i) of banners" :key="i" class="carousel-item" :class="{ active: !i }" data-bs-interval="10000" data-aos="zoom-out" data-aos-duration="2000">
-          <img :src="`${SITE.dirs.banners}/${banner}`" class="d-block w-100" :alt="`${SITE.name.web} Banner`">
+        <div v-for="(banner, i) of banners" :key="i" class="carousel-item" :class="{ active: !i }" data-bs-interval="10000">
+          <img :src="`${SITE.dirs.banners}/${banner}`" class="d-block w-100" :alt="`${SITE.name.web} Banner`" data-aos="zoom-out" data-aos-duration="2000">
         </div>
       </div>
     </div>
