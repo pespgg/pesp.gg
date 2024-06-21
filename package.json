@@ -54,6 +54,7 @@
     "drizzle-kit": "^0.22.7",
     "drizzle-orm": "^0.31.2",
     "mustache": "^4.2.0",
+    "nuxt-aos": "^1.2.4",
     "nuxt-icon": "^0.6.10",
     "nuxt-twemoji": "^3.5.2"
   },

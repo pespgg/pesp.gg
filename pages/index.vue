@@ -43,20 +43,22 @@ useHead({
 <template>
   <main>
     <!-- Banner -->
-    <BannerCarousel :banners="banners" />
+    <BannerCarousel :banners="banners"/>
     <!-- Actualidad Preview -->
     <section id="actualidad">
       <div class="container-fluid py-5">
         <h2 class="text-center text-uppercase mb-4">
           <strong>{{ t("actualidad") }}</strong>
         </h2>
-        <div class="glide-wrapper">
+        <div class="glide-wrapper" data-aos="fade-in">
           <div class="glide bullets">
             <div class="glide__track" data-glide-el="track">
               <ul class="glide__slides">
                 <li v-for="(post, i) of posts" :key="i" class="glide__slide p-0 px-sm-3" :class="{ 'glide__slide--active': !i }">
-                  <article class="card mx-auto border-0 shadow" itemscope itemtype="https://schema.org/BlogPosting">
-                    <img :src="getPostImage(post.permalink, post.updated)" class="card-img-top post" :alt="post.titulo" itemprop="image">
+                  <article class="card mx-auto border-0 shadow overflow-hidden" itemscope itemtype="https://schema.org/BlogPosting">
+                    <div class="overflow-hidden">
+                      <img :src="getPostImage(post.permalink, post.updated)" class="card-img-top post" :alt="post.titulo" itemprop="image" data-aos="zoom-out" data-aos-duration="2000">
+                    </div>
                     <div class="card-body bg-dark">
                       <h4 class="card-title">
                         <strong>
@@ -108,7 +110,9 @@ useHead({
             <template v-for="(n, i) of 12" :key="i">
               <Transition name="tab">
                 <div v-if="n <= 6 || moreCategorias" class="col-6 col-md-4 p-2 p-md-3">
-                  <img class="img-fluid rounded shadow" :src="`${SITE.dirs.categorias}/${SCHEMA_categorias[i].image}`" :title="SCHEMA_categorias[i].name">
+                  <div class="overflow-hidden rounded shadow">
+                    <img class="img-fluid" :src="`${SITE.dirs.categorias}/${SCHEMA_categorias[i].image}`" :title="SCHEMA_categorias[i].name" data-aos="zoom-out" data-aos-duration="2000">
+                  </div>
                 </div>
               </Transition>
             </template>
@@ -136,9 +140,9 @@ useHead({
             <div class="col-md-6 p-2 p-md-3">
               <div class="position-relative rounded overflow-hidden scale-position-hover">
                 <div class="scale-position">
-                  <img class="img-fluid shadow" :src="`${SITE.dirs.servicios}/${servicio.images[0]}`" :alt="t(servicio.title)">
+                  <img class="img-fluid shadow" :src="`${SITE.dirs.servicios}/${servicio.images[0]}`" :alt="t(servicio.title)" data-aos="zoom-out" data-aos-duration="2000">
                 </div>
-                <NuxtLink class="position-absolute bottom-0 bg-dark w-100 bg-opacity-75 px-3 py-2 text-light d-flex justify-content-between align-items-center" :to="`${SCHEMA_pages.servicios.to}#${servicio.title}`">
+                <NuxtLink class="position-absolute bottom-0 bg-dark w-100 bg-opacity-75 px-3 py-2 text-light d-flex justify-content-between align-items-center" :to="`${SCHEMA_pages.servicios.to}#${servicio.title}`" data-aos="fade-in">
                   <p class="m-0 h5">{{ t(servicio.title) }}</p>
                   <Icon name="solar:square-bottom-up-linear" size="1.5rem" />
                 </NuxtLink>

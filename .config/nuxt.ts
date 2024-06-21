@@ -58,7 +58,8 @@ export default defineNuxtConfig({
     "nuxt-icon",
     "nuxt-twemoji",
     "@nuxtjs/turnstile",
-    "@nuxtjs/sitemap"
+    "@nuxtjs/sitemap",
+    "nuxt-aos"
   ],
 
   eslint: {

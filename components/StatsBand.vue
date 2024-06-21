@@ -2,7 +2,7 @@
   <section id="stats" ref="stats">
     <div class="band container-fluid bg-dark py-5">
       <div class="row row-gap-4 justify-content-center">
-        <div v-for="(stat, i) of stats" :key="i" :class="`col-12 col-sm-6 col-md-${col} text-center`">
+        <div v-for="(stat, i) of stats" :key="i" :class="`col-12 col-sm-6 col-md-${col} text-center`" data-aos="fade-in" data-aos-duration="2000">
           <div v-if="stat.counter">
             <h1>
               <strong><span ref="counters">{{ thousandToK(stat.counter) }}</span>+</strong>
