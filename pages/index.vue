@@ -43,7 +43,7 @@ useHead({
 <template>
   <main>
     <!-- Banner -->
-    <BannerCarousel :banners="banners"/>
+    <BannerCarousel :banners="banners" />
     <!-- Actualidad Preview -->
     <section id="actualidad">
       <div class="container-fluid py-5">
