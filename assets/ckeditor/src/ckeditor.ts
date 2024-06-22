@@ -135,7 +135,7 @@ Editor.defaultConfig = {
     ]
   },
   language: "es",
-  // @ts-ignore
+  // @ts-expect-error - CKEditor allows adding image
   image: {
     toolbar: [
       "imageTextAlternative",

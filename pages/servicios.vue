@@ -28,8 +28,8 @@ useHead({
             <!-- Info col -->
             <div class="col-md-8 col-lg-6 p-sm-4 shadow overflow-hidden" :class="i % 2 ? 'order-1 order-md-2' : 'order-1 order-md-1'">
               <h3 class="text-uppercase mb-4 mt-4" :data-aos="i % 2 ? 'fade-right' : 'fade-left'" data-aos-duration="2000"><strong>{{ t(servicio.title) }}</strong></h3>
-              <!-- eslint-disable-next-line vue/no-v-html -->
               <span data-aos="fade-in" data-aos-duration="3000">
+                <!-- eslint-disable-next-line vue/no-v-html -->
                 <p v-for="(p, j) of servicio.content" :key="j" v-html="t(p)" />
               </span>
             </div>
