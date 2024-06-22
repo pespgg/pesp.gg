@@ -26,7 +26,8 @@
     "email:templates": "tsc ./scripts/emailTemplates.ts --module nodenext && node ./scripts/emailTemplates.js",
     "lint": "npm run lint:eslint && npm run lint:stylelint",
     "lint:eslint": "eslint --fix --config .config/eslint.mjs",
-    "lint:stylelint": "stylelint \"**/*.css\" --fix --config .config/stylelint.json"
+    "lint:stylelint": "stylelint \"**/*.css\" --fix --config .config/stylelint.json",
+    "lint:eslint:inspect": "npx @eslint/config-inspector --config .config/eslint.mjs"
   },
   "devDependencies": {
     "@nuxt/eslint": "^0.3.13",
