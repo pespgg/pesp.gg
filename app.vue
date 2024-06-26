@@ -16,6 +16,7 @@ onMounted(() => {
 
 <template>
   <NuxtLoadingIndicator :throttle="0" />
+  <BackToTop />
   <NuxtLayout>
     <div id="page">
       <NuxtPage />
