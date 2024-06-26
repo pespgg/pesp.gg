@@ -1,6 +1,7 @@
-import { SITE } from "../utils/site";
+import { SITE } from "../app/utils/site";
 
 export default defineNuxtConfig({
+  future: { compatibilityVersion: 4 },
   app: {
     pageTransition: { name: "fade", mode: "out-in" },
     layoutTransition: { name: "fade", mode: "out-in" },

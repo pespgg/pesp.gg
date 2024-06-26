@@ -1,7 +1,7 @@
 import { readFileSync, writeFileSync, readdirSync } from "fs";
 import chalk from "chalk";
 
-const path = "./assets/email/templates";
+const path = "./app/assets/email/templates";
 const templates: Record<string, string> = {};
 for (const file of readdirSync(path)) {
   const name = file.replace(".html", "");

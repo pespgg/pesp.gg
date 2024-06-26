@@ -15,7 +15,7 @@
   },
   "scripts": {
     "build": "npm run email:templates && npm run build:ckeditor && nuxt build",
-    "build:ckeditor": "cd assets/ckeditor && pnpm install && npm run build",
+    "build:ckeditor": "cd app/assets/ckeditor && pnpm install && npm run build",
     "dev": "nuxt dev --port=5173 --host",
     "dev:cf": "wrangler dev",
     "generate": "nuxt generate",
