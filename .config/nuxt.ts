@@ -57,14 +57,12 @@ export default defineNuxtConfig({
 
   modules: [
     "@nuxt/eslint",
-    "@nuxt/icon",
+    "nuxt-icon",
     "nuxt-twemoji",
     "@nuxtjs/turnstile",
     "@nuxtjs/sitemap",
     "nuxt-aos"
   ],
-
-  icon: { mode: "svg" },
 
   eslint: {
     config: {
