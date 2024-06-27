@@ -104,12 +104,18 @@ export default defineNuxtConfig({
     }
   },
 
+  nitro: {
+    prerender: {
+      routes: ["/sitemap.xml"]
+    }
+  },
+
   site: {
     url: SITE.url
   },
 
   sitemap: {
-    dynamicUrlsApiEndpoint: "/__sitemap",
+    sources: ["/api/__sitemap__"],
     xslColumns: [
       { label: "URL", width: "65%" },
       { label: "Priority", select: "sitemap:priority", width: "12.5%" },
