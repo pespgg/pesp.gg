@@ -67,5 +67,5 @@ useHead({
 </template>
 
 <style>
-@import "~/assets/css/ckeditor.css";
+@import "ckeditor5/ckeditor5.css";
 </style>

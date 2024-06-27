@@ -1,7 +1,5 @@
 <script setup lang="ts">
 definePageMeta({ layout: "dashboard", middleware: "auth" });
-// @ts-expect-error - no types
-const { component: Editor } = await import("@ckeditor/ckeditor5-vue");
 const { meta } = useRoute() as { meta: PespEditorMeta };
 
 if (meta.data && meta.edit) {
@@ -45,7 +43,7 @@ async function getPostContent (permalink: string, updated: number) {
             <Transition name="fade" mode="out-in">
               <div v-if="editor" class="rounded border h-100 shadow d-flex flex-column overflow-hidden">
                 <ClientOnly>
-                  <Editor ref="wordcount" v-model="form.content" :editor="$nuxt.$ckeditor.editor" :config="$nuxt.$ckeditor.config" @ready="onEditorLoaded($event)" />
+                  <CKEditor ref="wordcount" v-model="form.content" :editor="$nuxt.$ckeditor.editor" :config="$nuxt.$ckeditor.config" @ready="onEditorLoaded($event)" />
                   <div ref="wordcount" class="bg-light text-dark py-1 px-2 small" />
                 </ClientOnly>
               </div>
@@ -198,5 +196,6 @@ export default {
 </script>
 
 <style>
-@import "~/assets/css/ckeditor-edit.css";
+@import "ckeditor5/ckeditor5.css";
+@import "~/assets/css/ckeditor.css";
 </style>

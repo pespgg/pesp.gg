@@ -17,7 +17,7 @@ export default defineEventHandler(async (event) => {
 
   if (import.meta.dev) {
     const { writeFileSync, existsSync, mkdirSync } = await import("fs");
-    if (!existsSync(`./public/uploads/${filename}`)) mkdirSync(`./public/uploads/${filename}`, { recursive: true });
+    if (!existsSync("./public/uploads")) mkdirSync("./public/uploads", { recursive: true });
     writeFileSync(`./public/uploads/${filename}`, data);
     return { url: `/uploads/${filename}?updated=${dateTime}` };
   }
