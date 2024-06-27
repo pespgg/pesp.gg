@@ -8,6 +8,4 @@ db.sqlite
 public/posts
 public/uploads
 .env
-server/utils/mustache.ts
-assets/ckeditor/build
-scripts/*.js
+app/assets/ckeditor/build
