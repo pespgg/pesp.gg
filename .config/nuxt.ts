@@ -1,3 +1,4 @@
+import vue from "@vitejs/plugin-vue";
 import { SITE } from "../app/utils/site";
 
 export default defineNuxtConfig({
@@ -109,6 +110,10 @@ export default defineNuxtConfig({
   nitro: {
     prerender: {
       routes: ["/sitemap.xml"]
+    },
+    rollupConfig: {
+      // @ts-expect-error Type instantiation is excessively deep and possibly infinite.
+      plugins: [vue()]
     }
   },
 

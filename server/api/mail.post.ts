@@ -1,4 +1,6 @@
-import Mustache from "mustache";
+import { render } from "@vue-email/render";
+import emailContacto from "~/emails/contacto.vue";
+import emailUnirse from "~/emails/unirse.vue";
 
 export default defineEventHandler(async (event) => {
   const { template, form, lang } = await readBody(event);
@@ -20,7 +22,7 @@ export default defineEventHandler(async (event) => {
   strings.setLanguage(lang);
   const template_strings: Record<string, Record<string, string>> = {
     shared: {
-      language: t("lang"),
+      lang: t("lang"),
       correo_informacion: t("correo_informacion"),
       str_nombre: t("nombre"),
       str_correo: t("correo"),
@@ -48,7 +50,7 @@ export default defineEventHandler(async (event) => {
 
   const asunto = template === "contacto" ? subject : `${name} ${t("asunto_interesado")}`;
 
-  const html = Mustache.render(templates[template as "contacto" | "unirse"], {
+  const html = await render(template === "contacto" ? emailContacto : emailUnirse, {
     ...template_strings.shared,
     ...template_strings[template as "contacto" | "unirse"],
     nombre: name,
