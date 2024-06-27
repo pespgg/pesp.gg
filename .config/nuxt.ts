@@ -108,9 +108,6 @@ export default defineNuxtConfig({
   },
 
   nitro: {
-    prerender: {
-      routes: ["/sitemap.xml"]
-    },
     rollupConfig: {
       // @ts-expect-error Type instantiation is excessively deep and possibly infinite.
       plugins: [vue()]
