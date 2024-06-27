@@ -4,6 +4,7 @@ export const SITE = {
     short: "PESP",
     web: "PESP.GG"
   },
+  domain: "pesp.gg",
   url: "https://pesp.gg",
   cdn: "https://cdn.pesp.gg",
   local: "http://localhost:5173",

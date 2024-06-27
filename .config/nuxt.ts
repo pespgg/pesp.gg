@@ -92,7 +92,9 @@ export default defineNuxtConfig({
       host: "",
       port: "",
       login: "",
-      pass: ""
+      pass: "",
+      dkimKey: "",
+      dkimSelector: ""
     },
     turnstile: {
       secretKey: ""
