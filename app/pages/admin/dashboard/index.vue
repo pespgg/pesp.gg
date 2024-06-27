@@ -3,10 +3,6 @@ import countriesData from "~/assets/data/countries.json";
 
 definePageMeta({ layout: "dashboard", middleware: "auth" });
 
-const { data: emailList } = await useFetch("/api/admin/email/list");
-
-const correos = emailList.value || [];
-
 const getEmoji = (code: string) => countriesData.find(country => country.code_2 === code)?.emoji || "";
 </script>
 
@@ -83,25 +79,6 @@ const getEmoji = (code: string) => countriesData.find(country => country.code_2 
             <tr v-for="(browser, i) in browsers" :key="i">
               <td class="d-flex gap-2 align-items-center">{{ browser.name }}</td>
               <td class="border-start text-end">{{ browser.pageViews }}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="bg-dark rounded img-fluid w-100">
-        <div class="p-2 px-2 px-lg-4 text-center">
-          <h5 class="m-0">Correos electrónicos activos: {{ correos.length }}</h5>
-        </div>
-        <table class="table table-dark table-striped table-hover rounded-bottom overflow-hidden">
-          <thead>
-            <tr>
-              <th>{{ t("correo_corporativo") }}</th>
-              <th class="border-start">{{ t("correo_personal") }}</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="(correo, i) in correos" :key="i">
-              <td>{{ correo.matchers[0].value }}</td>
-              <td class="border-start">{{ correo.actions[0].value[0] }}</td>
             </tr>
           </tbody>
         </table>

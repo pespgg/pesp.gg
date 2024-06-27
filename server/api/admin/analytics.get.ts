@@ -1,4 +1,4 @@
-export default eventHandler(async (event) => {
+export default defineEventHandler(async (event) => {
   await requireUserSession(event);
 
   const { cloudflare } = useRuntimeConfig(event);
@@ -53,7 +53,7 @@ export default eventHandler(async (event) => {
 
   const cloudflareAnalytics = await $fetch("https://api.cloudflare.com/client/v4/graphql", {
     method: "POST",
-    body: JSON.stringify(graphql),
+    body: graphql,
     headers: {
       "X-Auth-Email": email,
       "X-Auth-Key": apiKey
