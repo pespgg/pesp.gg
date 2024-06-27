@@ -50,13 +50,13 @@
   "dependencies": {
     "@ckeditor/ckeditor5-vue": "^5.1.0",
     "@glidejs/glide": "^3.6.1",
+    "@nuxt/icon": "^1.0.0",
     "bootstrap": "^5.3.3",
     "chart.js": "^4.4.3",
     "drizzle-kit": "^0.22.7",
     "drizzle-orm": "^0.31.2",
     "mustache": "^4.2.0",
     "nuxt-aos": "^1.2.4",
-    "nuxt-icon": "^0.6.10",
     "nuxt-twemoji": "^3.5.2"
   },
   "overrides": {
