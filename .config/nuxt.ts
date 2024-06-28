@@ -103,7 +103,7 @@ export default defineNuxtConfig({
       apiKey: "",
       email: "",
       account: "",
-      zoneTag: ""
+      siteTag: ""
     }
   },
 

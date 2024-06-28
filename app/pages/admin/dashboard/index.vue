@@ -25,22 +25,7 @@ const getEmoji = (code: string) => countriesData.find(country => country.code_2 
           </div>
           <div class="bg-dark rounded p-4 px-2 px-lg-4 img-fluid w-100">
             <h5 class="text-center">{{ t("visitas_en") }} {{ t(`ultimos_${filter.days}_dias`).toLowerCase() }}</h5>
-            <div class="row mb-4 mx-0 border-bottom py-2">
-              <div class="col-6 border-end">
-                <p class="m-0 ">{{ t("max_unique") }}</p>
-                <p class="m-0">
-                  <small>{{ t("por_dia") }}</small>
-                </p>
-                <h4>{{ unique.max }}</h4>
-              </div>
-              <div class="col-6">
-                <p class="m-0">{{ t("min_unique") }}</p>
-                <p class="m-0">
-                  <small>{{ t("por_dia") }}</small>
-                </p>
-                <h4>{{ unique.min }}</h4>
-              </div>
-            </div>
+
             <div ref="general" :style="{ height: '400px' }" />
           </div>
         </div>
@@ -52,37 +37,58 @@ const getEmoji = (code: string) => countriesData.find(country => country.code_2 
             <thead>
               <tr>
                 <th>{{ t("pais_region") }}</th>
-                <th class="text-end border-start">{{ t("solicitudes") }}</th>
+                <th class="text-end border-start">{{ t("visitas") }}</th>
               </tr>
             </thead>
             <tbody>
-              <tr v-for="country in countries" :key="country.code">
+              <tr v-for="country in countries" :key="country.dimensions.metric">
                 <td class="d-flex gap-2 align-items-center">
-                  <Twemoji v-if="getEmoji(country.code)" :emoji="getEmoji(country.code)" size="1.5rem" />
-                  {{ country.info?.name_es || t("desconocido") }}
+                  <Twemoji v-if="getEmoji(country.dimensions.metric)" :emoji="getEmoji(country.dimensions.metric)" size="1.5rem" />
+                  {{ countriesData.find(c => c.code_2 === country.dimensions.metric)?.name_es || t("desconocido") }}
                 </td>
-                <td class="border-start text-end">{{ country.requests }}</td>
+                <td class="border-start text-end">{{ country.count }}</td>
               </tr>
             </tbody>
           </table>
         </div>
       </Transition>
-      <div v-if="browsers.length" class="mt-3">
-        <table class="table table-dark table-striped table-hover rounded overflow-hidden">
-          <thead>
-            <tr>
-              <th>{{ t("browser") }}</th>
-              <th class="text-end border-start">{{ t("visitas") }}</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="(browser, i) in browsers" :key="i">
-              <td class="d-flex gap-2 align-items-center">{{ browser.name }}</td>
-              <td class="border-start text-end">{{ browser.pageViews }}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+      <Transition name="tab" mode="out-in">
+        <div v-if="browsers.length" class="mt-3">
+          <table class="table table-dark table-striped table-hover rounded overflow-hidden">
+            <thead>
+              <tr>
+                <th>{{ t("browser") }}</th>
+                <th class="text-end border-start">{{ t("visitas") }}</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="(browser, i) in browsers" :key="i">
+                <td class="d-flex gap-2 align-items-center">{{ browser.dimensions.metric }}</td>
+                <td class="border-start text-end">{{ browser.count}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </Transition>
+      <Transition name="tab" mode="out-in">
+        <div v-if="oss.length" class="mt-3">
+          <table class="table table-dark table-striped table-hover rounded overflow-hidden">
+            <thead>
+              <tr>
+                <th>{{ t("oss") }}</th>
+                <th class="text-end border-start">{{ t("visitas") }}</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="(os, i) in oss" :key="i">
+                <td class="d-flex gap-2 align-items-center">{{ os.dimensions.metric }}
+                </td>
+                <td class="border-start text-end">{{ os.count }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </Transition>
     </div>
   </section>
 </template>
@@ -93,9 +99,9 @@ export default {
     return {
       countriesData: [],
       filter: {
-        days: 60
+        days: 7
       },
-      daysOptions: [7, 30, 60, 90, 180, 365],
+      daysOptions: [7, 14, 30],
       analytics: [],
       charts: {} as any,
       changeRequest: false
@@ -103,61 +109,36 @@ export default {
   },
   computed: {
     dates () {
-      return this.analytics.map((record: any) => formatDate(record.dimensions.date, { style: "short" }));
+      const fillDates = [];
+      for (let i = 1; i <= this.filter.days; i++) {
+        const date = new Date();
+        date.setDate(date.getDate() - i);
+        fillDates.push(date.toISOString().split("T")[0]);
+      }
+      return fillDates.reverse();
     },
     pageViews () {
       return {
-        data: this.analytics.map((record: any) => record.sum.pageViews),
+        data: this.dates.map((date) => {
+          const view = this.analytics.series.find((view: any) => view.dimensions.ts.split("T")[0] === date);
+          return view ? view.count : 0;
+        }),
         label: t("visitas")
       };
     },
-    uniques () {
-      return {
-        data: this.analytics.map((record: any) => record.uniq.uniques),
-        label: t("visitas_unicas")
-      };
-    },
-    threats () {
-      return {
-        data: this.analytics.map((record: any) => record.sum.threats),
-        label: t("amenazas")
-      };
-    },
     countries () {
-      const countryMap = this.analytics.map((record: any) => record.sum.countryMap.map((c: any) => c));
-      const countryMapReduced = countryMap.flat().reduce((acc, { clientCountryName, requests }) => {
-        acc[clientCountryName] = acc[clientCountryName] ? acc[clientCountryName] + requests : requests;
-        return acc;
-      }, {});
-      const countryMapSorted = Object.entries(countryMapReduced).sort(([, a]: any, [, b]: any) => b - a);
-      return countryMapSorted.map(([code, requests]) => ({
-        code,
-        info: countriesData.find(c => c.code_2 === code),
-        requests
-      })).slice(0, 10);
-    },
-    unique () {
-      return {
-        max: Math.max(...this.uniques.data),
-        min: Math.min(...this.uniques.data)
-      };
+      return this.analytics.countries || [];
     },
     browsers () {
-      const browserMap = this.analytics.map((record: any) => record.sum.browserMap.map((b: any) => b));
-      const browserMapReduced = browserMap.flat().reduce((acc, { uaBrowserFamily, pageViews }) => {
-        acc[uaBrowserFamily] = acc[uaBrowserFamily] ? acc[uaBrowserFamily] + pageViews : pageViews;
-        return acc;
-      }, {});
-      const browserMapSorted = Object.entries(browserMapReduced).sort(([, a]: any, [, b]: any) => b - a);
-      return browserMapSorted.map(([name, pageViews]) => ({
-        name,
-        pageViews
-      }));
+      return this.analytics.topBrowsers || [];
+    },
+    oss () {
+      return this.analytics.topOSs || [];
     },
     generalChartContent () {
       return {
         dimensions: this.dates,
-        datasets: [this.pageViews, this.uniques, this.threats]
+        datasets: [this.pageViews]
       };
     }
   },
