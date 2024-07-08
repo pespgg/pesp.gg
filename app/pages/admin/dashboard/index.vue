@@ -64,7 +64,7 @@ const getEmoji = (code: string) => countriesData.find(country => country.code_2 
             <tbody>
               <tr v-for="(browser, i) in browsers" :key="i">
                 <td class="d-flex gap-2 align-items-center">{{ browser.dimensions.metric }}</td>
-                <td class="border-start text-end">{{ browser.count}}</td>
+                <td class="border-start text-end">{{ browser.count }}</td>
               </tr>
             </tbody>
           </table>
@@ -81,7 +81,8 @@ const getEmoji = (code: string) => countriesData.find(country => country.code_2 
             </thead>
             <tbody>
               <tr v-for="(os, i) in oss" :key="i">
-                <td class="d-flex gap-2 align-items-center">{{ os.dimensions.metric }}
+                <td class="d-flex gap-2 align-items-center">
+                  {{ os.dimensions.metric }}
                 </td>
                 <td class="border-start text-end">{{ os.count }}</td>
               </tr>
