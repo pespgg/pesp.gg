@@ -9,3 +9,4 @@ public/posts
 public/uploads
 .env
 app/assets/ckeditor/build
+.wrangler
