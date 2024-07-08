@@ -102,7 +102,9 @@ export default {
         days: 7
       },
       daysOptions: [7, 14, 30],
-      analytics: [],
+      // TODO: improve analytics types
+      // @ts-expect-error no types for now
+      analytics: [] as { series: any[], countries: any[], topBrowsers: any[], topOSs: any[] },
       charts: {} as any,
       changeRequest: false
     };

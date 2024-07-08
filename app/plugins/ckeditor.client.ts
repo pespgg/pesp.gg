@@ -203,6 +203,12 @@ const component = CKEditor.component;
 type CKEditorComponent = typeof component;
 type CKEditorPlugin = CKEditorComponent & Plugin;
 
+declare module "#app" {
+  interface NuxtApp {
+    ckeditor: { editor: ClassicEditor, config: typeof config.value };
+  }
+}
+
 declare module "vue" {
   export interface GlobalComponents {
     CKEditor: CKEditorComponent;

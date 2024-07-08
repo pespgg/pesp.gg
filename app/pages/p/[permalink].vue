@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const { params } = useRoute();
+const { params } = useRoute("p-permalink");
 const { data: posts } = await useFetch("/api/posts", {
   query: {
     permalink: params.permalink
@@ -10,7 +10,7 @@ if (!posts.value || !posts.value.length) {
   throw createError({ statusCode: 404, message: t("post_not_found") });
 }
 
-const post = ref(posts.value[0]);
+const post = ref(posts.value[0]!);
 
 useSeoMeta({
   title: `${post.value.titulo} | ${SITE.name.web}`,

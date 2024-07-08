@@ -1,24 +1,22 @@
 import es from "~/strings/es";
 import en from "~/strings/en";
 
-const locales: Record<string, Record<string, string>> = { es, en };
+const locales: Record<Locale, Record<string, string>> = { es, en };
 
 class Strings {
-  code: string;
-  constructor (code: string) {
-    this.code = String(code).toLowerCase();
+  code: Locale;
+  constructor (code: Locale) {
+    this.code = code;
   }
 
-  get (key: string, values?: Record<string, unknown>) {
+  get (key: string, values?: Record<string, unknown>): string {
     const text = locales[this.code][key] || locales.en[key] || key;
-    if (values) {
-      return Object.keys(values).reduce((acc, key) => acc.replace(new RegExp(`{{\\s*${key}\\s*}}`, "gi"), values[key]), text);
-    }
-    return text;
+    if (!values) return text;
+    return Object.keys(values).reduce((acc, key) => acc.replace(new RegExp(`{{\\s*${key}\\s*}}`, "gi"), String(values[key])), text);
   }
 
-  setLanguage (code = "es") {
-    this.code = String(code).toLowerCase();
+  setLanguage (code: Locale = "es") {
+    this.code = code;
   }
 }
 

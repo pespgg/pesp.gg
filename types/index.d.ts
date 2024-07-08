@@ -48,4 +48,5 @@ declare global {
     success: boolean;
     id?: number;
   }
+  type Locale = "en" | "es";
 }

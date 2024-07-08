@@ -3,7 +3,9 @@ import { eq } from "drizzle-orm";
 export default defineEventHandler(async (event) => {
   await requireUserSession(event);
 
-  const { permalink } = getRouterParams(event);
+  const { permalink } = await getValidatedRouterParams(event, z.object({
+    permalink: z.string()
+  }).parse);
 
   const deletedPost = await useDb().delete(tables.actualidad).where(eq(tables.actualidad.permalink, permalink)).returning().get();
 

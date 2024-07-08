@@ -1,13 +1,13 @@
 <script setup lang="ts">
 const { $toasts, $bootstrap } = useNuxtApp();
 const toasts = $toasts?.getAll() || ref([]);
-const refToasts: Ref<HTMLElement[] | null> = ref(null);
+const refToasts = ref<HTMLElement[]>([]);
 
 watch(toasts, () => {
   nextTick(() => {
     if (!refToasts.value) return;
     for (let i = 0; i < refToasts.value.length; i++) {
-      const toast = $bootstrap.showToast(refToasts.value[i]);
+      const toast = $bootstrap.showToast(refToasts.value[i]!);
       if (!toast) continue;
       toast.addEventListener("hidden.bs.toast", () => {
         if (i + 1 === refToasts.value?.length) $toasts.removeAll();

@@ -1,4 +1,4 @@
-import type { NitroRuntimeConfig } from "nitropack";
+import type { RuntimeConfig } from "nuxt/schema";
 
 interface EmailMessage {
   to: {
@@ -9,7 +9,7 @@ interface EmailMessage {
   html: string;
 }
 
-const mailChannels = async (config: NitroRuntimeConfig, message: EmailMessage): Promise<boolean> => {
+const mailChannels = async (config: RuntimeConfig, message: EmailMessage): Promise<boolean> => {
   const { to, subject, html } = message;
   return await $fetch("https://api.mailchannels.net/tx/v1/send", {
     method: "POST",
@@ -40,7 +40,7 @@ const mailChannels = async (config: NitroRuntimeConfig, message: EmailMessage): 
   });
 };
 
-const nodeMailer = async (config: NitroRuntimeConfig, message: EmailMessage): Promise<boolean> => {
+const nodeMailer = async (config: RuntimeConfig, message: EmailMessage): Promise<boolean> => {
   // @ts-expect-error - nodemailer is available only on dev
   const nodemailer = await import("nodemailer");
   const transporter = nodemailer.createTransport({
@@ -77,7 +77,7 @@ const nodeMailer = async (config: NitroRuntimeConfig, message: EmailMessage): Pr
   });
 };
 
-export const sendMail = async (config: NitroRuntimeConfig, message: EmailMessage) => {
+export const sendMail = async (config: RuntimeConfig, message: EmailMessage) => {
   if (import.meta.dev) return nodeMailer(config, message);
   return mailChannels(config, message);
 };

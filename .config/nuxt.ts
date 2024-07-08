@@ -84,7 +84,8 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     session: {
-      // maxAge: 60 * 60 * 24 * 7 // 1 week
+      name: "nuxt-session",
+      password: ""
     },
     mail: {
       bcc: "",

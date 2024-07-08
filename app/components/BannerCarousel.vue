@@ -1,3 +1,17 @@
+<script setup lang="ts">
+defineProps({
+  banners: {
+    type: Array,
+    required: true
+  }
+});
+
+onMounted(() => {
+  const { $bootstrap } = useNuxtApp();
+  $bootstrap.startCarousel("#banner .carousel");
+});
+</script>
+
 <template>
   <section id="banner">
     <div class="carousel slide carousel-fade">
@@ -12,17 +26,3 @@
     </div>
   </section>
 </template>
-
-<script lang="ts">
-export default {
-  props: {
-    banners: {
-      type: Array,
-      required: true
-    }
-  },
-  mounted () {
-    this.$nuxt.$bootstrap.startCarousel("#banner .carousel");
-  }
-};
-</script>

@@ -5,11 +5,11 @@ export default defineEventHandler(async (event) => {
 
   const file = await readMultipartFormData(event);
 
-  if (!file) throw createError({ statusCode: 400, message: t("bad_request") });
+  if (!file || !file.length) throw createError({ statusCode: 400, message: t("bad_request") });
 
   checkFileSize(event);
 
-  const { type, filename, data } = file[0];
+  const { type, filename, data } = file[0]!;
 
   checkFileType(type);
 

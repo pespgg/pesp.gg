@@ -162,7 +162,7 @@ export default {
     };
   },
   mounted () {
-    this.sticker = getRandomFromArray(this.stickers);
+    this.sticker = getRandomFromArray(this.stickers)!;
   },
   methods: {
     resetForms () {

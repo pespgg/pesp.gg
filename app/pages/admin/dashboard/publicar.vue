@@ -124,7 +124,7 @@ export default {
           type: ""
         },
         tag: "",
-        fecha: new Date().toISOString().split("T")[0],
+        fecha: new Date().toISOString().split("T")[0]!,
         permalink: "",
         visible: true
       }
@@ -161,7 +161,7 @@ export default {
     addBanner (e: Event) {
       const target = e.target as HTMLInputElement;
       if (!target.files?.length) return;
-      const file = target.files[0];
+      const file = target.files[0]!;
       const reader = new FileReader();
       reader.readAsDataURL(file);
       reader.onload = () => {

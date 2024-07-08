@@ -111,7 +111,7 @@ useHead({
               <Transition name="tab">
                 <div v-if="n <= 6 || moreCategorias" class="col-6 col-md-4 p-2 p-md-3">
                   <div class="overflow-hidden rounded shadow" data-aos="fade-in" data-aos-duration="2000">
-                    <img class="img-fluid" :src="`${SITE.dirs.categorias}/${SCHEMA_categorias[i].image}`" :title="SCHEMA_categorias[i].name">
+                    <img class="img-fluid" :src="`${SITE.dirs.categorias}/${SCHEMA_categorias[i]!.image}`" :title="SCHEMA_categorias[i]!.name">
                   </div>
                 </div>
               </Transition>

@@ -34,9 +34,14 @@ class Bootstrap {
   }
 }
 
-const bootstrap = new Bootstrap();
+declare module "#app" {
+  interface NuxtApp {
+    $bootstrap: Bootstrap;
+  }
+}
 
 export default defineNuxtPlugin(() => {
+  const bootstrap = new Bootstrap();
   return {
     provide: { bootstrap }
   };

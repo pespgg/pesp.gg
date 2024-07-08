@@ -7,12 +7,39 @@ const { data: posts } = await useFetch("/api/posts", {
   }
 });
 
-const deletePost = async (permalink: string) => {
-  if (confirm(t("confirm_delete_post"))) {
-    await useFetch(`/api/posts/${permalink}`, { method: "DELETE" });
-    posts.value = posts.value?.filter(post => post.permalink !== permalink) || null;
-  }
+const editPost = (post: PespPost) => {
+  const { titulo, permalink, tag, fecha, visible, updated } = post;
+  const data = {
+    titulo,
+    content: "",
+    banner: {
+      src: "",
+      type: ""
+    },
+    tag,
+    fecha: new Date(fecha).toISOString().split("T")[0],
+    updated,
+    permalink,
+    visible: Boolean(visible)
+  };
+  const { meta } = useRoute();
+  meta.data = data;
+  meta.edit = true;
+  navigateTo({ name: "admin-dashboard-publicar" });
 };
+
+const deletePost = async (permalink: string) => {
+  if (!posts.value || !confirm(t("confirm_delete_post"))) return;
+  await useFetch(`/api/posts/${permalink}`, { method: "DELETE" });
+  posts.value = posts.value?.filter(post => post.permalink !== permalink) || null;
+};
+
+onBeforeRouteLeave((to, from, next) => {
+  if (to.name === "admin-dashboard-publicar") {
+    to.meta = from.meta;
+  }
+  next();
+});
 </script>
 
 <template>
@@ -57,35 +84,3 @@ const deletePost = async (permalink: string) => {
     </div>
   </section>
 </template>
-
-<script lang="ts">
-export default {
-  beforeRouteLeave (to, from, next) {
-    if (to.name === "admin-dashboard-publicar") {
-      to.meta = from.meta;
-    }
-    next();
-  },
-  methods: {
-    editPost (post: PespPost) {
-      const { titulo, permalink, tag, fecha, visible, updated } = post;
-      const data = {
-        titulo,
-        content: "",
-        banner: {
-          src: "",
-          type: ""
-        },
-        tag,
-        fecha: new Date(fecha).toISOString().split("T")[0],
-        updated,
-        permalink,
-        visible: Boolean(visible)
-      };
-      this.$route.meta.data = data;
-      this.$route.meta.edit = true;
-      this.$router.push("/admin/dashboard/publicar/");
-    }
-  }
-};
-</script>

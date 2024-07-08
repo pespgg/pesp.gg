@@ -57,7 +57,8 @@
     "stylelint": "^16.6.1",
     "stylelint-config-standard": "^36.0.1",
     "typescript": "^5.5.3",
-    "vue-tsc": "^2.0.26"
+    "vue-tsc": "^2.0.26",
+    "zod": "^3.23.8"
   },
   "packageManager": "pnpm@9.5.0"
 }

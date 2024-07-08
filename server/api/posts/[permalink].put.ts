@@ -24,7 +24,7 @@ export default defineEventHandler(async (event): Promise<PespPost> => {
   const newImage = banner.type === "image/jpeg";
 
   const bannerBuffer = (src: string) => {
-    const base64 = src.split(",")[1];
+    const base64 = src.split(",")[1]!;
     return Buffer.from(base64, "base64");
   };
 
