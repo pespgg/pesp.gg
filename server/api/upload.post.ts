@@ -23,8 +23,7 @@ export default defineEventHandler(async (event) => {
   }
   else if (process.env.CDN) {
     const { cloudflare } = event.context;
-    const headers = new Headers({ "Content-Type": type || "" });
-    await cloudflare.env.CDN.put(`uploads/${filename}`, data, { httpMetadata: headers });
+    await cloudflare.env.CDN.put(`uploads/${filename}`, data, { httpMetadata: { contentType: type } });
     return { url: `${SITE.cdn}/uploads/${filename}?updated=${dateTime}` };
   }
 });
