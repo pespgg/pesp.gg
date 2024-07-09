@@ -10,3 +10,5 @@ public/uploads
 .env
 app/assets/ckeditor/build
 .wrangler
+
+.data

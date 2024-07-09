@@ -63,8 +63,11 @@ export default defineNuxtConfig({
     "nuxt-twemoji",
     "@nuxtjs/turnstile",
     "@nuxtjs/sitemap",
-    "nuxt-aos"
+    "nuxt-aos",
+    "@nuxthub/core"
   ],
+
+  hub: { database: true, blob: true },
 
   eslint: {
     config: {
@@ -113,6 +116,9 @@ export default defineNuxtConfig({
     rollupConfig: {
       // @ts-expect-error Type instantiation is excessively deep and possibly infinite.
       plugins: [vue()]
+    },
+    experimental: {
+      tasks: true
     }
   },
 
