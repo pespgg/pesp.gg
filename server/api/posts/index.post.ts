@@ -1,5 +1,3 @@
-import { eq } from "drizzle-orm";
-
 export default defineEventHandler(async (event): Promise<PespPost> => {
   await requireUserSession(event);
 
@@ -12,7 +10,7 @@ export default defineEventHandler(async (event): Promise<PespPost> => {
     });
   }
 
-  const dbCheck = await useDb().select().from(tables.actualidad).where(eq(tables.actualidad.permalink, permalink)).limit(1).all();
+  const dbCheck = await useDB().select().from(tables.actualidad).where(eq(tables.actualidad.permalink, permalink)).limit(1).all();
   if (dbCheck.length) {
     throw createError({
       statusCode: 409,
@@ -20,7 +18,7 @@ export default defineEventHandler(async (event): Promise<PespPost> => {
     });
   }
 
-  const post = await useDb().insert(tables.actualidad).values({
+  const post = await useDB().insert(tables.actualidad).values({
     permalink,
     titulo: titulo.trim(),
     tag,

@@ -4,7 +4,7 @@ export default defineEventHandler(async (event) => {
   const intereses = interesesList.join(",");
   const fecha = Date.now();
 
-  const DB = useDb();
+  const DB = useDB();
   const subscriber = await DB.insert(tables.subscribers).values({
     email,
     fecha,

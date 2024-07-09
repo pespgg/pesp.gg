@@ -1,11 +1,9 @@
-import { eq } from "drizzle-orm";
-
 export default defineEventHandler(async (event): Promise<PespPost> => {
   await requireUserSession(event);
 
   const { titulo, content, banner, tag, fecha, permalink, visible } = await readBody(event);
 
-  const post = await useDb().update(tables.actualidad).set({
+  const post = await useDB().update(tables.actualidad).set({
     permalink,
     titulo: titulo.trim(),
     tag,

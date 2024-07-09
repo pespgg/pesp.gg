@@ -1,5 +1,3 @@
-import { eq } from "drizzle-orm";
-
 export default defineEventHandler(async (event) => {
   await requireUserSession(event);
 
@@ -7,7 +5,7 @@ export default defineEventHandler(async (event) => {
     permalink: z.string()
   }).parse);
 
-  const deletedPost = await useDb().delete(tables.actualidad).where(eq(tables.actualidad.permalink, permalink)).returning().get();
+  const deletedPost = await useDB().delete(tables.actualidad).where(eq(tables.actualidad.permalink, permalink)).returning().get();
 
   if (!deletedPost) {
     throw createError({

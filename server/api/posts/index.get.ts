@@ -1,8 +1,6 @@
-import { eq, desc, and } from "drizzle-orm";
-
 export default defineEventHandler(async (event) => {
   const query = getQuery(event);
-  let select = useDb().select();
+  let select = useDB().select();
   const { props, limit, permalink, hidden } = query;
 
   if (props) {
@@ -13,7 +11,7 @@ export default defineEventHandler(async (event) => {
         columns[prop] = tables.actualidad[prop as keyof typeof tables.actualidad];
       }
     }
-    select = useDb().select(columns as any);
+    select = useDB().select(columns as any);
   }
 
   const from = select.from(tables.actualidad);
