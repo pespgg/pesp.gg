@@ -31,7 +31,8 @@ export default defineNuxtConfig({
         { property: "og:image:height", content: 400 },
         { name: "twitter:card", content: "summary" },
         { name: "twitter:image", content: `${SITE.url}/images/card.jpg` },
-        { name: "twitter:site", content: SITE.twitter }
+        { name: "twitter:site", content: SITE.twitter },
+        { name: "darkreader-lock", content: "darkreader" }
       ],
       link: [
         { rel: "preload", href: "/fonts/Gilroy-Bold.woff", as: "font", type: "font/woff", crossorigin: "anonymous" },
