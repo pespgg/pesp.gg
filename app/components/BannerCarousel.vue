@@ -14,7 +14,7 @@ onMounted(() => {
 
 <template>
   <section id="banner">
-    <div class="carousel slide carousel-fade">
+    <div class="carousel slide carousel-fade" data-bs-ride="carousel">
       <div class="carousel-indicators">
         <button v-for="(banner, i) of banners" :key="i" type="button" data-bs-target="#banner .carousel" :data-bs-slide-to="i" :class="{ active: !i }" aria-current="true" aria-label="Slide" />
       </div>
