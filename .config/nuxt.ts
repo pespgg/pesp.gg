@@ -60,7 +60,7 @@ export default defineNuxtConfig({
 
   modules: [
     "@nuxt/eslint",
-    "nuxt-icon",
+    "@nuxt/icon",
     "nuxt-twemoji",
     "@nuxtjs/turnstile",
     "@nuxtjs/sitemap",
@@ -69,6 +69,8 @@ export default defineNuxtConfig({
   ],
 
   hub: { database: true, blob: true },
+
+  icon: { mode: "svg", serverBundle: "remote" },
 
   eslint: {
     config: {
