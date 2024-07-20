@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import type { RouteLocationNormalized, RouteLocationNormalizedLoaded, NavigationGuardNext } from "vue-router";
+
 definePageMeta({ layout: "dashboard", middleware: "auth" });
 
 const { data: posts } = await useFetch("/api/posts", {
@@ -34,7 +36,7 @@ const deletePost = async (permalink: string) => {
   posts.value = posts.value?.filter(post => post.permalink !== permalink) || null;
 };
 
-onBeforeRouteLeave((to, from, next) => {
+onBeforeRouteLeave((to: RouteLocationNormalized, from: RouteLocationNormalizedLoaded, next: NavigationGuardNext) => {
   if (to.name === "admin-dashboard-publicar" && from.meta.data) {
     to.meta.data = from.meta.data;
     to.meta.edit = from.meta.edit;
