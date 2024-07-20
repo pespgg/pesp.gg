@@ -37,7 +37,7 @@
     "@cloudflare/workers-types": "^4.20240718.0",
     "@glidejs/glide": "^3.6.2",
     "@nuxt/eslint": "^0.3.13",
-    "@nuxt/icon": "^1.2.0",
+    "@nuxt/icon": "^1.2.1",
     "@nuxt/scripts": "^0.6.4",
     "@nuxthub/core": "^0.7.1",
     "@nuxtjs/sitemap": "^5.3.5",
@@ -60,7 +60,7 @@
     "stylelint-config-standard": "^36.0.1",
     "typescript": "^5.5.3",
     "vue-tsc": "^2.0.26",
-    "wrangler": "^3.65.0",
+    "wrangler": "^3.65.1",
     "zod": "^3.23.8"
   },
   "packageManager": "pnpm@9.5.0"

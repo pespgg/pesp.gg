@@ -103,8 +103,9 @@ async function getPostContent (permalink: string, updated: number) {
 <script lang="ts">
 export default {
   beforeRouteLeave (to, from, next) {
-    if (to.name === "admin-dashboard-preview") {
-      to.meta = from.meta;
+    if (to.name === "admin-dashboard-preview" && from.meta.data) {
+      to.meta.data = from.meta.data;
+      to.meta.edit = from.meta.edit;
     }
     next();
   },

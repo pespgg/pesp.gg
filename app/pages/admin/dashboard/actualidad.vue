@@ -35,8 +35,9 @@ const deletePost = async (permalink: string) => {
 };
 
 onBeforeRouteLeave((to, from, next) => {
-  if (to.name === "admin-dashboard-publicar") {
-    to.meta = from.meta;
+  if (to.name === "admin-dashboard-publicar" && from.meta.data) {
+    to.meta.data = from.meta.data;
+    to.meta.edit = from.meta.edit;
   }
   next();
 });
