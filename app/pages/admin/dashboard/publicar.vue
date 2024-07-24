@@ -21,7 +21,7 @@ async function getPostContent (permalink: string, updated: number) {
         <div class="row">
           <div class="col-12 d-flex flex-wrap py-2 align-items-center gap-2 shadow bg-dark">
             <div class="form-floating flex-grow-1">
-              <input v-model="form.titulo" type="text" class="form-control form-control-lg" :placeholder="t('titulo')" required @input="generatePermalink($event)">
+              <input v-model.trim="form.titulo" type="text" class="form-control form-control-lg" :placeholder="t('titulo')" required @input="generatePermalink($event)">
               <label>{{ t("titulo") }}</label>
             </div>
             <Transition name="fade" mode="out-in">
