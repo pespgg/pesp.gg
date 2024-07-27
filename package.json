@@ -34,10 +34,10 @@
   },
   "devDependencies": {
     "@ckeditor/ckeditor5-vue": "^6.0.0",
-    "@cloudflare/workers-types": "^4.20240718.0",
+    "@cloudflare/workers-types": "^4.20240725.0",
     "@glidejs/glide": "^3.6.2",
     "@nuxt/eslint": "^0.3.13",
-    "@nuxt/icon": "^1.2.1",
+    "@nuxt/icon": "^1.3.1",
     "@nuxt/scripts": "^0.6.4",
     "@nuxthub/core": "^0.7.1",
     "@nuxtjs/sitemap": "^5.3.5",
@@ -48,10 +48,10 @@
     "@vue-email/render": "^0.0.9",
     "bootstrap": "^5.3.3",
     "chart.js": "^4.4.3",
-    "ckeditor5": "^42.0.1",
+    "ckeditor5": "^42.0.2",
     "drizzle-kit": "^0.23.0",
-    "drizzle-orm": "^0.32.0",
-    "eslint": "^9.7.0",
+    "drizzle-orm": "^0.32.1",
+    "eslint": "^9.8.0",
     "nodemailer": "^6.9.14",
     "nuxt": "^3.12.4",
     "nuxt-aos": "^1.2.5",
@@ -60,8 +60,8 @@
     "stylelint-config-standard": "^36.0.1",
     "typescript": "^5.5.3",
     "vue-tsc": "^2.0.26",
-    "wrangler": "^3.65.1",
+    "wrangler": "^3.67.1",
     "zod": "^3.23.8"
   },
-  "packageManager": "pnpm@9.5.0"
+  "packageManager": "pnpm@9.6.0"
 }

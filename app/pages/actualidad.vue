@@ -79,13 +79,16 @@ watch(currentPage, () => {
               <LoadPost :permalink="post.permalink" :truncate="220" />
             </div>
             <div class="card-footer bg-dark p-0 rounded-bottom overflow-hidden">
-              <div class="d-flex align-items-center ps-3">
-                <Icon class="text-light" name="solar:calendar-linear" size="1.1rem" />
-                <small class="text-body-secondary ms-1" itemprop="datePublished" :content="formatDate(post.fecha, { type: 'iso' })">
-                  {{ formatDate(post.fecha) }}
-                </small>
-                <NuxtLink class="hover ms-auto bg-primary text-light py-1 px-3" :to="`/p/${post.permalink}`">
-                  <small>{{ t("abrir") }} <Icon name="solar:arrow-right-bold" size="1.5rem" /></small>
+              <div class="d-flex align-items-center justify-content-between">
+                <div class="d-flex align-items-center gap-2 ms-3">
+                  <Icon class="text-light" name="solar:calendar-linear" size="1.1rem" />
+                  <span class="text-body-secondary small" itemprop="datePublished" :content="formatDate(post.fecha, { type: 'iso' })">
+                    {{ formatDate(post.fecha) }}
+                  </span>
+                </div>
+                <NuxtLink class="hover bg-primary text-light py-1 px-3 d-flex align-items-center" :to="`/p/${post.permalink}`">
+                  <span class="small">{{ t("abrir") }}</span>
+                  <Icon name="solar:arrow-right-bold" size="1.5rem" />
                 </NuxtLink>
               </div>
             </div>
