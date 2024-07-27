@@ -78,7 +78,7 @@ useHead({
                             {{ formatDate(post.fecha) }}
                           </span>
                         </div>
-                        <NuxtLink class="hover bg-primary text-light py-1 px-3 d-flex align-items-center" :to="`/p/${post.permalink}`">
+                        <NuxtLink class="hover bg-primary text-light py-1 px-3 d-flex align-items-center gap-1" :to="`/p/${post.permalink}`">
                           <span class="small">{{ t("abrir") }}</span>
                           <Icon name="solar:arrow-right-bold" size="1.5rem" />
                         </NuxtLink>
