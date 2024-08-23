@@ -94,6 +94,7 @@ export default defineNuxtConfig({
       password: process.env.NUXT_SESSION_PASSWORD || ""
     },
     mail: {
+      apiKey: "",
       bcc: "",
       from: "",
       fromName: "",
