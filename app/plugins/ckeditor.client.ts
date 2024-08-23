@@ -52,8 +52,7 @@ import {
 } from "ckeditor5";
 
 import spanishTranslations from "ckeditor5/translations/es.js";
-import CKEditor from "@ckeditor/ckeditor5-vue";
-import type { App, Plugin } from "vue";
+import { CkeditorPlugin } from "@ckeditor/ckeditor5-vue";
 
 const isLayoutReady = ref(false);
 const config = ref();
@@ -199,34 +198,8 @@ config.value = {
 
 isLayoutReady.value = true;
 
-const component = CKEditor.component;
-type CKEditorComponent = typeof component;
-type CKEditorPlugin = CKEditorComponent & Plugin;
-
-declare module "#app" {
-  interface NuxtApp {
-    ckeditor: { editor: ClassicEditor, config: typeof config.value };
-  }
-}
-
-declare module "vue" {
-  export interface GlobalComponents {
-    CKEditor: CKEditorComponent;
-  }
-}
-
 export default defineNuxtPlugin((nuxtApp) => {
-  const ckeditor: CKEditorPlugin = ((): CKEditorPlugin => {
-    const installable = component as CKEditorPlugin;
-
-    installable.install = (app: App) => {
-      app.component("CKEditor", installable);
-    };
-
-    return installable;
-  })();
-
-  nuxtApp.vueApp.use(ckeditor);
+  nuxtApp.vueApp.use(CkeditorPlugin);
 
   return {
     provide: { ckeditor: { editor: editor.value, config: config.value } }

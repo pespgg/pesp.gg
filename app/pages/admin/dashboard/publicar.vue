@@ -43,7 +43,7 @@ async function getPostContent (permalink: string, updated: number) {
             <Transition name="fade" mode="out-in">
               <div v-if="editor" class="rounded border h-100 shadow d-flex flex-column overflow-hidden">
                 <ClientOnly>
-                  <CKEditor ref="wordcount" v-model="form.content" :editor="$nuxt.$ckeditor.editor" :config="$nuxt.$ckeditor.config" @ready="onEditorLoaded($event)" />
+                  <Ckeditor ref="wordcount" v-model="form.content" :editor="$nuxt.$ckeditor.editor" :config="$nuxt.$ckeditor.config" @ready="onEditorLoaded($event)" />
                   <div ref="wordcount" class="bg-light text-dark py-1 px-2 small" />
                 </ClientOnly>
               </div>
