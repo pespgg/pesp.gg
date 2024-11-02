@@ -9,7 +9,7 @@
             </h1>
           </div>
           <div v-if="stat.carousel">
-            <div :id="`carousel-${i}`" class="carousel slide carousel-fade">
+            <div :id="`carousel-${i}`" class="carousel slide carousel-fade" data-bs-ride="carousel">
               <div class="carousel-inner">
                 <div v-for="(item, j) of stat.carousel" :key="j" class="carousel-item" :class="{ active: !j }">
                   <h1>
