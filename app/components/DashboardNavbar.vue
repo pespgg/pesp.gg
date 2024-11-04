@@ -5,11 +5,11 @@
         <Icon name="solar:hamburger-menu-linear" size="2rem" />
       </button>
       <NuxtLink class="navbar-brand d-flex" to="/admin">
-        <Icon name="LogoIcon" size="2rem" />
+        <LogoIcon width="2rem" height="2rem" />
       </NuxtLink>
       <div id="offcanvasNavbar" class="offcanvas offcanvas-start text-white bg-dark" tabindex="-1" aria-labelledby="offcanvasNavbarLabel">
         <div class="offcanvas-header">
-          <Icon name="LogoIcon" size="2rem" />
+          <LogoIcon width="2rem" height="2rem" />
           <h5 id="offcanvasNavbarLabel" class="offcanvas-title">{{ SITE.name.web }}</h5>
           <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close" />
         </div>

@@ -2,14 +2,14 @@
   <nav class="navbar navbar-dark navbar-expand-md bg-dark sticky-top shadow">
     <div class="container">
       <NuxtLink class="navbar-brand d-flex" :to="SCHEMA_pages.inicio.to" :aria-label="t('inicio')">
-        <Icon name="LogoIcon" size="2rem" />
+        <LogoIcon width="2rem" height="2rem" />
       </NuxtLink>
       <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon" />
       </button>
       <div id="offcanvasNavbar" class="offcanvas offcanvas-end text-white bg-dark" tabindex="-1" aria-labelledby="offcanvasNavbarLabel">
         <div class="offcanvas-header">
-          <Icon name="LogoIcon" size="2rem" />
+          <LogoIcon width="2rem" height="2rem" />
           <h5 id="offcanvasNavbarLabel" class="offcanvas-title">{{ SITE.name.web }}</h5>
           <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close" />
         </div>
