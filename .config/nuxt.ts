@@ -70,7 +70,13 @@ export default defineNuxtConfig({
 
   hub: { database: true, blob: true },
 
-  icon: { mode: "svg", serverBundle: "remote" },
+  icon: {
+    mode: "svg",
+    clientBundle: {
+      scan: true,
+      sizeLimitKb: 2048
+    }
+  },
 
   eslint: {
     config: {
