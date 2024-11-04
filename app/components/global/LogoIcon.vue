@@ -1,5 +1,5 @@
 <template>
-  <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 105.7 105.7" xml:space="preserve">
+  <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 105.7 105.7" xml:space="preserve" width="1em" height="1em">
     <rect x="808.9" y="-537.2" class="st0" width="858.8" height="165.2" />
     <rect x="742.6" y="-325.4" class="st0" width="774.5" height="261" />
     <rect x="737.8" y="206.9" class="st0" width="806.6" height="261" />
