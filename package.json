@@ -37,6 +37,7 @@
     "@cloudflare/workers-types": "^4.20241106.0",
     "@glidejs/glide": "^3.6.2",
     "@iconify-json/bi": "^1.2.1",
+    "@iconify-json/fa6-brands": "^1.2.1",
     "@iconify-json/fa6-solid": "^1.2.1",
     "@iconify-json/ph": "^1.2.1",
     "@iconify-json/solar": "^1.2.1",

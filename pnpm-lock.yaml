@@ -20,6 +20,9 @@ importers:
       '@iconify-json/bi':
         specifier: ^1.2.1
         version: 1.2.1
+      '@iconify-json/fa6-brands':
+        specifier: ^1.2.1
+        version: 1.2.1
       '@iconify-json/fa6-solid':
         specifier: ^1.2.1
         version: 1.2.1
@@ -1453,6 +1456,9 @@ packages:
 
   '@iconify-json/carbon@1.2.4':
     resolution: {integrity: sha512-DhW2jjMVGwV0DLHc0cmDYohdtGxMra8UuwgjHrryPy+rQX4gXhJwCBBVP2h2UG/92AoRCTn7zUJve4WvY5MLYg==}
+
+  '@iconify-json/fa6-brands@1.2.1':
+    resolution: {integrity: sha512-b/o9bDLZCP8qJV2dydewH+OWrpqmX94b7jHYnqzKaVpbuRRQX/qA9AROsy7rqHYup8fN2fCElQHvm6OYFmjkEA==}
 
   '@iconify-json/fa6-solid@1.2.1':
     resolution: {integrity: sha512-4H57tDC/xEhy4s7HPSRFuXQ/8gwtIEg33ak+iuiBoQc7kRh8DS6LXSCh4Uh3QNvTcNLDXnwqfQVhPwo0gpInMA==}
@@ -7229,6 +7235,10 @@ snapshots:
       '@iconify/types': 2.0.0
 
   '@iconify-json/carbon@1.2.4':
+    dependencies:
+      '@iconify/types': 2.0.0
+
+  '@iconify-json/fa6-brands@1.2.1':
     dependencies:
       '@iconify/types': 2.0.0
 
