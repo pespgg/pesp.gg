@@ -5,7 +5,8 @@ const { data: posts } = await useFetch("/api/posts", {
   query: {
     props: ["titulo", "fecha", "permalink", "updated"].join(","),
     limit: 2
-  }
+  },
+  getCachedData: (key, nuxtApp) => nuxtApp.payload.data[key]
 });
 </script>
 

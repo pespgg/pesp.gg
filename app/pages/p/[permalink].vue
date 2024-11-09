@@ -3,7 +3,8 @@ const { params } = useRoute("p-permalink");
 const { data: posts } = await useFetch("/api/posts", {
   query: {
     permalink: params.permalink
-  }
+  },
+  getCachedData: (key, nuxtApp) => nuxtApp.payload.data[key]
 });
 
 if (!posts.value || !posts.value.length) {

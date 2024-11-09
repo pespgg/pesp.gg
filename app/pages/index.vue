@@ -3,7 +3,8 @@ const { data: posts } = await useFetch("/api/posts", {
   query: {
     props: ["titulo", "fecha", "permalink", "tag", "updated"].join(","),
     limit: 3
-  }
+  },
+  getCachedData: (key, nuxtApp) => nuxtApp.payload.data[key]
 });
 
 const schemaOrg = {

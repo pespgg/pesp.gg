@@ -2,7 +2,8 @@
 const { data: posts } = await useFetch("/api/posts", {
   query: {
     props: ["image", "titulo", "fecha", "permalink", "tag", "updated"].join(",")
-  }
+  },
+  getCachedData: (key, nuxtApp) => nuxtApp.payload.data[key]
 });
 
 useSeoMeta({
