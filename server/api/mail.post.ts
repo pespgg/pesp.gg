@@ -4,7 +4,6 @@ import emailUnirse from "~/emails/unirse.vue";
 
 export default defineEventHandler(async (event) => {
   const { template, form, lang } = await readBody(event);
-  const config = useRuntimeConfig(event);
   const { email, name, subject, message, legal, token } = form;
   if (!token) {
     throw createError({
@@ -58,10 +57,12 @@ export default defineEventHandler(async (event) => {
     mensaje: message
   });
 
-  const sent = await sendMail(config, {
+  const mailchannels = useMailChannels(event);
+  const { success } = await mailchannels.send({
     to: { email, name },
+    bcc: [], // TODO: Add BCC
     subject: asunto,
     html
   });
-  return sent;
+  return success;
 });

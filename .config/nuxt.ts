@@ -65,7 +65,8 @@ export default defineNuxtConfig({
     "@nuxtjs/turnstile",
     "@nuxtjs/sitemap",
     "nuxt-aos",
-    "@nuxthub/core"
+    "@nuxthub/core",
+    "nuxt-mailchannels"
   ],
 
   hub: { database: true, blob: true },
@@ -99,17 +100,13 @@ export default defineNuxtConfig({
       name: "nuxt-session",
       password: process.env.NUXT_SESSION_PASSWORD || ""
     },
-    mail: {
+    mailchannels: {
       apiKey: "",
-      bcc: "",
-      from: "",
-      fromName: "",
-      host: "",
-      port: "",
-      login: "",
-      pass: "",
-      dkimKey: "",
-      dkimSelector: ""
+      dkim: {
+        domain: "",
+        privateKey: "",
+        selector: ""
+      }
     },
     turnstile: {
       secretKey: ""
