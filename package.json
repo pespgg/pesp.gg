@@ -60,6 +60,7 @@
     "nodemailer": "^6.9.16",
     "nuxt": "^3.14.159",
     "nuxt-aos": "^1.2.5",
+    "nuxt-mailchannels": "^0.1.5",
     "nuxt-twemoji": "^3.6.2",
     "stylelint": "^16.10.0",
     "stylelint-config-standard": "^36.0.1",
