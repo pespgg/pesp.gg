@@ -60,7 +60,6 @@ export default defineEventHandler(async (event) => {
   const mailchannels = useMailChannels(event);
   const { success } = await mailchannels.send({
     to: { email, name },
-    bcc: [], // TODO: Add BCC
     subject: asunto,
     html
   });

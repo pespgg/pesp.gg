@@ -90,8 +90,8 @@ importers:
         specifier: ^1.2.5
         version: 1.2.5(magicast@0.3.5)(rollup@4.27.2)(vite@5.4.11(@types/node@22.9.0)(terser@5.36.0))
       nuxt-mailchannels:
-        specifier: ^0.1.4
-        version: 0.1.4(magicast@0.3.5)(rollup@4.27.2)
+        specifier: ^0.1.5
+        version: 0.1.5(magicast@0.3.5)(rollup@4.27.2)
       nuxt-twemoji:
         specifier: ^3.6.2
         version: 3.6.2(magicast@0.3.5)(rollup@4.27.2)
@@ -4510,8 +4510,8 @@ packages:
   nuxt-aos@1.2.5:
     resolution: {integrity: sha512-tNEXMOKijCg+SygLvjp2VbEy7yQcC6ertzI23bCa6DPlu134bfzSYUGOJRSFSKtYjnrqIW7MzLpqPTfTwd8A3Q==}
 
-  nuxt-mailchannels@0.1.4:
-    resolution: {integrity: sha512-wdkO33/OVpbMnQ4Lv2uX5BEREawNeMS3JI4cYdEtD3JgUaCL202DqgA4DYQyxvWPvgFbOyJGCszEjXd28q+EsQ==}
+  nuxt-mailchannels@0.1.5:
+    resolution: {integrity: sha512-QHXFJct2zgmaUTT1nkD7oW2/DcD5YykZUIJQFNQB1fJw1Ar2uuRpI5tbcGoAX0oT2NzC691xVr0R73+GDAjbyA==}
 
   nuxt-site-config-kit@2.2.21:
     resolution: {integrity: sha512-xO41Zf6bXlA9Zvj+fX7ftD+ITee4LfrkzHj85Gt4FpgwonFxzGO5pMBtAqIxXKJwuyT1z2wVAixHI+ov66wV0w==}
@@ -11147,7 +11147,7 @@ snapshots:
       - supports-color
       - vite
 
-  nuxt-mailchannels@0.1.4(magicast@0.3.5)(rollup@4.27.2):
+  nuxt-mailchannels@0.1.5(magicast@0.3.5)(rollup@4.27.2):
     dependencies:
       '@nuxt/kit': 3.14.159(magicast@0.3.5)(rollup@4.27.2)
       defu: 6.1.4

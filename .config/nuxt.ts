@@ -103,7 +103,7 @@ export default defineNuxtConfig({
     mailchannels: {
       apiKey: "",
       dkim: {
-        domain: "",
+        domain: SITE.domain,
         privateKey: "",
         selector: ""
       }
