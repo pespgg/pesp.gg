@@ -1,6 +1,6 @@
 import { render } from "@vue-email/render";
-import emailContacto from "~/emails/contacto.vue";
-import emailUnirse from "~/emails/unirse.vue";
+import emailContacto from "~~/emails/contacto.vue";
+import emailUnirse from "~~/emails/unirse.vue";
 
 export default defineEventHandler(async (event) => {
   const { template, form, lang } = await readBody(event);
