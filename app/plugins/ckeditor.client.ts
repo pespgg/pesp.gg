@@ -59,6 +59,7 @@ const config = ref();
 const editor = ref(ClassicEditor);
 
 config.value = {
+  licenseKey: "GPL",
   language: { ui: "es", content: "es" },
   translations: [spanishTranslations],
   mediaEmbed: {
