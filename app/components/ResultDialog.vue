@@ -1,3 +1,11 @@
+<script setup lang="ts">
+defineProps<{
+  message: string;
+  success: boolean;
+  loading?: boolean;
+}>();
+</script>
+
 <template>
   <div id="dialog" class="modal fade static-backdrop" tabindex="-1" aria-labelledby="dialogLabel" aria-hidden="true" data-bs-backdrop="static">
     <div class="modal-dialog modal-dialog-centered">
@@ -26,24 +34,3 @@
     </div>
   </div>
 </template>
-
-<script lang="ts">
-export default {
-  name: "ResultDialog",
-  props: {
-    message: {
-      type: String,
-      required: true
-    },
-    success: {
-      type: Boolean,
-      required: true
-    },
-    loading: {
-      type: Boolean,
-      required: true,
-      default: true
-    }
-  }
-};
-</script>

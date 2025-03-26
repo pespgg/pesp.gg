@@ -33,7 +33,7 @@ useSeoMeta({
 
 useHead({
   script: [
-    { type: "application/ld+json", children: JSON.stringify(schemaOrg.organization) }
+    { type: "application/ld+json", innerHTML: JSON.stringify(schemaOrg.organization) }
   ],
   link: [
     { rel: "canonical", href: SITE.url }
