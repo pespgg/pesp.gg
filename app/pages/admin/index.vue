@@ -1,5 +1,9 @@
 <script setup lang="ts">
 definePageMeta({ layout: false, middleware: "auth" });
+
+useSeoMeta({
+  robots: "noindex,nofollow"
+});
 </script>
 
 <template>

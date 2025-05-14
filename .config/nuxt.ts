@@ -86,6 +86,11 @@ export default defineNuxtConfig({
     }
   },
 
+  experimental: {
+    purgeCachedData: false,
+    granularCachedData: false
+  },
+
   turnstile: {
     siteKey: "0x4AAAAAAAFcwNNtzi_jhLif",
     addValidateEndpoint: true
@@ -142,6 +147,7 @@ export default defineNuxtConfig({
 
   sitemap: {
     sources: ["/api/__sitemap__"],
+    exclude: ["/admin/**"],
     xslColumns: [
       { label: "URL", width: "65%" },
       { label: "Priority", select: "sitemap:priority", width: "12.5%" },
@@ -152,7 +158,6 @@ export default defineNuxtConfig({
   routeRules: {
     "/": { sitemap: { priority: 1 } },
     "/*/**": { sitemap: { priority: 0.8, lastmod: new Date().toISOString() } },
-    "/admin/**": { index: false },
     "/api/_nuxt_icon/**": { cache: { maxAge: 1.577e+7 } }
   },
 
