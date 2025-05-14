@@ -14,16 +14,12 @@ export default defineEventHandler(async (event) => {
     });
   }
 
-  if (import.meta.dev) {
-    const { unlinkSync } = await import("fs");
-    unlinkSync(`./public/posts/content/${permalink}.html`);
-    unlinkSync(`./public/posts/images/${permalink}.jpg`);
-  }
-  else if (process.env.CDN) {
-    const { cloudflare } = event.context;
-    await cloudflare.env.CDN.delete(`posts/content/${permalink}.html`);
-    await cloudflare.env.CDN.delete(`posts/images/${permalink}.jpg`);
-  }
+  event.waitUntil(
+    hubBlob().delete([
+      `posts/content/${permalink}.html`,
+      `posts/images/${permalink}`
+    ])
+  );
 
   return deletedPost;
 });

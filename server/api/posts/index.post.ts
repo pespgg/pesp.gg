@@ -1,7 +1,12 @@
 export default defineEventHandler(async (event): Promise<PespPost> => {
   await requireUserSession(event);
 
-  const { titulo, content, banner, tag, fecha, permalink, visible } = await readBody(event);
+  const formData = await readFormData(event);
+  const banner = formData.get("banner") as File | undefined;
+  const content = formData.get("content") as string;
+  const data = formData.get("data") as string;
+
+  const { titulo, tag, fecha, permalink, visible } = JSON.parse(data);
 
   if (banner && banner.type !== "image/jpeg") {
     throw createError({
@@ -18,6 +23,13 @@ export default defineEventHandler(async (event): Promise<PespPost> => {
     });
   }
 
+  if (banner) {
+    ensureBlob(banner, {
+      maxSize: "8MB",
+      types: ["image"]
+    });
+  }
+
   const post = await useDB().insert(tables.actualidad).values({
     permalink,
     titulo: titulo.trim(),
@@ -27,31 +39,21 @@ export default defineEventHandler(async (event): Promise<PespPost> => {
     fecha: new Date(fecha).getTime()
   }).returning().get();
 
-  const base64 = banner.src.split(",")[1];
-  const bannerBuffer = Buffer.from(base64, "base64");
-
-  if (import.meta.dev) {
-    const { writeFileSync, existsSync, mkdirSync } = await import("fs");
-    if (!existsSync("./public/posts/content")) mkdirSync("./public/posts/content", { recursive: true });
-    writeFileSync(`./public/posts/content/${permalink}.html`, content);
-
-    if (!existsSync("./public/posts/images")) mkdirSync("./public/posts/images", { recursive: true });
-    writeFileSync(`./public/posts/images/${permalink}.jpg`, bannerBuffer);
-  }
-  else if (process.env.CDN) {
-    const { cloudflare } = event.context;
-    await cloudflare.env.CDN.put(`posts/content/${permalink}.html`, content, {
+  if (banner) {
+    await hubBlob().put(`images/${permalink}`, banner, {
+      prefix: "posts",
       httpMetadata: {
-        contentType: "text/html"
-      }
-    });
-
-    await cloudflare.env.CDN.put(`posts/images/${permalink}.jpg`, bannerBuffer, {
-      httpMetadata: {
-        contentType: "image/jpeg",
-        contentEncoding: "base64"
+        contentType: banner.type
       }
     });
   }
+
+  await hubBlob().put(`content/${permalink}.html`, content, {
+    prefix: "posts",
+    httpMetadata: {
+      contentType: "text/html"
+    }
+  });
+
   return post;
 });

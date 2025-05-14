@@ -75,7 +75,7 @@ export const getRandomFromArray = (arr: string[] = []) => {
 
 export const getPostImage = (name: string, updated: number) => {
   const path = import.meta.dev ? `${SITE.local}/posts/images` : `${SITE.cdn}/posts/images`;
-  return `${path}/${name}.jpg?updated=${updated}`;
+  return `${path}/${name}?updated=${updated}`;
 };
 
 export const getTagName = (tag: string) => {

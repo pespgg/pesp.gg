@@ -18,12 +18,12 @@ useSeoMeta({
   keywords: t("post_keywords"),
   ogUrl: `${SITE.url}/p/${post.value.permalink}/`,
   ogTitle: `${post.value.titulo} | ${SITE.name.web}`,
-  ogImage: `${SITE.cdn}/posts/images/${post.value.permalink}.jpg`,
+  ogImage: `${SITE.cdn}/posts/images/${post.value.permalink}`,
   ogImageAlt: post.value.titulo,
   ogImageWidth: 1290,
   ogImageHeight: 600,
   twitterCard: "summary_large_image",
-  twitterImage: `${SITE.cdn}/posts/images/${post.value.permalink}.jpg`,
+  twitterImage: `${SITE.cdn}/posts/images/${post.value.permalink}`,
   twitterTitle: `${post.value.titulo} | ${SITE.name.web}`
 });
 

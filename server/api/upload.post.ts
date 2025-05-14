@@ -3,27 +3,29 @@ import { SITE } from "~/utils/site";
 export default defineEventHandler(async (event) => {
   await requireUserSession(event);
 
-  const file = await readMultipartFormData(event);
+  const formData = await readFormData(event);
+  const file = formData.get("upload") as File | undefined;
 
-  if (!file || !file.length) throw createError({ statusCode: 400, message: t("bad_request") });
+  if (!file) throw createError({ statusCode: 400, message: t("bad_request") });
 
   checkFileSize(event);
-
-  const { type, filename, data } = file[0]!;
-
-  checkFileType(type);
+  checkFileType(file.type);
 
   const dateTime = new Date().getTime();
 
-  if (import.meta.dev) {
-    const { writeFileSync, existsSync, mkdirSync } = await import("fs");
-    if (!existsSync("./public/uploads")) mkdirSync("./public/uploads", { recursive: true });
-    writeFileSync(`./public/uploads/${filename}`, data);
-    return { url: `/uploads/${filename}?updated=${dateTime}` };
+  try {
+    await hubBlob().put(file.name, file, {
+      prefix: "uploads",
+      httpMetadata: {
+        contentType: file.type
+      }
+    });
+    return { url: `${SITE.cdn}/uploads/${file.name}?updated=${dateTime}` };
   }
-  else if (process.env.CDN) {
-    const { cloudflare } = event.context;
-    await cloudflare.env.CDN.put(`uploads/${filename}`, data, { httpMetadata: { contentType: type } });
-    return { url: `${SITE.cdn}/uploads/${filename}?updated=${dateTime}` };
+  catch (error) {
+    throw createError({
+      statusCode: 500,
+      message: (error as Error).message
+    });
   }
 });

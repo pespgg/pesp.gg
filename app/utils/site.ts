@@ -6,7 +6,7 @@ export const SITE = {
   },
   domain: "pesp.gg",
   url: "https://pesp.gg",
-  cdn: "https://cdn.pesp.gg",
+  cdn: import.meta.dev ? "http://localhost:5173" : "https://cdn.pesp.gg",
   local: "http://localhost:5173",
   twitter: "@pesp_gg",
   description: "La mejor experiencia gaming. Apoyando el Talento Gamer.",

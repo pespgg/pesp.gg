@@ -23,6 +23,7 @@ declare global {
       titulo: string;
       content: string;
       banner: {
+        file: File | null | undefined;
         src: string;
         type: string;
       };

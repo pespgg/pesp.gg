@@ -10,7 +10,7 @@ if (meta.data && meta.edit) {
 
 async function getPostContent (permalink: string, updated: number) {
   const url = import.meta.dev ? `${SITE.local}/posts/content` : `${SITE.cdn}/posts/content`;
-  return await $fetch(`${url}/${permalink}.html?updated=${updated}`).catch(() => "") as string;
+  return $fetch<string>(`${url}/${permalink}.html?updated=${updated}`).catch(() => "");
 }
 </script>
 
@@ -55,7 +55,7 @@ async function getPostContent (permalink: string, updated: number) {
               <div id="image-upload" class="border-bottom p-3">
                 <h5><Icon name="solar:gallery-wide-linear" /> {{ t("banner") }}</h5>
                 <input id="banner" type="file" @change="addBanner($event)">
-                <p class="text-muted small mb-0">JPG (1290x600, 8MB Max)</p>
+                <p class="text-muted small mb-0">Image (1290x600, 8MB Max)</p>
                 <label for="banner" class="rounded bg-body-tertiary position-relative overflow-hidden">
                   <div class="overlay position-absolute bg-dark w-100 h-100">
                     <div class="d-flex justify-content-center align-items-center h-100 text-light">
@@ -121,6 +121,7 @@ export default {
         titulo: "",
         content: "",
         banner: {
+          file: null as File | null | undefined,
           src: "",
           type: ""
         },
@@ -166,6 +167,7 @@ export default {
       const reader = new FileReader();
       reader.readAsDataURL(file);
       reader.onload = () => {
+        this.form.banner.file = file;
         this.form.banner.src = reader.result?.toString() || "";
         this.form.banner.type = file.type;
       };
@@ -181,9 +183,16 @@ export default {
     async publishPost () {
       if (this.form.banner.src) {
         this.loading = true;
+        const formData = new FormData();
+        const { banner, content, ...data } = this.form;
+
+        if (banner.file) formData.append("banner", banner.file);
+        formData.append("data", JSON.stringify(data));
+        formData.append("content", content);
+
         const post = await $fetch(this.$route.meta.edit ? `/api/posts/${this.form.permalink}` : "/api/posts", {
           method: this.$route.meta.edit ? "PUT" : "POST",
-          body: this.form
+          body: formData
         }).catch(() => null);
         this.loading = false;
         if (post) {
