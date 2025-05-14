@@ -178,11 +178,11 @@ strong, b {
 }
 
 #faq .accordion-button:focus {
-  box-shadow: 0 0 0 0.25rem rgba(var(--bs-primary-rgb), 0.5); /* stylelint-disable-line color-function-notation */
+  box-shadow: 0 0 0 0.25rem rgb(var(--bs-primary-rgb), 0.5); /* stylelint-disable-line color-function-notation */
 }
 
 #boletin .accordion-button:focus {
-  box-shadow: 0 0 0 0.25rem rgba(var(--bs-body-bg-rgb), 0.5); /* stylelint-disable-line color-function-notation */
+  box-shadow: 0 0 0 0.25rem rgb(var(--bs-body-bg-rgb), 0.5); /* stylelint-disable-line color-function-notation */
 }
 
 #boletin .accordion-collapse {
@@ -228,7 +228,7 @@ strong, b {
 }
 
 .page-link:disabled {
-  background-color: rgba(var(--bs-primary-rgb), 0.2);  /* stylelint-disable-line color-function-notation */
+  background-color: rgb(var(--bs-primary-rgb), 0.2);  /* stylelint-disable-line color-function-notation */
 }
 
 .active>.page-link, .page-link.active, .page-link:focus {
