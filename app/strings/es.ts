@@ -28,7 +28,7 @@ export default {
 
   /* Servicios */
   eventos: "Organización de eventos Esports",
-  streaming: "Producciónde streaming",
+  streaming: "Producción de streaming",
   branding: "Branding y Asesoría",
   casters: "Casters y Hosts Esports",
   /* Servicios: Eventos */
