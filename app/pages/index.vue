@@ -33,6 +33,16 @@ useSeoMeta({
 
 useHead({
   script: [
+    {
+      type: "application/ld+json",
+      innerHTML: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": SITE.name.full,
+        "url": SITE.url,
+        "alternateName": [SITE.name.short, SITE.name.web]
+      })
+    },
     { type: "application/ld+json", innerHTML: JSON.stringify(schemaOrg.organization) }
   ],
   link: [
