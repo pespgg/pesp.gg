@@ -119,6 +119,8 @@ export default {
   actualidad_info: "Mantente actualizado(a) y conoce todas las novedades de PESP, actividades, eventos y torneos que desarrollamos especialmente para ti.",
   publicado_el: "Publicado el",
   abrir: "Abrir",
+  tag_not_found: "Etiqueta no encontrada",
+  no_posts_found: "No se encontraron publicaciones para esta etiqueta",
 
   /* SEO */
   home_keywords: "pespgg, panama, esports, pesp.gg, gamers, gaming, experiencia, profesionales",
