@@ -72,18 +72,18 @@ watch(currentPage, () => {
     <div id="actualidad" ref="actualidad" class="container-fluid py-5">
       <div class="my-4 text-center ">
         <h2 class="text-uppercase">
-          <strong>{{ tagName }}</strong>
+          <strong>{{ t("recientes") }}</strong>
         </h2>
-        <p class="m-0">{{ t("actualidad_info") }} - {{ tagName }}</p>
-        <NuxtLink :to="'/actualidad'" class="btn btn-outline-primary btn-sm mt-2">
-          {{ t("ver_todas") }}
-        </NuxtLink>
+        <p class="m-0">{{ t("actualidad_info") }}</p>
+        <div class="d-flex justify-content-center text-dark mt-2">
+          <div class="d-flex align-items-center gap-1 bg-light rounded px-3">
+            <strong>{{ tagName }}</strong>
+            <Icon name="solar:close-circle-bold" class="text-danger" role="button" @click="$router.push('/actualidad')" />
+          </div>
+        </div>
       </div>
       <div v-if="!posts || posts.length === 0" class="text-center">
-        <p>{{ t("no_posts_found") }}</p>
-        <NuxtLink :to="'/actualidad'" class="btn btn-primary">
-          {{ t("volver_actualidad") }}
-        </NuxtLink>
+        <i>{{ t("no_posts_found") }}</i>
       </div>
       <div v-else class="row row-gap-3">
         <div v-for="(post, i) of showPosts" :key="i" class="col-md-6 col-lg-4">
