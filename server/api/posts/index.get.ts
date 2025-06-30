@@ -1,7 +1,7 @@
 export default defineEventHandler(async (event) => {
   const query = getQuery(event);
   let select = useDB().select();
-  const { props, limit, permalink, hidden } = query;
+  const { props, limit, permalink, hidden, tag } = query;
 
   if (props) {
     const propsArray = String(props).split(",");
@@ -22,7 +22,13 @@ export default defineEventHandler(async (event) => {
     return from.where(and(eq(tables.actualidad.permalink, String(permalink)), visible)).limit(1).all();
   }
 
-  const where = from.where(visible).orderBy(desc(tables.actualidad.fecha), desc(tables.actualidad.updated));
+  let where = from.where(visible);
+
+  if (tag) {
+    where = where.where(eq(tables.actualidad.tag, String(tag)));
+  }
+
+  where = where.orderBy(desc(tables.actualidad.fecha), desc(tables.actualidad.updated));
 
   if (limit) {
     return where.limit(Number(limit)).all();

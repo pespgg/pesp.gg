@@ -1,20 +1,32 @@
 <script setup lang="ts">
+const { params } = useRoute("actualidad-tag");
+const tagParam = params.tag as string;
+
+// Validate that the tag exists
+const tagExists = SCHEMA_tags.find(t => t.tag === tagParam);
+if (!tagExists) {
+  throw createError({ statusCode: 404, message: t("tag_not_found") });
+}
+
 const { data: posts } = await useFetch("/api/posts", {
   query: {
-    props: ["image", "titulo", "fecha", "permalink", "tag", "updated"].join(",")
+    props: ["image", "titulo", "fecha", "permalink", "tag", "updated"].join(","),
+    tag: tagParam
   },
   getCachedData: (key, nuxtApp) => nuxtApp.payload.data[key]
 });
 
+const tagName = getTagName(tagParam);
+
 useSeoMeta({
-  title: `${t("actualidad")} | ${SITE.name.web}`,
-  description: t("actualidad_description"),
-  keywords: t("actualidad_keywords"),
-  ogUrl: `${SITE.url}/actualidad/`,
-  ogTitle: `${t("actualidad")} | ${SITE.name.web}`,
-  ogDescription: t("actualidad_description"),
-  twitterTitle: `${t("actualidad")} | ${SITE.name.web}`,
-  twitterDescription: t("actualidad_description")
+  title: `${tagName} - ${t("actualidad")} | ${SITE.name.web}`,
+  description: `${t("actualidad_description")} - ${tagName}`,
+  keywords: `${t("actualidad_keywords")}, ${tagName}`,
+  ogUrl: `${SITE.url}/actualidad/${tagParam}/`,
+  ogTitle: `${tagName} - ${t("actualidad")} | ${SITE.name.web}`,
+  ogDescription: `${t("actualidad_description")} - ${tagName}`,
+  twitterTitle: `${tagName} - ${t("actualidad")} | ${SITE.name.web}`,
+  twitterDescription: `${t("actualidad_description")} - ${tagName}`
 });
 
 const { query, path } = useRoute();
@@ -23,7 +35,7 @@ const currentPage = ref(p ? p : 1);
 const perPage = ref(6);
 const actualidad = ref<HTMLElement>();
 
-const canonicalUrl = `${SITE.url}/actualidad`;
+const canonicalUrl = `${SITE.url}/actualidad/${tagParam}`;
 useHead({
   link: [
     { rel: "canonical", href: currentPage.value > 1 ? `${canonicalUrl}?p=${currentPage.value}` : canonicalUrl }
@@ -56,15 +68,24 @@ watch(currentPage, () => {
 <template>
   <main>
     <!-- Banner -->
-    <BannerPage banner="actualidad.jpg" :text="t('actualidad')" />
+    <BannerPage banner="actualidad.jpg" :text="`${t('actualidad')} - ${tagName}`" />
     <div id="actualidad" ref="actualidad" class="container-fluid py-5">
       <div class="my-4 text-center ">
         <h2 class="text-uppercase">
-          <strong>{{ t("recientes") }}</strong>
+          <strong>{{ tagName }}</strong>
         </h2>
-        <p class="m-0">{{ t("actualidad_info") }}</p>
+        <p class="m-0">{{ t("actualidad_info") }} - {{ tagName }}</p>
+        <NuxtLink :to="'/actualidad'" class="btn btn-outline-primary btn-sm mt-2">
+          {{ t("ver_todas") }}
+        </NuxtLink>
       </div>
-      <div class="row row-gap-3">
+      <div v-if="!posts || posts.length === 0" class="text-center">
+        <p>{{ t("no_posts_found") }}</p>
+        <NuxtLink :to="'/actualidad'" class="btn btn-primary">
+          {{ t("volver_actualidad") }}
+        </NuxtLink>
+      </div>
+      <div v-else class="row row-gap-3">
         <div v-for="(post, i) of showPosts" :key="i" class="col-md-6 col-lg-4">
           <article class="card mx-auto border-0 shadow h-100 light" itemscope itemtype="https://schema.org/BlogPosting">
             <img :src="getPostImage(post.permalink, post.updated)" class="card-img-top post" :alt="post.titulo" itemprop="image">
@@ -76,7 +97,7 @@ watch(currentPage, () => {
                   </NuxtLink>
                 </strong>
               </h4>
-              <div class="bg-body-tertiary text-light text-center mb-2 rounded small text-uppercase" role="button">{{ getTagName(post.tag) }}</div>
+              <NuxtLink :to="`/actualidad/${post.tag}`" class="bg-body-tertiary text-light text-center mb-2 rounded small text-uppercase d-block text-decoration-none" role="button">{{ getTagName(post.tag) }}</NuxtLink>
               <LoadPost :permalink="post.permalink" :truncate="220" />
             </div>
             <div class="card-footer bg-dark p-0 rounded-bottom overflow-hidden">

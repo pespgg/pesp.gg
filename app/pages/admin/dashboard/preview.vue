@@ -12,7 +12,7 @@ useSeoMeta({
         <img :src="post.banner.src ? post.banner.src : '/images/placeholder.png'" class="img-fluid w-100 rounded shadow bg-body-tertiary" :alt="post.titulo">
       </header>
       <div class="d-flex mb-2">
-        <NuxtLink class="d-flex align-items-center rounded overflow-hidden text-light" :to="`/tag/${post.tag}`">
+        <NuxtLink class="d-flex align-items-center rounded overflow-hidden text-light" :to="`/actualidad/${post.tag}`">
           <div class="bg-primary px-1">
             <Icon class="text-light" name="solar:tag-linear" size="1.1rem" />
           </div>
