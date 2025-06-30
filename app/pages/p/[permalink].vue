@@ -41,7 +41,7 @@ useHead({
         <img :src="getPostImage(post.permalink, post.updated)" class="d-block w-100" :alt="post.titulo" itemprop="image" data-aos="zoom-out" data-aos-duration="2000">
       </header>
       <div class="d-flex mb-2">
-        <NuxtLink class="d-flex align-items-center rounded overflow-hidden text-white" :to="`/tag/${post.tag}`">
+        <NuxtLink class="d-flex align-items-center rounded overflow-hidden text-white" :to="`/actualidad/${post.tag}`">
           <div class="bg-primary px-1">
             <Icon class="text-white" name="solar:tag-linear" size="1.1rem" />
           </div>
