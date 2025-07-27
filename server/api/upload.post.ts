@@ -1,5 +1,3 @@
-import { SITE } from "~/utils/site";
-
 export default defineEventHandler(async (event) => {
   await requireUserSession(event);
 

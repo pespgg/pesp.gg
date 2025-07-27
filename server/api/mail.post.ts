@@ -18,7 +18,7 @@ export default defineEventHandler(async (event) => {
     return verify.success;
   }
 
-  strings.setLanguage(lang);
+  localization.setLanguage(lang);
   const template_strings: Record<string, Record<string, string>> = {
     shared: {
       lang: t("lang"),

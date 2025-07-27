@@ -1,6 +1,6 @@
 <!-- eslint-disable vue/prop-name-casing, eslint-disable vue/multi-word-component-names -->
 <script setup>
-import { Html, Head, Font, Body } from "@vue-email/components";
+import { Body, Font, Head, Html } from "@vue-email/components";
 
 defineProps({
   // shared
