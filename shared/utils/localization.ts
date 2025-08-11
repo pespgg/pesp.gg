@@ -7,7 +7,7 @@ type Locale = keyof typeof strings;
 type LocaleKeys = keyof typeof strings.en;
 
 class Localization {
-  constructor (private code: Locale = "en") {}
+  constructor (private code: Locale = "es") {}
 
   get (key: LocaleKeys, values?: Record<string, unknown>): string {
     const text = strings[this.code]?.[key] ?? strings.en[key] ?? key;
@@ -15,7 +15,7 @@ class Localization {
     return Object.keys(values).reduce((acc, k) => acc.replace(new RegExp(`{{\\s*${k}\\s*}}`, "gi"), String(values[k])), text);
   }
 
-  setLanguage (code: Locale = "en") {
+  setLanguage (code: Locale = "es") {
     this.code = code;
   }
 
