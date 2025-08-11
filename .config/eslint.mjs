@@ -20,6 +20,7 @@ export default withNuxt([{
     "@stylistic/no-multi-spaces": "error",
     "@stylistic/space-before-blocks": "error",
     "@stylistic/no-trailing-spaces": "error",
+    "@stylistic/function-call-spacing": ["error", "never"],
     "@typescript-eslint/no-explicit-any": "off",
     "nuxt/prefer-import-meta": "error",
     "vue/first-attribute-linebreak": ["error", { singleline: "ignore", multiline: "ignore" }],

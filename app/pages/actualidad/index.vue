@@ -30,7 +30,7 @@ useHead({
   ]
 });
 
-const numberOfPages = computed (() => {
+const numberOfPages = computed(() => {
   if (!posts.value) return 0;
   return Math.ceil(posts.value.length / 6);
 });
@@ -40,7 +40,7 @@ const onPageChange = (page: number) => {
   scrollTo({ top: actualidad.value?.offsetTop, behavior: "smooth" });
 };
 
-const showPosts = computed (() => {
+const showPosts = computed(() => {
   if (!posts.value) return [];
   const sliceFix = currentPage.value * perPage.value;
   return posts.value.slice(sliceFix - perPage.value, sliceFix);
