@@ -1,27 +1,28 @@
 import { integer, sqliteTable, text } from "drizzle-orm/sqlite-core";
+import { unixepoch } from "../utils/db";
 
 export const actualidad = sqliteTable("actualidad", {
-  permalink: text("permalink").primaryKey().notNull(),
-  titulo: text("titulo").notNull(),
-  tag: text("tag").notNull(),
-  visible: integer("visible").notNull(),
-  fecha: integer("fecha").notNull(),
-  updatedAt: integer("updated_at").notNull(),
-  createdAt: integer("created_at").notNull()
+  permalink: text().primaryKey().notNull(),
+  titulo: text().notNull(),
+  tag: text().notNull(),
+  visible: integer().notNull(),
+  fecha: integer().notNull(),
+  createdAt: integer().notNull().default(unixepoch({ mode: "ms" })),
+  updatedAt: integer().notNull().default(unixepoch({ mode: "ms" }))
 });
 
 export const admins = sqliteTable("admins", {
-  id: integer("id").primaryKey().notNull(),
-  username: text("username").unique().notNull(),
-  password: text("password").notNull(),
-  updatedAt: integer("updated_at").notNull(),
-  createdAt: integer("created_at").notNull()
+  id: integer().primaryKey().notNull(),
+  username: text().unique().notNull(),
+  password: text().notNull(),
+  createdAt: integer().notNull().default(unixepoch({ mode: "ms" })),
+  updatedAt: integer().notNull().default(unixepoch({ mode: "ms" }))
 });
 
 export const subscribers = sqliteTable("subscribers", {
-  id: integer("id").primaryKey().notNull(),
-  email: text("email").notNull().unique(),
-  intereses: text("intereses").notNull(),
-  updatedAt: integer("updated_at").notNull(),
-  createdAt: integer("created_at").notNull()
+  id: integer().primaryKey().notNull(),
+  email: text().notNull().unique(),
+  intereses: text().notNull(),
+  createdAt: integer().notNull().default(unixepoch({ mode: "ms" })),
+  updatedAt: integer().notNull().default(unixepoch({ mode: "ms" }))
 });

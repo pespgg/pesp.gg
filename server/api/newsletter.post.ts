@@ -2,18 +2,15 @@ export default defineEventHandler(async (event) => {
   const { email: emailInput, intereses: interesesList } = await readBody(event);
   const email = emailInput.toLowerCase();
   const intereses = interesesList.join(",");
-  const date = Date.now();
 
   const DB = useDB();
   const subscriber = await DB.insert(tables.subscribers).values({
     email,
-    intereses,
-    updatedAt: date,
-    createdAt: date
+    intereses
   }).onConflictDoUpdate({
     target: tables.subscribers.email,
     set: {
-      updatedAt: date,
+      updatedAt: unixepoch({ mode: "ms" }),
       intereses
     }
   }).returning({
