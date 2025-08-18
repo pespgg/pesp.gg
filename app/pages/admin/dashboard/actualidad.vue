@@ -8,7 +8,7 @@ const { data: posts } = await useFetch("/api/posts", {
 });
 
 const editPost = (post: PespPost) => {
-  const { titulo, permalink, tag, fecha, visible, updated } = post;
+  const { titulo, permalink, tag, fecha, visible, updatedAt, createdAt } = post;
   const data = {
     titulo,
     content: "",
@@ -18,7 +18,8 @@ const editPost = (post: PespPost) => {
     },
     tag,
     fecha: new Date(fecha).toISOString().split("T")[0],
-    updated,
+    updatedAt,
+    createdAt,
     permalink,
     visible: Boolean(visible)
   };
