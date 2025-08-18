@@ -206,6 +206,5 @@ export default {
 </script>
 
 <style>
-@import "ckeditor5/ckeditor5.css";
-@import "~/assets/css/ckeditor.css";
+@import "~/assets/css/ckeditor5-editor.css";
 </style>

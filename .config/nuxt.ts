@@ -51,6 +51,7 @@ export default defineNuxtConfig({
     "bootstrap/dist/css/bootstrap.min.css",
     "@glidejs/glide/dist/css/glide.core.min.css",
     "@glidejs/glide/dist/css/glide.theme.min.css",
+    "ckeditor5/ckeditor5.css",
     "~/assets/css/main.css",
     "~/assets/css/theme.css",
     "~/assets/css/transitions.css",

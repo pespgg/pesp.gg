@@ -11,6 +11,7 @@
 
 :root {
   --bs-body-font-family: gilroy;
+  --ck-content-font-color: var(--bs-heading-color);
 
   scroll-behavior: unset;
 }

@@ -81,7 +81,3 @@ export default {
   }
 };
 </script>
-
-<style>
-@import "ckeditor5/ckeditor5.css";
-</style>
