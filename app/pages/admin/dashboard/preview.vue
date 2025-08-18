@@ -65,18 +65,27 @@ export default {
   },
   methods: {
     backToEditor () {
-      this.$router.push("/admin/dashboard/publicar/");
+      navigateTo("/admin/dashboard/publicar");
     },
     async publishPost () {
-      if (this.post?.banner.src) {
-        const url = this.edit ? `/api/posts/${this.post.permalink}` : "/api/posts";
-        const post = await $fetch(url, {
-          method: this.edit ? "PUT" : "POST",
-          body: this.post
-        }).catch(() => null);
-
-        if (post) this.$router.push("/admin/dashboard/actualidad/");
+      if (!this.post?.banner.src) {
+        this.$nuxt.$toasts.add({ success: false, message: "Por favor, añade un banner." });
+        return;
       }
+      const formData = new FormData();
+      const { banner, content, ...data } = this.post;
+
+      if (banner.file) formData.append("banner", banner.file);
+      formData.append("data", JSON.stringify(data));
+      formData.append("content", content);
+
+      const url = this.edit ? `/api/posts/${this.post.permalink}` : "/api/posts";
+      await $fetch(url, {
+        method: this.edit ? "PUT" : "POST",
+        body: formData
+      }).then(() => {
+        navigateTo("/admin/dashboard/actualidad");
+      }).catch(() => {});
     }
   }
 };
