@@ -30,13 +30,16 @@ export default defineEventHandler(async (event): Promise<PespPost> => {
     });
   }
 
+  const date = Date.now();
+
   const post = await useDB().insert(tables.actualidad).values({
     permalink,
     titulo: titulo.trim(),
     tag,
     visible: Number(visible),
-    updated: new Date(fecha).getTime(),
-    fecha: new Date(fecha).getTime()
+    fecha: new Date(fecha).getTime(),
+    createdAt: date,
+    updatedAt: date
   }).returning().get();
 
   if (banner) {

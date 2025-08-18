@@ -38,7 +38,7 @@ useHead({
   <main>
     <article id="post" class="container pb-5" itemscope itemtype="https://schema.org/BlogPosting">
       <header class="my-3 overflow-hidden rounded shadow">
-        <img :src="getPostImage(post.permalink, post.updated)" class="d-block w-100" :alt="post.titulo" itemprop="image" data-aos="zoom-out" data-aos-duration="2000">
+        <img :src="getPostImage(post.permalink, post.updatedAt)" class="d-block w-100" :alt="post.titulo" itemprop="image" data-aos="zoom-out" data-aos-duration="2000">
       </header>
       <div class="d-flex mb-2">
         <NuxtLink class="d-flex align-items-center rounded overflow-hidden text-white" :to="`/actualidad/${post.tag}`">

@@ -28,7 +28,7 @@ export default defineEventHandler(async (event) => {
     from.where(eq(tables.actualidad.tag, String(tag)));
   }
 
-  from.orderBy(desc(tables.actualidad.fecha), desc(tables.actualidad.updated));
+  from.orderBy(desc(tables.actualidad.fecha), desc(tables.actualidad.createdAt));
 
   if (limit) {
     return from.limit(Number(limit)).all();

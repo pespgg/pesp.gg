@@ -67,7 +67,7 @@ watch(currentPage, () => {
       <div class="row row-gap-3">
         <div v-for="(post, i) of showPosts" :key="i" class="col-md-6 col-lg-4">
           <article class="card mx-auto border-0 shadow h-100 light" itemscope itemtype="https://schema.org/BlogPosting">
-            <img :src="getPostImage(post.permalink, post.updated)" class="card-img-top post" :alt="post.titulo" itemprop="image">
+            <img :src="getPostImage(post.permalink, post.updatedAt)" class="card-img-top post" :alt="post.titulo" itemprop="image">
             <div class="card-body bg-dark">
               <h4 class="card-title">
                 <strong>

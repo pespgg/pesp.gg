@@ -3,8 +3,8 @@ definePageMeta({ layout: "dashboard", middleware: "auth" });
 const { meta } = useRoute() as { meta: PespEditorMeta };
 
 if (meta.data && meta.edit) {
-  meta.data.content = await getPostContent(meta.data.permalink, meta.data.updated);
-  meta.data.banner.src = getPostImage(meta.data.permalink, meta.data.updated);
+  meta.data.content = await getPostContent(meta.data.permalink, meta.data.updatedAt);
+  meta.data.banner.src = getPostImage(meta.data.permalink, meta.data.updatedAt);
   meta.data.banner.type = "url";
 }
 
@@ -181,24 +181,26 @@ export default {
       this.$router.replace("/admin/dashboard/preview/");
     },
     async publishPost () {
-      if (this.form.banner.src) {
-        this.loading = true;
-        const formData = new FormData();
-        const { banner, content, ...data } = this.form;
+      if (!this.form.banner.src) {
+        this.$nuxt.$toasts.add({ success: false, message: "Por favor, añade un banner." });
+        return;
+      }
+      this.loading = true;
+      const formData = new FormData();
+      const { banner, content, ...data } = this.form;
 
-        if (banner.file) formData.append("banner", banner.file);
-        formData.append("data", JSON.stringify(data));
-        formData.append("content", content);
+      if (banner.file) formData.append("banner", banner.file);
+      formData.append("data", JSON.stringify(data));
+      formData.append("content", content);
 
-        const post = await $fetch(this.$route.meta.edit ? `/api/posts/${this.form.permalink}` : "/api/posts", {
-          method: this.$route.meta.edit ? "PUT" : "POST",
-          body: formData
-        }).catch(() => null);
-        this.loading = false;
-        if (post) {
-          this.$nuxt.$toasts.add({ success: true, message: t(this.$route.meta.edit ? "guardar_success" : "publicar_success") });
-          this.$router.push("/admin/dashboard/actualidad/");
-        }
+      const post = await $fetch(this.$route.meta.edit ? `/api/posts/${this.form.permalink}` : "/api/posts", {
+        method: this.$route.meta.edit ? "PUT" : "POST",
+        body: formData
+      }).catch(() => null);
+      this.loading = false;
+      if (post) {
+        this.$nuxt.$toasts.add({ success: true, message: t(this.$route.meta.edit ? "guardar_success" : "publicar_success") });
+        this.$router.push("/admin/dashboard/actualidad/");
       }
     }
   }

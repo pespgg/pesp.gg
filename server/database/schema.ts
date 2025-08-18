@@ -5,19 +5,23 @@ export const actualidad = sqliteTable("actualidad", {
   titulo: text("titulo").notNull(),
   tag: text("tag").notNull(),
   visible: integer("visible").notNull(),
-  updated: integer("updated").notNull(),
-  fecha: integer("fecha").notNull()
+  fecha: integer("fecha").notNull(),
+  updatedAt: integer("updated_at").notNull(),
+  createdAt: integer("created_at").notNull()
 });
 
 export const admins = sqliteTable("admins", {
   id: integer("id").primaryKey().notNull(),
   username: text("username").unique().notNull(),
-  password: text("password").notNull()
+  password: text("password").notNull(),
+  updatedAt: integer("updated_at").notNull(),
+  createdAt: integer("created_at").notNull()
 });
 
 export const subscribers = sqliteTable("subscribers", {
   id: integer("id").primaryKey().notNull(),
   email: text("email").notNull().unique(),
-  fecha: integer("fecha").notNull(),
-  intereses: text("intereses").notNull()
+  intereses: text("intereses").notNull(),
+  updatedAt: integer("updated_at").notNull(),
+  createdAt: integer("created_at").notNull()
 });

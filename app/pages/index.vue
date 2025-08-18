@@ -68,7 +68,7 @@ useHead({
                 <li v-for="(post, i) of posts" :key="i" class="glide__slide p-0 px-sm-3" :class="{ 'glide__slide--active': !i }">
                   <article class="card mx-auto border-0 shadow overflow-hidden" itemscope itemtype="https://schema.org/BlogPosting">
                     <div class="overflow-hidden">
-                      <img :src="getPostImage(post.permalink, post.updated)" class="card-img-top post" :alt="post.titulo" itemprop="image" data-aos="zoom-out" data-aos-duration="2000">
+                      <img :src="getPostImage(post.permalink, post.updatedAt)" class="card-img-top post" :alt="post.titulo" itemprop="image" data-aos="zoom-out" data-aos-duration="2000">
                     </div>
                     <div class="card-body bg-dark">
                       <h4 class="card-title">

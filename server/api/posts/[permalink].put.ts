@@ -20,7 +20,7 @@ export default defineEventHandler(async (event): Promise<PespPost> => {
     titulo: titulo.trim(),
     tag,
     visible: Number(visible),
-    updated: new Date().getTime(),
+    updatedAt: Date.now(),
     fecha: new Date(fecha).getTime()
   }).where(eq(tables.actualidad.permalink, permalink)).returning().get();
 

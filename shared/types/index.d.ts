@@ -14,8 +14,9 @@ declare global {
     titulo: string;
     tag: string;
     visible: number;
-    updated: number;
     fecha: number;
+    updatedAt: number;
+    createdAt: number;
   }
   interface PespEditorMeta extends RouteMeta {
     edit?: boolean;
@@ -31,7 +32,8 @@ declare global {
       fecha: string;
       permalink: string;
       visible: boolean;
-      updated: number;
+      updatedAt: number;
+      createdAt: number;
     };
   }
   interface PespStats {
