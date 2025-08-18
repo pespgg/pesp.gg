@@ -3,6 +3,7 @@ definePageMeta({ layout: "dashboard", middleware: "auth" });
 const { meta } = useRoute() as { meta: PespEditorMeta };
 
 if (meta.data && meta.edit) {
+  // TODO: fix edits are not shown after going back to publicar in edit mode
   meta.data.content = await getPostContent(meta.data.permalink, meta.data.updatedAt);
   meta.data.banner.src = getPostImage(meta.data.permalink, meta.data.updatedAt);
   meta.data.banner.type = "url";
@@ -178,7 +179,7 @@ export default {
         return;
       }
       this.$route.meta.data = this.form;
-      this.$router.replace("/admin/dashboard/preview/");
+      navigateTo("/admin/dashboard/preview", { replace: true });
     },
     async publishPost () {
       if (!this.form.banner.src) {
@@ -193,15 +194,15 @@ export default {
       formData.append("data", JSON.stringify(data));
       formData.append("content", content);
 
-      const post = await $fetch(this.$route.meta.edit ? `/api/posts/${this.form.permalink}` : "/api/posts", {
+      await $fetch(this.$route.meta.edit ? `/api/posts/${this.form.permalink}` : "/api/posts", {
         method: this.$route.meta.edit ? "PUT" : "POST",
         body: formData
-      }).catch(() => null);
-      this.loading = false;
-      if (post) {
+      }).then(() => {
         this.$nuxt.$toasts.add({ success: true, message: t(this.$route.meta.edit ? "guardar_success" : "publicar_success") });
-        this.$router.push("/admin/dashboard/actualidad/");
-      }
+        navigateTo("/admin/dashboard/actualidad");
+      }).catch(() => {}).finally(() => {
+        this.loading = false;
+      });
     }
   }
 };

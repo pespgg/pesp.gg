@@ -15,7 +15,7 @@ const login = async () => {
     method: "POST",
     body: form.value
   }).then(() => {
-    navigateTo("/admin/dashboard/", { external: true, replace: true });
+    navigateTo("/admin/dashboard", { external: true, replace: true });
   }).catch(() => {});
 };
 </script>

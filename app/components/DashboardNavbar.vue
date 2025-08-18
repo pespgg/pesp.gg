@@ -58,7 +58,7 @@ export default {
     async logout () {
       const { loggedOut } = await useUserSession().clear();
       if (loggedOut) {
-        this.$router.replace("/admin");
+        navigateTo("/admin", { replace: true });
       }
     }
   }
