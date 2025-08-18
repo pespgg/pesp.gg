@@ -4,6 +4,20 @@ definePageMeta({ layout: false, middleware: "auth" });
 useSeoMeta({
   robots: "noindex,nofollow"
 });
+
+const form = ref({
+  username: "",
+  password: ""
+});
+
+const login = async () => {
+  await $fetch("/api/admin/auth", {
+    method: "POST",
+    body: form.value
+  }).then(() => {
+    navigateTo("/admin/dashboard/", { external: true, replace: true });
+  }).catch(() => {});
+};
 </script>
 
 <template>
@@ -15,11 +29,11 @@ useSeoMeta({
           <h5 class="text-center mb-4 text-uppercase">{{ t("admin") }}</h5>
         </div>
         <div class="form-floating mb-3">
-          <input v-model.trim="form.user" type="text" class="form-control" :placeholder="t('usuario')" autocomplete="username" required>
+          <input v-model.trim="form.username" type="text" class="form-control" :placeholder="t('usuario')" autocomplete="username" required>
           <label>{{ t("usuario") }}</label>
         </div>
         <div class="form-floating mb-3">
-          <input v-model="form.pass" type="password" class="form-control" :placeholder="t('usuario')" autocomplete="current-password" required>
+          <input v-model="form.password" type="password" class="form-control" :placeholder="t('pass')" autocomplete="current-password" required>
           <label>{{ t("pass") }}</label>
         </div>
         <div class="d-grid">
@@ -29,28 +43,3 @@ useSeoMeta({
     </div>
   </section>
 </template>
-
-<script lang="ts">
-export default {
-  data () {
-    return {
-      form: {
-        user: "",
-        pass: ""
-      }
-    };
-  },
-  methods: {
-    async login () {
-      const login = await $fetch("/api/admin/auth", {
-        method: "POST",
-        body: this.form
-      }).catch(() => null);
-
-      if (!login) return;
-
-      navigateTo("/admin/dashboard/", { external: true, replace: true });
-    }
-  }
-};
-</script>

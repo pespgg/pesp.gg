@@ -13,6 +13,7 @@ CREATE TABLE `admins` (
 	`password` text NOT NULL
 );
 --> statement-breakpoint
+CREATE UNIQUE INDEX `admins_username_unique` ON `admins` (`username`);--> statement-breakpoint
 CREATE TABLE `subscribers` (
 	`id` integer PRIMARY KEY NOT NULL,
 	`email` text NOT NULL,

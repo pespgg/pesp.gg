@@ -2,8 +2,13 @@ const addAdmin = async () => {
   console.info("User \"admin\" added");
   await useDB().insert(tables.admins).values({
     username: "admin",
-    password: "admin"
-  }).onConflictDoNothing().run();
+    password: hash("admin", useRuntimeConfig().secure.salt)
+  }).onConflictDoUpdate({
+    target: tables.admins.id,
+    set: {
+      password: sql`excluded.password`
+    }
+  }).run();
 };
 
 export default defineTask({

@@ -101,6 +101,9 @@ export default defineNuxtConfig({
   },
 
   runtimeConfig: {
+    secure: {
+      salt: ""
+    },
     session: {
       name: "nuxt-session",
       password: process.env.NUXT_SESSION_PASSWORD || ""

@@ -11,7 +11,7 @@ export const actualidad = sqliteTable("actualidad", {
 
 export const admins = sqliteTable("admins", {
   id: integer("id").primaryKey().notNull(),
-  username: text("username").notNull(),
+  username: text("username").unique().notNull(),
   password: text("password").notNull()
 });
 

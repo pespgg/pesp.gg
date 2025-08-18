@@ -1,7 +1,7 @@
 {
   "version": "6",
   "dialect": "sqlite",
-  "id": "1a322c85-efad-499e-b78e-04ae2d206d19",
+  "id": "60edaeec-f8b6-47c0-a25b-72357e165d57",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "tables": {
     "actualidad": {
@@ -53,7 +53,8 @@
       "indexes": {},
       "foreignKeys": {},
       "compositePrimaryKeys": {},
-      "uniqueConstraints": {}
+      "uniqueConstraints": {},
+      "checkConstraints": {}
     },
     "admins": {
       "name": "admins",
@@ -80,10 +81,19 @@
           "autoincrement": false
         }
       },
-      "indexes": {},
+      "indexes": {
+        "admins_username_unique": {
+          "name": "admins_username_unique",
+          "columns": [
+            "username"
+          ],
+          "isUnique": true
+        }
+      },
       "foreignKeys": {},
       "compositePrimaryKeys": {},
-      "uniqueConstraints": {}
+      "uniqueConstraints": {},
+      "checkConstraints": {}
     },
     "subscribers": {
       "name": "subscribers",
@@ -128,9 +138,11 @@
       },
       "foreignKeys": {},
       "compositePrimaryKeys": {},
-      "uniqueConstraints": {}
+      "uniqueConstraints": {},
+      "checkConstraints": {}
     }
   },
+  "views": {},
   "enums": {},
   "_meta": {
     "schemas": {},
