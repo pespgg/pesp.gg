@@ -50,15 +50,13 @@ import {
   Undo,
   WordCount
 } from "ckeditor5";
-
+import type { EditorConfig } from "ckeditor5";
 import spanishTranslations from "ckeditor5/translations/es.js";
 import { CkeditorPlugin } from "@ckeditor/ckeditor5-vue";
 
-const isLayoutReady = ref(false);
-const config = ref();
-const editor = ref(ClassicEditor);
+const editor = ClassicEditor;
 
-config.value = {
+const config: EditorConfig = {
   licenseKey: "GPL",
   language: { ui: "es", content: "es" },
   translations: [spanishTranslations],
@@ -197,12 +195,10 @@ config.value = {
   }
 };
 
-isLayoutReady.value = true;
-
 export default defineNuxtPlugin((nuxtApp) => {
   nuxtApp.vueApp.use(CkeditorPlugin);
 
   return {
-    provide: { ckeditor: { editor: editor.value, config: config.value } }
+    provide: { ckeditor: { editor, config } }
   };
 });
