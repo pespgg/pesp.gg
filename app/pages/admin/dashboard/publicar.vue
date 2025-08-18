@@ -3,8 +3,9 @@ definePageMeta({ layout: "dashboard", middleware: "auth" });
 const { meta } = useRoute() as { meta: PespEditorMeta };
 
 if (meta.data && meta.edit) {
-  // TODO: fix edits are not shown after going back to publicar in edit mode
-  meta.data.content = await getPostContent(meta.data.permalink, meta.data.updatedAt);
+  if (!meta.fromPreview) {
+    meta.data.content = await getPostContent(meta.data.permalink, meta.data.updatedAt);
+  }
   meta.data.banner.src = getPostImage(meta.data.permalink, meta.data.updatedAt);
   meta.data.banner.type = "url";
 }
@@ -156,10 +157,9 @@ export default {
       wordCountWrapper.appendChild(wordCountPlugin.wordCountContainer);
     },
     generatePermalink (e: Event) {
-      if (!this.$route.meta.edit) {
-        const target = e.target as HTMLInputElement;
-        this.form.permalink = target.value.trim().toLowerCase().replace(/\s+/g, "-").normalize("NFD").replace(/[\u0300-\u036F]/g, "").replace(/[^a-zA-Z0-9-]/g, "");
-      }
+      if (this.$route.meta.edit) return;
+      const target = e.target as HTMLInputElement;
+      this.form.permalink = target.value.trim().toLowerCase().replace(/\s+/g, "-").normalize("NFD").replace(/[\u0300-\u036F]/g, "").replace(/[^a-zA-Z0-9-]/g, "");
     },
     addBanner (e: Event) {
       const target = e.target as HTMLInputElement;

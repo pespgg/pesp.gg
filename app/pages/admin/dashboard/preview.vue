@@ -49,6 +49,7 @@ export default {
     if (to.name === "admin-dashboard-publicar" && from.meta.data) {
       to.meta.data = from.meta.data;
       to.meta.edit = from.meta.edit;
+      to.meta.fromPreview = true;
     }
     next();
   },
