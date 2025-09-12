@@ -106,8 +106,7 @@ export default defineNuxtConfig({
       salt: ""
     },
     session: {
-      name: "nuxt-session",
-      password: process.env.NUXT_SESSION_PASSWORD || ""
+      password: ""
     },
     mailchannels: {
       apiKey: "",
@@ -117,11 +116,11 @@ export default defineNuxtConfig({
         selector: ""
       },
       from: {
-        name: "",
-        email: ""
+        name: "Panama Esports (PESP)",
+        email: `contacto@${SITE.domain}`
       },
       bcc: {
-        email: ""
+        email: `eventos@${SITE.domain}`
       }
     },
     turnstile: {
