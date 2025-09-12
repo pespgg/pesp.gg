@@ -90,8 +90,8 @@ importers:
         specifier: ^1.2.5
         version: 1.2.5(magicast@0.3.5)(vite@7.1.5(@types/node@24.3.1)(jiti@2.5.1)(terser@5.44.0)(yaml@2.8.1))
       nuxt-mailchannels:
-        specifier: ^0.3.4
-        version: 0.3.4(magicast@0.3.5)
+        specifier: ^0.3.5
+        version: 0.3.5(magicast@0.3.5)
       nuxt-twemoji:
         specifier: ^3.7.3
         version: 3.7.3(magicast@0.3.5)
@@ -4384,8 +4384,8 @@ packages:
   nuxt-aos@1.2.5:
     resolution: {integrity: sha512-tNEXMOKijCg+SygLvjp2VbEy7yQcC6ertzI23bCa6DPlu134bfzSYUGOJRSFSKtYjnrqIW7MzLpqPTfTwd8A3Q==}
 
-  nuxt-mailchannels@0.3.4:
-    resolution: {integrity: sha512-/SsDezfAzKdx/C7TtauYOaUO81zG7Ctj/s5WnYf4rjARYqwsCY3l4DxFRg48HPHaA96RiLTluYipojq8a/9jXg==}
+  nuxt-mailchannels@0.3.5:
+    resolution: {integrity: sha512-DVfu0c3LBLearulPdFVh2YAU2R7GmtfzscqK3e2nuTnKgwOOS4TCaNTiekFibhJCLb7s+z3uCKw/aKZNMbyRZg==}
 
   nuxt-site-config-kit@3.2.5:
     resolution: {integrity: sha512-hNhrgjwVHBzNf/xPjaBp/RAgt8LSiRxJ4pUVrltFPIVQJ7Cdq5145e3pl+f8llM6f2BE/1TZCZYDeYhA6AuEBg==}
@@ -6068,8 +6068,6 @@ snapshots:
       '@ckeditor/ckeditor5-core': 46.1.0
       '@ckeditor/ckeditor5-utils': 46.1.0
       ckeditor5: 46.1.0
-    transitivePeerDependencies:
-      - supports-color
 
   '@ckeditor/ckeditor5-code-block@46.1.0':
     dependencies:
@@ -6112,8 +6110,6 @@ snapshots:
       '@ckeditor/ckeditor5-utils': 46.1.0
       ckeditor5: 46.1.0
       es-toolkit: 1.39.5
-    transitivePeerDependencies:
-      - supports-color
 
   '@ckeditor/ckeditor5-editor-classic@46.1.0':
     dependencies:
@@ -6123,8 +6119,6 @@ snapshots:
       '@ckeditor/ckeditor5-utils': 46.1.0
       ckeditor5: 46.1.0
       es-toolkit: 1.39.5
-    transitivePeerDependencies:
-      - supports-color
 
   '@ckeditor/ckeditor5-editor-decoupled@46.1.0':
     dependencies:
@@ -6591,8 +6585,6 @@ snapshots:
       '@ckeditor/ckeditor5-engine': 46.1.0
       '@ckeditor/ckeditor5-utils': 46.1.0
       es-toolkit: 1.39.5
-    transitivePeerDependencies:
-      - supports-color
 
   '@ckeditor/ckeditor5-widget@46.1.0':
     dependencies:
@@ -10909,7 +10901,7 @@ snapshots:
       - magicast
       - vite
 
-  nuxt-mailchannels@0.3.4(magicast@0.3.5):
+  nuxt-mailchannels@0.3.5(magicast@0.3.5):
     dependencies:
       '@nuxt/kit': 4.1.1(magicast@0.3.5)
       defu: 6.1.4

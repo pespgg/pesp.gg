@@ -61,7 +61,7 @@
     "eslint": "^9.35.0",
     "nuxt": "^4.1.1",
     "nuxt-aos": "^1.2.5",
-    "nuxt-mailchannels": "^0.3.4",
+    "nuxt-mailchannels": "^0.3.5",
     "nuxt-twemoji": "^3.7.3",
     "stylelint": "^16.24.0",
     "stylelint-config-standard": "^39.0.0",
