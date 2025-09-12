@@ -115,6 +115,13 @@ export default defineNuxtConfig({
         domain: SITE.domain,
         privateKey: "",
         selector: ""
+      },
+      from: {
+        name: "",
+        email: ""
+      },
+      bcc: {
+        email: ""
       }
     },
     turnstile: {
