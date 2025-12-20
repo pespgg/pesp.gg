@@ -1,7 +1,6 @@
 {
   "dialect": "sqlite",
-  "out": "./server/database/migrations",
-  "schema": "./server/database/schema.ts",
-  "breakpoints": true,
+  "out": "./server/db/migrations",
+  "schema": "./server/db/schema.ts",
   "casing": "snake_case"
 }
