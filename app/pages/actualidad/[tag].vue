@@ -10,7 +10,7 @@ if (!tagExists) {
 
 const { data: posts } = await useFetch("/api/posts", {
   query: {
-    props: ["image", "titulo", "fecha", "permalink", "tag", "updated"].join(","),
+    props: ["image", "titulo", "fecha", "permalink", "tag", "updatedAt"].join(","),
     tag: tagParam
   },
   getCachedData: (key, nuxtApp) => nuxtApp.payload.data[key]
