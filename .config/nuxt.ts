@@ -1,10 +1,32 @@
-import vue from "@vitejs/plugin-vue";
 import { SITE } from "../shared/utils/site";
 
 export default defineNuxtConfig({
   // future: { compatibilityVersion: 4 },
+
+  modules: [
+    "@nuxt/eslint",
+    "@nuxt/icon",
+    "nuxt-twemoji",
+    "@nuxtjs/turnstile",
+    "@nuxtjs/sitemap",
+    "nuxt-aos",
+    "@nuxthub/core",
+    "nuxt-mailchannels",
+    "nuxt-email-renderer"
+  ],
+
+  $production: {
+    nitro: {
+      preset: "cloudflare-module"
+    }
+  },
+
+  imports: {
+    dirs: ["utils/schema"]
+  },
+
   devtools: { enabled: true },
-  compatibilityDate: "2025-07-27",
+
   app: {
     pageTransition: { name: "fade", mode: "out-in" },
     layoutTransition: { name: "fade", mode: "out-in" },
@@ -59,46 +81,8 @@ export default defineNuxtConfig({
     "~/assets/css/forms.css"
   ],
 
-  modules: [
-    "@nuxt/eslint",
-    "@nuxt/icon",
-    "nuxt-twemoji",
-    "@nuxtjs/turnstile",
-    "@nuxtjs/sitemap",
-    "nuxt-aos",
-    "@nuxthub/core",
-    "nuxt-mailchannels"
-  ],
-
-  hub: { database: true, blob: true },
-
-  icon: {
-    mode: "svg",
-    clientBundle: {
-      scan: true,
-      sizeLimitKb: 2048
-    }
-  },
-
-  eslint: {
-    config: {
-      autoInit: false,
-      stylistic: true
-    }
-  },
-
-  experimental: {
-    purgeCachedData: false,
-    granularCachedData: false
-  },
-
-  turnstile: {
-    siteKey: "0x4AAAAAAAFcwNNtzi_jhLif",
-    addValidateEndpoint: true
-  },
-
-  imports: {
-    dirs: ["utils/schema"]
+  site: {
+    url: SITE.url
   },
 
   runtimeConfig: {
@@ -134,10 +118,21 @@ export default defineNuxtConfig({
     }
   },
 
+  routeRules: {
+    "/api/_nuxt_icon/**": { cache: { maxAge: 1.577e+7 } }
+  },
+
+  features: {
+    inlineStyles: false
+  },
+
+  experimental: {
+    purgeCachedData: false,
+    granularCachedData: false
+  },
+  compatibilityDate: "2025-12-20",
+
   nitro: {
-    rollupConfig: {
-      plugins: [vue()]
-    },
     experimental: {
       tasks: true
     },
@@ -150,8 +145,35 @@ export default defineNuxtConfig({
     }
   },
 
-  site: {
-    url: SITE.url
+  hub: {
+    db: {
+      dialect: "sqlite",
+      casing: "snake_case"
+    },
+    blob: true
+  },
+
+  typescript: {
+    tsConfig: {
+      include: [
+        "../emails/**/*"
+      ]
+    }
+  },
+
+  eslint: {
+    config: {
+      autoInit: false,
+      stylistic: true
+    }
+  },
+
+  icon: {
+    mode: "svg",
+    clientBundle: {
+      scan: true,
+      sizeLimitKb: 2048
+    }
   },
 
   sitemap: {
@@ -168,11 +190,8 @@ export default defineNuxtConfig({
     ]
   },
 
-  routeRules: {
-    "/api/_nuxt_icon/**": { cache: { maxAge: 1.577e+7 } }
-  },
-
-  features: {
-    inlineStyles: false
+  turnstile: {
+    siteKey: "0x4AAAAAAAFcwNNtzi_jhLif",
+    addValidateEndpoint: true
   }
 });

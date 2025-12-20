@@ -1,6 +1,6 @@
 const addAdmin = async () => {
   console.info("User \"admin\" added");
-  await useDB().insert(tables.admins).values({
+  await db.insert(tables.admins).values({
     username: "admin",
     password: hash("admin", useRuntimeConfig().secure.salt)
   }).onConflictDoUpdate({

@@ -5,7 +5,7 @@ export default defineEventHandler(async (event) => {
     permalink: z.string()
   }).parse);
 
-  const deletedPost = await useDB().delete(tables.actualidad).where(eq(tables.actualidad.permalink, permalink)).returning().get();
+  const deletedPost = await db.delete(tables.actualidad).where(eq(tables.actualidad.permalink, permalink)).returning().get();
 
   if (!deletedPost) {
     throw createError({
@@ -15,7 +15,7 @@ export default defineEventHandler(async (event) => {
   }
 
   event.waitUntil(
-    hubBlob().delete([
+    blob.delete([
       `posts/content/${permalink}.html`,
       `posts/images/${permalink}`
     ])

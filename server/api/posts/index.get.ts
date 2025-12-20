@@ -1,6 +1,6 @@
 export default defineEventHandler(async (event) => {
   const query = getQuery(event);
-  let select = useDB().select();
+  let select = db.select();
   const { props, limit, permalink, hidden, tag } = query;
 
   if (props) {
@@ -11,7 +11,7 @@ export default defineEventHandler(async (event) => {
         columns[prop] = tables.actualidad[prop as keyof typeof tables.actualidad];
       }
     }
-    select = useDB().select(columns as any);
+    select = db.select(columns as any);
   }
 
   const from = select.from(tables.actualidad);

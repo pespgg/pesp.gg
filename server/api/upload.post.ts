@@ -12,7 +12,7 @@ export default defineEventHandler(async (event) => {
   const dateTime = new Date().getTime();
 
   try {
-    await hubBlob().put(file.name, file, {
+    await blob.put(file.name, file, {
       prefix: "uploads",
       httpMetadata: {
         contentType: file.type

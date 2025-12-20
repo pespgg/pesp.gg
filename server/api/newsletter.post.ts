@@ -3,8 +3,7 @@ export default defineEventHandler(async (event) => {
   const email = emailInput.toLowerCase();
   const intereses = interesesList.join(",");
 
-  const DB = useDB();
-  const subscriber = await DB.insert(tables.subscribers).values({
+  const subscriber = await db.insert(tables.subscribers).values({
     email,
     intereses
   }).onConflictDoUpdate({

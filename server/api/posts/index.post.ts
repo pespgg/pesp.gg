@@ -15,7 +15,7 @@ export default defineEventHandler(async (event): Promise<PespPost> => {
     });
   }
 
-  const dbCheck = await useDB().select().from(tables.actualidad).where(eq(tables.actualidad.permalink, permalink)).limit(1).all();
+  const dbCheck = await db.select().from(tables.actualidad).where(eq(tables.actualidad.permalink, permalink)).limit(1).all();
   if (dbCheck.length) {
     throw createError({
       statusCode: 409,
@@ -30,7 +30,7 @@ export default defineEventHandler(async (event): Promise<PespPost> => {
     });
   }
 
-  const post = await useDB().insert(tables.actualidad).values({
+  const post = await db.insert(tables.actualidad).values({
     permalink,
     titulo: titulo.trim(),
     tag,
@@ -39,7 +39,7 @@ export default defineEventHandler(async (event): Promise<PespPost> => {
   }).returning().get();
 
   if (banner) {
-    await hubBlob().put(`images/${permalink}`, banner, {
+    await blob.put(`images/${permalink}`, banner, {
       prefix: "posts",
       httpMetadata: {
         contentType: banner.type
@@ -47,7 +47,7 @@ export default defineEventHandler(async (event): Promise<PespPost> => {
     });
   }
 
-  await hubBlob().put(`content/${permalink}.html`, content, {
+  await blob.put(`content/${permalink}.html`, content, {
     prefix: "posts",
     httpMetadata: {
       contentType: "text/html"

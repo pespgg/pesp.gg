@@ -1,7 +1,3 @@
-import { render } from "@vue-email/render";
-import emailContacto from "~~/emails/contacto.vue";
-import emailUnirse from "~~/emails/unirse.vue";
-
 export default defineEventHandler(async (event) => {
   const { template, form, lang } = await readBody(event);
   const { email, name, subject, message, legal, token } = form;
@@ -19,7 +15,7 @@ export default defineEventHandler(async (event) => {
   }
 
   localization.setLanguage(lang);
-  const template_strings: Record<string, Record<string, string>> = {
+  const template_strings = {
     shared: {
       lang: t("lang"),
       correo_informacion: t("correo_informacion"),
@@ -47,9 +43,9 @@ export default defineEventHandler(async (event) => {
     }
   };
 
-  const asunto = template === "contacto" ? subject : `${name} ${t("asunto_interesado")}`;
+  const asunto = template === "contacto" ? subject as string : `${name} ${t("asunto_interesado")}`;
 
-  const html = await render(template === "contacto" ? emailContacto : emailUnirse, {
+  const { html, text } = await renderEmail(template === "contacto" ? "contacto" : "unirse", {
     ...template_strings.shared,
     ...template_strings[template as "contacto" | "unirse"],
     nombre: name,
@@ -58,10 +54,13 @@ export default defineEventHandler(async (event) => {
   });
 
   const mailchannels = useMailChannels(event);
+
   const { success } = await mailchannels.send({
     to: { email, name },
     subject: asunto,
-    html
+    html,
+    text
   });
+
   return success;
 });

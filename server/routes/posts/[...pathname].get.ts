@@ -4,5 +4,5 @@ export default defineEventHandler(async (event) => {
     message: "Not found"
   });
   const { pathname } = getRouterParams(event);
-  return hubBlob().serve(event, "posts/" + pathname);
+  return blob.serve(event, "posts/" + pathname);
 });

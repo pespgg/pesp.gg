@@ -11,7 +11,7 @@ export default defineEventHandler(async (event: H3Event): Promise<PespUser> => {
 
   const form = body.data;
 
-  const login = await useDB().select({
+  const login = await db.select({
     username: tables.admins.username
   }).from(tables.admins).where(and(
     eq(tables.admins.username, form.username),

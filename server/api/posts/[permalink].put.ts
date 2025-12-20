@@ -15,7 +15,7 @@ export default defineEventHandler(async (event): Promise<PespPost> => {
     });
   }
 
-  const post = await useDB().update(tables.actualidad).set({
+  const post = await db.update(tables.actualidad).set({
     permalink,
     titulo: titulo.trim(),
     tag,
@@ -25,7 +25,7 @@ export default defineEventHandler(async (event): Promise<PespPost> => {
   }).where(eq(tables.actualidad.permalink, permalink)).returning().get();
 
   if (banner) {
-    await hubBlob().put(`images/${permalink}`, banner, {
+    await blob.put(`images/${permalink}`, banner, {
       prefix: "posts",
       httpMetadata: {
         contentType: banner.type
@@ -33,7 +33,7 @@ export default defineEventHandler(async (event): Promise<PespPost> => {
     });
   }
 
-  await hubBlob().put(`content/${permalink}.html`, content, {
+  await blob.put(`content/${permalink}.html`, content, {
     prefix: "posts",
     httpMetadata: {
       contentType: "text/html"

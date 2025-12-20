@@ -1,7 +1,5 @@
 <!-- eslint-disable vue/prop-name-casing, eslint-disable vue/multi-word-component-names -->
-<script setup>
-import { Body, Font, Head, Html } from "@vue-email/components";
-
+<script setup lang="ts">
 defineProps({
   // shared
   lang: { type: String, required: true },
@@ -28,14 +26,14 @@ defineProps({
 </script>
 
 <template>
-  <Html :lang="lang">
-    <Head>
+  <EBody :lang="lang">
+    <EHead>
       <title>Unirse</title>
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta name="x-apple-disable-message-reformatting">
-      <Font font-family="Arial" />
-    </Head>
-    <Body style="margin:0;padding:0;">
+      <EFont font-family="Arial" />
+    </EHead>
+    <EBody style="margin:0;padding:0;">
       <table role="presentation" style="width:100%;border-collapse:collapse;border:0;border-spacing:0;background:#ffffff;">
         <tr>
           <td align="center" style="padding:0;">
@@ -133,6 +131,6 @@ defineProps({
           </td>
         </tr>
       </table>
-    </Body>
-  </Html>
+    </EBody>
+  </EBody>
 </template>
