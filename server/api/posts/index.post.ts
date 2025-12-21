@@ -10,7 +10,7 @@ export default defineEventHandler(async (event): Promise<PespPost> => {
 
   if (banner && banner.type !== "image/jpeg") {
     throw createError({
-      statusCode: 415,
+      status: 415,
       message: t("unsupported_media")
     });
   }
@@ -18,7 +18,7 @@ export default defineEventHandler(async (event): Promise<PespPost> => {
   const dbCheck = await db.select().from(tables.actualidad).where(eq(tables.actualidad.permalink, permalink)).limit(1).all();
   if (dbCheck.length) {
     throw createError({
-      statusCode: 409,
+      status: 409,
       message: t("conflict")
     });
   }

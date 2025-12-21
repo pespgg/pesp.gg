@@ -19,7 +19,12 @@ export default defineEventHandler(async (event) => {
     createdAt: tables.subscribers.createdAt
   }).get();
 
-  if (!subscriber) throw createError({ statusCode: 500, message: t("error") });
+  if (!subscriber) {
+    throw createError({
+      status: 500,
+      message: t("error")
+    });
+  }
 
   return subscriber;
 });

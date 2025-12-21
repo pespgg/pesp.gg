@@ -9,7 +9,7 @@ export default defineEventHandler(async (event) => {
 
   if (!deletedPost) {
     throw createError({
-      statusCode: 404,
+      status: 404,
       message: t("post_not_found")
     });
   }

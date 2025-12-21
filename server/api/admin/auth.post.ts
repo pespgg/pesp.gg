@@ -7,7 +7,12 @@ export default defineEventHandler(async (event: H3Event): Promise<PespUser> => {
     password: z.string().transform(v => hash(v, secure.salt))
   }).safeParse);
 
-  if (!body.success) throw createError({ statusCode: 401, message: t("login_error") });
+  if (!body.success) {
+    throw createError({
+      status: 401,
+      message: t("login_error")
+    });
+  }
 
   const form = body.data;
 
@@ -18,7 +23,12 @@ export default defineEventHandler(async (event: H3Event): Promise<PespUser> => {
     eq(tables.admins.password, form.password)
   )).get();
 
-  if (!login) throw createError({ statusCode: 401, message: t("login_error") });
+  if (!login) {
+    throw createError({
+      status: 401,
+      message: t("login_error")
+    });
+  }
 
   await setUserSession(event, { user: { ...login } });
   return login;

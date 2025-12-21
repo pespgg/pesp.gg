@@ -23,7 +23,12 @@ export const setUserSession = async (event: H3Event, data: PespSession) => {
 export const requireUserSession = async (event: H3Event) => {
   const userSession = await getUserSession(event);
 
-  if (!userSession.user) throw createError({ statusCode: 401, message: t("unauthorized") });
+  if (!userSession.user) {
+    throw createError({
+      status: 401,
+      message: t("unauthorized")
+    });
+  }
 
   return userSession as { user: PespUser };
 };

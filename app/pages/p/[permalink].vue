@@ -8,7 +8,10 @@ const { data: posts } = await useFetch("/api/posts", {
 });
 
 if (!posts.value || !posts.value.length) {
-  throw createError({ statusCode: 404, message: t("post_not_found") });
+  throw createError({
+    status: 404,
+    message: t("post_not_found")
+  });
 }
 
 const post = ref(posts.value[0]!);

@@ -5,7 +5,10 @@ const tagParam = params.tag as string;
 // Validate that the tag exists
 const tagExists = SCHEMA_tags.find(t => t.tag === tagParam);
 if (!tagExists) {
-  throw createError({ statusCode: 404, message: t("tag_not_found") });
+  throw createError({
+    status: 404,
+    message: t("tag_not_found")
+  });
 }
 
 const { data: posts } = await useFetch("/api/posts", {

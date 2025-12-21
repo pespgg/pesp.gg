@@ -99,7 +99,12 @@ export default defineEventHandler(async (event) => {
     }
   }).catch(() => null);
 
-  if (!cloudflareAnalytics) throw createError({ statusCode: 500, message: "Failed to fetch Cloudflare analytics" });
+  if (!cloudflareAnalytics) {
+    throw createError({
+      status: 500,
+      message: "Failed to fetch Cloudflare analytics"
+    });
+  }
 
   return (cloudflareAnalytics as any).data.viewer.accounts[0];
 });

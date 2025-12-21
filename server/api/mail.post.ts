@@ -3,7 +3,7 @@ export default defineEventHandler(async (event) => {
   const { email, name, subject, message, legal, token } = form;
   if (!token) {
     throw createError({
-      statusCode: 422,
+      status: 422,
       message: "token_not_provided"
     });
   }

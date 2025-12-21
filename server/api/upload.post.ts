@@ -4,7 +4,12 @@ export default defineEventHandler(async (event) => {
   const formData = await readFormData(event);
   const file = formData.get("upload") as File | undefined;
 
-  if (!file) throw createError({ statusCode: 400, message: t("bad_request") });
+  if (!file) {
+    throw createError({
+      status: 400,
+      message: t("bad_request")
+    });
+  }
 
   checkFileSize(event);
   checkFileType(file.type);
@@ -22,7 +27,7 @@ export default defineEventHandler(async (event) => {
   }
   catch (error) {
     throw createError({
-      statusCode: 500,
+      status: 500,
       message: (error as Error).message
     });
   }
