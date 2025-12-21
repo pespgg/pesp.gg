@@ -11,7 +11,7 @@ defineProps<{
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-body">
-          <button v-if="!loading" type="button" class="btn-close position-absolute end-0 pe-4" data-bs-dismiss="modal" aria-label="Close" />
+          <button v-if="!loading" type="button" class="btn-close btn-close-white position-absolute end-0 pe-4" data-bs-dismiss="modal" aria-label="Close" />
           <div class="text-center p-2">
             <Transition name="fade" mode="out-in">
               <div v-if="!loading">
