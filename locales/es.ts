@@ -102,6 +102,7 @@ export default {
   mayor: "¿Eres mayor de edad?",
   correo_enviado: "El correo ha sido enviado exitosamente",
   correo_error: "Ha ocurrido un error al enviar el correo",
+  telefono: "Teléfono",
 
   /* Mail Templates */
   equipo_pesp: "Equipo PESP",

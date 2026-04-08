@@ -6,6 +6,7 @@ defineProps({
   correo_informacion: { type: String, required: true },
   str_nombre: { type: String, required: true },
   str_correo: { type: String, required: true },
+  str_telefono: { type: String, required: true },
   visita_nuestra_web: { type: String, required: true },
   informacion_enviada: { type: String, required: true },
   mientras_esperas: { type: String, required: true },
@@ -13,6 +14,7 @@ defineProps({
   correo_footer: { type: String, required: true },
   nombre: { type: String, required: true },
   email: { type: String, required: true },
+  telefono: { type: String, required: true },
   mensaje: { type: String, required: true },
   // contacto
   contacto: { type: String, required: true },
@@ -76,6 +78,16 @@ defineProps({
                             <td style="background-color: #c1234c;padding:6px 12px 6px 12px;">
                               <p style="padding:0;margin:0;font-size:16px;line-height:24px;font-family: Arial, sans-serif;background-color: #c1234c;color:#f9f9f9;">
                                 <a style="color:#f9f9f9;">{{ email }}</a>
+                              </p>
+                            </td>
+                          </tr>
+                        </table>
+                        <h3 style="font-size:18px;margin:0 0 6px 0;font-family: Arial, sans-serif;color:#f9f9f9;">{{ str_telefono }}</h3>
+                        <table role="presentation" style="width:100%;border-collapse:collapse;border:0;border-spacing:0;margin:0 0 12px 0;">
+                          <tr>
+                            <td style="background-color: #c1234c;padding:6px 12px 6px 12px;">
+                              <p style="padding:0;margin:0;font-size:16px;line-height:24px;font-family: Arial, sans-serif;background-color: #c1234c;color:#f9f9f9;">
+                                <a style="color:#f9f9f9;">{{ telefono }}</a>
                               </p>
                             </td>
                           </tr>

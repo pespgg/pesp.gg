@@ -1,6 +1,6 @@
 export default defineEventHandler(async (event) => {
   const { template, form, lang } = await readBody(event);
-  const { email, name, subject, message, legal, token } = form;
+  const { email, name, subject, message, legal, token, phone } = form;
   if (!token) {
     throw createError({
       status: 422,
@@ -21,6 +21,7 @@ export default defineEventHandler(async (event) => {
       correo_informacion: t("correo_informacion"),
       str_nombre: t("nombre"),
       str_correo: t("correo"),
+      str_telefono: t("telefono"),
       visita_nuestra_web: t("visita_nuestra_web"),
       informacion_enviada: t("informacion_enviada"),
       mientras_esperas: t("mientras_esperas"),
@@ -50,7 +51,8 @@ export default defineEventHandler(async (event) => {
     ...template_strings[template as "contacto" | "unirse"],
     nombre: name,
     email,
-    mensaje: message
+    mensaje: message,
+    telefono: phone
   });
 
   const mailchannels = useMailChannels(event);

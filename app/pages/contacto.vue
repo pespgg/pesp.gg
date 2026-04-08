@@ -44,6 +44,10 @@ useHead({
               <input v-model.trim="contacto.subject" type="text" class="form-control" :placeholder="t('asunto')" required>
               <label>{{ t("asunto") }}</label>
             </div>
+            <div class="form-floating mb-3">
+              <input v-model.trim="contacto.phone" type="text" class="form-control" :placeholder="t('telefono')" required>
+              <label>{{ t("telefono") }}</label>
+            </div>
             <div class="form-floating">
               <textarea v-model.trim="contacto.message" class="form-control" :placeholder="t('mensaje')" style="height: 200px" required />
               <label for="floatingTextarea2">{{ t("mensaje") }}</label>
@@ -86,6 +90,10 @@ useHead({
                 <div class="form-floating mb-3">
                   <input v-model.trim="unirse.email" type="email" class="form-control" :placeholder="t('correo')" required>
                   <label>{{ t("correo") }}</label>
+                </div>
+                <div class="form-floating mb-3">
+                  <input v-model.trim="unirse.phone" type="text" class="form-control" :placeholder="t('telefono')" required>
+                  <label>{{ t("telefono") }}</label>
                 </div>
                 <h5><strong>{{ t("porque_pesp") }}</strong></h5>
                 <div class="form-floating mb-3">
@@ -139,6 +147,7 @@ export default {
         token: "",
         name: "",
         email: "",
+        phone: "",
         subject: "",
         message: ""
       },
@@ -146,6 +155,7 @@ export default {
         token: "",
         name: "",
         email: "",
+        phone: "",
         message: "",
         legal: null
       },
@@ -170,6 +180,7 @@ export default {
         token: "",
         name: "",
         email: "",
+        phone: "",
         subject: "",
         message: ""
       };
@@ -177,6 +188,7 @@ export default {
         token: "",
         name: "",
         email: "",
+        phone: "",
         message: "",
         legal: null
       };
